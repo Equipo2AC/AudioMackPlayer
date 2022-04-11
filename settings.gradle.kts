@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "AudioMAckPlayer"
-include (":app")
+include (":app",":data",":domain",":usecases")

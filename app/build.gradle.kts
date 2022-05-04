@@ -33,6 +33,14 @@ android {
     secrets {
         propertiesFileName = "secrets.properties"
     }
+    signingConfigs {
+        getByName("debug") {
+            keyAlias = ""
+            keyPassword = ""
+            storeFile = file("debug.jks")
+            storePassword = ""
+        }
+    }
 }
 
 dependencies {

@@ -1,6 +1,9 @@
+import org.jetbrains.kotlin.konan.properties.Properties
+
 plugins {
-    id ("com.android.application")
-    id ("org.jetbrains.kotlin.android")
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -28,6 +31,21 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    secrets {
+        propertiesFileName = "secrets.properties"
+    }
+
+    signingConfigs {
+        val properties = Properties().apply {
+            load(File(secrets.propertiesFileName).reader())
+        }
+        getByName("debug") {
+            keyAlias = (properties["debugKeyAlias"] ?: "") as String
+            keyPassword = (properties["debugKeyPassword"] ?: "") as String
+            storeFile = file((properties["debugKeyFileName"] ?: "") as String)
+            storePassword = (properties["debugKeyPassword"] ?: "") as String
+        }
     }
 }
 

@@ -7,7 +7,7 @@ android {
     compileSdk = 32
 
     defaultConfig {
-        applicationId = "com.ac.audiomackplayer"
+        applicationId = "com.ac.musicac"
         minSdk = 23
         targetSdk = 32
         versionCode = 1

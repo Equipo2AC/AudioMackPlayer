@@ -1,4 +1,4 @@
-package com.ac.audiomackplayer
+package com.ac.musicac
 
 import org.junit.Test
 

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.konan.properties.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -33,12 +35,16 @@ android {
     secrets {
         propertiesFileName = "secrets.properties"
     }
+
     signingConfigs {
+        val properties = Properties().apply {
+            load(File(secrets.propertiesFileName).reader())
+        }
         getByName("debug") {
-            keyAlias = ""
-            keyPassword = ""
-            storeFile = file("debug.jks")
-            storePassword = ""
+            keyAlias = (properties["debugKeyAlias"] ?: "") as String
+            keyPassword = (properties["debugKeyPassword"] ?: "") as String
+            storeFile = file((properties["debugKeyFileName"] ?: "") as String)
+            storePassword = (properties["debugKeyPassword"] ?: "") as String
         }
     }
 }

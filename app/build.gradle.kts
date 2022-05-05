@@ -3,6 +3,9 @@ import org.jetbrains.kotlin.konan.properties.Properties
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    id("org.jetbrains.kotlin.plugin.serialization")
+    id("dagger.hilt.android.plugin")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
@@ -50,10 +53,16 @@ android {
 }
 
 dependencies {
-    implementation ("androidx.core:core-ktx:_")
-    implementation ("androidx.appcompat:appcompat:_")
-    implementation ("com.google.android.material:material:_")
-    implementation ("androidx.constraintlayout:constraintlayout:_")
+    implementation("androidx.core:core-ktx:_")
+    implementation("androidx.appcompat:appcompat:_")
+    implementation("com.google.android.material:material:_")
+    implementation("androidx.constraintlayout:constraintlayout:_")
+    implementation("com.squareup.retrofit2:retrofit:_")
+    implementation("com.squareup.okhttp3:logging-interceptor:_")
+    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:_")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
+    implementation("com.google.dagger:hilt-android:_")
+    kapt("com.google.dagger:hilt-compiler:_")
     testImplementation ("junit:junit:_")
     androidTestImplementation ("androidx.test.ext:junit:_")
     androidTestImplementation ("androidx.test.espresso:espresso-core:_")

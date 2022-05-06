@@ -6,14 +6,10 @@ import com.ac.musicac.di.qualifier.ClientSecret
 import okhttp3.Interceptor
 import javax.inject.Inject
 
-class AuthorizationHeader : Interceptor {
-    @Inject
-    @ClientId
-    lateinit var clientId : String
-
-    @Inject
-    @ClientSecret
-    lateinit var clientSecret : String
+class AuthorizationHeader(
+    clientId: String,
+    clientSecret: String
+) : Interceptor {
 
     private val authorization : String = "$clientId:$clientSecret"
 

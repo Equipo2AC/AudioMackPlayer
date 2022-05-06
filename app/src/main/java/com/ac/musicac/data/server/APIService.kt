@@ -1,5 +1,8 @@
 package com.ac.musicac.data.server
 
+import com.ac.musicac.data.Constants.CONNECT_TIME_OUT
+import com.ac.musicac.data.Constants.READ_TIME_OUT
+import com.ac.musicac.data.Constants.WRITE_TIME_OUT
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Converter
@@ -12,23 +15,13 @@ open class APIService<T> constructor(
     private val converterFactory: Converter.Factory,
     private val interceptors: Array<Interceptor>
 ) {
-    var service: T
-
-    companion object {
-        private const val READ_TIMEOUT = 30L
-        private const val WRITE_TIMEOUT = 30L
-        private const val CONNECT_TIMEOUT = 30L
-    }
-
-    init {
-        service = initApiService().create(serviceClass)
-    }
+    val service = initApiService().create(serviceClass)
 
     private fun initApiService(): Retrofit {
         val client = OkHttpClient.Builder()
-        client.readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
-        client.writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
-        client.connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
+        client.readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)
+        client.writeTimeout(WRITE_TIME_OUT, TimeUnit.SECONDS)
+        client.connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS)
 
         interceptors.map { client.addInterceptor(it) }
 

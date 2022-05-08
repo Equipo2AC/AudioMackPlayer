@@ -6,7 +6,7 @@ plugins {
     id("kotlin-kapt")
     id("org.jetbrains.kotlin.plugin.serialization")
     id("dagger.hilt.android.plugin")
-    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+//    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -35,21 +35,21 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    secrets {
-        propertiesFileName = "secrets.properties"
-    }
+//    secrets {
+//        propertiesFileName = "secrets.properties"
+//    }
 
-    signingConfigs {
-        val properties = Properties().apply {
-            load(File(secrets.propertiesFileName).reader())
-        }
-        getByName("debug") {
-            keyAlias = (properties["debugKeyAlias"] ?: "") as String
-            keyPassword = (properties["debugKeyPassword"] ?: "") as String
-            storeFile = file((properties["debugKeyFileName"] ?: "") as String)
-            storePassword = (properties["debugKeyPassword"] ?: "") as String
-        }
-    }
+//    signingConfigs {
+//        val properties = Properties().apply {
+//            load(File(secrets.propertiesFileName).reader())
+//        }
+//        getByName("debug") {
+//            keyAlias = (properties["debugKeyAlias"] ?: "") as String
+//            keyPassword = (properties["debugKeyPassword"] ?: "") as String
+//            storeFile = file((properties["debugKeyFileName"] ?: "") as String)
+//            storePassword = (properties["debugKeyPassword"] ?: "") as String
+//        }
+//    }
 }
 
 dependencies {

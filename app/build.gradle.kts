@@ -68,9 +68,14 @@ dependencies {
     implementation("androidx.room:room-ktx:_")
     kapt("androidx.room:room-compiler:_")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:_")
+    implementation("androidx.fragment:fragment-ktx:_")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:_")
     implementation("androidx.activity:activity-ktx:_")
     kapt("com.google.dagger:hilt-compiler:_")
+    implementation("com.squareup.retrofit2:converter-gson:_")
+
+
+
     testImplementation ("junit:junit:_")
     androidTestImplementation ("androidx.test.ext:junit:_")
     androidTestImplementation ("androidx.test.espresso:espresso-core:_")

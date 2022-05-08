@@ -21,14 +21,14 @@ class ReleasesDataSource @Inject constructor(
 
     override suspend fun getReleases(): Either<Error, Releases> = tryCall {
         api.service
-            .getReleases("ES", "10", "5", "")
+            .getReleases("ES", "10", "5", "BQBYdsfgJcSzjgwUwsdWY7wQW3Waz6nqnY6y9ffmtnDz4o9e1gVZ28RGQfnliUeAHQlQzlkAESBQIf8mMyM")
             .toDomainModel()
     }
 }
 
 private fun ReleasesResult.toDomainModel(): Releases =
     Releases(
-        albums = albums.toDomainModel()
+        albums.toDomainModel()
     )
 
 private fun AlbumsResult.toDomainModel(): Albums =

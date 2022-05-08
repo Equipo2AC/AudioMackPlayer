@@ -6,7 +6,6 @@ import javax.inject.Inject
 
 class GetReleasesUseCase @Inject constructor(private val releasesRepository: ReleasesRepository) {
 
-    suspend operator fun invoke(): Error? {
-        return releasesRepository.getReleases()
-    }
+    suspend operator fun invoke(): Error? = releasesRepository.getReleases()
+
 }

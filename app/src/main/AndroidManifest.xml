@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MusicAC">
         <activity
-            android:name=".ui.splash.SplashScreenActivity"
+            android:name=".ui.splash.NavHostSplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

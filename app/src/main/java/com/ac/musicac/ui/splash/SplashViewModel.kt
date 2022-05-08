@@ -4,7 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ac.musicac.usecases.RequestAuthenticationUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import com.ac.musicac.domain.Error
 import javax.inject.Inject
 
 @HiltViewModel
@@ -13,10 +17,23 @@ class SplashViewModel @Inject constructor(
 ) : ViewModel() {
 
 
-    fun demo() {
+    private val _state = MutableStateFlow(UiState())
+    val state: StateFlow<UiState> = _state.asStateFlow()
+
+    fun init () {
+        onUiReady()
+    }
+
+    private fun onUiReady() {
         viewModelScope.launch {
+            _state.value = _state.value.copy(loading = true)
             val error = requestAuthenticationUseCase()
-            val result = error
+            _state.value = _state.value.copy(loading = false, error = error)
         }
     }
+
+    data class UiState(
+        val loading: Boolean = false,
+        val error: Error? = null
+    )
 }

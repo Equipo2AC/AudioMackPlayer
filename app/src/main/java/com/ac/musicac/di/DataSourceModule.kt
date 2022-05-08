@@ -3,6 +3,8 @@ package com.ac.musicac.di
 import com.ac.musicac.data.database.datasource.AuthenticationRoomDataSource
 import com.ac.musicac.data.datasource.AuthenticationLocalDataSource
 import com.ac.musicac.data.datasource.AuthenticationRemoteDataSource
+import com.ac.musicac.data.datasource.ReleasesRemoteDataSource
+import com.ac.musicac.data.server.datasource.ReleasesDataSource
 import com.ac.musicac.data.server.datasource.SpotifyAuthenticationDataSource
 import dagger.Binds
 import dagger.Module
@@ -22,5 +24,12 @@ abstract class DataSourceModule {
     abstract fun bindLocalAuthenticationDataSource(
         localDataSource: AuthenticationRoomDataSource
     ): AuthenticationLocalDataSource
+
+
+    @Binds
+    abstract fun bindRemoteGetReleasesDataSource(
+        remoteDataSource: ReleasesDataSource
+    ): ReleasesRemoteDataSource
+
 
 }

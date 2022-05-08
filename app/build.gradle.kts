@@ -35,6 +35,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
 //    secrets {
 //        propertiesFileName = "secrets.properties"
 //    }
@@ -66,6 +71,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:_")
     implementation("androidx.room:room-runtime:_")
     implementation("androidx.room:room-ktx:_")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.4.2")
+    implementation("androidx.navigation:navigation-ui-ktx:2.4.2")
     kapt("androidx.room:room-compiler:_")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:_")
     implementation("androidx.fragment:fragment-ktx:_")
@@ -74,6 +81,8 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:_")
     implementation("com.squareup.retrofit2:converter-gson:_")
 
+    implementation("com.github.bumptech.glide:glide:_")
+    kapt ("com.github.bumptech.glide:compiler:_")
 
 
     testImplementation ("junit:junit:_")

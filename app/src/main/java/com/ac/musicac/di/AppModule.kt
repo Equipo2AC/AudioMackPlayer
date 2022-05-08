@@ -10,11 +10,7 @@ import com.ac.musicac.data.server.interceptor.AuthorizationHeader
 import com.ac.musicac.data.server.interceptor.TokenHeader
 import com.ac.musicac.data.server.service.SpotifyAuthenticationService
 import com.ac.musicac.data.server.service.SpotifyService
-import com.ac.musicac.di.qualifier.ApiUrl
-import com.ac.musicac.di.qualifier.AuthenticationApiUrl
-import com.ac.musicac.di.qualifier.ClientId
-import com.ac.musicac.di.qualifier.ClientSecret
-import com.ac.musicac.di.qualifier.JsonFactory
+import com.ac.musicac.di.qualifier.*
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
@@ -115,7 +111,7 @@ object AppModule {
     @Provides
     @Singleton
     fun provideSpotifyApiService(
-        @AuthenticationApiUrl apiUrl: String,
+        @ApiUrl apiUrl: String,
         tokenHeader: TokenHeader,
         httpLoggingInterceptor: HttpLoggingInterceptor,
         @JsonFactory jsonFactory : Converter.Factory

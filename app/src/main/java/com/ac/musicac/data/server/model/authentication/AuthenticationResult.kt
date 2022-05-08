@@ -1,4 +1,4 @@
-package com.ac.musicac.data.server
+package com.ac.musicac.data.server.model.authentication
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

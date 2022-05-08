@@ -1,4 +1,4 @@
-package com.ac.musicac.ui
+package com.ac.musicac.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

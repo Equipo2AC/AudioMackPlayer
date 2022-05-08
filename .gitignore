@@ -13,7 +13,7 @@
 .externalNativeBuild
 .cxx
 local.properties
-/secrets.properties
+
 buildSrc/build/classes/kotlin/main/Demo.class
 buildSrc/build/classes/kotlin/main/META-INF/buildSrc.kotlin_module
 buildSrc/build/kotlin/buildSrcjar-classes.txt

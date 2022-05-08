@@ -13,14 +13,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SplashViewModel @Inject constructor(
-    private val requestAuthenticationUseCase : RequestAuthenticationUseCase
+    private val requestAuthenticationUseCase: RequestAuthenticationUseCase
 ) : ViewModel() {
 
 
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state.asStateFlow()
 
-    fun init () {
+    fun init() {
         onUiReady()
     }
 
@@ -29,11 +29,13 @@ class SplashViewModel @Inject constructor(
             _state.value = _state.value.copy(loading = true)
             val error = requestAuthenticationUseCase()
             _state.value = _state.value.copy(loading = false, error = error)
+            _state.value = _state.value.copy(loading = false, error = error, navigate = error?.let { true } ?: false)
         }
     }
 
     data class UiState(
         val loading: Boolean = false,
+        val navigate: Boolean = false,
         val error: Error? = null
     )
 }

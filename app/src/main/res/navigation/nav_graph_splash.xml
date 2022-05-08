@@ -3,17 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_splash"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/splash_dest">
 
-    <include app:graph="@navigation/nav_graph" />
 
     <fragment
-        android:id="@+id/splashFragment"
+        android:id="@+id/splash_dest"
         android:name="com.ac.musicac.ui.splash.SplashFragment"
         android:label="SplashFragment" >
         <action
-            android:id="@+id/action_splashFragment_to_nav_graph"
-            app:destination="@id/nav_graph" />
+            android:id="@+id/action_main_to_detail"
+            app:destination="@id/nav_graph"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
     </fragment>
+
+    <include app:graph="@navigation/nav_graph" />
 
 </navigation>

@@ -28,12 +28,10 @@ class ReleasesViewModel @Inject constructor(
     init {
 
         viewModelScope.launch {
-            val albums = getReleasesUseCase().fold(
+            getReleasesUseCase().fold(
                 ifLeft = { cause -> _state.update { it.copy(error = cause) } },
                 ifRight = { albums -> _state.update { UiState(albums = albums.albums.items) } }
             )
-
-            println(albums)
 
         }
     }

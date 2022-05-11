@@ -28,10 +28,8 @@ class ReleasesFragment: Fragment(R.layout.fragment_releases) {
 
         viewLifecycleOwner.launchAndCollect(viewModel.state) {
             binding.loading = it.loading
-            binding.albums = it.albums
+            binding.items = it.albums
             binding.error = it.error?.let(releaseState::errorToString)
         }
     }
-
-
 }

@@ -6,6 +6,7 @@ import com.ac.musicac.R
 import com.ac.musicac.domain.Albums
 import kotlinx.coroutines.CoroutineScope
 import com.ac.musicac.domain.Error
+import com.ac.musicac.domain.Item
 
 class ReleasesState(
     private val context: Context,
@@ -13,7 +14,7 @@ class ReleasesState(
     private val navController: NavController,
 ) {
 
-    fun onMovieClicked(movie: Albums) {
+    fun onMovieClicked(movie: Item) {
 
     }
 

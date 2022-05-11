@@ -7,15 +7,15 @@
 
         <import type="java.util.List" />
 
-        <import type="com.ac.musicac.domain.Albums" />
+        <import type="com.ac.musicac.domain.Item" />
 
         <variable
             name="loading"
             type="boolean" />
 
         <variable
-            name="albums"
-            type="List&lt;Albums>" />
+            name="items"
+            type="List&lt;Item>" />
 
         <variable
             name="error"
@@ -46,7 +46,7 @@
             android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:items="@{albums}"
+            app:items="@{items}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:spanCount="3"

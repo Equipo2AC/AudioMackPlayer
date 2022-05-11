@@ -12,6 +12,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import com.ac.musicac.domain.Error
+import com.ac.musicac.domain.Item
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -27,10 +29,8 @@ class ReleasesViewModel @Inject constructor(
 
         viewModelScope.launch {
             val albums = getReleasesUseCase().fold(
-                ifLeft = { it },
-                ifRight = {
-                    it.albums
-                }
+                ifLeft = { cause -> _state.update { it.copy(error = cause) } },
+                ifRight = { albums -> _state.update { UiState(albums = albums.albums.items) } }
             )
 
             println(albums)
@@ -40,7 +40,7 @@ class ReleasesViewModel @Inject constructor(
 
     data class UiState(
         val loading: Boolean = false,
-        val albums: List<Albums>? = null,
+        val albums: List<Item>? = null,
         val error: Error? = null
     )
 }

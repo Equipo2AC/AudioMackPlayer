@@ -56,12 +56,12 @@ object AppModule {
     @Provides
     @Singleton
     @ClientId
-    fun providesClientId(): String = "88a836718f2640aeb371d3039c982f74"
+    fun providesClientId(): String = BuildConfig.spotifyClientId
 
     @Provides
     @Singleton
     @ClientSecret
-    fun providesClientSecret(): String = "236563df9f3740e5be8a30e795590ab0"
+    fun providesClientSecret(): String = BuildConfig.spotifyClientSecret
 
     @ExperimentalSerializationApi
     @Provides

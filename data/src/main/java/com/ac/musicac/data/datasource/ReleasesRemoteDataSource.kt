@@ -5,5 +5,5 @@ import com.ac.musicac.domain.Error
 import com.ac.musicac.domain.Releases
 
 interface ReleasesRemoteDataSource {
-    suspend fun getReleases(): Either<Error, Releases>
+    suspend fun getReleases(): Either<Error?, Releases>
 }

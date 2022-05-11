@@ -10,7 +10,7 @@ data class Albums(
     val limit: Int,
     val next: String,
     val offset: Int,
-    val previous: String,
+    val previous: String? = "",
     val total: Int
 )
 

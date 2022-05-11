@@ -20,7 +20,7 @@ class SplashViewModel @Inject constructor(
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state.asStateFlow()
 
-    fun init() {
+    init {
         onUiReady()
     }
 

@@ -2,6 +2,8 @@ package com.ac.musicac.ui.main.releases
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import arrow.core.left
+import arrow.core.right
 import com.ac.musicac.domain.Albums
 import com.ac.musicac.domain.Releases
 import com.ac.musicac.usecases.GetReleasesUseCase
@@ -22,13 +24,17 @@ class ReleasesViewModel @Inject constructor(
     val state: StateFlow<UiState> = _state.asStateFlow()
 
     init {
+
         viewModelScope.launch {
-            val error = getReleasesUseCase()
+            val albums = getReleasesUseCase().fold(
+                ifLeft = { it },
+                ifRight = {
+                    it.albums
+                }
+            )
 
-            error?.let {
+            println(albums)
 
-                println(error.toString())
-            }
         }
     }
 

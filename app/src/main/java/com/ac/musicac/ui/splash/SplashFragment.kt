@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class SplashFragment: Fragment(R.layout.fragment_splash) {
+class SplashFragment : Fragment(R.layout.fragment_splash) {
 
     private val viewModel: SplashViewModel by viewModels()
 
@@ -27,9 +27,8 @@ class SplashFragment: Fragment(R.layout.fragment_splash) {
 
         viewLifecycleOwner.launchAndCollect(viewModel.state) {
             binding.loading = it.loading
+            if(it.error==null) splashState.navigate()
             binding.error = it.error?.let(splashState::errorToString)
-
-
         }
 
 

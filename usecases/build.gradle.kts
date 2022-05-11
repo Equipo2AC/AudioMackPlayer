@@ -13,4 +13,6 @@ dependencies {
     implementation(project(":data"))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:_")
     implementation("javax.inject:javax.inject:_")
+    implementation("io.arrow-kt:arrow-core:_")
+
 }

@@ -27,4 +27,9 @@ class SplashState(
         is Error.Unknown -> context.getString(R.string.unknown_error) + error.message
     }
 
+    fun navigate(){
+        navController.navigate(R.id.nav_graph)
+
+    }
+
 }

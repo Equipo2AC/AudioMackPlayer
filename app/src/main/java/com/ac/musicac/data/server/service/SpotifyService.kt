@@ -9,9 +9,7 @@ interface SpotifyService {
     suspend fun getReleases(
         @Header("country") country: String,
         @Header("limit") limit: String,
-        @Header("offset") offset: String,
-        @Header("token") token: String
-    ): ReleasesResult
+        @Header("offset") offset: String): ReleasesResult
 
 
 }

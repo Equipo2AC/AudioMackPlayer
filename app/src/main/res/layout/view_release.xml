@@ -12,26 +12,46 @@
             type="com.ac.musicac.domain.Item" />
     </data>
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:foreground="?attr/selectableItemBackground"
         android:orientation="vertical"
         android:padding="2dp">
 
-        <TextView
-            android:id="@+id/movie_title"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="?attr/colorPrimaryVariant"
-            android:gravity="center"
-            android:lines="2"
-            android:minLines="2"
-            android:padding="8dp"
-            android:text="@{item.name}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
-            tools:text="@tools:sample/lorem" />
+            android:layout_height="match_parent">
 
-    </LinearLayout>
+            <com.ac.musicac.ui.common.AspectRatioImageView
+                android:id="@+id/album_cover"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:ratio="1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:url="@{item.images[0].url}" />
+
+            <TextView
+                android:id="@+id/album_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lines="2"
+                android:minLines="2"
+                android:padding="8dp"
+                android:text="@{item.name}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/album_cover"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@tools:sample/lorem" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 </layout>

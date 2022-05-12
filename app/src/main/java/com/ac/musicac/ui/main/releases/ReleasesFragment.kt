@@ -22,6 +22,8 @@ class ReleasesFragment: Fragment(R.layout.fragment_releases) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        releaseState = buildReleasesState()
+
         val binding = FragmentReleasesBinding.bind(view).apply {
             recycler.adapter = adapter
         }

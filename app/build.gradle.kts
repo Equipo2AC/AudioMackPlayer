@@ -83,6 +83,7 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:_")
     kapt ("com.github.bumptech.glide:compiler:_")
 
+    implementation("com.google.android.gms:play-services-location:_")
 
     testImplementation ("junit:junit:_")
     androidTestImplementation ("androidx.test.ext:junit:_")

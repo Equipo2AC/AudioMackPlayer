@@ -16,8 +16,7 @@ class ReleasesFragment: Fragment(R.layout.fragment_releases) {
 
     private lateinit var releaseState: ReleasesState
 
-    private val adapter = ReleasesAdapter { releaseState.onMovieClicked(it) }
-
+    private val adapter = ReleasesAdapter { releaseState.onAlbumClicked(it) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,5 +32,10 @@ class ReleasesFragment: Fragment(R.layout.fragment_releases) {
             binding.items = it.albums
             binding.error = it.error?.let(releaseState::errorToString)
         }
+
+        releaseState.requestLocationPermission {
+            viewModel.onUiReady()
+        }
     }
+
 }

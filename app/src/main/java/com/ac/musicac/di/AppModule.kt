@@ -4,14 +4,19 @@ import android.app.Application
 import androidx.room.Room
 import com.ac.musicac.BuildConfig
 import com.ac.musicac.data.Constants
+import com.ac.musicac.data.PermissionChecker
 import com.ac.musicac.data.database.MusicAcDatabase
+import com.ac.musicac.data.datasource.LocationDataSource
 import com.ac.musicac.data.server.APIService
+import com.ac.musicac.data.server.AndroidPermissionChecker
+import com.ac.musicac.data.server.PlayServicesLocationDataSource
 import com.ac.musicac.data.server.interceptor.AuthorizationHeader
 import com.ac.musicac.data.server.interceptor.TokenHeader
 import com.ac.musicac.data.server.service.SpotifyAuthenticationService
 import com.ac.musicac.data.server.service.SpotifyService
 import com.ac.musicac.di.qualifier.*
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -123,4 +128,16 @@ object AppModule {
             arrayOf(tokenHeader, httpLoggingInterceptor)
         )
     }
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class AppDataModule {
+
+    @Binds
+    abstract fun bindLocationDataSource(locationDataSource: PlayServicesLocationDataSource): LocationDataSource
+
+    @Binds
+    abstract fun bindPermissionChecker(permissionChecker: AndroidPermissionChecker): PermissionChecker
+
 }

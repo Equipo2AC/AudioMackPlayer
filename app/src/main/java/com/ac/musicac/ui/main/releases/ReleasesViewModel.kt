@@ -2,6 +2,7 @@ package com.ac.musicac.ui.main.releases
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import arrow.core.Either
 import arrow.core.left
 import arrow.core.right
 import com.ac.musicac.domain.Albums
@@ -19,20 +20,31 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ReleasesViewModel @Inject constructor(
-    getReleasesUseCase: GetReleasesUseCase,
+    private val getReleasesUseCase: GetReleasesUseCase,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state.asStateFlow()
 
     init {
-
         viewModelScope.launch {
             getReleasesUseCase().fold(
                 ifLeft = { cause -> _state.update { it.copy(error = cause) } },
                 ifRight = { albums -> _state.update { UiState(albums = albums.albums.items) } }
             )
+        }
+    }
 
+    fun onUiReady() {
+        viewModelScope.launch {
+            _state.value = _state.value.copy(loading = true)
+
+            val response = getReleasesUseCase()
+
+            when (response) {
+                is Either.Left -> _state.value = _state.value.copy(loading = false, error = response.value)
+                is Either.Right -> _state.value = _state.value.copy(loading = false, albums = response.value.albums.items)
+            }
         }
     }
 

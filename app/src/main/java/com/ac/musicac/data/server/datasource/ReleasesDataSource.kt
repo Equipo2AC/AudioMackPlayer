@@ -19,9 +19,9 @@ class ReleasesDataSource @Inject constructor(
 ) : ReleasesRemoteDataSource {
 
 
-    override suspend fun getReleases(): Either<Error?, Releases> = tryCall {
+    override suspend fun getReleases(region: String, limit: String, offset: String): Either<Error?, Releases> = tryCall {
         api.service
-            .getReleases("ES", "10", "5")
+            .getReleases(region, limit, offset)
             .toDomainModel()
     }
 }

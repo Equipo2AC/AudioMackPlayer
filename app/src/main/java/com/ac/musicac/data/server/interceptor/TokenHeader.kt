@@ -8,7 +8,7 @@ class TokenHeader : Interceptor {
         proceed(
             request()
                 .newBuilder()
-                .addHeader("Authorization", "Bearer BQAfAGv3Lg0BxuoCHWETQwic90yzUwt46MX58MZURV9Goun4HRxsFH2-x4Aalf7hcpH8bn33RuFir9gp-uY")
+                .addHeader("Authorization", "Bearer BQBKtPXPJnlEeXXcA9IpDEvUhOJi15HvXLbIMk_5Q7uGz2cJaagzkIuOzq-sOWzat8FDx2ozkgqB4RKyMUI")
                 .build()
         )
     }

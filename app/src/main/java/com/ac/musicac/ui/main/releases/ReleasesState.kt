@@ -11,23 +11,38 @@ import com.ac.musicac.domain.Albums
 import kotlinx.coroutines.CoroutineScope
 import com.ac.musicac.domain.Error
 import com.ac.musicac.domain.Item
+import com.ac.musicac.ui.common.PermissionRequester
+import kotlinx.coroutines.launch
 
 
 fun Fragment.buildReleasesState(
     context: Context = requireContext(),
     scope: CoroutineScope = viewLifecycleOwner.lifecycleScope,
-    navController: NavController = findNavController()
-) = ReleasesState(context, scope, navController)
+    navController: NavController = findNavController(),
+    locationPermissionRequester: PermissionRequester = PermissionRequester(
+        this,
+        Manifest.permission.ACCESS_COARSE_LOCATION
+    )
+) = ReleasesState(context, scope, navController, locationPermissionRequester)
 
 
 class ReleasesState(
     private val context: Context,
     private val scope: CoroutineScope,
     private val navController: NavController,
+    private val locationPermissionRequester: PermissionRequester
+
 ) {
 
-    fun onMovieClicked(movie: Item) {
+    fun onAlbumClicked(movie: Item) {
 
+    }
+
+    fun requestLocationPermission(afterRequest: (Boolean) -> Unit) {
+        scope.launch {
+            val result = locationPermissionRequester.request()
+            afterRequest(result)
+        }
     }
 
     fun errorToString(error: Error) = when (error) {

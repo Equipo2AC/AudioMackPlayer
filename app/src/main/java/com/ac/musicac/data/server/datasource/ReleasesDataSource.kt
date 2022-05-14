@@ -19,7 +19,11 @@ class ReleasesDataSource @Inject constructor(
 ) : ReleasesRemoteDataSource {
 
 
-    override suspend fun getReleases(region: String, limit: String, offset: String): Either<Error?, Releases> = tryCall {
+    override suspend fun getReleases(
+        region: String,
+        limit: String,
+        offset: String
+    ): Either<Error?, Releases> = tryCall {
         api.service
             .getReleases(region, limit, offset)
             .toDomainModel()
@@ -46,7 +50,7 @@ private fun AlbumsResult.toDomainModel(): Albums =
 private fun ItemResult.toDomainModel(): Item =
     Item(
         album_type,
-        artists.map { it.toDomainModel() },
+        getArtistsName(artists),
         available_markets,
         external_urls.toDomainModel(),
         href,
@@ -59,6 +63,18 @@ private fun ItemResult.toDomainModel(): Item =
         type,
         uri
     )
+
+fun getArtistsName(artists: List<ArtistResult>): String {
+
+    var names: MutableList<String> = mutableListOf()
+
+    artists.map {
+        names.add(it.name)
+    }
+
+    return names.joinToString(", ")
+
+}
 
 private fun ArtistResult.toDomainModel(): Artist =
     Artist(

@@ -39,7 +39,7 @@ data class Image(
 
 data class Item(
     val album_type: String,
-    val artists: List<Artist>,
+    val artists: String,
     val available_markets: List<String>,
     val external_urls: ExternalUrlsX,
     val href: String,

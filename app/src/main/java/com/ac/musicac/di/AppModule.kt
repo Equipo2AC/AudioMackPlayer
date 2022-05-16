@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.ac.musicac.BuildConfig
 import com.ac.musicac.data.Constants
 import com.ac.musicac.data.database.MusicAcDatabase
+import com.ac.musicac.data.database.dao.AuthenticationDao
 import com.ac.musicac.data.server.APIService
 import com.ac.musicac.data.server.interceptor.AuthorizationHeader
 import com.ac.musicac.data.server.interceptor.TokenHeader
@@ -94,7 +95,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideTokenHeader(): TokenHeader = TokenHeader()
+    fun provideTokenHeader(dao: AuthenticationDao): TokenHeader = TokenHeader(dao)
 
     @Provides
     @Singleton
@@ -115,7 +116,7 @@ object AppModule {
     @Provides
     @Singleton
     fun provideSpotifyApiService(
-        @AuthenticationApiUrl apiUrl: String,
+        @ApiUrl apiUrl: String,
         tokenHeader: TokenHeader,
         httpLoggingInterceptor: HttpLoggingInterceptor,
         @JsonFactory jsonFactory : Converter.Factory

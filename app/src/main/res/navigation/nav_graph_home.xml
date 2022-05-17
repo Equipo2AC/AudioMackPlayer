@@ -8,4 +8,6 @@
         android:id="@+id/homeFragment"
         android:name="com.ac.musicac.ui.main.home.HomeFragment"
         android:label="HomeFragment" />
+
+
 </navigation>

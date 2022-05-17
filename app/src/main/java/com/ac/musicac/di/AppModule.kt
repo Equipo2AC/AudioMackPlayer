@@ -7,6 +7,7 @@ import com.ac.musicac.data.Constants
 import com.ac.musicac.data.PermissionChecker
 import com.ac.musicac.data.database.MusicAcDatabase
 import com.ac.musicac.data.datasource.LocationDataSource
+import com.ac.musicac.data.database.dao.AuthenticationDao
 import com.ac.musicac.data.server.APIService
 import com.ac.musicac.data.server.AndroidPermissionChecker
 import com.ac.musicac.data.server.PlayServicesLocationDataSource
@@ -95,7 +96,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideTokenHeader(): TokenHeader = TokenHeader()
+    fun provideTokenHeader(dao: AuthenticationDao): TokenHeader = TokenHeader(dao)
 
     @Provides
     @Singleton

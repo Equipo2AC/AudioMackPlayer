@@ -1,17 +1,12 @@
 package com.ac.musicac.data.server.datasource
 
 import arrow.core.Either
-import com.ac.musicac.data.GranType
-import com.ac.musicac.data.datasource.AuthenticationRemoteDataSource
 import com.ac.musicac.data.datasource.ReleasesRemoteDataSource
 import com.ac.musicac.data.server.APIService
-import com.ac.musicac.data.server.model.authentication.AuthenticationResult
 import com.ac.musicac.data.server.model.releases.*
-import com.ac.musicac.data.server.service.SpotifyAuthenticationService
 import com.ac.musicac.data.server.service.SpotifyService
 import com.ac.musicac.data.tryCall
 import com.ac.musicac.domain.*
-import java.util.*
 import javax.inject.Inject
 
 class ReleasesDataSource @Inject constructor(

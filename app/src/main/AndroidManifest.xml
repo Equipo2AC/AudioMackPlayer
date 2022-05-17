@@ -12,9 +12,9 @@
         android:name=".MusicAcApplication"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MusicAC">
+        android:theme="@style/Theme.SpotifyAC.NoActionBar">
         <activity
-            android:name=".ui.splash.NavHostSplashActivity"
+            android:name=".ui.NavHostActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

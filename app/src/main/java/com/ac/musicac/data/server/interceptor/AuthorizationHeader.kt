@@ -1,10 +1,7 @@
 package com.ac.musicac.data.server.interceptor
 
 import com.ac.musicac.data.encodeBase64
-import com.ac.musicac.di.qualifier.ClientId
-import com.ac.musicac.di.qualifier.ClientSecret
 import okhttp3.Interceptor
-import javax.inject.Inject
 
 class AuthorizationHeader(
     clientId: String,

@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.ac.musicac.data.database.entity.AuthenticationEntity
-import com.ac.musicac.domain.Token
 
 @Dao
 interface AuthenticationDao {

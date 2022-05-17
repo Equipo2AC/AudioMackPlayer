@@ -3,11 +3,11 @@ package com.ac.musicac.ui.main.releases
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.ac.musicac.R
-import dagger.hilt.android.AndroidEntryPoint
 import androidx.fragment.app.viewModels
+import com.ac.musicac.R
 import com.ac.musicac.databinding.FragmentReleasesBinding
 import com.ac.musicac.ui.common.launchAndCollect
+import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ReleasesFragment: Fragment(R.layout.fragment_releases) {

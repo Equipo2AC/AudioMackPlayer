@@ -2,14 +2,10 @@ package com.ac.musicac.ui.splash
 
 import android.content.Context
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.ac.musicac.R
-import kotlinx.coroutines.CoroutineScope
 import com.ac.musicac.domain.Error
-import androidx.navigation.fragment.findNavController
-import com.ac.musicac.databinding.FragmentSplashBinding
 
 fun Fragment.buildSplashState(
     context: Context = requireContext(),
@@ -28,7 +24,7 @@ class SplashState(
     }
 
     fun navigate(){
-        navController.navigate(R.id.nav_graph)
+        navController.navigate(R.id.nav_graph_home)
 
     }
 

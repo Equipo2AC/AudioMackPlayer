@@ -2,13 +2,13 @@ package com.ac.musicac.ui.splash
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ac.musicac.domain.Error
 import com.ac.musicac.usecases.RequestAuthenticationUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import com.ac.musicac.domain.Error
 import javax.inject.Inject
 
 @HiltViewModel

@@ -22,6 +22,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:background="@color/black"
             android:layout_height="match_parent">
 
             <com.ac.musicac.ui.common.AspectRatioImageView
@@ -45,7 +46,7 @@
                 android:padding="8dp"
                 android:text="@{item.name}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
-                android:textColor="@color/black"
+                android:textColor="@color/orange"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/album_cover"
                 app:layout_constraintTop_toTopOf="parent"

@@ -48,7 +48,7 @@ private fun ItemResult.toDomainModel(): Item =
         external_urls.toDomainModel(),
         href,
         id,
-        images.map { it.toDomainModel() },
+        images.maxByOrNull { it.height }?.toDomainModel(),
         name,
         release_date,
         release_date_precision,
@@ -80,7 +80,6 @@ private fun ImageResult.toDomainModel(): Image =
     Image(
         height, url, width
     )
-
 
 private fun ExternalUrlsResult.toDomainModel(): ExternalUrls =
     ExternalUrls(

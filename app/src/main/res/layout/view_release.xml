@@ -33,8 +33,9 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:ratio="1"
+                app:visible="@{ item.image != null }"
                 app:layout_constraintTop_toTopOf="parent"
-                app:url="@{item.images[0].url}" />
+                app:url="@{item.image.url}" />
 
             <TextView
                 android:id="@+id/album_title"

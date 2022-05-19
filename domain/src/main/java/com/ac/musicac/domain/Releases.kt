@@ -44,7 +44,7 @@ data class Item(
     val external_urls: ExternalUrlsX,
     val href: String,
     val id: String,
-    val images: List<Image>,
+    val image: Image?,
     val name: String,
     val release_date: String,
     val release_date_precision: String,

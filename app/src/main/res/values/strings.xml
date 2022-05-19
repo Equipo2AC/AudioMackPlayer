@@ -5,5 +5,7 @@
     <string name="unknown_error">\"Unknown Error: \"</string>
 
     <string name="menu_home">Inicio</string>
-    <string name="menu_release">Próximos lanzamientos</string>
+    <string name="release_title">Próximos lanzamientos</string>
+
+
 </resources>

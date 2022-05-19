@@ -13,7 +13,6 @@ class ReleasesDataSource @Inject constructor(
     private val api: APIService<SpotifyService>
 ) : ReleasesRemoteDataSource {
 
-
     override suspend fun getReleases(
         region: String,
         limit: String,
@@ -39,7 +38,6 @@ private fun AlbumsResult.toDomainModel(): Albums =
         offset,
         previous,
         total
-
     )
 
 private fun ItemResult.toDomainModel(): Item =
@@ -68,7 +66,6 @@ fun getArtistsName(artists: List<ArtistResult>): String {
     }
 
     return names.joinToString(", ")
-
 }
 
 private fun ArtistResult.toDomainModel(): Artist =

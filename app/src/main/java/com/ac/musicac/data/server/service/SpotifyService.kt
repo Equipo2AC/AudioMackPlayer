@@ -16,5 +16,4 @@ interface SpotifyService {
         @Header("limit") limit: String,
         @Header("offset") offset: String): ReleasesResult
 
-
 }

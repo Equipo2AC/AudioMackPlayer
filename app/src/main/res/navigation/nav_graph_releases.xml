@@ -2,10 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph_releases"
-    app:startDestination="@id/releasesFragment">
+    app:startDestination="@id/releases_dest">
 
     <fragment
-        android:id="@+id/releasesFragment"
+        android:id="@+id/releases_dest"
         android:name="com.ac.musicac.ui.main.releases.ReleasesFragment"
         android:label="ReleasesFragment" />
 </navigation>

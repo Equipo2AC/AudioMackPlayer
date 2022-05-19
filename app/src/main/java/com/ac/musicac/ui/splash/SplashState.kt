@@ -24,7 +24,7 @@ class SplashState(
     }
 
     fun navigate(){
-        navController.navigate(R.id.nav_graph_home)
+        navController.navigate(R.id.action_splash_to_home)
 
     }
 

@@ -15,11 +15,11 @@ class NavHostState(
 ) {
 
     fun navigateToReleases() {
-        navController.navigate(R.id.nav_graph_home)
+        navController.navigate(R.id.action_splash_to_releases)
     }
 
     fun navigateToHome() {
-        navController.navigate(R.id.nav_graph_releases)
+        navController.navigate(R.id.action_splash_to_home)
     }
 
 }

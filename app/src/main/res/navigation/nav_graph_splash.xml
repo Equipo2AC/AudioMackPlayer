@@ -10,11 +10,11 @@
         android:label="SplashFragment" >
 
         <action
-            android:id="@+id/action_splash_dest_to_home"
+            android:id="@+id/action_splash_to_home"
             app:destination="@id/nav_graph_home" />
 
         <action
-            android:id="@+id/action_splash_dest_to_releases"
+            android:id="@+id/action_splash_to_releases"
             app:destination="@id/nav_graph_releases" />
 
     </fragment>

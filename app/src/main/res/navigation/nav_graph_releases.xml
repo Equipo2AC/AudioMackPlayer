@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/releases_dest"
-        android:name="com.ac.musicac.ui.main.releases.ReleasesFragment"
+        android:name="com.ac.musicac.ui.main.releases.list.ReleasesFragment"
         android:label="ReleasesFragment" />
 </navigation>

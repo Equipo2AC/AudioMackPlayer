@@ -1,4 +1,4 @@
-package com.ac.musicac.ui.main.releases
+package com.ac.musicac.ui.main.releases.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

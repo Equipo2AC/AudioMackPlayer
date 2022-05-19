@@ -1,4 +1,4 @@
-package com.ac.musicac.ui.main.releases
+package com.ac.musicac.ui.main.releases.list
 
 import android.view.View
 import android.view.ViewGroup

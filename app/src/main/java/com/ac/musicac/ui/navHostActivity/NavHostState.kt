@@ -2,11 +2,11 @@ package com.ac.musicac.ui.navHostActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import com.ac.musicac.R
 
 fun AppCompatActivity.buildNavHostState(
-    navController: NavController = findNavController(R.id.nav_host_splash_fragment)
+    navController: NavController =  (supportFragmentManager.findFragmentById(R.id.nav_host_splash_fragment) as NavHostFragment).navController
 ) = NavHostState(navController)
 
 
@@ -15,11 +15,11 @@ class NavHostState(
 ) {
 
     fun navigateToReleases() {
-        navController.navigate(R.id.action_splash_to_releases)
+        navController.navigate(R.id.nav_graph_releases)
     }
 
     fun navigateToHome() {
-        navController.navigate(R.id.action_splash_to_home)
+        navController.navigate(R.id.nav_graph_releases)
     }
 
 }

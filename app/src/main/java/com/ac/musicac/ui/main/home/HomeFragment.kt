@@ -5,7 +5,6 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.ac.musicac.R
-import com.ac.musicac.ui.main.releases.ReleasesState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

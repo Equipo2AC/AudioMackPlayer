@@ -13,6 +13,8 @@ buildscript {
         classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:_")
         classpath("com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:_")
         classpath("com.google.dagger:hilt-android-gradle-plugin:_")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:_")
+
     }
 }
 

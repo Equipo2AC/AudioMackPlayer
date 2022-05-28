@@ -7,6 +7,8 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization")
     id("dagger.hilt.android.plugin")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    id("kotlin-parcelize")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -70,8 +72,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:_")
     implementation("androidx.room:room-runtime:_")
     implementation("androidx.room:room-ktx:_")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.4.2")
-    implementation("androidx.navigation:navigation-ui-ktx:2.4.2")
+    implementation("androidx.navigation:navigation-fragment-ktx:_")
+    implementation("androidx.navigation:navigation-ui-ktx:_")
     kapt("androidx.room:room-compiler:_")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:_")
     implementation("androidx.fragment:fragment-ktx:_")

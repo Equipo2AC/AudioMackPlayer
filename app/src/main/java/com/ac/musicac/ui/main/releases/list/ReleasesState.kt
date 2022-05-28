@@ -13,7 +13,6 @@ import com.ac.musicac.ui.common.PermissionRequester
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-
 fun Fragment.buildReleasesState(
     context: Context = requireContext(),
     scope: CoroutineScope = viewLifecycleOwner.lifecycleScope,
@@ -24,17 +23,16 @@ fun Fragment.buildReleasesState(
     )
 ) = ReleasesState(context, scope, navController, locationPermissionRequester)
 
-
 class ReleasesState(
     private val context: Context,
     private val scope: CoroutineScope,
     private val navController: NavController,
     private val locationPermissionRequester: PermissionRequester
-
 ) {
 
-    fun onAlbumClicked(movie: Item) {
-
+    fun onAlbumClicked(album: Item) {
+        val action = ReleasesFragmentDirections.actionReleasesToDetail()
+        navController.navigate(action)
     }
 
     fun requestLocationPermission(afterRequest: (Boolean) -> Unit) {

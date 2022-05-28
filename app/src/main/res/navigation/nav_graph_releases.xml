@@ -7,5 +7,16 @@
     <fragment
         android:id="@+id/releases_dest"
         android:name="com.ac.musicac.ui.main.releases.list.ReleasesFragment"
-        android:label="ReleasesFragment" />
+        android:label="ReleasesFragment" >
+
+        <action
+            android:id="@+id/action_releases_to_detail"
+            app:destination="@id/release_detail_dest" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/release_detail_dest"
+        android:name="com.ac.musicac.ui.main.releases.detail.ReleaseDetailFragment"
+        android:label="ReleaseDetailFragment" />
+
 </navigation>

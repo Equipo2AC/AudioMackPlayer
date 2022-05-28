@@ -25,7 +25,7 @@ class ReleaseDetailFragment: Fragment(R.layout.fragment_release_detail) {
 
         viewLifecycleOwner.launchAndCollect(viewModel.state) { state ->
             if (state.album != null) {
-                binding.movie = state.album
+
             }
         }
     }

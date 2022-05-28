@@ -14,7 +14,7 @@
 
         <variable
             name="items"
-            type="com.ac.musicac.domain.releases.Item" />
+            type="List&lt;Item>" />
 
         <variable
             name="error"
@@ -74,7 +74,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:gravity="center"
             android:text="@{error}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             android:textColor="?attr/colorError"

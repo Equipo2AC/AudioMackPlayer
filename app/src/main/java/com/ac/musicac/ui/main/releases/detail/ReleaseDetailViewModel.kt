@@ -6,6 +6,7 @@ import com.ac.musicac.di.AlbumId
 import com.ac.musicac.domain.Error
 import com.ac.musicac.domain.releases.Release
 import com.ac.musicac.usecases.GetReleaseDetailUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -13,6 +14,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class ReleaseDetailViewModel @Inject constructor(
     @AlbumId private val albumId: String,
     private val getReleaseDetailUseCase: GetReleaseDetailUseCase) : ViewModel() {

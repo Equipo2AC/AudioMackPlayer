@@ -1,10 +1,8 @@
 package com.ac.musicac.di
 
 import com.ac.musicac.data.database.datasource.AuthenticationRoomDataSource
-import com.ac.musicac.data.datasource.AuthenticationLocalDataSource
-import com.ac.musicac.data.datasource.AuthenticationRemoteDataSource
-import com.ac.musicac.data.datasource.ReleasesRemoteDataSource
-import com.ac.musicac.data.datasource.UserRemoteDataSource
+import com.ac.musicac.data.datasource.*
+import com.ac.musicac.data.server.datasource.ReleaseDetailDataSource
 import com.ac.musicac.data.server.datasource.ReleasesDataSource
 import com.ac.musicac.data.server.datasource.SpotifyAuthenticationDataSource
 import com.ac.musicac.data.server.datasource.SpotifyUserServerDataSource
@@ -37,5 +35,9 @@ abstract class DataSourceModule {
         remoteDataSource: ReleasesDataSource
     ): ReleasesRemoteDataSource
 
+    @Binds
+    abstract fun bindRemoteGetReleaseDetailDataSource(
+        remoteDataSource: ReleaseDetailDataSource
+    ): ReleaseDetailRemoteDataSource
 
 }

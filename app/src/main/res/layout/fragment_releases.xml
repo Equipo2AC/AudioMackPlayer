@@ -6,7 +6,7 @@
 
         <import type="java.util.List" />
 
-        <import type="com.ac.musicac.domain.Item" />
+        <import type="com.ac.musicac.domain.releases.Item" />
 
         <variable
             name="loading"
@@ -14,7 +14,7 @@
 
         <variable
             name="items"
-            type="List&lt;Item>" />
+            type="com.ac.musicac.domain.releases.Item" />
 
         <variable
             name="error"

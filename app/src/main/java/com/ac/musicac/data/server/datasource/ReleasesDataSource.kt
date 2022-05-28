@@ -3,10 +3,11 @@ package com.ac.musicac.data.server.datasource
 import arrow.core.Either
 import com.ac.musicac.data.datasource.ReleasesRemoteDataSource
 import com.ac.musicac.data.server.APIService
-import com.ac.musicac.data.server.model.releases.*
+import com.ac.musicac.data.server.model.release.*
 import com.ac.musicac.data.server.service.SpotifyService
 import com.ac.musicac.data.tryCall
 import com.ac.musicac.domain.*
+import com.ac.musicac.domain.releases.*
 import javax.inject.Inject
 
 class ReleasesDataSource @Inject constructor(
@@ -24,12 +25,12 @@ class ReleasesDataSource @Inject constructor(
     }
 }
 
-private fun ReleasesResult.toDomainModel(): Releases =
+private fun RemoteReleases.toDomainModel(): Releases =
     Releases(
         albums.toDomainModel()
     )
 
-private fun AlbumsResult.toDomainModel(): Albums =
+private fun RemoteAlbums.toDomainModel(): Albums =
     Albums(
         href,
         items.map { it.toDomainModel() },
@@ -40,7 +41,7 @@ private fun AlbumsResult.toDomainModel(): Albums =
         total
     )
 
-private fun ItemResult.toDomainModel(): Item =
+private fun RemoteItem.toDomainModel(): Item =
     Item(
         album_type,
         getArtistsName(artists),
@@ -57,7 +58,7 @@ private fun ItemResult.toDomainModel(): Item =
         uri
     )
 
-fun getArtistsName(artists: List<ArtistResult>): String {
+fun getArtistsName(artists: List<RemoteArtist>): String {
 
     var names: MutableList<String> = mutableListOf()
 
@@ -68,7 +69,7 @@ fun getArtistsName(artists: List<ArtistResult>): String {
     return names.joinToString(", ")
 }
 
-private fun ArtistResult.toDomainModel(): Artist =
+private fun RemoteArtist.toDomainModel(): Artist =
     Artist(
         external_urls.toDomainModel(),
         href,
@@ -76,22 +77,15 @@ private fun ArtistResult.toDomainModel(): Artist =
         name, type, uri
     )
 
-private fun ImageResult.toDomainModel(): Image =
+private fun RemoteImage.toDomainModel(): Image =
     Image(
         height, url, width
     )
 
-private fun ExternalUrlsResult.toDomainModel(): ExternalUrls =
+private fun RemoteExternalUrls.toDomainModel(): ExternalUrls =
     ExternalUrls(
         spotify
     )
-
-private fun ExternalUrlsXResult.toDomainModel(): ExternalUrlsX =
-    ExternalUrlsX(
-        spotify
-    )
-
-
 
 
 

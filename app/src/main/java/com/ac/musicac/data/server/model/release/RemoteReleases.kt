@@ -1,17 +1,17 @@
-package com.ac.musicac.data.server.model.releases
+package com.ac.musicac.data.server.model.release
 
 import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ReleasesResult(
-    @SerializedName("albums") val albums: AlbumsResult
+data class RemoteReleases(
+    @SerializedName("albums") val albums: RemoteAlbums
 )
 
 @Serializable
-data class AlbumsResult(
+data class RemoteAlbums(
     @SerializedName("href") val href: String,
-    @SerializedName("items") val items: List<ItemResult>,
+    @SerializedName("items") val items: List<RemoteItem>,
     @SerializedName("limit") val limit: Int,
     @SerializedName("next") val next: String,
     @SerializedName("offset") val offset: Int,
@@ -20,14 +20,14 @@ data class AlbumsResult(
 )
 
 @Serializable
-data class ItemResult(
+data class RemoteItem(
     @SerializedName("album_type") val album_type: String,
-    @SerializedName("artists") val artists: List<ArtistResult>,
+    @SerializedName("artists") val artists: List<RemoteArtist>,
     @SerializedName("available_markets") val available_markets: List<String>,
-    @SerializedName("external_urls") val external_urls: ExternalUrlsXResult,
+    @SerializedName("external_urls") val external_urls: RemoteExternalUrls,
     @SerializedName("href") val href: String,
     @SerializedName("id") val id: String,
-    @SerializedName("images") val images: List<ImageResult>,
+    @SerializedName("images") val images: List<RemoteImage>,
     @SerializedName("name") val name: String,
     @SerializedName("release_date") val release_date: String,
     @SerializedName("release_date_precision") val release_date_precision: String,
@@ -36,29 +36,13 @@ data class ItemResult(
     @SerializedName("uri") val uri: String
 )
 
+
 @Serializable
-data class ArtistResult(
-    @SerializedName("external_urls") val external_urls: ExternalUrlsResult,
+data class RemoteArtist(
+    @SerializedName("external_urls") val external_urls: RemoteExternalUrls,
     @SerializedName("href") val href: String,
     @SerializedName("id") val id: String,
     @SerializedName("name") val name: String,
     @SerializedName("type") val type: String,
     @SerializedName("uri") val uri: String
-)
-
-@Serializable
-data class ImageResult(
-    @SerializedName("height") val height: Int,
-    @SerializedName("url") val url: String,
-    @SerializedName("width") val width: Int
-)
-
-@Serializable
-data class ExternalUrlsXResult(
-    @SerializedName("spotify") val spotify: String
-)
-
-@Serializable
-data class ExternalUrlsResult(
-    @SerializedName("spotify") val spotify: String
 )

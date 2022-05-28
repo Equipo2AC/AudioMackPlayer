@@ -5,11 +5,11 @@
 
     <data>
 
-        <import type="com.ac.musicac.domain.Item" />
+        <import type="com.ac.musicac.domain.releases.Item" />
 
         <variable
             name="item"
-            type="com.ac.musicac.domain.Item" />
+            type="com.ac.musicac.domain.releases.Item" />
     </data>
 
     <androidx.cardview.widget.CardView

@@ -1,4 +1,4 @@
-package com.ac.musicac.domain
+package com.ac.musicac.domain.releases
 
 data class Releases(
     val albums: Albums
@@ -14,34 +14,11 @@ data class Albums(
     val total: Int
 )
 
-data class Artist(
-    val external_urls: ExternalUrls,
-    val href: String,
-    val id: String,
-    val name: String,
-    val type: String,
-    val uri: String
-)
-
-data class ExternalUrls(
-    val spotify: String
-)
-
-data class ExternalUrlsX(
-    val spotify: String
-)
-
-data class Image(
-    val height: Int,
-    val url: String,
-    val width: Int
-)
-
 data class Item(
     val album_type: String,
     val artists: String,
     val available_markets: List<String>,
-    val external_urls: ExternalUrlsX,
+    val external_urls: ExternalUrls,
     val href: String,
     val id: String,
     val image: Image?,

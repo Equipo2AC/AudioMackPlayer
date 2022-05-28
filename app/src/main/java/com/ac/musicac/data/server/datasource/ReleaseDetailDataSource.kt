@@ -27,22 +27,21 @@ class ReleaseDetailDataSource @Inject constructor(
 
 private fun RemoteRelease.toDomainModel(): Release =
     Release(
-        albumType,
+        album_type,
         artists.map { it.toDomainModel() },
         copyrights.map { it.toDomainModel() },
-        externalIds.map { it.toDomainModel() },
-        externalUrls.map { it.toDomainModel() },
-        genres.map { it.toString() },
+        external_ids.toDomainModel(),
+        external_urls.toDomainModel(),
         href,
         id,
-        images.map { it.toDomainModel() },
+        images.maxByOrNull { it.height }?.toDomainModel(),
         label,
         name,
         popularity,
-        releaseDate,
+        release_date,
         release_date_precision,
         total_tracks,
-        tracks.map { it.toDomainModel() },
+        tracks.toDomainModel(),
         type,
         uri
 

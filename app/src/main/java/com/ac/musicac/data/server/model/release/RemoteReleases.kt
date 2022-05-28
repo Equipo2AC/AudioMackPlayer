@@ -36,7 +36,6 @@ data class RemoteItem(
     @SerializedName("uri") val uri: String
 )
 
-
 @Serializable
 data class RemoteArtist(
     @SerializedName("external_urls") val external_urls: RemoteExternalUrls,

@@ -6,6 +6,7 @@ import com.ac.musicac.data.server.model.release.RemoteReleases
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface SpotifyService {
     @GET("users/{userId}")
@@ -13,13 +14,13 @@ interface SpotifyService {
 
     @GET("browse/new-releases")
     suspend fun getReleases(
-        @Header("country") country: String,
-        @Header("limit") limit: String,
-        @Header("offset") offset: String): RemoteReleases
+        @Query("country") country: String,
+        @Query("limit") limit: String,
+        @Query("offset") offset: String): RemoteReleases
 
-    @GET("albums")
+    @GET("albums/{id}")
     suspend fun getReleaseDetail(
-        @Header("market") market: String,
-        @Header("id") id: String): RemoteRelease
+        @Path("id") id : String,
+        @Query("market") market: String): RemoteRelease
 
 }

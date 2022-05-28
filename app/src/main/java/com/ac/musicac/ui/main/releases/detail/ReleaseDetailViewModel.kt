@@ -2,6 +2,7 @@ package com.ac.musicac.ui.main.releases.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import arrow.core.Either
 import com.ac.musicac.di.AlbumId
 import com.ac.musicac.domain.Error
 import com.ac.musicac.domain.releases.Release
@@ -28,6 +29,19 @@ class ReleaseDetailViewModel @Inject constructor(
                 ifLeft = { cause -> _state.update { it.copy(error = cause) } },
                 ifRight = { album -> _state.update { UiState(album = album) } }
             )
+        }
+    }
+
+    fun onUiReady() {
+        viewModelScope.launch {
+            _state.value = _state.value.copy(loading = true)
+
+            val response = getReleaseDetailUseCase()
+
+            when (response) {
+                is Either.Left -> _state.value = _state.value.copy(loading = false, error = response.value)
+                is Either.Right -> _state.value = _state.value.copy(loading = false, album = response.value)
+            }
         }
     }
 

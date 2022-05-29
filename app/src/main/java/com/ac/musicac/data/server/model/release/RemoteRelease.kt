@@ -48,7 +48,7 @@ data class RemoteTrack(
     @SerializedName("is_local") val is_local: Boolean,
     @SerializedName("is_playable") val is_playable: Boolean,
     @SerializedName("name") val name: String,
-    @SerializedName("preview_url") val preview_url: String,
+    @SerializedName("preview_url") val preview_url: String?,
     @SerializedName("track_number") val track_number: Int,
     @SerializedName("type") val type: String,
     @SerializedName("uri") val uri: String,

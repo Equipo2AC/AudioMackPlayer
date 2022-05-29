@@ -30,8 +30,8 @@ class ReleaseDetailFragment: Fragment(R.layout.fragment_release_detail) {
             }
         }
 
-        releaseState.requestLocationPermission {
-            viewModel.onUiReady()
-        }
+//        releaseState.requestLocationPermission {
+//            viewModel.onUiReady()
+//        }
     }
 }

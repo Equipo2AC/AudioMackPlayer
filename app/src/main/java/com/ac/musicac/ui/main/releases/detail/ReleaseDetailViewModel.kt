@@ -32,11 +32,11 @@ class ReleaseDetailViewModel @Inject constructor(
         }
     }
 
-    fun onUiReady() {
+    fun onUiReady(albumId: String) {
         viewModelScope.launch {
             _state.value = _state.value.copy(loading = true)
 
-            val response = getReleaseDetailUseCase()
+            val response = getReleaseDetailUseCase(albumId)
 
             when (response) {
                 is Either.Left -> _state.value = _state.value.copy(loading = false, error = response.value)

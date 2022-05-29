@@ -99,7 +99,7 @@ private fun RemoteTrack.toDomainModel(): Track =
         is_playable,
         name,
         preview_url,
-        track_number,
+        track_number.toString(),
         type,
         uri
     )

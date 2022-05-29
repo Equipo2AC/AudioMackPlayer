@@ -4,11 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="java.util.List" />
+
         <import type="com.ac.musicac.domain.releases.Release"/>
 
         <variable
             name="album"
             type="com.ac.musicac.domain.releases.Release" />
+
+        <import type="com.ac.musicac.domain.releases.Track"/>
+
+        <variable
+            name="tracks"
+            type="List&lt;Track>" />
 
         <variable
             name="loading"
@@ -23,6 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
+        android:background="@color/black"
         tools:context=".ui.detail.DetailFragment">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -71,14 +81,15 @@
                 android:orientation="vertical"
                 android:transitionGroup="true">
 
-                <TextView
-                    android:id="@+id/movie_detail_summary"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:padding="16dp"
-                    android:text="@{album.id}"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+                    android:layout_height="match_parent"
+                    android:background="@color/black"
+                    app:tracks="@{tracks}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    app:visible="@{ error == null }" />
 
             </LinearLayout>
 

@@ -42,7 +42,7 @@ data class Track(
     val is_playable: Boolean,
     val name: String,
     val preview_url: String? = "",
-    val track_number: Int,
+    val track_number: String,
     val type: String,
     val uri: String
 )

@@ -2,7 +2,7 @@ package com.ac.musicac.domain.releases
 
 data class Release(
     val albumType: String,
-    val artists: List<Artist>,
+    val artists: String,
     val copyrights: List<Copyright>,
     val id: String,
     val image: Image?,
@@ -20,7 +20,7 @@ data class Tracks(
 )
 
 data class Track(
-    val artists: List<Artist>,
+    val artists: String,
     val discNumber: Int,
     val durationMs: Int,
     val id: String,

@@ -14,9 +14,8 @@ class ReleaseDetailInfoView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : AppCompatTextView(context, attrs, defStyleAttr) {
 
-    fun setRelease(movie: Release) = movie.apply {
+    fun setRelease(release: Release) = release.apply {
         text = buildSpannedString {
-
 
             bold { append(context.getString(R.string.release_detail_number_tracks)) }
             appendLine(totalTracks)
@@ -27,8 +26,8 @@ class ReleaseDetailInfoView @JvmOverloads constructor(
             bold { append(context.getString(R.string.release_detail_popularity)) }
             appendLine(popularity.toString())
 
-            bold { append(context.getString(R.string.release_detail_copyrights)) }
-            appendLine(copyrights.toString())
+            bold { append(context.getString(R.string.release_detail_artists)) }
+            appendLine(artists)
 
         }
     }

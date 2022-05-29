@@ -28,7 +28,7 @@ class ReleaseDetailDataSource @Inject constructor(
 private fun RemoteRelease.toDomainModel(): Release =
     Release(
         album_type,
-        artists.map { it.toDomainModel() },
+        getArtistsName(artists),
         copyrights.map { it.toDomainModel() },
         id,
         images.maxByOrNull { it.height }?.toDomainModel(),
@@ -74,7 +74,7 @@ private fun RemoteTracks.toDomainModel(): Tracks =
 
 private fun RemoteTrack.toDomainModel(): Track =
     Track(
-        artists.map { it.toDomainModel() },
+        getArtistsName(artists),
         disc_number,
         duration_ms,
         id,

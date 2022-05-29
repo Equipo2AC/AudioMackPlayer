@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.ac.musicac.R
 import com.ac.musicac.databinding.FragmentReleaseDetailBinding
 import com.ac.musicac.ui.common.launchAndCollect
@@ -14,10 +15,14 @@ class ReleaseDetailFragment: Fragment(R.layout.fragment_release_detail) {
 
     private val viewModel: ReleaseDetailViewModel by viewModels()
 
-    private lateinit var releaseState: ReleaseDetailState
+    private lateinit var releaseDetailState: ReleaseDetailState
+
+    private val args: ReleaseDetailFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        releaseDetailState = buildReleaseDetailState()
 
         val binding = FragmentReleaseDetailBinding.bind(view)
 
@@ -30,8 +35,8 @@ class ReleaseDetailFragment: Fragment(R.layout.fragment_release_detail) {
             }
         }
 
-//        releaseState.requestLocationPermission {
-//            viewModel.onUiReady()
-//        }
+        releaseDetailState.requestLocationPermission {
+            viewModel.onUiReady(args.albumId)
+        }
     }
 }

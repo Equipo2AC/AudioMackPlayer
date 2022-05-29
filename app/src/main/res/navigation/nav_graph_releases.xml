@@ -12,6 +12,7 @@
         <action
             android:id="@+id/action_releases_to_detail"
             app:destination="@id/release_detail_dest" />
+
     </fragment>
 
     <fragment
@@ -19,10 +20,10 @@
         android:name="com.ac.musicac.ui.main.releases.detail.ReleaseDetailFragment"
         android:label="ReleaseDetailFragment">
 
-
         <argument
             android:name="albumId"
             app:argType="string"/>
+
     </fragment>
 
 </navigation>

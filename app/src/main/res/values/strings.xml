@@ -7,5 +7,9 @@
     <string name="menu_home">Inicio</string>
     <string name="release_title">Próximos lanzamientos</string>
 
+    <string name="release_detail_number_tracks">Número de canciones: </string>
+    <string name="release_detail_date">Fecha de lanzamiento: </string>
+    <string name="release_detail_popularity">Popularidad: </string>
+    <string name="release_detail_copyrights">Copyrights: </string>
 
 </resources>

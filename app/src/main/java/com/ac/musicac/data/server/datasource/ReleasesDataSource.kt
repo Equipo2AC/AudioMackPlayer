@@ -60,7 +60,7 @@ private fun RemoteItem.toDomainModel(): Item =
 
 fun getArtistsName(artists: List<RemoteArtist>): String {
 
-    var names: MutableList<String> = mutableListOf()
+    val names: MutableList<String> = mutableListOf()
 
     artists.map {
         names.add(it.name)
@@ -71,10 +71,8 @@ fun getArtistsName(artists: List<RemoteArtist>): String {
 
 private fun RemoteArtist.toDomainModel(): Artist =
     Artist(
-        external_urls.toDomainModel(),
-        href,
         id,
-        name, type, uri
+        name
     )
 
 private fun RemoteImage.toDomainModel(): Image =

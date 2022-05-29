@@ -30,29 +30,20 @@ private fun RemoteRelease.toDomainModel(): Release =
         album_type,
         artists.map { it.toDomainModel() },
         copyrights.map { it.toDomainModel() },
-        external_ids.toDomainModel(),
-        external_urls.toDomainModel(),
-        href,
         id,
         images.maxByOrNull { it.height }?.toDomainModel(),
         label,
         name,
         popularity,
         release_date,
-        release_date_precision,
-        total_tracks,
-        tracks.toDomainModel(),
-        type,
-        uri
-
+        total_tracks.toString(),
+        tracks.toDomainModel()
     )
 
 private fun RemoteArtist.toDomainModel(): Artist =
     Artist(
-        external_urls.toDomainModel(),
-        href,
         id,
-        name, type, uri
+        name
     )
 
 private fun RemoteCopyright.toDomainModel(): Copyright =
@@ -77,12 +68,7 @@ private fun RemoteExternalUrls.toDomainModel(): ExternalUrls =
 
 private fun RemoteTracks.toDomainModel(): Tracks =
     Tracks(
-        href,
         items.map { it.toDomainModel() },
-        limit,
-        next,
-        offset,
-        previous,
         total
     )
 
@@ -91,16 +77,8 @@ private fun RemoteTrack.toDomainModel(): Track =
         artists.map { it.toDomainModel() },
         disc_number,
         duration_ms,
-        explicit,
-        external_urls.toDomainModel(),
-        href,
         id,
-        is_local,
-        is_playable,
         name,
-        preview_url,
-        track_number.toString(),
-        type,
-        uri
+        track_number.toString()
     )
 

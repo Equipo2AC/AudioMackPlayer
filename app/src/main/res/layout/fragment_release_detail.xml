@@ -7,13 +7,13 @@
 
         <import type="java.util.List" />
 
-        <import type="com.ac.musicac.domain.releases.Release"/>
+        <import type="com.ac.musicac.domain.releases.Release" />
 
         <variable
             name="album"
             type="com.ac.musicac.domain.releases.Release" />
 
-        <import type="com.ac.musicac.domain.releases.Track"/>
+        <import type="com.ac.musicac.domain.releases.Track" />
 
         <variable
             name="tracks"
@@ -31,23 +31,23 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
         android:background="@color/black"
+        android:fitsSystemWindows="true"
         tools:context=".ui.detail.DetailFragment">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.DarkOverlay"
-            android:fitsSystemWindows="true">
+            android:fitsSystemWindows="true"
+            android:theme="@style/AppTheme.DarkOverlay">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 app:contentScrim="?attr/colorPrimary"
-                app:statusBarScrim="?attr/colorPrimaryVariant"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:statusBarScrim="?attr/colorPrimaryVariant">
 
                 <ImageView
                     android:id="@+id/movie_detail_image"
@@ -81,14 +81,24 @@
                 android:orientation="vertical"
                 android:transitionGroup="true">
 
+                <com.ac.musicac.ui.main.releases.detail.ReleaseDetailInfoView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/colorSurface"
+                    android:lineSpacingMultiplier="1.5"
+                    android:padding="16dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:movie="@{album}"
+                    tools:text="Lorem ipsum" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/black"
-                    app:tracks="@{tracks}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    app:tracks="@{tracks}"
                     app:visible="@{ error == null }" />
 
             </LinearLayout>

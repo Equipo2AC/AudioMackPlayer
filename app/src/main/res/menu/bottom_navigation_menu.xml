@@ -6,5 +6,5 @@
     <item
         android:id="@+id/menu_item_2"
         android:enabled="true"
-        android:title="@string/release_title"/>
+        android:title="@string/menu_releases"/>
 </menu>

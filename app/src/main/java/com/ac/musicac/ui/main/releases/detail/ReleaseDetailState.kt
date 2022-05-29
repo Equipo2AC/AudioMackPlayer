@@ -4,12 +4,9 @@ import android.Manifest
 import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import com.ac.musicac.R
 import com.ac.musicac.domain.Error
 import com.ac.musicac.ui.common.PermissionRequester
-import com.ac.musicac.ui.main.releases.list.ReleasesState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

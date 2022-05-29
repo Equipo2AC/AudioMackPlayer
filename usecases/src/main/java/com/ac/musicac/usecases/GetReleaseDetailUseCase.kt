@@ -4,7 +4,6 @@ import arrow.core.Either
 import com.ac.musicac.data.repository.ReleasesRepository
 import com.ac.musicac.domain.Error
 import com.ac.musicac.domain.releases.Release
-import com.ac.musicac.domain.releases.Releases
 import javax.inject.Inject
 
 class GetReleaseDetailUseCase @Inject constructor(private val releasesRepository: ReleasesRepository) {

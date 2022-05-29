@@ -118,4 +118,5 @@
             app:visible="@{loading}" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </layout>

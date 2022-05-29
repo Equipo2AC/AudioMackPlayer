@@ -4,10 +4,9 @@ import arrow.core.Either
 import com.ac.musicac.data.datasource.ReleaseDetailRemoteDataSource
 import com.ac.musicac.data.server.APIService
 import com.ac.musicac.data.server.model.release.*
-import com.ac.musicac.data.server.model.release.RemoteExternalIds
 import com.ac.musicac.data.server.service.SpotifyService
 import com.ac.musicac.data.tryCall
-import com.ac.musicac.domain.*
+import com.ac.musicac.domain.Error
 import com.ac.musicac.domain.releases.*
 import javax.inject.Inject
 

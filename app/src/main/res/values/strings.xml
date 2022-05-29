@@ -7,6 +7,10 @@
     <string name="menu_home">Inicio</string>
     <string name="menu_releases">Nuevos lanzamientos</string>
 
+    <!--HOME-->
+    <string name="home_title">Inicio</string>
+
+    <!--    RELEASES-->
     <string name="release_title">Nuevos lanzamientos</string>
     <string name="release_detail_number_tracks">Número de canciones:&#160;</string>
     <string name="release_detail_date">Fecha de lanzamiento:&#160;</string>

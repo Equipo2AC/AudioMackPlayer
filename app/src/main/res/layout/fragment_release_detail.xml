@@ -50,7 +50,7 @@
                 app:statusBarScrim="?attr/colorPrimaryVariant">
 
                 <ImageView
-                    android:id="@+id/movie_detail_image"
+                    android:id="@+id/release_detail_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fitsSystemWindows="true"
@@ -60,7 +60,7 @@
                     tools:src="@mipmap/ic_launcher" />
 
                 <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/movie_detail_toolbar"
+                    android:id="@+id/release_detail_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:navigationIcon="@drawable/ic_arrow_back"
@@ -88,7 +88,7 @@
                     android:lineSpacingMultiplier="1.5"
                     android:padding="16dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    app:movie="@{album}"
+                    app:release="@{album}"
                     tools:text="Lorem ipsum" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -104,6 +104,18 @@
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:visible="@{loading}" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

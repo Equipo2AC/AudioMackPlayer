@@ -16,7 +16,7 @@ class ReleaseDetailViewModelModule {
     @Provides
     @ViewModelScoped
     @AlbumId
-    fun provideMovieId(savedStateHandle: SavedStateHandle) =
+    fun provideAlbumId(savedStateHandle: SavedStateHandle) =
         ReleaseDetailFragmentArgs.fromSavedStateHandle(savedStateHandle).albumId
 
 }

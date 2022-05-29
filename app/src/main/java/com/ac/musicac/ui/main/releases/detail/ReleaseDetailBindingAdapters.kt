@@ -12,7 +12,7 @@ fun RecyclerView.setTracks(tracks: List<Track>?) {
     }
 }
 
-@BindingAdapter("movie")
+@BindingAdapter("release")
 fun ReleaseDetailInfoView.updateReleaseDetails(release: Release?) {
     if (release != null) {
         setRelease(release)

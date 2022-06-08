@@ -73,6 +73,7 @@ object AppModule {
         val json = Json {
             ignoreUnknownKeys = true
             coerceInputValues = true
+            explicitNulls = false
         }
         return json.asConverterFactory(contentType)
     }

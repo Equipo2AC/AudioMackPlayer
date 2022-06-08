@@ -5,7 +5,10 @@
     <string name="unknown_error">\"Unknown Error: \"</string>
 
     <string name="menu_home">Inicio</string>
+    <string name="menu_search">Búsqueda</string>
     <string name="release_title">Próximos lanzamientos</string>
-
+    <string name="search_title">Buscar</string>
+    <string name="chip_artist">Artistas</string>
+    <string name="chip_album">Álbums</string>
 
 </resources>

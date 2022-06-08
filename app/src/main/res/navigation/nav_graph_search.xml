@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_search"
+    app:startDestination="@id/search_dest">
+
+    <fragment
+        android:id="@+id/search_dest"
+        android:name="com.ac.musicac.ui.main.search.SearchFragment"
+        android:label="SearchFragment" />
+</navigation>

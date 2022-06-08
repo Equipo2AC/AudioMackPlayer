@@ -22,4 +22,8 @@ class NavHostState(
         navController.navigate(R.id.nav_graph_releases)
     }
 
+    fun navigateToSearch() {
+        navController.navigate(R.id.nav_graph_search)
+    }
+
 }

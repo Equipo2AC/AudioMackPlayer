@@ -23,6 +23,7 @@ class NavHostActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.menu_item_1 -> navHostState.navigateToHome()
                 R.id.menu_item_2 -> navHostState.navigateToReleases()
+                R.id.menu_item_3 -> navHostState.navigateToSearch()
             }
             true
         }

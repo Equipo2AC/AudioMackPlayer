@@ -3,10 +3,10 @@ package com.ac.musicac.di
 import com.ac.musicac.data.database.datasource.AuthenticationRoomDataSource
 import com.ac.musicac.data.datasource.AuthenticationLocalDataSource
 import com.ac.musicac.data.datasource.AuthenticationRemoteDataSource
-import com.ac.musicac.data.datasource.ReleasesRemoteDataSource
+import com.ac.musicac.data.datasource.MusicRemoteDataSource
 import com.ac.musicac.data.datasource.UserRemoteDataSource
-import com.ac.musicac.data.server.datasource.ReleasesDataSource
 import com.ac.musicac.data.server.datasource.SpotifyAuthenticationDataSource
+import com.ac.musicac.data.server.datasource.SpotifyDataSource
 import com.ac.musicac.data.server.datasource.SpotifyUserServerDataSource
 import dagger.Binds
 import dagger.Module
@@ -33,9 +33,8 @@ abstract class DataSourceModule {
     ): UserRemoteDataSource
 
     @Binds
-    abstract fun bindRemoteGetReleasesDataSource(
-        remoteDataSource: ReleasesDataSource
-    ): ReleasesRemoteDataSource
-
+    abstract fun bindRemoteSpotifyDataSource(
+        remoteDataSource: SpotifyDataSource
+    ): MusicRemoteDataSource
 
 }

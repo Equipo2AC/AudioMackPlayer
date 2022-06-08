@@ -4,17 +4,22 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Adrian.DESKTOP-N1TPH29/Documents/Proyectos/AudioMackPlayer/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1225" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3338541666666667" />
-        <entry key="app/src/main/res/layout/activity_main_nav_host.xml" value="0.3338541666666667" />
-        <entry key="app/src/main/res/layout/activity_nav_host.xml" value="0.3338541666666667" />
-        <entry key="app/src/main/res/layout/activity_plash_nav_host.xml" value="0.3338541666666667" />
-        <entry key="app/src/main/res/layout/activity_splash_nav_host.xml" value="0.3338541666666667" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3338541666666667" />
-        <entry key="app/src/main/res/layout/fragment_home_nav_host.xml" value="0.3338541666666667" />
-        <entry key="app/src/main/res/layout/fragment_releases.xml" value="0.3338541666666667" />
-        <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.3338541666666667" />
-        <entry key="app/src/main/res/layout/view_release.xml" value="0.3338541666666667" />
-        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.17083333333333334" />
+        <entry key="..\:/Users/Adrian.DESKTOP-N1TPH29/Documents/Proyectos/MusicAC/app/src/main/res/drawable/ic_search.xml" value="0.1" />
+        <entry key="..\:/Users/Adrian.DESKTOP-N1TPH29/Documents/Proyectos/MusicAC/app/src/main/res/drawable/ic_search_commit.xml" value="0.1" />
+        <entry key="..\:/Users/Adrian.DESKTOP-N1TPH29/Documents/Proyectos/MusicAC/app/src/main/res/drawable/search_suggestions_bg.xml" value="0.1" />
+        <entry key="..\:/Users/Adrian.DESKTOP-N1TPH29/Documents/Proyectos/MusicAC/app/src/main/res/drawable/search_view_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Adrian.DESKTOP-N1TPH29/Documents/Proyectos/MusicAC/app/src/main/res/layout/activity_nav_host.xml" value="0.152" />
+        <entry key="..\:/Users/Adrian.DESKTOP-N1TPH29/Documents/Proyectos/MusicAC/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/Adrian.DESKTOP-N1TPH29/Documents/Proyectos/MusicAC/app/src/main/res/layout/fragment_releases.xml" value="0.1" />
+        <entry key="..\:/Users/Adrian.DESKTOP-N1TPH29/Documents/Proyectos/MusicAC/app/src/main/res/layout/fragment_search.xml" value="0.2" />
+        <entry key="..\:/Users/Adrian.DESKTOP-N1TPH29/Documents/Proyectos/MusicAC/app/src/main/res/layout/search_view.xml" value="0.12234042553191489" />
+        <entry key="..\:/Users/Adrian.DESKTOP-N1TPH29/Documents/Proyectos/MusicAC/app/src/main/res/layout/search_view_layout.xml" value="0.16" />
+        <entry key="..\:/Users/Adrian.DESKTOP-N1TPH29/Documents/Proyectos/MusicAC/app/src/main/res/layout/search_view_suggestion_row.xml" value="0.1" />
+        <entry key="..\:/Users/Adrian.DESKTOP-N1TPH29/Documents/Proyectos/MusicAC/app/src/main/res/layout/view_album.xml" value="0.2" />
+        <entry key="..\:/Users/Adrian.DESKTOP-N1TPH29/Documents/Proyectos/MusicAC/app/src/main/res/layout/view_artist.xml" value="0.1978021978021978" />
+        <entry key="..\:/Users/Adrian.DESKTOP-N1TPH29/Documents/Proyectos/MusicAC/app/src/main/res/layout/view_release.xml" value="0.264" />
+        <entry key="..\:/Users/Adrian.DESKTOP-N1TPH29/Documents/Proyectos/MusicAC/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Adrian.DESKTOP-N1TPH29/Documents/Proyectos/MusicAC/app/src/main/res/menu/search_menu.xml" value="0.2" />
       </map>
     </option>
   </component>
@@ -23,5 +28,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.152" />
+      </ProjectState>
+    </option>
   </component>
 </project>

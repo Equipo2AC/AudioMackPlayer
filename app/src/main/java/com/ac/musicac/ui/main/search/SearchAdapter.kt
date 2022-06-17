@@ -13,7 +13,7 @@ import com.ac.musicac.ui.common.basicDiffUtil
 import com.ac.musicac.ui.common.inflate
 import kotlin.properties.Delegates
 
-class SearchAdapter(private val listener: (Item) -> Unit) :
+class SearchAdapter(private val onAction: (SearchAction) -> Unit) :
     ListAdapter<Item, SearchAdapter.ViewHolder>(basicDiffUtil { old, new -> old.id == new.id }) {
 
     var type: Type by Delegates.observable(Type.ALBUM) { _, oldValue, newValue ->
@@ -40,7 +40,12 @@ class SearchAdapter(private val listener: (Item) -> Unit) :
             Type.ALBUM -> (holder as AlbumViewHolder).bind(item)
             Type.ARTIST -> (holder as ArtistViewHolder).bind(item)
         }
-        holder.itemView.setOnClickListener { listener(item) }
+        holder.itemView.setOnClickListener {
+            when (type) {
+                Type.ALBUM -> onAction(SearchAction.OnClickAlbum(item))
+                Type.ARTIST -> onAction(SearchAction.OnClickArtist(item))
+            }
+        }
     }
 
     open class ViewHolder(view: View) : RecyclerView.ViewHolder(view)

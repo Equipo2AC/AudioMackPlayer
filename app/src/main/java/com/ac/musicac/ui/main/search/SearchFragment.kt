@@ -21,7 +21,7 @@ class SearchFragment : Fragment(R.layout.fragment_search),
 
     private lateinit var searchState: SearchState
 
-    private val adapter by lazy { SearchAdapter {  } }
+    private val adapter by lazy { SearchAdapter { viewModel.onAction(it) } }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -10,7 +10,6 @@ import com.ac.musicac.databinding.FragmentSearchBinding
 import com.ac.musicac.domain.Type
 import com.ac.musicac.ui.common.launchAndCollect
 import com.ac.musicac.ui.main.OnChooseTypeChanged
-import com.ac.musicac.ui.main.releases.ReleasesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,7 +20,7 @@ class SearchFragment : Fragment(R.layout.fragment_search),
 
     private lateinit var searchState: SearchState
 
-    private val adapter by lazy { SearchAdapter { viewModel.onAction(it) } }
+    private val adapter by lazy { SearchAdapter { searchState.onAction(it) } }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

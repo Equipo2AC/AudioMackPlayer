@@ -24,6 +24,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             app:url="@{item.image.url}"
+            app:circleCrop="@{true}"
             tools:src="@drawable/ic_search"
             />
 

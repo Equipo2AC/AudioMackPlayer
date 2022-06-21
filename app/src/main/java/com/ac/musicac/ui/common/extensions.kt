@@ -24,6 +24,10 @@ fun ImageView.loadUrl(url: String) {
     Glide.with(context).load(url).into(this)
 }
 
+fun ImageView.loadUrlWithCircleCrop(url: String) {
+    Glide.with(context).load(url).circleCrop().into(this)
+}
+
 inline fun <T> basicDiffUtil(
     crossinline areItemsTheSame: (T, T) -> Boolean = { old, new -> old == new },
     crossinline areContentsTheSame: (T, T) -> Boolean = { old, new -> old == new }

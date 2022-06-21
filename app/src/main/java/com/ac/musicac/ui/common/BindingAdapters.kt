@@ -2,15 +2,14 @@ package com.ac.musicac.ui.common
 
 import android.view.View
 import android.widget.ImageView
-import androidx.annotation.ColorInt
-import androidx.core.view.forEach
 import androidx.databinding.BindingAdapter
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 
-@BindingAdapter("url")
-fun ImageView.bindUrl(url: String?) {
-    if (url != null) loadUrl(url)
+@BindingAdapter("url", "circleCrop", requireAll = false)
+fun ImageView.bindUrl(url: String?, crop: Boolean?) {
+    if (url != null) {
+        if (crop != null) loadUrlWithCircleCrop(url)
+        else loadUrl(url)
+    }
 }
 
 @BindingAdapter("visible")

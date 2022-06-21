@@ -67,13 +67,6 @@ class SearchViewModel @Inject constructor(private val searchUseCase: SearchUseCa
         }
     }
 
-    fun onAction(action: SearchAction) {
-        when (action) {
-            is SearchAction.OnClickAlbum -> TODO()
-            is SearchAction.OnClickArtist -> TODO()
-        }
-    }
-
     data class UiState(
         val loading: Boolean? = null,
         val search: List<Item>? = null,

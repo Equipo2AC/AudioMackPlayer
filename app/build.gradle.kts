@@ -1,12 +1,12 @@
 import org.jetbrains.kotlin.konan.properties.Properties
 
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
-    id("org.jetbrains.kotlin.plugin.serialization")
-    id("dagger.hilt.android.plugin")
-    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    id(Plugins.application)
+    id(Plugins.android)
+    id(Plugins.kapt)
+    id(Plugins.kotlinSerialization)
+    id(Plugins.hiltAndroid)
+    id(Plugins.secret)
 }
 
 android {

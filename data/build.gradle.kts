@@ -9,7 +9,7 @@ java {
 }
 
 dependencies {
-    implementation(project(":domain"))
+    implementation(project(Modules.domain))
     implementation("io.arrow-kt:arrow-core:_")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:_")
     implementation("javax.inject:javax.inject:_")

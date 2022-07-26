@@ -88,7 +88,7 @@ dependencies {
     testImplementation ("junit:junit:_")
     androidTestImplementation ("androidx.test.ext:junit:_")
     androidTestImplementation ("androidx.test.espresso:espresso-core:_")
-    implementation(project(":data"))
-    implementation(project(":domain"))
-    implementation(project(":usecases"))
+    implementation(project(Modules.data))
+    implementation(project(Modules.domain))
+    implementation(project(Modules.usescases))
 }

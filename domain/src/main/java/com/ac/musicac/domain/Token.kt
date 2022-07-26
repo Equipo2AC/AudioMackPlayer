@@ -1,6 +1,6 @@
 package com.ac.musicac.domain
 
-import java.util.*
+import java.util.Date
 
 data class Token(
     val value: String,

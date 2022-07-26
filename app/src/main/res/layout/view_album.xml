@@ -57,7 +57,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:layout_marginBottom="16dp"
-            android:text="@{item.album_type}"
+            android:text="@{item.albumType}"
             tools:text="2010" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

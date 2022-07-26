@@ -33,8 +33,8 @@ class ReleasesState(
 
 ) {
 
-    fun onAlbumClicked(movie: Item) {
-
+    fun onAlbumClicked(album: Item) {
+        //TODO
     }
 
     fun requestLocationPermission(afterRequest: (Boolean) -> Unit) {

@@ -11,8 +11,8 @@ java {
 dependencies {
     implementation(project(Modules.domain))
     implementation(project(Modules.data))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:_")
-    implementation("javax.inject:javax.inject:_")
-    implementation("io.arrow-kt:arrow-core:_")
+    implementation(Libs.Kotlin.Coroutines.core)
+    implementation(Libs.JavaX.inject)
+    implementation(Libs.Arrow.core)
 
 }

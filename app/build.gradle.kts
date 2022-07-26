@@ -10,16 +10,16 @@ plugins {
 }
 
 android {
-    compileSdk = 32
+    compileSdk = AppConfig.compileSdk
 
     defaultConfig {
-        applicationId = "com.ac.musicac"
-        minSdk = 23
-        targetSdk = 32
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = AppConfig.applicationId
+        minSdk = AppConfig.minSdk
+        targetSdk = AppConfig.targetSdk
+        versionCode = AppConfig.versionCode
+        versionName = AppConfig.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = AppConfig.testInstrumentationRunner
     }
 
     buildTypes {
@@ -36,7 +36,7 @@ android {
         jvmTarget = "1.8"
     }
     secrets {
-        propertiesFileName = "secrets.properties"
+        propertiesFileName = AppConfig.propertiesFileName
     }
 
     buildFeatures {

@@ -10,5 +10,7 @@
     <string name="search_title">Buscar</string>
     <string name="chip_artist">Artistas</string>
     <string name="chip_album">Álbums</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

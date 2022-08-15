@@ -15,8 +15,17 @@ class SearchState(
 
     fun onAction(action: SearchAction) {
         when (action) {
-            is SearchAction.OnClickAlbum -> TODO()
-            is SearchAction.OnClickArtist -> TODO()
+            is SearchAction.OnClickAlbum -> {
+                navController.navigate(
+                    SearchFragmentDirections.actionSearchToAlbum(action.item.id)
+                )
+            }
+            is SearchAction.OnClickArtist -> {
+                navController.navigate(
+                    SearchFragmentDirections.actionSearchToArtist(action.item.id)
+                )
+            }
+
         }
     }
 

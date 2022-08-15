@@ -1,11 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_search"
     app:startDestination="@id/search_dest">
 
     <fragment
         android:id="@+id/search_dest"
         android:name="com.ac.musicac.ui.main.search.SearchFragment"
-        android:label="SearchFragment" />
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_search_to_album"
+            app:destination="@id/album_dest"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_search_to_artist"
+            app:destination="@id/artist_dest"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@android:anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/album_dest"
+        android:name="com.ac.musicac.ui.main.artist.ArtistFragment"
+        android:label="fragment_album"
+        tools:layout="@layout/fragment_artist" >
+        <argument
+            android:name="bundleInfo"
+            app:argType="android.os.Bundle" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/artist_dest"
+        android:name="com.ac.musicac.ui.main.artist.ArtistFragment"
+        android:label="fragment_artist"
+        tools:layout="@layout/fragment_artist" >
+        <argument
+            android:name="bundleInfo"
+            app:argType="android.os.Bundle" />
+    </fragment>
 </navigation>

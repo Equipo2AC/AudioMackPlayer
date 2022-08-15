@@ -7,7 +7,8 @@ plugins {
     id(Plugins.kotlinSerialization)
     id(Plugins.hiltAndroid)
     id(Plugins.secret)
-    id("org.jetbrains.kotlin.android")
+    id(Plugins.safeArgs)
+    // id("org.jetbrains.kotlin.android")
 }
 
 android {

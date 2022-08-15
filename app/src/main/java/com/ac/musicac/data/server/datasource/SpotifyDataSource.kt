@@ -33,6 +33,10 @@ class SpotifyDataSource @Inject constructor(
             .findSearch(type, query, limit, offset)
             .toDomainModel()
     }
+
+    override suspend fun getArtist(id: String): Either<Error?, Artist> = tryCall {
+        api.service.getArtist(id).toDomainModel()
+    }
 }
 
 private fun ReleasesResult.toDomainModel(): Releases =

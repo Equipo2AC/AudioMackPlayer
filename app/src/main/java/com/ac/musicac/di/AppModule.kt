@@ -1,6 +1,7 @@
 package com.ac.musicac.di
 
 import android.app.Application
+import androidx.lifecycle.SavedStateHandle
 import androidx.room.Room
 import com.ac.musicac.BuildConfig
 import com.ac.musicac.data.Constants
@@ -16,11 +17,13 @@ import com.ac.musicac.data.server.interceptor.TokenHeader
 import com.ac.musicac.data.server.service.SpotifyAuthenticationService
 import com.ac.musicac.data.server.service.SpotifyService
 import com.ac.musicac.di.qualifier.*
+import com.ac.musicac.ui.main.artist.ArtistFragmentArgs
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
@@ -130,6 +133,12 @@ object AppModule {
             arrayOf(tokenHeader, httpLoggingInterceptor)
         )
     }
+
+    @Provides
+    @ViewModelScoped
+    @ArtistId
+    fun provideArtistId(savedStateHandle: SavedStateHandle) = ArtistFragmentArgs.fromSavedStateHandle(savedStateHandle)
+
 }
 
 @Module

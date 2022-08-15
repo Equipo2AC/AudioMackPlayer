@@ -11,6 +11,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import com.ac.musicac.R
 import com.ac.musicac.databinding.FragmentArtistBinding
+import com.ac.musicac.ui.common.launchAndCollect
 import com.ac.musicac.ui.main.search.SearchState
 import com.ac.musicac.ui.main.search.buildSearchState
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,23 +27,16 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         searchState = buildSearchState()
-        // val artistId = safeArgs.id
+        // val artist = safeArgs.id
         val binding = FragmentArtistBinding.bind(view)
-        binding.setUpElements()
-
-    }
-
-    private fun FragmentArtistBinding.setUpElements() {
         launchArtistCollect()
+        viewModel.onUiReady(safeArgs.id)
+
     }
 
     private fun launchArtistCollect() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.state.collect {
-                    withArtistUpdateUI(it)
-                }
-            }
+        viewLifecycleOwner.launchAndCollect(viewModel.state) { state ->
+            withArtistUpdateUI(state)
         }
     }
 

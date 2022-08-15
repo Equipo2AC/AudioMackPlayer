@@ -3,6 +3,8 @@ package com.ac.musicac.ui.main.artist
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import arrow.core.Either
+import com.ac.musicac.di.qualifier.ArtistId
 import com.ac.musicac.domain.Artist
 import com.ac.musicac.domain.Error
 import com.ac.musicac.ui.main.releases.ReleasesViewModel
@@ -17,23 +19,38 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ArtistViewModel @Inject constructor(
+    // @ArtistId private val artistId: String,
     savedStateHandle: SavedStateHandle,
-    getArtistUseCase: GetArtistUseCase
+    private val getArtistUseCase: GetArtistUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state.asStateFlow()
-    private val artistId = ArtistFragmentArgs.fromSavedStateHandle(savedStateHandle).id
+    // private val artist = ArtistFragmentArgs.fromSavedStateHandle(savedStateHandle)
 
     init {
-        viewModelScope.launch {
+        /*viewModelScope.launch {
             getArtistUseCase(artistId).fold(ifLeft = {_state.update { UiState(error = it.error) }}) {
                 _state.update { UiState(artist = it.artist) }
+            }
+        }*/
+    }
+
+    fun onUiReady(artistId: String) {
+        viewModelScope.launch {
+            _state.value = _state.value.copy(loading = true)
+
+            val response = getArtistUseCase(artistId)
+
+            when (response) {
+                is Either.Left -> _state.update { it.copy(loading = false, error = response.value) }
+                is Either.Right -> _state.update { it.copy(loading = false, artist = response.value) }
             }
         }
     }
 
     data class UiState(
+        val loading: Boolean? = false,
         val artist: Artist? = null,
         val error: Error? = null
     )

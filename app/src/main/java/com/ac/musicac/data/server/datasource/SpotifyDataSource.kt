@@ -91,7 +91,7 @@ private fun ItemResult.toDomainModel(): Item =
         genres ?: listOf()
     )
 
-fun getArtistsName(artists: List<ArtistResult>?)= artists?.joinToString(", ") { it.name }
+fun getArtistsName(artists: List<ArtistResult>?) = artists?.joinToString(", ") { it.name }
 
 private fun ArtistResult.toDomainModel(): Artist =
     Artist(

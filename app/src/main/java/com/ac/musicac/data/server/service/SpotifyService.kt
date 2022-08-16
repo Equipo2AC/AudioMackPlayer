@@ -16,6 +16,11 @@ interface SpotifyService {
     @GET("artists/{artistId}")
     suspend fun getArtist(@Path("artistId") artistId : String): ItemResult
 
+    @GET("artists/{artistId}/top-tracks")
+    suspend fun getArtistTopTracks(
+        @Path("artistId") artistId : String,
+        @Query("market") market: String = "US"): List<ItemResult>
+
     @GET("browse/new-releases")
     suspend fun getReleases(
         @Header("country") country: String,

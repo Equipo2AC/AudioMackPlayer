@@ -20,16 +20,13 @@ class ArtistInfoView  @JvmOverloads constructor(
             bold { append(context.getString(R.string.artist_name)) }
             appendLine(name)
 
-            /*bold { append(context.getString(R.string.release_detail_date)) }
-            appendLine(releaseDate)*/
+            bold { append(context.getString(R.string.total_followers)) }
+            appendLine(followers.toString())
 
-            /*bold { append(context.getString(R.string.release_detail_popularity)) }
-            appendLine(popularity.toString())*/
-
-            /*bold { append(context.getString(R.string.release_detail_artists)) }
-            appendLine(artists)*/
-
+            if (genres.isNotEmpty()) {
+                bold { append(context.getString(R.string.genres)) }
+                appendLine(genres.get(0))
+            }
         }
     }
-
 }

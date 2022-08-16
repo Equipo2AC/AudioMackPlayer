@@ -4,27 +4,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <import type="com.ac.musicac.domain.Artist" />
         <import type="com.ac.musicac.domain.Item" />
-
+        <import type="java.util.List" />
         <variable
             name="loading"
             type="boolean" />
-
         <variable
             name="artist"
-            type="Artist" />
-
+            type="List&lt;Artist>" />
         <variable
             name="item"
             type="Item" />
-
         <variable
             name="error"
             type="String" />
     </data>
-
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -48,21 +43,21 @@
                 app:statusBarScrim="?attr/colorPrimaryVariant">
 
                 <ImageView
-                    android:id="@+id/release_detail_image"
+                    android:id="@+id/artist_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
                     app:layout_collapseMode="parallax"
-                    app:url="@{artist.href}"
+                    app:url="@{item.image.url}"
                     tools:src="@mipmap/ic_launcher" />
 
                 <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/release_detail_toolbar"
+                    android:id="@+id/artist_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:navigationIcon="@drawable/ic_arrow_back"
-                    app:title="@{artist.name}" />
+                    app:title="@{item.name}" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -89,15 +84,26 @@
                     app:artist="@{item}"
                     tools:text="Lorem ipsum" />
 
-                <androidx.recyclerview.widget.RecyclerView
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_margin="12dp"
+                    android:clickable="true"
+                    android:src="@drawable/ic_favorite_off"
+                    android:contentDescription="@string/favorite_button"
+                    android:focusable="true" />
+
+                <!--<androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/black"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                    app:tracks="@{item.artists}"
-                    app:visible="@{ error == null }" />
+                    app:related_artist="@{artists}"
+                    app:visible="@{ error == null }" />-->
 
             </LinearLayout>
 

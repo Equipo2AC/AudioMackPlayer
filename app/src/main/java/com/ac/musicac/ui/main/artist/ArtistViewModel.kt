@@ -20,22 +20,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ArtistViewModel @Inject constructor(
-    // @ArtistId private val artistId: String,
-    savedStateHandle: SavedStateHandle,
     private val getArtistUseCase: GetArtistUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state.asStateFlow()
-    // private val artist = ArtistFragmentArgs.fromSavedStateHandle(savedStateHandle)
-
-    init {
-        /*viewModelScope.launch {
-            getArtistUseCase(artistId).fold(ifLeft = {_state.update { UiState(error = it.error) }}) {
-                _state.update { UiState(artist = it.artist) }
-            }
-        }*/
-    }
 
     fun onUiReady(artistId: String) {
         viewModelScope.launch {
@@ -51,7 +40,7 @@ class ArtistViewModel @Inject constructor(
     }
 
     data class UiState(
-        val loading: Boolean? = false,
+        val loading: Boolean = false,
         val artist: Item? = null,
         val error: Error? = null
     )

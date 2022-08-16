@@ -13,14 +13,6 @@ interface SpotifyService {
     @GET("users/{userId}")
     suspend fun getUser(@Path("userId") userId : String): UserResult
 
-    @GET("artists/{artistId}")
-    suspend fun getArtist(@Path("artistId") artistId : String): ItemResult
-
-    @GET("artists/{artistId}/top-tracks")
-    suspend fun getArtistTopTracks(
-        @Path("artistId") artistId : String,
-        @Query("market") market: String = "US"): List<ItemResult>
-
     @GET("browse/new-releases")
     suspend fun getReleases(
         @Header("country") country: String,
@@ -33,5 +25,13 @@ interface SpotifyService {
         @Query("q") query: String,
         @Query("limit") limit: Int,
         @Query("offset") offset: Int): SearchResult
+
+    @GET("artists/{artistId}")
+    suspend fun getArtist(@Path("artistId") artistId : String): ItemResult
+
+    @GET("artists/{artistId}/top-tracks")
+    suspend fun getArtistTopTracks(
+        @Path("artistId") artistId : String,
+        @Query("market") market: String = "US"): List<ItemResult>
 
 }

@@ -1,14 +1,10 @@
 package com.ac.musicac.ui.main.artist
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import arrow.core.Either
-import com.ac.musicac.di.qualifier.ArtistId
-import com.ac.musicac.domain.Artist
 import com.ac.musicac.domain.Error
 import com.ac.musicac.domain.Item
-import com.ac.musicac.ui.main.releases.ReleasesViewModel
 import com.ac.musicac.usecases.GetArtistUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

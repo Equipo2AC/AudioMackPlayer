@@ -5,18 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import com.ac.musicac.R
 import com.ac.musicac.databinding.FragmentArtistBinding
 import com.ac.musicac.ui.common.launchAndCollect
-import com.ac.musicac.ui.main.releases.ReleasesState
 import com.ac.musicac.ui.main.search.SearchState
 import com.ac.musicac.ui.main.search.buildSearchState
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ArtistFragment: Fragment(R.layout.fragment_artist) {

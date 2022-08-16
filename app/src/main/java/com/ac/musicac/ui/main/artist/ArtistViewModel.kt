@@ -7,6 +7,7 @@ import arrow.core.Either
 import com.ac.musicac.di.qualifier.ArtistId
 import com.ac.musicac.domain.Artist
 import com.ac.musicac.domain.Error
+import com.ac.musicac.domain.Item
 import com.ac.musicac.ui.main.releases.ReleasesViewModel
 import com.ac.musicac.usecases.GetArtistUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -51,7 +52,7 @@ class ArtistViewModel @Inject constructor(
 
     data class UiState(
         val loading: Boolean? = false,
-        val artist: Artist? = null,
+        val artist: Item? = null,
         val error: Error? = null
     )
 

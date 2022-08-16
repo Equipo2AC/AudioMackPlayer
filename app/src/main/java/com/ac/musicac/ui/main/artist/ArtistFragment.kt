@@ -46,7 +46,7 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
         }
 
         state.artist?.let {
-            Toast.makeText(requireContext(), "Habemus Artista ${it.name}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Habemus Artista ${it.href}", Toast.LENGTH_SHORT).show()
         }
     }
 

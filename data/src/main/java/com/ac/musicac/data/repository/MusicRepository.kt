@@ -27,7 +27,7 @@ class MusicRepository @Inject constructor(
         )
     }
 
-    suspend fun getArtist(id: String): Either<Error?, Artist> {
+    suspend fun getArtist(id: String): Either<Error?, Item> {
         return remoteRemoteDataSource.getArtist(id).fold(
             ifLeft = { it.left() },
             ifRight = { it.right() }

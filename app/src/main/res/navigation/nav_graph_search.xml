@@ -13,18 +13,18 @@
         <action
             android:id="@+id/action_search_to_album"
             app:destination="@id/album_dest"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
             app:launchSingleTop="false"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_search_to_artist"
             app:destination="@id/artist_dest"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
             app:launchSingleTop="false"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/slide_out_right" />
 
     </fragment>

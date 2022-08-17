@@ -5,10 +5,7 @@ import arrow.core.left
 import arrow.core.right
 import com.ac.musicac.data.RegionRepository
 import com.ac.musicac.data.datasource.MusicRemoteDataSource
-import com.ac.musicac.domain.Error
-import com.ac.musicac.domain.Releases
-import com.ac.musicac.domain.Search
-import com.ac.musicac.domain.Type
+import com.ac.musicac.domain.*
 import javax.inject.Inject
 
 class MusicRepository @Inject constructor(
@@ -25,6 +22,13 @@ class MusicRepository @Inject constructor(
 
     suspend fun findSearch(type: Type, query: String): Either<Error?, Search> {
         return remoteRemoteDataSource.findSearch(type.value, query).fold(
+            ifLeft = { it.left() },
+            ifRight = { it.right() }
+        )
+    }
+
+    suspend fun getArtist(id: String): Either<Error?, Item> {
+        return remoteRemoteDataSource.getArtist(id).fold(
             ifLeft = { it.left() },
             ifRight = { it.right() }
         )

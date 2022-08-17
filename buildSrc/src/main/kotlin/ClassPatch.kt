@@ -5,4 +5,5 @@ object ClassPatch {
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:_"
     const val secretsGradlePlugin =
         "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:_"
+    const val navigationSafeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:_"
 }

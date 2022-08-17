@@ -2,6 +2,7 @@ object Plugins {
     const val application = "com.android.application"
     const val library = "com.android.library"
     const val android = "org.jetbrains.kotlin.android"
+    const val safeArgs = "androidx.navigation.safeargs.kotlin"
     const val javaLibrary = "java-library"
     const val kotlinJVM = "org.jetbrains.kotlin.jvm"
     const val kapt = "org.jetbrains.kotlin.kapt"

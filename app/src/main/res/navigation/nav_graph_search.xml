@@ -31,11 +31,11 @@
 
     <fragment
         android:id="@+id/album_dest"
-        android:name="com.ac.musicac.ui.main.artist.ArtistFragment"
+        android:name="com.ac.musicac.ui.main.releases.detail.ReleaseDetailFragment"
         android:label="album_fragment"
-        tools:layout="@layout/fragment_artist" >
+        tools:layout="@layout/fragment_release_detail" >
         <argument
-            android:name="id"
+            android:name="albumId"
             app:argType="string" />
     </fragment>
 

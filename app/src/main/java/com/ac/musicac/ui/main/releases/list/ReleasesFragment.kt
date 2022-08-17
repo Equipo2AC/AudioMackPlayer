@@ -1,4 +1,4 @@
-package com.ac.musicac.ui.main.releases
+package com.ac.musicac.ui.main.releases.list
 
 import android.os.Bundle
 import android.view.View
@@ -27,15 +27,14 @@ class ReleasesFragment: Fragment(R.layout.fragment_releases) {
             recycler.adapter = adapter
         }
 
-        viewLifecycleOwner.launchAndCollect(viewModel.state) {
-            binding.loading = it.loading
-            binding.items = it.albums
-            binding.error = it.error?.let(releaseState::errorToString)
+        viewLifecycleOwner.launchAndCollect(viewModel.state) { state->
+            binding.loading = state.loading
+            binding.items = state.albums
+            binding.error = state.error?.let(releaseState::errorToString)
         }
 
         releaseState.requestLocationPermission {
             viewModel.onUiReady()
         }
     }
-
 }

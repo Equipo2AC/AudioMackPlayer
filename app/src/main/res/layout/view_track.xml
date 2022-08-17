@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
-        <import type="com.ac.musicac.domain.releases.Item" />
+        <import type="com.ac.musicac.domain.releases.Track" />
 
         <variable
-            name="item"
-            type="com.ac.musicac.domain.releases.Item" />
+            name="track"
+            type="com.ac.musicac.domain.releases.Track" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:foreground="?attr/selectableItemBackground"
         android:layout_margin="10dp"
         android:orientation="vertical"
@@ -25,49 +24,34 @@
             android:background="@color/black"
             android:layout_height="match_parent">
 
-            <com.ac.musicac.ui.common.AspectRatioImageView
-                android:id="@+id/album_cover"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:ratio="1"
-                app:visible="@{ item.image != null }"
-                app:layout_constraintTop_toTopOf="parent"
-                app:url="@{item.image.url}" />
-
             <TextView
-                android:id="@+id/album_title"
+                android:id="@+id/trackNumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:lines="1"
-                android:minLines="1"
-                android:padding="8dp"
-                android:text="@{item.name}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+                android:text="@{track.trackNumber}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse"
                 android:textColor="@color/orange"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/album_cover"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="@tools:sample/lorem" />
 
             <TextView
-                android:id="@+id/album_artist"
+                android:id="@+id/trackTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="start"
                 android:lines="1"
                 android:minLines="1"
                 android:padding="8dp"
-                android:text="@{item.artists}"
+                android:text="@{track.name}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse"
                 android:textColor="@android:color/darker_gray"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/album_cover"
-                app:layout_constraintTop_toBottomOf="@+id/album_title"
+                app:layout_constraintStart_toEndOf="@+id/trackNumber"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="@tools:sample/lorem" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

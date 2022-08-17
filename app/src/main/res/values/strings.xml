@@ -5,17 +5,16 @@
     <string name="unknown_error">\"Unknown Error: \"</string>
 
     <string name="menu_home">Inicio</string>
-    <string name="menu_search">Búsqueda</string>
-    <string name="release_title">Próximos lanzamientos</string>
-    <string name="search_title">Buscar</string>
-    <string name="chip_artist">Artistas</string>
-    <string name="chip_album">Álbums</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="artist_name">"Artist Name:  "</string>
-    <string name="genres">"Genres:  "</string>
-    <string name="total_followers">"Followers:  "</string>
-    <string name="test_field">Test Field Info</string>
-    <string name="favorite_button">Favorite Button</string>
+    <string name="menu_releases">Nuevos lanzamientos</string>
+
+    <!--HOME-->
+    <string name="home_title">Inicio</string>
+
+    <!--    RELEASES-->
+    <string name="release_title">Nuevos lanzamientos</string>
+    <string name="release_detail_number_tracks">Número de canciones:&#160;</string>
+    <string name="release_detail_date">Fecha de lanzamiento:&#160;</string>
+    <string name="release_detail_popularity">Popularidad:&#160;</string>
+    <string name="release_detail_artists">Artistas:&#160;</string>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.ac.musicac.ui.main.releases
+package com.ac.musicac.ui.main.releases.list
 
 import android.Manifest
 import android.content.Context
@@ -8,11 +8,10 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.ac.musicac.R
 import com.ac.musicac.domain.Error
-import com.ac.musicac.domain.Item
+import com.ac.musicac.domain.releases.Item
 import com.ac.musicac.ui.common.PermissionRequester
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-
 
 fun Fragment.buildReleasesState(
     context: Context = requireContext(),
@@ -24,17 +23,16 @@ fun Fragment.buildReleasesState(
     )
 ) = ReleasesState(context, scope, navController, locationPermissionRequester)
 
-
 class ReleasesState(
     private val context: Context,
     private val scope: CoroutineScope,
     private val navController: NavController,
     private val locationPermissionRequester: PermissionRequester
-
 ) {
 
     fun onAlbumClicked(album: Item) {
-        //TODO
+        val action = ReleasesFragmentDirections.actionReleasesToDetail(album.id)
+        navController.navigate(action)
     }
 
     fun requestLocationPermission(afterRequest: (Boolean) -> Unit) {

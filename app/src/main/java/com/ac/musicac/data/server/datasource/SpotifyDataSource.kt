@@ -43,8 +43,8 @@ class SpotifyDataSource @Inject constructor(
             .toDomainModel()
     }
 
-    override suspend fun getArtist(id: String): Either<Error?, Item> = tryCall {
-        api.service.getArtist(id).toDomainModel()
+    override suspend fun getArtist(id: String): Either<Error?, PopularArtist> = tryCall {
+        api.service.getArtist(id).artistToDomainModel()
     }
 }
 
@@ -100,6 +100,25 @@ private fun ItemResult.toDomainModel(): Item =
     Item(
         album_type ?: "",
         getArtistsName(artists) ?: "",
+        available_markets ?: listOf(),
+        external_urls.toDomainModel(),
+        href,
+        id,
+        images.maxByOrNull { it.height }?.toDomainModel(),
+        name,
+        release_date ?: "",
+        release_date_precision ?: "",
+        total_tracks ?: 0,
+        type,
+        uri,
+        followers?.total ?: 0,
+        genres ?: listOf()
+    )
+
+private fun ItemResult.artistToDomainModel(): PopularArtist =
+    PopularArtist(
+        album_type ?: "",
+        artists?.map { it.toDomainModel() } ?: listOf(),
         available_markets ?: listOf(),
         external_urls.toDomainModel(),
         href,

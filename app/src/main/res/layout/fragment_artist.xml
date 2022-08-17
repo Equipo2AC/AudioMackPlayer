@@ -4,18 +4,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="com.ac.musicac.domain.Artist" />
-        <import type="com.ac.musicac.domain.Item" />
+        <import type="com.ac.musicac.domain.Track" />
+        <import type="com.ac.musicac.domain.PopularArtist" />
         <import type="java.util.List" />
         <variable
             name="loading"
             type="boolean" />
         <variable
-            name="artist"
-            type="List&lt;Artist>" />
+            name="tracklist"
+            type="List&lt;Track>" />
         <variable
             name="item"
-            type="Item" />
+            type="PopularArtist" />
         <variable
             name="error"
             type="String" />
@@ -95,15 +95,15 @@
                     android:contentDescription="@string/favorite_button"
                     android:focusable="true" />
 
-                <!--<androidx.recyclerview.widget.RecyclerView
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/black"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                    app:related_artist="@{artists}"
-                    app:visible="@{ error == null }" />-->
+                    app:related_tracks="@{tracklist}"
+                    app:visible="@{ error == null }" />
 
             </LinearLayout>
 

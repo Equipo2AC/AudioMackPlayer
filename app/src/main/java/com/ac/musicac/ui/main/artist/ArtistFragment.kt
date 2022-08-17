@@ -9,6 +9,7 @@ import androidx.navigation.fragment.navArgs
 import com.ac.musicac.R
 import com.ac.musicac.databinding.FragmentArtistBinding
 import com.ac.musicac.ui.common.launchAndCollect
+import com.ac.musicac.ui.main.releases.detail.TracksAdapter
 import com.ac.musicac.ui.main.search.SearchState
 import com.ac.musicac.ui.main.search.buildSearchState
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,11 +21,13 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
     private lateinit var searchState: SearchState
     private val viewModel : ArtistViewModel by viewModels()
     private lateinit var binding: FragmentArtistBinding
+    private val adapter = TracksAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         searchState = buildSearchState()
         binding = FragmentArtistBinding.bind(view).apply {
+            recycler.adapter = adapter
             artistToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
         }
         launchArtistCollect()
@@ -47,6 +50,8 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
 
         state.artist?.let {
             binding.item = it
+            // binding.tracklist = it.artists
+            // binding.artist = it.artists
         }
 
     }

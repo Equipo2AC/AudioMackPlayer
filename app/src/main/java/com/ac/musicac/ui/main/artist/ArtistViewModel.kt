@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import arrow.core.Either
 import com.ac.musicac.domain.Error
-import com.ac.musicac.domain.Item
+import com.ac.musicac.domain.PopularArtist
 import com.ac.musicac.usecases.GetArtistUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -37,7 +37,7 @@ class ArtistViewModel @Inject constructor(
 
     data class UiState(
         val loading: Boolean = false,
-        val artist: Item? = null,
+        val artist: PopularArtist? = null,
         val error: Error? = null
     )
 

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ac.musicac.R
 import com.ac.musicac.databinding.ViewTrackBinding
-import com.ac.musicac.domain.releases.Track
+import com.ac.musicac.domain.Track
 import com.ac.musicac.ui.common.basicDiffUtil
 import com.ac.musicac.ui.common.inflate
 

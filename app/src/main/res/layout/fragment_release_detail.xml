@@ -6,14 +6,12 @@
     <data>
 
         <import type="java.util.List" />
-
-        <import type="com.ac.musicac.domain.releases.Release" />
+        <import type="com.ac.musicac.domain.Release" />
+        <import type="com.ac.musicac.domain.Track" />
 
         <variable
             name="album"
-            type="com.ac.musicac.domain.releases.Release" />
-
-        <import type="com.ac.musicac.domain.releases.Track" />
+            type="Release" />
 
         <variable
             name="tracks"

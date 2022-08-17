@@ -1,6 +1,8 @@
 package com.ac.musicac.data.server.model.release
 
-fun getArtistsName(artists: List<RemoteArtist>): String {
+import com.ac.musicac.data.server.model.releases.ArtistResult
+
+fun getArtistsName(artists: List<ArtistResult>): String {
 
     val names: MutableList<String> = mutableListOf()
 

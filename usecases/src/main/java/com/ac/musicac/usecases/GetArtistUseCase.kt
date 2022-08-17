@@ -6,7 +6,7 @@ import com.ac.musicac.domain.Error
 import com.ac.musicac.domain.Item
 import javax.inject.Inject
 
-class GetArtistUseCase @Inject constructor(private val artistRepository: MusicRepository) {
+class GetArtistUseCase @Inject constructor(private val repository: MusicRepository) {
 
-    suspend operator fun invoke(id: String): Either<Error?, Item> = artistRepository.getArtist(id)
+    suspend operator fun invoke(id: String): Either<Error?, Item> = repository.getArtist(id)
 }

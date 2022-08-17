@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.ac.musicac.domain.releases.Track" />
+        <import type="com.ac.musicac.domain.Track" />
 
         <variable
             name="track"
-            type="com.ac.musicac.domain.releases.Track" />
+            type="com.ac.musicac.domain.Track" />
     </data>
 
     <androidx.cardview.widget.CardView

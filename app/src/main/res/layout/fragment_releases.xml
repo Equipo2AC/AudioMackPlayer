@@ -7,7 +7,7 @@
 
         <import type="java.util.List" />
 
-        <import type="com.ac.musicac.domain.releases.Item" />
+        <import type="com.ac.musicac.domain.Item" />
 
         <variable
             name="loading"
@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/black"
-            app:items="@{items}"
+            app:release_items="@{items}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:visible="@{ error == null }" />

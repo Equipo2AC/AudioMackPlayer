@@ -9,7 +9,6 @@ import com.ac.musicac.R
 import com.ac.musicac.databinding.FragmentSearchBinding
 import com.ac.musicac.domain.Type
 import com.ac.musicac.ui.common.launchAndCollect
-import com.ac.musicac.ui.main.OnChooseTypeChanged
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

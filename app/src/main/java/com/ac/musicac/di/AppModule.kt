@@ -139,6 +139,8 @@ object AppModule {
     @ArtistId
     fun provideArtistId(savedStateHandle: SavedStateHandle) = ArtistFragmentArgs.fromSavedStateHandle(savedStateHandle)
 
+
+
 }
 
 @Module

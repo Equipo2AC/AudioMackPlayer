@@ -13,7 +13,7 @@
 
         <variable
             name="onChooseTypeChanged"
-            type="com.ac.musicac.ui.main.OnChooseTypeChanged" />
+            type="com.ac.musicac.ui.main.search.OnChooseTypeChanged" />
 
         <variable
             name="loading"
@@ -114,7 +114,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:overScrollMode="never"
-            app:items="@{items}"
+            app:search_items="@{items}"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

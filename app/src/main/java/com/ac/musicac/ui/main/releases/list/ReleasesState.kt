@@ -8,7 +8,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.ac.musicac.R
 import com.ac.musicac.domain.Error
-import com.ac.musicac.domain.releases.Item
+import com.ac.musicac.domain.Item
 import com.ac.musicac.ui.common.PermissionRequester
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch

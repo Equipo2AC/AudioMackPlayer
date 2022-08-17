@@ -20,6 +20,13 @@ class MusicRepository @Inject constructor(
         )
     }
 
+    suspend fun getReleaseDetail(albumId: String): Either<Error?, Release> {
+        return remoteRemoteDataSource.getReleaseDetail(albumId, regionRepository.findLastRegion()).fold(
+            ifLeft = { it.left() },
+            ifRight = { it.right() }
+        )
+    }
+
     suspend fun findSearch(type: Type, query: String): Either<Error?, Search> {
         return remoteRemoteDataSource.findSearch(type.value, query).fold(
             ifLeft = { it.left() },

@@ -6,7 +6,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
 import com.ac.musicac.R
-import com.ac.musicac.domain.releases.Release
+import com.ac.musicac.domain.Release
 
 class ReleaseDetailInfoView @JvmOverloads constructor(
     context: Context,

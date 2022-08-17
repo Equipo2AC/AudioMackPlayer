@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import arrow.core.Either
 import com.ac.musicac.domain.Error
-import com.ac.musicac.domain.releases.Item
+import com.ac.musicac.domain.Item
 import com.ac.musicac.usecases.GetReleasesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

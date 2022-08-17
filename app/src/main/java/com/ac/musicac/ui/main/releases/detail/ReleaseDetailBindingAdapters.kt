@@ -2,8 +2,8 @@ package com.ac.musicac.ui.main.releases.detail
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.ac.musicac.domain.releases.Release
-import com.ac.musicac.domain.releases.Track
+import com.ac.musicac.domain.Release
+import com.ac.musicac.domain.Track
 
 @BindingAdapter("tracks")
 fun RecyclerView.setTracks(tracks: List<Track>?) {

@@ -23,6 +23,15 @@ class SpotifyDataSource @Inject constructor(
             .toDomainModel()
     }
 
+    override suspend fun getReleaseDetail(
+        albumId: String,
+        market: String
+    ): Either<Error?, Release> = tryCall {
+        api.service
+            .getReleaseDetail(albumId, market)
+            .toDomainModel()
+    }
+
     override suspend fun findSearch(
         type: String,
         query: String,
@@ -42,6 +51,21 @@ class SpotifyDataSource @Inject constructor(
 private fun ReleasesResult.toDomainModel(): Releases =
     Releases(
         albums.toDomainModel()
+    )
+
+private fun RemoteRelease.toDomainModel(): Release =
+    Release(
+        album_type,
+        getArtistsName(artists),
+        copyrights.map { it.toDomainModel() },
+        id,
+        images.maxByOrNull { it.height }?.toDomainModel(),
+        label,
+        name,
+        popularity,
+        release_date,
+        total_tracks.toString(),
+        tracks.toDomainModel()
     )
 
 private fun SearchResult.toDomainModel(): Search =
@@ -101,6 +125,22 @@ private fun ArtistResult.toDomainModel(): Artist =
         name, type, uri
     )
 
+private fun TracksResult.toDomainModel(): Tracks =
+    Tracks(
+        items.map { it.toDomainModel() },
+        total
+    )
+
+private fun TrackResult.toDomainModel(): Track =
+    Track(
+        getArtistsName(artists),
+        disc_number,
+        duration_ms,
+        id,
+        name,
+        track_number.toString()
+    )
+
 private fun ImageResult.toDomainModel(): Image =
     Image(
         height, url, width
@@ -114,6 +154,16 @@ private fun ExternalUrlsResult.toDomainModel(): ExternalUrls =
 private fun ExternalUrlsXResult.toDomainModel(): ExternalUrlsX =
     ExternalUrlsX(
         spotify
+    )
+
+private fun CopyrightResult.toDomainModel(): Copyright =
+    Copyright(
+        text
+    )
+
+private fun ExternalIdsResult.toDomainModel(): ExternalIds =
+    ExternalIds(
+        upc
     )
 
 

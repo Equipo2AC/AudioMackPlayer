@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.ac.musicac.domain.Track" />
+        <import type="com.ac.musicac.domain.TopTracks" />
 
         <variable
             name="track"
-            type="Track" />
+            type="TopTracks" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -37,6 +37,16 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="@tools:sample/lorem" />
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/track_image"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:url="@{track.album.images.get(0).url}"
+                app:circleCrop="@{true}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/trackNumber"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/trackTitle"
                 android:layout_width="0dp"
@@ -50,7 +60,7 @@
                 android:textColor="@android:color/darker_gray"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/trackNumber"
+                app:layout_constraintStart_toEndOf="@+id/track_image"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="@tools:sample/lorem" />
 

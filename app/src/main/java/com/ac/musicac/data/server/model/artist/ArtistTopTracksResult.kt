@@ -15,41 +15,41 @@ data class ArtistTopTrackResult(
 data class TopTracksResult(
     @SerializedName("album") val album: TopTrackAlbumResult,
     @SerializedName("artists") val artists: List<ArtistResult>,
-    @SerializedName("available_markets") val availableMarkets: List<String>,
-    @SerializedName("disc_number") val discNumber: Int,
-    @SerializedName("duration_ms") val durationMs: Int,
+    @SerializedName("available_markets") val available_markets: List<String>,
+    @SerializedName("disc_number") val disc_number: Int,
+    @SerializedName("duration_ms") val duration_ms: Int,
     @SerializedName("explicit") val explicit: Boolean,
-    @SerializedName("external_ids") val externalIds: ExternalIdsResultX,
-    @SerializedName("external_urls") val externalUrls: ExternalUrlsResult,
+    @SerializedName("external_ids") val external_ids: ExternalIdsResultX,
+    @SerializedName("external_urls") val external_urls: ExternalUrlsResult,
     @SerializedName("href") val href: String,
     @SerializedName("id") val id: String,
-    @SerializedName("is_local") val isLocal: Boolean,
-    @SerializedName("is_playable") val isPlayable: Boolean,
-    @SerializedName("linked_from") val linkedFrom: LinkedFromResult,
+    @SerializedName("is_local") val is_local: Boolean,
+    @SerializedName("is_playable") val is_playable: Boolean,
+    @SerializedName("linked_from") val linked_from: LinkedFromResult,
     @SerializedName("name") val name: String,
     @SerializedName("popularity") val popularity: Int,
-    @SerializedName("preview_url") val previewUrl: String,
+    @SerializedName("preview_url") val preview_url: String,
     @SerializedName("restrictions") val restrictions: RestrictionsResult,
-    @SerializedName("track_number") val trackNumber: Int,
+    @SerializedName("track_number") val track_number: Int,
     @SerializedName("type") val type: String,
     @SerializedName("uri") val uri: String
 )
 
 @Serializable
 data class TopTrackAlbumResult(
-    @SerializedName("album_group") val albumGroup: String,
-    @SerializedName("album_type") val albumType: String,
+    @SerializedName("album_group") val album_group: String,
+    @SerializedName("album_type") val album_type: String,
     @SerializedName("artists") val artists: List<ArtistResult>,
-    @SerializedName("available_markets") val availableMarkets: List<String>,
-    @SerializedName("external_urls") val externalUrls: ExternalUrlsResult,
+    @SerializedName("available_markets") val available_markets: List<String>,
+    @SerializedName("external_urls") val external_urls: ExternalUrlsResult,
     @SerializedName("href") val href: String,
     @SerializedName("id") val id: String,
     @SerializedName("images") val images: List<ImageResult>,
     @SerializedName("name") val name: String,
-    @SerializedName("release_date") val releaseDate: String,
-    @SerializedName("release_date_precision") val releaseDatePrecision: String,
+    @SerializedName("release_date") val release_date: String,
+    @SerializedName("release_date_precision") val release_date_precision: String,
     @SerializedName("restrictions") val restrictions: RestrictionsResult,
-    @SerializedName("total_tracks") val totalTracks: Int,
+    @SerializedName("total_tracks") val total_tracks: Int,
     @SerializedName("type") val type: String,
     @SerializedName("uri") val uri: String
 )
@@ -63,46 +63,26 @@ data class ExternalIdsResultX(
 
 @Serializable
 data class LinkedFromResult(
-    @SerializedName("album")
-    val album: TopTrackAlbumResult,
-    @SerializedName("artists")
-    val artists: List<ArtistViewResult>,
-    @SerializedName("available_markets")
-    val availableMarkets: List<String>,
-    @SerializedName("disc_number")
-    val discNumber: Int,
-    @SerializedName("duration_ms")
-    val durationMs: Int,
-    @SerializedName("explicit")
-    val explicit: Boolean,
-    @SerializedName("external_ids")
-    val externalIds: ExternalIdsResultX,
-    @SerializedName("external_urls")
-    val externalUrls: ExternalUrlsResult,
-    @SerializedName("href")
-    val href: String,
-    @SerializedName("id")
-    val id: String,
-    @SerializedName("is_local")
-    val isLocal: Boolean,
-    @SerializedName("is_playable")
-    val isPlayable: Boolean,
-    @SerializedName("linked_from")
-    val linkedFrom: LinkedFromResult,
-    @SerializedName("name")
-    val name: String,
-    @SerializedName("popularity")
-    val popularity: Int,
-    @SerializedName("preview_url")
-    val previewUrl: String,
-    @SerializedName("restrictions")
-    val restrictions: RestrictionsResult,
-    @SerializedName("track_number")
-    val trackNumber: Int,
-    @SerializedName("type")
-    val type: String,
-    @SerializedName("uri")
-    val uri: String
+    @SerializedName("album") val album: TopTrackAlbumResult,
+    @SerializedName("artists") val artists: List<ArtistResult>,
+    @SerializedName("available_markets") val available_markets: List<String>,
+    @SerializedName("disc_number") val disc_number: Int,
+    @SerializedName("duration_ms") val duration_ms: Int,
+    @SerializedName("explicit") val explicit: Boolean,
+    @SerializedName("external_ids") val external_ids: ExternalIdsResultX,
+    @SerializedName("external_urls") val external_urls: ExternalUrlsResult,
+    @SerializedName("href") val href: String,
+    @SerializedName("id") val id: String,
+    @SerializedName("is_local") val is_local: Boolean,
+    @SerializedName("is_playable") val is_playable: Boolean,
+    @SerializedName("linked_from") val linked_from: LinkedFromResult?,
+    @SerializedName("name") val name: String,
+    @SerializedName("popularity") val popularity: Int,
+    @SerializedName("preview_url") val preview_url: String,
+    @SerializedName("restrictions") val restrictions: RestrictionsResult,
+    @SerializedName("track_number") val track_number: Int,
+    @SerializedName("type") val type: String,
+    @SerializedName("uri") val uri: String
 )
 
 @Serializable

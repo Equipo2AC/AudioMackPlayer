@@ -6,7 +6,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ArtistViewResult(
-    // @SerializedName("external_urls") val externalUrls: ExternalUrlsResult,
     @SerializedName("external_urls") val external_urls: ExternalUrlsResult,
     @SerializedName("followers") val followers: FollowersResult,
     @SerializedName("genres") val genres: List<String>?,

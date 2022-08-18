@@ -32,6 +32,7 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
         }
         launchArtistCollect()
         viewModel.onUiReady(safeArgs.artistId)
+        viewModel.onTracksRequest(safeArgs.artistId)
 
     }
 
@@ -52,6 +53,10 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
             binding.item = it
             // binding.tracklist = it.artists
             // binding.artist = it.artists
+        }
+        state.topTracks?.let {
+            Toast.makeText(requireContext(), "Habemus ArtistTopTracks ", Toast.LENGTH_SHORT).show()
+            binding.tracklist = it
         }
 
     }

@@ -22,9 +22,10 @@ class ArtistInfoView  @JvmOverloads constructor(
             appendLine(name)
 
             bold { append(context.getString(R.string.total_followers)) }
-
             appendLine(DecimalFormat().format(followers.total))
-            // appendLine(followers.toString().format("###.###.###"))
+
+            bold { append(context.getString(R.string.release_detail_popularity)) }
+            appendLine(popularity.toString())
 
             if (genres.isNotEmpty()) {
                 bold { append(context.getString(R.string.genres)) }

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="com.ac.musicac.domain.Track" />
+        <import type="com.ac.musicac.domain.TopTracks" />
         <import type="com.ac.musicac.domain.PopularArtist" />
         <import type="java.util.List" />
         <variable
@@ -12,7 +12,7 @@
             type="boolean" />
         <variable
             name="tracklist"
-            type="List&lt;Track>" />
+            type="List&lt;TopTracks>" />
         <variable
             name="item"
             type="PopularArtist" />

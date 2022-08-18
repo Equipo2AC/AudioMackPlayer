@@ -25,4 +25,9 @@ interface MusicRemoteDataSource {
     suspend fun getArtist(
         id: String
     ): Either<Error?, PopularArtist>
+
+    suspend fun getArtistTopTracks(
+        id: String,
+        market: String
+    ): Either<Error?, ArtistTopTrack>
 }

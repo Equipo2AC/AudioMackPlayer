@@ -86,3 +86,4 @@ buildSrc/build/pluginUnderTestMetadata/plugin-under-test-metadata.properties
 buildSrc/build/reports/plugin-development/validation-report.txt
 buildSrc/build/source-roots/buildSrc/source-roots.txt
 buildSrc/build/tmp/jar/MANIFEST.MF
+/.idea/

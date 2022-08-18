@@ -14,8 +14,4 @@ data class Release(
     val tracks: Tracks,
 )
 
-/*data class Artist(
-    val id: String,
-    val name: String
-)*/
 

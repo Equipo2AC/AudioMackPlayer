@@ -1,6 +1,7 @@
 package com.ac.musicac.data.server.service
 
 import com.ac.musicac.data.server.UserResult
+import com.ac.musicac.data.server.model.artist.ArtistViewResult
 import com.ac.musicac.data.server.model.releases.*
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -29,7 +30,7 @@ interface SpotifyService {
         @Query("offset") offset: Int): SearchResult
 
     @GET("artists/{artistId}")
-    suspend fun getArtist(@Path("artistId") artistId : String): ItemResult
+    suspend fun getArtist(@Path("artistId") artistId : String): ArtistViewResult
 
     @GET("artists/{artistId}/top-tracks")
     suspend fun getArtistTopTracks(

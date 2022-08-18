@@ -6,8 +6,8 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
 import com.ac.musicac.R
-import com.ac.musicac.domain.Item
 import com.ac.musicac.domain.PopularArtist
+import java.text.DecimalFormat
 
 class ArtistInfoView  @JvmOverloads constructor(
     context: Context,
@@ -22,7 +22,9 @@ class ArtistInfoView  @JvmOverloads constructor(
             appendLine(name)
 
             bold { append(context.getString(R.string.total_followers)) }
-            appendLine(followers.toString())
+
+            appendLine(DecimalFormat().format(followers.total))
+            // appendLine(followers.toString().format("###.###.###"))
 
             if (genres.isNotEmpty()) {
                 bold { append(context.getString(R.string.genres)) }

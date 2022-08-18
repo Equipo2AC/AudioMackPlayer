@@ -3,6 +3,7 @@ package com.ac.musicac.data.server.datasource
 import arrow.core.Either
 import com.ac.musicac.data.datasource.MusicRemoteDataSource
 import com.ac.musicac.data.server.APIService
+import com.ac.musicac.data.server.model.artist.ArtistViewResult
 import com.ac.musicac.data.server.model.releases.*
 import com.ac.musicac.data.server.service.SpotifyService
 import com.ac.musicac.data.tryCall
@@ -44,7 +45,7 @@ class SpotifyDataSource @Inject constructor(
     }
 
     override suspend fun getArtist(id: String): Either<Error?, PopularArtist> = tryCall {
-        api.service.getArtist(id).artistToDomainModel()
+        api.service.getArtist(id).toDomainModel()
     }
 }
 
@@ -96,6 +97,20 @@ private fun ArtistsResult.toDomainModel(): Artists =
         total
     )
 
+private fun ArtistViewResult.toDomainModel(): PopularArtist =
+    PopularArtist(
+        external_urls.toDomainModel(),
+        followers.toDomainModel(),
+        genres ?: listOf(),
+        href,
+        id,
+        images.map { it.toDomainModel() },
+        name,
+        popularity ?: 0,
+        type ?: "",
+        uri
+    )
+
 private fun ItemResult.toDomainModel(): Item =
     Item(
         album_type ?: "",
@@ -115,24 +130,6 @@ private fun ItemResult.toDomainModel(): Item =
         genres ?: listOf()
     )
 
-private fun ItemResult.artistToDomainModel(): PopularArtist =
-    PopularArtist(
-        album_type ?: "",
-        artists?.map { it.toDomainModel() } ?: listOf(),
-        available_markets ?: listOf(),
-        external_urls.toDomainModel(),
-        href,
-        id,
-        images.maxByOrNull { it.height }?.toDomainModel(),
-        name,
-        release_date ?: "",
-        release_date_precision ?: "",
-        total_tracks ?: 0,
-        type,
-        uri,
-        followers?.total ?: 0,
-        genres ?: listOf()
-    )
 
 fun getArtistsName(artists: List<ArtistResult>?) = artists?.joinToString(", ") { it.name }
 
@@ -144,9 +141,9 @@ private fun ArtistResult.toDomainModel(): Artist =
         name, type, uri
     )
 
-private fun TracksResult.toDomainModel(): Tracks =
-    Tracks(
-        items.map { it.toDomainModel() },
+private fun FollowersResult.toDomainModel(): Followers =
+    Followers(
+        href ?: "",
         total
     )
 
@@ -160,6 +157,12 @@ private fun TrackResult.toDomainModel(): Track =
         track_number.toString()
     )
 
+private fun TracksResult.toDomainModel(): Tracks =
+    Tracks(
+        items.map { it.toDomainModel() },
+        total
+    )
+
 private fun ImageResult.toDomainModel(): Image =
     Image(
         height, url, width
@@ -170,10 +173,6 @@ private fun ExternalUrlsResult.toDomainModel(): ExternalUrls =
         spotify
     )
 
-private fun ExternalUrlsXResult.toDomainModel(): ExternalUrlsX =
-    ExternalUrlsX(
-        spotify
-    )
 
 private fun CopyrightResult.toDomainModel(): Copyright =
     Copyright(

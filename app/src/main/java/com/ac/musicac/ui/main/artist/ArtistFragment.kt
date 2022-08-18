@@ -31,7 +31,7 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
             artistToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
         }
         launchArtistCollect()
-        viewModel.onUiReady(safeArgs.id)
+        viewModel.onUiReady(safeArgs.artistId)
 
     }
 
@@ -45,7 +45,7 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
         binding.loading = state.loading
 
         state.error?.let {
-            Toast.makeText(requireContext(), "Habemus Error ", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Habemus Error $it ", Toast.LENGTH_SHORT).show()
         }
 
         state.artist?.let {

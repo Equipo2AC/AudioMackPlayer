@@ -1,8 +1,17 @@
 *.iml
 .gradle
 /local.properties
+/.idea/
+/.idea/.gitignore
+/.idea/.name
 /.idea/caches
 /.idea/libraries
+/.idea/misc.xml
+/.idea/gradle.xml
+/.idea/kotlinScripting.xml
+/.idea/deploymentTargetDropDown.xml
+/.idea/compiler.xml
+/.idea/vcs.xml
 /.idea/modules.xml
 /.idea/workspace.xml
 /.idea/navEditor.xml
@@ -86,4 +95,3 @@ buildSrc/build/pluginUnderTestMetadata/plugin-under-test-metadata.properties
 buildSrc/build/reports/plugin-development/validation-report.txt
 buildSrc/build/source-roots/buildSrc/source-roots.txt
 buildSrc/build/tmp/jar/MANIFEST.MF
-/.idea/

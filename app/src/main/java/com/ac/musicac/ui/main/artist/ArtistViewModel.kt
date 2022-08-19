@@ -47,7 +47,7 @@ class ArtistViewModel @Inject constructor(
 
             when (response) {
                 is Either.Left -> _state.update { it.copy(loading = false, error = response.value) }
-                is Either.Right -> _state.value = _state.value.copy(loading = false, topTracks = response.value)
+                is Either.Right -> _state.value = _state.value.copy(loading = false, topAlbums = response.value)
             }
         }
     }
@@ -55,7 +55,7 @@ class ArtistViewModel @Inject constructor(
     data class UiState(
         val loading: Boolean = false,
         val artist: PopularArtist? = null,
-        val topTracks: Albums? = null,
+        val topAlbums: Albums? = null,
         val error: Error? = null
     )
 

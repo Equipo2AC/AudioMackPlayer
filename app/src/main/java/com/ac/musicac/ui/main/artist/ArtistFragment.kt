@@ -41,20 +41,21 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
         }
     }
 
-    private fun withArtistUpdateUI(state: ArtistViewModel.UiState) {
-        binding.loading = state.loading
+    private fun withArtistUpdateUI(state: ArtistViewModel.UiState) = with(binding) {
+        loading = state.loading
+        item = state.artist
+        albumlist = state.topAlbums?.items
 
         state.error?.let {
             Toast.makeText(requireContext(), "Habemus Error $it ", Toast.LENGTH_SHORT).show()
         }
 
-        state.artist?.let {
+        /*state.artist?.let {
             binding.item = it
-        }
-        state.topTracks?.let {
-
+        }*/
+        /*state.topAlbums?.let {
             binding.albumlist = it.items
-        }
+        }*/
 
     }
 

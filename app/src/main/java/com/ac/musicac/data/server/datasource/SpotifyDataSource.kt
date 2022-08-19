@@ -59,37 +59,7 @@ class SpotifyDataSource @Inject constructor(
     }
 }
 
-private fun ArtistTopTrackResult.toDomainModel(): ArtistTopTrack =
-    ArtistTopTrack(
-        tracks.map{ it.toDomainModel() }
-    )
-
-private fun TopTracksResult.toDomainModel(): TopTracks =
-    TopTracks(
-        album.map { it.toDomainModel() },
-        artists.map { it.toDomainModel() }
-        /* available_markets,
-        disc_number,
-        duration_ms,
-        explicit,
-        external_ids.toDomainModel(),
-        external_urls.toDomainModel(),
-        href,
-        id,
-        is_local,
-        is_playable,
-        // "",
-        name,
-        popularity,
-        preview_url,
-        restrictions.toDomainModel(),
-        track_number,
-        type,
-        uri*/
-
-    )
-
-private fun TopTrackAlbumResult.toDomainModel(): TopTrackAlbum =
+/*private fun TopTrackAlbumResult.toDomainModel(): TopTrackAlbum =
     TopTrackAlbum(
         // album_group,
         album_type,
@@ -106,9 +76,9 @@ private fun TopTrackAlbumResult.toDomainModel(): TopTrackAlbum =
         total_tracks,
         type,
         uri
-    )
+    )*/
 
-private fun LinkedFromResult.toDomainModel(): LinkedFrom =
+/*private fun LinkedFromResult.toDomainModel(): LinkedFrom =
     LinkedFrom(
         album.toDomainModel(),
         artists.map { it.toDomainModel() },
@@ -130,7 +100,7 @@ private fun LinkedFromResult.toDomainModel(): LinkedFrom =
         track_number,
         type,
         uri
-    )
+    )*/
 
 private fun ReleasesResult.toDomainModel(): Releases =
     Releases(

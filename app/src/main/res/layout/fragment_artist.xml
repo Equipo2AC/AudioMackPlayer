@@ -4,15 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="com.ac.musicac.domain.TopTracks" />
+        <import type="com.ac.musicac.domain.Item" />
         <import type="com.ac.musicac.domain.PopularArtist" />
         <import type="java.util.List" />
         <variable
             name="loading"
             type="boolean" />
         <variable
-            name="tracklist"
-            type="List&lt;TopTracks>" />
+            name="albumlist"
+            type="List&lt;Item>" />
         <variable
             name="item"
             type="PopularArtist" />
@@ -68,13 +68,14 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:transitionGroup="true">
 
                 <com.ac.musicac.ui.main.artist.ArtistInfoView
+                    android:id="@+id/artist_info_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?attr/colorSurface"
@@ -82,18 +83,35 @@
                     android:padding="16dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     app:artist="@{item}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:text="Lorem ipsum" />
+
+                <TextView
+                    android:id="@+id/top_albums_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/top_albums"
+                    android:textSize="32sp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/artist_info_view" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/fab"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_margin="12dp"
+                    android:layout_margin="24dp"
                     android:clickable="true"
                     android:src="@drawable/ic_favorite_off"
                     android:contentDescription="@string/favorite_button"
-                    android:focusable="true" />
+                    android:focusable="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler"
@@ -102,10 +120,13 @@
                     android:background="@color/black"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                    app:related_tracks="@{tracklist}"
-                    app:visible="@{ error == null }" />
+                    app:related_albums="@{albumlist}"
+                    app:visible="@{ error == null }"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/top_albums_title"/>
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
 

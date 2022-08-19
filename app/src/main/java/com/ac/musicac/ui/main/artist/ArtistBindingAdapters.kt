@@ -3,6 +3,7 @@ package com.ac.musicac.ui.main.artist
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ac.musicac.domain.*
+import com.ac.musicac.ui.main.releases.list.ReleasesAdapter
 
 @BindingAdapter("artist")
 fun ArtistInfoView.updateReleaseDetails(item: PopularArtist?) {
@@ -11,10 +12,10 @@ fun ArtistInfoView.updateReleaseDetails(item: PopularArtist?) {
     }
 }
 
-@BindingAdapter("related_tracks")
-fun RecyclerView.setTracks(tracks: List<TopTracks>?) {
-    if (tracks != null) {
-        (adapter as? TopTracksAdapter)?.submitList(tracks)
+@BindingAdapter("related_albums")
+fun RecyclerView.setAlbums(albums: List<Item>?) {
+    if (albums != null) {
+        (adapter as? AlbumsAdapter)?.submitList(albums)
     }
 }
 

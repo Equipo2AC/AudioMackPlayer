@@ -1,10 +1,11 @@
 package com.ac.musicac.data.server.model.artist
+
 import com.ac.musicac.data.server.model.releases.ArtistResult
 import com.ac.musicac.data.server.model.releases.ExternalUrlsResult
 import com.ac.musicac.data.server.model.releases.ImageResult
+import com.ac.musicac.data.server.model.releases.ItemResult
 import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable
-
 
 @Serializable
 data class ArtistTopTrackResult(
@@ -12,6 +13,12 @@ data class ArtistTopTrackResult(
 )
 
 @Serializable
+data class TopTracksResult(
+    @SerializedName("album") val album: List<TopTrackAlbumResult>,
+    @SerializedName("artists") val artists: List<ArtistResult>
+)
+
+/*@Serializable
 data class TopTracksResult(
     @SerializedName("album") val album: TopTrackAlbumResult,
     @SerializedName("artists") val artists: List<ArtistResult>,
@@ -25,7 +32,7 @@ data class TopTracksResult(
     @SerializedName("id") val id: String,
     @SerializedName("is_local") val is_local: Boolean,
     @SerializedName("is_playable") val is_playable: Boolean,
-    @SerializedName("linked_from") val linked_from: LinkedFromResult,
+    // @SerializedName("linked_from") val linked_from: LinkedFromResult?,
     @SerializedName("name") val name: String,
     @SerializedName("popularity") val popularity: Int,
     @SerializedName("preview_url") val preview_url: String,
@@ -33,11 +40,11 @@ data class TopTracksResult(
     @SerializedName("track_number") val track_number: Int,
     @SerializedName("type") val type: String,
     @SerializedName("uri") val uri: String
-)
+)*/
 
 @Serializable
 data class TopTrackAlbumResult(
-    @SerializedName("album_group") val album_group: String,
+    // @SerializedName("album_group") val album_group: String?,
     @SerializedName("album_type") val album_type: String,
     @SerializedName("artists") val artists: List<ArtistResult>,
     @SerializedName("available_markets") val available_markets: List<String>,
@@ -56,9 +63,9 @@ data class TopTrackAlbumResult(
 
 @Serializable
 data class ExternalIdsResultX(
-    @SerializedName("ean") val ean: String,
-    @SerializedName("isrc") val isrc: String,
-    @SerializedName("upc") val upc: String
+    @SerializedName("ean") val ean: String?,
+    @SerializedName("isrc") val isrc: String?,
+    @SerializedName("upc") val upc: String?
 )
 
 @Serializable

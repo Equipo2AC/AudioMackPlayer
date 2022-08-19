@@ -5,27 +5,28 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ac.musicac.R
-import com.ac.musicac.databinding.ViewPopularTrackBinding
-import com.ac.musicac.domain.TopTracks
+import com.ac.musicac.databinding.ViewPopularAlbumBinding
+import com.ac.musicac.domain.Albums
+import com.ac.musicac.domain.Item
 import com.ac.musicac.ui.common.basicDiffUtil
 import com.ac.musicac.ui.common.inflate
 
-class TopTracksAdapter : ListAdapter<TopTracks, TopTracksAdapter.ViewHolder>(basicDiffUtil { old, new -> old.id == new.id }) {
+class AlbumsAdapter : ListAdapter<Item, AlbumsAdapter.ViewHolder>(basicDiffUtil { old, new -> old.id == new.id }) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = parent.inflate(R.layout.view_popular_track, false)
+        val view = parent.inflate(R.layout.view_popular_album, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val track = getItem(position)
-        holder.bind(track)
+        val album = getItem(position)
+        holder.bind(album)
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val binding = ViewPopularTrackBinding.bind(view)
-        fun bind(track: TopTracks) {
-            binding.track = track
+        private val binding = ViewPopularAlbumBinding.bind(view)
+        fun bind(album: Item) {
+            binding.album = album
         }
     }
 

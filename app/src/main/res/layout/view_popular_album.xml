@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.ac.musicac.domain.TopTracks" />
+        <import type="com.ac.musicac.domain.Item" />
 
         <variable
-            name="track"
-            type="TopTracks" />
+            name="album"
+            type="Item" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -21,46 +21,63 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:background="@color/cardview_dark_background"
+            android:background="@color/black"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/trackNumber"
+                android:id="@+id/album_number"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:text="@{track.trackNumber}"
+                android:text=""
                 android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse"
                 android:textColor="@color/orange"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/track_image"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="@tools:sample/lorem" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/track_image"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                app:url="@{track.album.images.get(0).url}"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 app:circleCrop="@{true}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/trackNumber"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.10"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:url="@{album.image.url}" />
 
             <TextView
-                android:id="@+id/trackTitle"
-                android:layout_width="0dp"
+                android:id="@+id/album_title"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="start"
                 android:lines="1"
                 android:minLines="1"
                 android:padding="8dp"
-                android:text="@{track.name}"
+                android:text="@{album.name}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/track_image"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@tools:sample/lorem" />
+
+            <TextView
+                android:id="@+id/album_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:lines="1"
+                android:minLines="1"
+                android:padding="8dp"
+                android:text="@{album.releaseDate}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse"
                 android:textColor="@android:color/darker_gray"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/track_image"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="@tools:sample/lorem" />
 

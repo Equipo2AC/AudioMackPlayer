@@ -48,26 +48,27 @@ class SpotifyDataSource @Inject constructor(
         api.service.getArtist(id).toDomainModel()
     }
 
-    override suspend fun getArtistTopTracks(
-        artistId: String,
-        market: String
-    ): Either<Error?, ArtistTopTrack> = tryCall {
+    override suspend fun getArtistAlbums(
+        id: String,
+        limit: Int,
+        offset: Int
+    ): Either<Error?, Albums> = tryCall {
         api.service
-            .getArtistTopTracks(artistId, market)
+            .getArtistAlbums(id, limit, offset)
             .toDomainModel()
     }
 }
 
 private fun ArtistTopTrackResult.toDomainModel(): ArtistTopTrack =
     ArtistTopTrack(
-        tracks.map { it.toDomainModel() }
+        tracks.map{ it.toDomainModel() }
     )
 
 private fun TopTracksResult.toDomainModel(): TopTracks =
     TopTracks(
-        album.toDomainModel(),
-        artists.map { it.toDomainModel() },
-        available_markets,
+        album.map { it.toDomainModel() },
+        artists.map { it.toDomainModel() }
+        /* available_markets,
         disc_number,
         duration_ms,
         explicit,
@@ -77,20 +78,20 @@ private fun TopTracksResult.toDomainModel(): TopTracks =
         id,
         is_local,
         is_playable,
-        linked_from.toDomainModel(),
+        // "",
         name,
         popularity,
         preview_url,
         restrictions.toDomainModel(),
         track_number,
         type,
-        uri
+        uri*/
 
     )
 
 private fun TopTrackAlbumResult.toDomainModel(): TopTrackAlbum =
     TopTrackAlbum(
-        album_group,
+        // album_group,
         album_type,
         artists.map { it.toDomainModel() },
         available_markets,
@@ -268,7 +269,7 @@ private fun ExternalIdsResult.toDomainModel(): ExternalIds =
 
 private fun ExternalIdsResultX.toDomainModel(): ExternalIds =
     ExternalIds(
-        upc
+        upc ?: ""
     )
 
 private fun RestrictionsResult.toDomainModel(): Restrictions =

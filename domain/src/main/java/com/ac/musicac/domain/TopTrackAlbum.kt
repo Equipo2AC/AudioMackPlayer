@@ -1,7 +1,7 @@
 package com.ac.musicac.domain
 
 data class TopTrackAlbum(
-    val albumGroup: String,
+    // val albumGroup: String,
     val albumType: String,
     val artists: List<Artist>,
     val availableMarkets: List<String>,

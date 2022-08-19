@@ -33,9 +33,15 @@ interface SpotifyService {
     @GET("artists/{id}")
     suspend fun getArtist(@Path("id") id: String): ArtistViewResult
 
-    @GET("artists/{artistId}/top-tracks")
+    @GET("artists/{id}/top-tracks")
     suspend fun getArtistTopTracks(
-        @Path("artistId") artistId : String,
-        @Query("market") market: String = "ES"): ArtistTopTrackResult
+        @Path("id") id : String,
+        @Query("market") market: String): ArtistTopTrackResult
+
+    @GET("artists/{id}/albums")
+    suspend fun getArtistAlbums(
+        @Path("id") id : String,
+        @Query("limit") limit: Int,
+        @Query("offset") offset: Int): AlbumsResult
 
 }

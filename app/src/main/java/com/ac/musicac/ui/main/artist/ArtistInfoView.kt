@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
+import androidx.core.text.italic
 import com.ac.musicac.R
 import com.ac.musicac.domain.PopularArtist
 import java.text.DecimalFormat
@@ -19,17 +20,22 @@ class ArtistInfoView  @JvmOverloads constructor(
         text = buildSpannedString {
 
             bold { append(context.getString(R.string.artist_name)) }
-            appendLine(name)
+            italic { appendLine(name) }
 
             bold { append(context.getString(R.string.total_followers)) }
-            appendLine(DecimalFormat().format(followers.total))
+            italic { appendLine(DecimalFormat().format(followers.total)) }
 
-            bold { append(context.getString(R.string.release_detail_popularity)) }
-            appendLine(popularity.toString())
+            if(genres.isNotEmpty()) {
+                bold { append(context.getString(R.string.release_detail_popularity)) }
+                italic { appendLine(popularity.toString()) }
+            } else {
+                bold { append(context.getString(R.string.release_detail_popularity)) }
+                italic { append(popularity.toString()) }
+            }
 
             if (genres.isNotEmpty()) {
                 bold { append(context.getString(R.string.genres)) }
-                appendLine(genres.get(0))
+                italic { append(genres.get(0)) }
             }
         }
     }

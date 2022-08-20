@@ -3,7 +3,6 @@ package com.ac.musicac.ui.main.artist
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ac.musicac.domain.*
-import com.ac.musicac.ui.main.releases.list.ReleasesAdapter
 
 @BindingAdapter("artist")
 fun ArtistInfoView.updateReleaseDetails(item: PopularArtist?) {

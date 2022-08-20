@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import arrow.core.Either
 import com.ac.musicac.domain.Albums
-import com.ac.musicac.domain.ArtistTopTrack
 import com.ac.musicac.domain.Error
 import com.ac.musicac.domain.PopularArtist
 import com.ac.musicac.usecases.GetArtistAlbumsUseCase
@@ -20,7 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ArtistViewModel @Inject constructor(
     private val getArtistUseCase: GetArtistUseCase,
-    private val getArtistTopTracksUseCase: GetArtistAlbumsUseCase
+    private val getArtistAlbumsUseCase: GetArtistAlbumsUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(UiState())
@@ -39,11 +38,11 @@ class ArtistViewModel @Inject constructor(
         }
     }
 
-    fun onTracksRequest(artistId: String) {
+    fun onAlbumsRequest(artistId: String) {
         viewModelScope.launch {
             _state.value = _state.value.copy(loading = true)
 
-            val response = getArtistTopTracksUseCase(artistId)
+            val response = getArtistAlbumsUseCase(artistId)
 
             when (response) {
                 is Either.Left -> _state.update { it.copy(loading = false, error = response.value) }

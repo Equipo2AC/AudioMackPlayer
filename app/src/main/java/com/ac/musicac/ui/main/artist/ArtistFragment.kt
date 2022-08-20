@@ -31,7 +31,7 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
         }
         launchArtistCollect()
         viewModel.onUiReady(safeArgs.artistId)
-        viewModel.onTracksRequest(safeArgs.artistId)
+        viewModel.onAlbumsRequest(safeArgs.artistId)
 
     }
 
@@ -44,19 +44,10 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
     private fun withArtistUpdateUI(state: ArtistViewModel.UiState) = with(binding) {
         loading = state.loading
         item = state.artist
-        albumlist = state.topAlbums?.items
+        albumlist = state.topAlbums?.items?.sortedBy { it.releaseDate }?.reversed()
 
         state.error?.let {
             Toast.makeText(requireContext(), "Habemus Error $it ", Toast.LENGTH_SHORT).show()
         }
-
-        /*state.artist?.let {
-            binding.item = it
-        }*/
-        /*state.topAlbums?.let {
-            binding.albumlist = it.items
-        }*/
-
     }
-
 }

@@ -5,8 +5,10 @@ import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
+import androidx.core.text.italic
 import com.ac.musicac.R
-import com.ac.musicac.domain.Item
+import com.ac.musicac.domain.PopularArtist
+import java.text.DecimalFormat
 
 class ArtistInfoView  @JvmOverloads constructor(
     context: Context,
@@ -14,18 +16,26 @@ class ArtistInfoView  @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ): AppCompatTextView(context, attrs, defStyleAttr) {
 
-    fun setArtist(artist: Item) = artist.apply {
+    fun setArtist(artist: PopularArtist) = artist.apply {
         text = buildSpannedString {
 
             bold { append(context.getString(R.string.artist_name)) }
-            appendLine(name)
+            italic { appendLine(name) }
 
             bold { append(context.getString(R.string.total_followers)) }
-            appendLine(followers.toString())
+            italic { appendLine(DecimalFormat().format(followers.total)) }
+
+            if(genres.isNotEmpty()) {
+                bold { append(context.getString(R.string.release_detail_popularity)) }
+                italic { appendLine(popularity.toString()) }
+            } else {
+                bold { append(context.getString(R.string.release_detail_popularity)) }
+                italic { append(popularity.toString()) }
+            }
 
             if (genres.isNotEmpty()) {
                 bold { append(context.getString(R.string.genres)) }
-                appendLine(genres.get(0))
+                italic { append(genres.get(0)) }
             }
         }
     }

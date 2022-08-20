@@ -20,15 +20,18 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
     private lateinit var searchState: SearchState
     private val viewModel : ArtistViewModel by viewModels()
     private lateinit var binding: FragmentArtistBinding
+    private val adapter = AlbumsAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         searchState = buildSearchState()
         binding = FragmentArtistBinding.bind(view).apply {
+            recycler.adapter = adapter
             artistToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
         }
         launchArtistCollect()
-        viewModel.onUiReady(safeArgs.id)
+        viewModel.onUiReady(safeArgs.artistId)
+        viewModel.onAlbumsRequest(safeArgs.artistId)
 
     }
 
@@ -38,17 +41,13 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
         }
     }
 
-    private fun withArtistUpdateUI(state: ArtistViewModel.UiState) {
-        binding.loading = state.loading
+    private fun withArtistUpdateUI(state: ArtistViewModel.UiState) = with(binding) {
+        loading = state.loading
+        item = state.artist
+        albumlist = state.topAlbums?.items?.sortedBy { it.releaseDate }?.reversed()
 
         state.error?.let {
-            Toast.makeText(requireContext(), "Habemus Error ", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Habemus Error $it ", Toast.LENGTH_SHORT).show()
         }
-
-        state.artist?.let {
-            binding.item = it
-        }
-
     }
-
 }

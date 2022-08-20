@@ -34,10 +34,24 @@ class MusicRepository @Inject constructor(
         )
     }
 
-    suspend fun getArtist(id: String): Either<Error?, Item> {
+    suspend fun getArtist(id: String): Either<Error?, PopularArtist> {
         return remoteRemoteDataSource.getArtist(id).fold(
             ifLeft = { it.left() },
             ifRight = { it.right() }
         )
     }
+
+    suspend fun getArtistAlbums(id: String): Either<Error?, Albums> {
+        return remoteRemoteDataSource.getArtistAlbums(id).fold(
+            ifLeft = { it.left() },
+            ifRight = { it.right() }
+        )
+    }
+
+    /*suspend fun getArtistTopTracks(id: String): Either<Error?, ArtistTopTrack> {
+        return remoteRemoteDataSource.getArtistTopTracks(id, regionRepository.findLastRegion()).fold(
+            ifLeft = { it.left() },
+            ifRight = { it.right() }
+        )
+    }*/
 }

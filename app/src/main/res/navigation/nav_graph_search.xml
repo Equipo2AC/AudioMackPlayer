@@ -45,7 +45,7 @@
         android:label="artist_fragment"
         tools:layout="@layout/fragment_artist" >
         <argument
-            android:name="id"
+            android:name="artistId"
             app:argType="string" />
     </fragment>
 </navigation>

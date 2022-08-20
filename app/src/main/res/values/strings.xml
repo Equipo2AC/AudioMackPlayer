@@ -21,9 +21,10 @@
     <string name="search_title">Buscar</string>
     <string name="chip_artist">Artistas</string>
     <string name="chip_album">Álbums</string>
-    <string name="artist_name">"Artist Name:  "</string>
-    <string name="genres">"Genres:  "</string>
-    <string name="total_followers">"Followers:  "</string>
+    <string name="artist_name">"Nombre Artístico: "</string>
+    <string name="genres">"Géneros: "</string>
+    <string name="total_followers">"Seguidores: "</string>
     <string name="test_field">Test Field Info</string>
     <string name="favorite_button">Favorite Button</string>
+    <string name="top_albums">Top Albums</string>
 </resources>

@@ -8,12 +8,3 @@ data class Track(
     val name: String,
     val trackNumber: String
 )
-
-data class PopularTrack(
-    val artists: List<Artist>,
-    val discNumber: Int,
-    val durationMs: Int,
-    val id: String,
-    val name: String,
-    val trackNumber: String
-)

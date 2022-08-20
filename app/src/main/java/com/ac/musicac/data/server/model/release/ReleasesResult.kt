@@ -41,7 +41,7 @@ data class ItemResult(
     @SerializedName("album_type") val album_type: String?,
     @SerializedName("artists") val artists: List<ArtistResult>?,
     @SerializedName("available_markets") val available_markets: List<String>?,
-    @SerializedName("external_urls") val external_urls: ExternalUrlsXResult,
+    @SerializedName("external_urls") val external_urls: ExternalUrlsResult,
     @SerializedName("href") val href: String,
     @SerializedName("id") val id: String,
     @SerializedName("images") val images: List<ImageResult>,
@@ -79,16 +79,6 @@ data class ImageResult(
 )
 
 @Serializable
-data class ExternalUrlsXResult(
-    @SerializedName("spotify") val spotify: String
-)
-
-@Serializable
-data class ExternalUrlsResult(
-    @SerializedName("spotify") val spotify: String
-)
-
-@Serializable
 data class RemoteRelease(
     @SerializedName("album_type") val album_type: String,
     @SerializedName("artists") val artists: List<ArtistResult>,
@@ -107,7 +97,7 @@ data class RemoteRelease(
     @SerializedName("total_tracks") val total_tracks: Int,
     @SerializedName("tracks") val tracks: TracksResult,
     @SerializedName("type") val type: String,
-    @SerializedName("uri") val uri: String,
+    @SerializedName("uri") val uri: String
 )
 
 @Serializable
@@ -118,7 +108,7 @@ data class TracksResult(
     @SerializedName("next") val next: Int? = 0,
     @SerializedName("offset") val offset: Int? = 0,
     @SerializedName("previous") val previous: Int? = 0,
-    @SerializedName("total") val total: Int,
+    @SerializedName("total") val total: Int
 )
 
 @Serializable
@@ -136,16 +126,21 @@ data class TrackResult(
     @SerializedName("preview_url") val preview_url: String?,
     @SerializedName("track_number") val track_number: Int,
     @SerializedName("type") val type: String,
-    @SerializedName("uri") val uri: String,
+    @SerializedName("uri") val uri: String
+)
+
+@Serializable
+data class ExternalUrlsResult(
+    @SerializedName("spotify") val spotify: String
 )
 
 @Serializable
 data class ExternalIdsResult(
-    @SerializedName("upc") val upc: String,
+    @SerializedName("upc") val upc: String
 )
 
 @Serializable
 data class CopyrightResult(
     @SerializedName("text") val text: String,
-    @SerializedName("type") val type: String,
+    @SerializedName("type") val type: String
 )

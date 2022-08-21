@@ -1,24 +1,29 @@
 package com.ac.musicac.di
 
 import android.app.Application
+import androidx.lifecycle.SavedStateHandle
 import androidx.room.Room
 import com.ac.musicac.BuildConfig
 import com.ac.musicac.data.Constants
+import com.ac.musicac.data.PermissionChecker
 import com.ac.musicac.data.database.MusicAcDatabase
+import com.ac.musicac.data.database.dao.AuthenticationDao
+import com.ac.musicac.data.datasource.LocationDataSource
 import com.ac.musicac.data.server.APIService
+import com.ac.musicac.data.server.AndroidPermissionChecker
+import com.ac.musicac.data.server.PlayServicesLocationDataSource
 import com.ac.musicac.data.server.interceptor.AuthorizationHeader
 import com.ac.musicac.data.server.interceptor.TokenHeader
 import com.ac.musicac.data.server.service.SpotifyAuthenticationService
 import com.ac.musicac.data.server.service.SpotifyService
-import com.ac.musicac.di.qualifier.ApiUrl
-import com.ac.musicac.di.qualifier.AuthenticationApiUrl
-import com.ac.musicac.di.qualifier.ClientId
-import com.ac.musicac.di.qualifier.ClientSecret
-import com.ac.musicac.di.qualifier.JsonFactory
+import com.ac.musicac.di.qualifier.*
+import com.ac.musicac.ui.main.artist.ArtistFragmentArgs
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
@@ -56,12 +61,12 @@ object AppModule {
     @Provides
     @Singleton
     @ClientId
-    fun providesClientId(): String = "88a836718f2640aeb371d3039c982f74"
+    fun providesClientId(): String = BuildConfig.spotifyClientId
 
     @Provides
     @Singleton
     @ClientSecret
-    fun providesClientSecret(): String = "236563df9f3740e5be8a30e795590ab0"
+    fun providesClientSecret(): String = BuildConfig.spotifyClientSecret
 
     @ExperimentalSerializationApi
     @Provides
@@ -71,6 +76,7 @@ object AppModule {
         val json = Json {
             ignoreUnknownKeys = true
             coerceInputValues = true
+            explicitNulls = false
         }
         return json.asConverterFactory(contentType)
     }
@@ -94,7 +100,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideTokenHeader(): TokenHeader = TokenHeader()
+    fun provideTokenHeader(dao: AuthenticationDao): TokenHeader = TokenHeader(dao)
 
     @Provides
     @Singleton
@@ -115,7 +121,7 @@ object AppModule {
     @Provides
     @Singleton
     fun provideSpotifyApiService(
-        @AuthenticationApiUrl apiUrl: String,
+        @ApiUrl apiUrl: String,
         tokenHeader: TokenHeader,
         httpLoggingInterceptor: HttpLoggingInterceptor,
         @JsonFactory jsonFactory : Converter.Factory
@@ -127,4 +133,24 @@ object AppModule {
             arrayOf(tokenHeader, httpLoggingInterceptor)
         )
     }
+
+    @Provides
+    @ViewModelScoped
+    @ArtistId
+    fun provideArtistId(savedStateHandle: SavedStateHandle) = ArtistFragmentArgs.fromSavedStateHandle(savedStateHandle)
+
+
+
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+abstract class AppDataModule {
+
+    @Binds
+    abstract fun bindLocationDataSource(locationDataSource: PlayServicesLocationDataSource): LocationDataSource
+
+    @Binds
+    abstract fun bindPermissionChecker(permissionChecker: AndroidPermissionChecker): PermissionChecker
+
 }

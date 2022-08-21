@@ -1,6 +1,6 @@
 package com.ac.musicac.data.server.service
 
-import com.ac.musicac.data.server.AuthenticationResult
+import com.ac.musicac.data.server.model.authentication.AuthenticationResult
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST

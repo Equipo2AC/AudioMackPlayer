@@ -1,6 +1,6 @@
 plugins {
-    id("java-library")
-    id("org.jetbrains.kotlin.jvm")
+    id(Plugins.javaLibrary)
+    id(Plugins.kotlinJVM)
 }
 
 java {
@@ -9,8 +9,10 @@ java {
 }
 
 dependencies {
-    implementation(project(":domain"))
-    implementation(project(":data"))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:_")
-    implementation("javax.inject:javax.inject:_")
+    implementation(project(Modules.domain))
+    implementation(project(Modules.data))
+    implementation(Libs.Kotlin.Coroutines.core)
+    implementation(Libs.JavaX.inject)
+    implementation(Libs.Arrow.core)
+
 }

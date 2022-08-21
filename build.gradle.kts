@@ -1,5 +1,8 @@
-import io.gitlab.arturbosch.detekt.Detekt
-
+/*buildscript {
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10")
+    }
+}*/
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 @Suppress("GradlePluginVersion")
@@ -10,11 +13,12 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:_")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:_")
-        classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:_")
-//        classpath("com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:_")
-        classpath("com.google.dagger:hilt-android-gradle-plugin:_")
+        classpath(ClassPatch.androidGradlePlugin)
+        classpath(ClassPatch.kotlinGradlePlugin)
+        classpath(ClassPatch.detektGradlePlugin)
+        classpath(ClassPatch.secretsGradlePlugin)
+        classpath(ClassPatch.hiltAndroidGradlePlugin)
+        classpath(ClassPatch.navigationSafeArgs)
     }
 }
 

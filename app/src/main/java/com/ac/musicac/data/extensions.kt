@@ -4,9 +4,9 @@ import android.util.Base64
 import arrow.core.Either
 import arrow.core.left
 import arrow.core.right
+import com.ac.musicac.domain.Error
 import okio.IOException
 import retrofit2.HttpException
-import com.ac.musicac.domain.Error
 
 fun String.encodeBase64(): String =
     Base64.encodeToString(this.toByteArray(charset("UTF-8")), Base64.NO_WRAP)

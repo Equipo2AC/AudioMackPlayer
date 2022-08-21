@@ -1,25 +1,27 @@
 import org.jetbrains.kotlin.konan.properties.Properties
 
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
-    id("org.jetbrains.kotlin.plugin.serialization")
-    id("dagger.hilt.android.plugin")
-//    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    id(Plugins.application)
+    id(Plugins.android)
+    id(Plugins.kapt)
+    id(Plugins.kotlinSerialization)
+    id(Plugins.hiltAndroid)
+    id(Plugins.secret)
+    id(Plugins.safeArgs)
+    // id("org.jetbrains.kotlin.android")
 }
 
 android {
-    compileSdk = 32
+    compileSdk = AppConfig.compileSdk
 
     defaultConfig {
-        applicationId = "com.ac.musicac"
-        minSdk = 23
-        targetSdk = 32
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = AppConfig.applicationId
+        minSdk = AppConfig.minSdk
+        targetSdk = AppConfig.targetSdk
+        versionCode = AppConfig.versionCode
+        versionName = AppConfig.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = AppConfig.testInstrumentationRunner
     }
 
     buildTypes {
@@ -35,46 +37,60 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-//    secrets {
-//        propertiesFileName = "secrets.properties"
-//    }
+    secrets {
+        propertiesFileName = AppConfig.propertiesFileName
+    }
 
-//    signingConfigs {
-//        val properties = Properties().apply {
-//            load(File(secrets.propertiesFileName).reader())
-//        }
-//        getByName("debug") {
-//            keyAlias = (properties["debugKeyAlias"] ?: "") as String
-//            keyPassword = (properties["debugKeyPassword"] ?: "") as String
-//            storeFile = file((properties["debugKeyFileName"] ?: "") as String)
-//            storePassword = (properties["debugKeyPassword"] ?: "") as String
-//        }
-//    }
+    buildFeatures {
+        dataBinding = true
+    }
+
+    signingConfigs {
+        val properties = Properties().apply {
+            load(File(secrets.propertiesFileName).reader())
+        }
+        getByName("debug") {
+            keyAlias = (properties["debugKeyAlias"] ?: "") as String
+            keyPassword = (properties["debugKeyPassword"] ?: "") as String
+            storeFile = file((properties["debugKeyFileName"] ?: "") as String)
+            storePassword = (properties["debugKeyPassword"] ?: "") as String
+        }
+    }
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:_")
-    implementation("androidx.appcompat:appcompat:_")
-    implementation("com.google.android.material:material:_")
-    implementation("androidx.constraintlayout:constraintlayout:_")
-    implementation("com.squareup.retrofit2:retrofit:_")
-    implementation("com.squareup.okhttp3:logging-interceptor:_")
-    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:_")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:_")
-    implementation("com.google.dagger:hilt-android:_")
-    implementation("io.arrow-kt:arrow-core:_")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:_")
-    implementation("androidx.room:room-runtime:_")
-    implementation("androidx.room:room-ktx:_")
-    kapt("androidx.room:room-compiler:_")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:_")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:_")
-    implementation("androidx.activity:activity-ktx:_")
-    kapt("com.google.dagger:hilt-compiler:_")
-    testImplementation ("junit:junit:_")
-    androidTestImplementation ("androidx.test.ext:junit:_")
-    androidTestImplementation ("androidx.test.espresso:espresso-core:_")
-    implementation(project(":data"))
-    implementation(project(":domain"))
-    implementation(project(":usecases"))
+    //LIBS
+    implementation(Libs.AndroidX.coreKtx)
+    implementation(Libs.AndroidX.appCompat)
+    implementation(Libs.AndroidX.material)
+    implementation(Libs.AndroidX.constraintLayout)
+    implementation(Libs.Retrofit.retrofit)
+    implementation(Libs.OkHttp3.loginInterceptor)
+    implementation(Libs.Retrofit.kotlinSerializationConverter)
+    implementation(Libs.Kotlin.serializationJson)
+    implementation(Libs.Hilt.android)
+    implementation(Libs.Arrow.core)
+    implementation(Libs.Kotlin.Coroutines.core)
+    implementation(Libs.AndroidX.Room.runtime)
+    implementation(Libs.AndroidX.Room.ktx)
+    kapt(Libs.AndroidX.Room.compiler)
+    implementation(Libs.AndroidX.Navigation.fragmentKtx)
+    implementation(Libs.AndroidX.Navigation.uiKtx)
+    implementation(Libs.AndroidX.Lifecycle.viewmodelKtx)
+    implementation(Libs.AndroidX.Fragment.ktx)
+    implementation(Libs.AndroidX.Lifecycle.runtimeKtx)
+    implementation(Libs.AndroidX.Activity.ktx)
+    kapt(Libs.Hilt.compiler)
+    implementation(Libs.Retrofit.converterGson)
+    implementation(Libs.Glide.glide)
+    kapt (Libs.Glide.compiler)
+    implementation(Libs.playServicesLocation)
+    //TESTING
+    testImplementation (Libs.JUnit.junit)
+    androidTestImplementation (Libs.AndroidX.Test.Ext.junit)
+    androidTestImplementation (Libs.AndroidX.Test.Espresso.core)
+    //MODULES
+    implementation(project(Modules.data))
+    implementation(project(Modules.domain))
+    implementation(project(Modules.usescases))
 }

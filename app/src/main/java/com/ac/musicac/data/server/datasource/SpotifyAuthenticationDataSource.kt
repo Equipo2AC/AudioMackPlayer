@@ -4,7 +4,7 @@ import arrow.core.Either
 import com.ac.musicac.data.GranType
 import com.ac.musicac.data.datasource.AuthenticationRemoteDataSource
 import com.ac.musicac.data.server.APIService
-import com.ac.musicac.data.server.AuthenticationResult
+import com.ac.musicac.data.server.model.authentication.AuthenticationResult
 import com.ac.musicac.data.server.service.SpotifyAuthenticationService
 import com.ac.musicac.data.tryCall
 import com.ac.musicac.domain.Error

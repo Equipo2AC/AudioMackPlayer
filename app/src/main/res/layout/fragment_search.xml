@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="java.util.List" />
+
+        <import type="com.ac.musicac.domain.Item" />
+
+        <import type="com.ac.musicac.domain.Type" />
+
+        <variable
+            name="onChooseTypeChanged"
+            type="com.ac.musicac.ui.main.search.OnChooseTypeChanged" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
+        <variable
+            name="type"
+            type="com.ac.musicac.domain.Type" />
+
+        <variable
+            name="query"
+            type="String" />
+
+        <variable
+            name="items"
+            type="List&lt;Item>" />
+
+        <variable
+            name="error"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:theme="@style/AppTheme.DarkOverlay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:statusBarForeground="?attr/colorPrimaryVariant">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:menu="@menu/search_menu"
+                app:popupTheme="@style/AppTheme.DarkOverlay"
+                app:title="@string/search_title" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <HorizontalScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:singleSelection="true"
+                app:visible="@{!query.isEmpty()}"
+                app:onChooseTypeChanged="@{onChooseTypeChanged}">
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    app:chipBackgroundColor="@color/chip_bg_states"
+                    android:clickable="@{type != Type.ALBUM}"
+                    android:checked="@{type == Type.ALBUM}"
+                    android:textColor="@{type == Type.ALBUM ? @color/white : @color/black}"
+                    android:text="@string/chip_album" />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    app:chipBackgroundColor="@color/chip_bg_states"
+                    android:clickable="@{type != Type.ARTIST}"
+                    android:checked="@{type == Type.ARTIST}"
+                    android:textColor="@{type == Type.ARTIST ? @color/white : @color/black}"
+                    android:text="@string/chip_artist" />
+            </com.google.android.material.chip.ChipGroup>
+
+        </HorizontalScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:overScrollMode="never"
+            app:search_items="@{items}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView"
+            app:type="@{type}"
+            app:visible="@{ error == null &amp;&amp; loading == false }"
+            tools:itemCount="4"
+            tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/view_album" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:indeterminate="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+            app:visible="@{loading}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

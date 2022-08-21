@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_releases"
+    app:startDestination="@id/releases_dest">
+
+    <fragment
+        android:id="@+id/releases_dest"
+        android:name="com.ac.musicac.ui.main.releases.list.ReleasesFragment"
+        android:label="ReleasesFragment">
+
+        <action
+            android:id="@+id/action_releases_to_detail"
+            app:destination="@id/release_detail_dest"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/release_detail_dest"
+        android:name="com.ac.musicac.ui.main.releases.detail.ReleaseDetailFragment"
+        android:label="ReleaseDetailFragment">
+
+        <argument
+            android:name="albumId"
+            app:argType="string"/>
+
+    </fragment>
+
+</navigation>

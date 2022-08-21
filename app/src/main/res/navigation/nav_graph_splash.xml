@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_splash"
+    app:startDestination="@id/splash_dest">
+
+    <fragment
+        android:id="@+id/splash_dest"
+        android:name="com.ac.musicac.ui.splash.SplashFragment"
+        android:label="SplashFragment" >
+
+        <action
+            android:id="@+id/action_splash_to_home"
+            app:destination="@id/nav_graph_home" />
+
+        <action
+            android:id="@+id/action_splash_to_releases"
+            app:destination="@id/nav_graph_releases" />
+
+    </fragment>
+
+    <include app:graph="@navigation/nav_graph_home" />
+    <include app:graph="@navigation/nav_graph_releases" />
+    <include app:graph="@navigation/nav_graph_search" />
+
+</navigation>

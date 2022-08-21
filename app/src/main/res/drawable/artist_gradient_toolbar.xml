@@ -7,13 +7,26 @@
 
             <gradient
                 android:startColor="#00FFFFFF"
-                android:centerColor="#00FFFFFF"
-                android:endColor="#5F5C5C"
+                android:endColor="#616161"
                 android:angle="90">
             </gradient>
 
         </shape>
 
+        <!--<shape>
+
+            <gradient
+                android:type="radial"
+                android:centerX="0.275"
+                android:centerY="0.55"
+                android:gradientRadius="40%p"
+                android:startColor="#373636"
+                android:endColor="#00FFFFFF">
+            </gradient>
+
+        </shape>-->
+
     </item>
+
 
 </selector>

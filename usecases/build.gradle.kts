@@ -9,10 +9,16 @@ java {
 }
 
 dependencies {
+    //MODULES
     implementation(project(Modules.domain))
     implementation(project(Modules.data))
+    //LIBS
     implementation(Libs.Kotlin.Coroutines.core)
     implementation(Libs.JavaX.inject)
     implementation(Libs.Arrow.core)
+    //TEST
+    implementation(Libs.JUnit.junit)
+    implementation(Libs.Mockito.kotlin)
+    implementation(Libs.Mockito.inline)
 
 }

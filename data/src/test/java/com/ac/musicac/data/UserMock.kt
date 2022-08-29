@@ -1,4 +1,4 @@
-package com.ac.musicac.data.repository
+package com.ac.musicac.data
 
 import com.ac.musicac.domain.User
 

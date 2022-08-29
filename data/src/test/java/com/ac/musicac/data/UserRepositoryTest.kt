@@ -1,8 +1,9 @@
-package com.ac.musicac.data.repository
+package com.ac.musicac.data
 
 import arrow.core.left
 import arrow.core.right
 import com.ac.musicac.data.datasource.UserRemoteDataSource
+import com.ac.musicac.data.repository.UserRepository
 import com.ac.musicac.domain.Error
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert

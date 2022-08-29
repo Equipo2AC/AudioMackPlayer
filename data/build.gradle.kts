@@ -16,7 +16,7 @@ dependencies {
     implementation(Libs.Kotlin.Coroutines.core)
     implementation(Libs.JavaX.inject)
     //TEST
-    implementation(Libs.JUnit.junit)
-    implementation(Libs.Mockito.kotlin)
-    implementation(Libs.Mockito.inline)
+    testImplementation(Libs.JUnit.junit)
+    testImplementation(Libs.Mockito.kotlin)
+    testImplementation(Libs.Mockito.inline)
 }

@@ -87,6 +87,9 @@ dependencies {
     implementation(Libs.playServicesLocation)
     //TESTING
     testImplementation (Libs.JUnit.junit)
+    testImplementation (Libs.Mockito.kotlin)
+    testImplementation (Libs.Mockito.inline)
+    testImplementation (Libs.Kotlin.Coroutines.test)
     androidTestImplementation (Libs.AndroidX.Test.Ext.junit)
     androidTestImplementation (Libs.AndroidX.Test.Espresso.core)
     //MODULES

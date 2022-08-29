@@ -90,6 +90,7 @@ dependencies {
     testImplementation (Libs.Mockito.kotlin)
     testImplementation (Libs.Mockito.inline)
     testImplementation (Libs.Kotlin.Coroutines.test)
+    testImplementation (Libs.turbine)
     androidTestImplementation (Libs.AndroidX.Test.Ext.junit)
     androidTestImplementation (Libs.AndroidX.Test.Espresso.core)
     //MODULES

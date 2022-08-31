@@ -19,7 +19,7 @@ class NavHostState(
     }
 
     fun navigateToHome() {
-        // TODO SHOW HOME SCREEN.
+        navController.navigate(R.id.nav_graph_home)
     }
 
     fun navigateToSearch() {

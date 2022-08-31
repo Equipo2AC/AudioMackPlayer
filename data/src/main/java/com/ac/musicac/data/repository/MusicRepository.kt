@@ -17,6 +17,10 @@ class MusicRepository @Inject constructor(
     private val musicRemoteDataSource: MusicRemoteDataSource
 ) {
 
+    val savedArtists = artistLocalDataSource.artists
+
+    val savedAlbums = albumLocalDataSource.albums
+
     suspend fun getReleases(): Either<Error?, Releases> {
         return musicRemoteDataSource.getReleases(regionRepository.findLastRegion()).fold(
             ifLeft = { it.left() },
@@ -43,6 +47,26 @@ class MusicRepository @Inject constructor(
             ifLeft = { it.left() },
             ifRight = { it.right() }
         )
+    }
+
+    suspend fun getSeveralArtist(ids: String): Error? {
+        if(artistLocalDataSource.isEmpty()) {
+            val artists = musicRemoteDataSource.getSeveralArtist(ids)
+            artists.fold(ifLeft = {return it}) {
+                artistLocalDataSource.save(it)
+            }
+        }
+        return null
+    }
+
+    suspend fun getSeveralAlbums(ids: String): Error? {
+        if(albumLocalDataSource.isEmpty()) {
+            val albums = musicRemoteDataSource.getSeveralAlbums(ids)
+            albums.fold(ifLeft = {return it}) {
+                albumLocalDataSource.save(it)
+            }
+        }
+        return null
     }
 
     suspend fun getArtistAlbums(id: String): Either<Error?, Albums> {

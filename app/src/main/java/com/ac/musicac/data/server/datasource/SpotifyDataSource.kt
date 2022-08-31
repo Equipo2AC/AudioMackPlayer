@@ -48,8 +48,12 @@ class SpotifyDataSource @Inject constructor(
         api.service.getArtist(id).toDomainModel()
     }
 
-    override suspend fun getSeveralArtist(id: String): Either<Error?, List<PopularArtist>> = tryCall {
-        api.service.getSeveralArtist(id).map { it.toDomainModel() }
+    override suspend fun getSeveralArtist(ids: String): Either<Error?, List<PopularArtist>> = tryCall {
+        api.service.getSeveralArtist(ids).map { it.toDomainModel() }
+    }
+
+    override suspend fun getSeveralAlbums(ids: String): Either<Error?, List<Item>> = tryCall {
+        api.service.getSeveralAlbums(ids).map { it.toDomainModel() }
     }
 
 

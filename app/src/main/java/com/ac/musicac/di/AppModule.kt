@@ -10,6 +10,10 @@ import com.ac.musicac.data.database.MusicAcDatabase
 import com.ac.musicac.data.database.dao.AlbumDao
 import com.ac.musicac.data.database.dao.ArtistDao
 import com.ac.musicac.data.database.dao.AuthenticationDao
+import com.ac.musicac.data.database.datasource.AlbumRoomDataSource
+import com.ac.musicac.data.database.datasource.ArtistRoomDataSource
+import com.ac.musicac.data.datasource.AlbumLocalDataSource
+import com.ac.musicac.data.datasource.ArtistLocalDataSource
 import com.ac.musicac.data.datasource.LocationDataSource
 import com.ac.musicac.data.server.APIService
 import com.ac.musicac.data.server.AndroidPermissionChecker
@@ -156,6 +160,12 @@ object AppModule {
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class AppDataModule {
+
+    @Binds
+    abstract fun bindArtistLocalDataSource(localDataSource: ArtistRoomDataSource): ArtistLocalDataSource
+
+    @Binds
+    abstract fun bindAlbumLocalDataSource(localDataSource: AlbumRoomDataSource): AlbumLocalDataSource
 
     @Binds
     abstract fun bindLocationDataSource(locationDataSource: PlayServicesLocationDataSource): LocationDataSource

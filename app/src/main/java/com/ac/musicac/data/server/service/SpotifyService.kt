@@ -22,6 +22,11 @@ interface SpotifyService {
         @Path("id") id : String,
         @Query("market") market: String): RemoteRelease
 
+    @GET("albums")
+    suspend fun getSeveralAlbums(
+        @Query("ids") id: String
+    ): List<ItemResult>
+
     @GET("search")
     suspend fun findSearch(
         @Query("type") type: String,

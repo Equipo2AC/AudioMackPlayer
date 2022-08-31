@@ -9,12 +9,12 @@ import com.ac.musicac.domain.Image
 @Entity
 data class ArtistEntity(
     @PrimaryKey(autoGenerate = true) val id: Int,
-    val externalUrls: ExternalUrls,
-    val followers: Followers,
-    val genres: List<String>,
+    val externalUrls: String,
+    val followers: Int,
+    val genres: String,
     val href: String,
     val artistId: String,
-    val images: List<Image>,
+    val images: String,
     val name: String,
     val popularity: Int,
     val type: String,

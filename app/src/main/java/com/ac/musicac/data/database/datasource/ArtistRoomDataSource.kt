@@ -4,9 +4,7 @@ import com.ac.musicac.data.database.dao.ArtistDao
 import com.ac.musicac.data.database.entity.ArtistEntity
 import com.ac.musicac.data.datasource.ArtistLocalDataSource
 import com.ac.musicac.data.tryCall
-import com.ac.musicac.domain.Image
-import com.ac.musicac.domain.PopularArtist
-import com.ac.musicac.domain.Error
+import com.ac.musicac.domain.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
@@ -37,12 +35,12 @@ private fun List<ArtistEntity>.toDomainModel(): List<PopularArtist> = map { it.t
 private fun ArtistEntity.toDomainModel(): PopularArtist =
     PopularArtist(
         id,
-        externalUrls,
-        followers,
-        genres,
+        ExternalUrls(externalUrls),
+        Followers("", followers),
+        listOf(genres),
         href,
         artistId,
-        images.map { it.toDomainModel() },
+        listOf(Image(0, images, 0)),
         name,
         popularity,
         type,
@@ -54,12 +52,12 @@ private fun List<PopularArtist>.fromDomainModel(): List<ArtistEntity> = map { it
 private fun PopularArtist.fromDomainModel(): ArtistEntity =
     ArtistEntity(
         0,
-        externalUrls,
-        followers,
-        genres,
+        externalUrls.spotify,
+        followers.total,
+        genres[0],
         href,
         artistId,
-        images.map { it.toDomainModel() },
+        images = images.get(0).url,
         name,
         popularity,
         type,

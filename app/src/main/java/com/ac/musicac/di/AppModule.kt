@@ -7,6 +7,8 @@ import com.ac.musicac.BuildConfig
 import com.ac.musicac.data.Constants
 import com.ac.musicac.data.PermissionChecker
 import com.ac.musicac.data.database.MusicAcDatabase
+import com.ac.musicac.data.database.dao.AlbumDao
+import com.ac.musicac.data.database.dao.ArtistDao
 import com.ac.musicac.data.database.dao.AuthenticationDao
 import com.ac.musicac.data.datasource.LocationDataSource
 import com.ac.musicac.data.server.APIService
@@ -46,7 +48,15 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providesAuthenticationDao(db: MusicAcDatabase) = db.authenticationDao()
+    fun providesAuthenticationDao(db: MusicAcDatabase): AuthenticationDao = db.authenticationDao()
+
+    @Provides
+    @Singleton
+    fun providesArtistDao(db: MusicAcDatabase): ArtistDao = db.artistDao()
+
+    @Provides
+    @Singleton
+    fun providesAlbumDao(db: MusicAcDatabase): AlbumDao = db.albumDao()
 
     @Provides
     @Singleton

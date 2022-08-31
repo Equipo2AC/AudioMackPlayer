@@ -32,6 +32,9 @@ interface SpotifyService {
     @GET("artists/{id}")
     suspend fun getArtist(@Path("id") id: String): ArtistViewResult
 
+    @GET("artists")
+    suspend fun getSeveralArtist(@Query("ids") id: String): List<ArtistViewResult>
+
     @GET("artists/{id}/albums")
     suspend fun getArtistAlbums(
         @Path("id") id : String,

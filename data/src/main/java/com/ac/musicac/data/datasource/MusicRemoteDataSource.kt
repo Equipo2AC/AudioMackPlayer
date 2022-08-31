@@ -26,6 +26,10 @@ interface MusicRemoteDataSource {
         id: String
     ): Either<Error?, PopularArtist>
 
+    suspend fun getSeveralArtist(
+        id: String
+    ): Either<Error?, List<PopularArtist>>
+
     suspend fun getArtistAlbums(
         id: String,
         limit: Int = 10,

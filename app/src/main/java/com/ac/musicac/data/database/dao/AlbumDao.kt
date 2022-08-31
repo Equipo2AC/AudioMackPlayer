@@ -15,7 +15,7 @@ interface AlbumDao {
     fun findById(id: Int): Flow<AlbumEntity>
 
     @Query("SELECT COUNT(id) FROM AlbumEntity")
-    suspend fun artistCount(): Int
+    suspend fun albumCount(): Int
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAlbum(album: AlbumEntity)

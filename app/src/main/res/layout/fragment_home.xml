@@ -39,11 +39,13 @@
             android:theme="@style/AppTheme.DarkOverlay"
             app:statusBarForeground="?attr/colorPrimaryVariant">
 
-            <androidx.appcompat.widget.Toolbar
+            <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:title="@string/home_title" />
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:title="@string/home_title"
+                app:popupTheme="@style/AppTheme.DarkOverlay" />
 
         </com.google.android.material.appbar.AppBarLayout>
 

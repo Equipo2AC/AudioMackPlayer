@@ -11,14 +11,14 @@ import javax.inject.Inject
 
 class ArtistRoomDataSource @Inject constructor(private val artistDao: ArtistDao): ArtistLocalDataSource {
 
-    override val artists: Flow<List<PopularArtist>> = artistDao.getAll().map { it.toDomainModel() }
+    override val artists: Flow<SeveralArtist> = artistDao.getAll().map { it.toDomainModel() }
 
     override suspend fun isEmpty(): Boolean = artistDao.artistCount() == 0
 
     override fun findById(id: Int): Flow<PopularArtist> = artistDao.findById(id).map { it.toDomainModel() }
 
-    override suspend fun save(artists: List<PopularArtist>): Error? = tryCall {
-        artistDao.insertAllArtist(artists.fromDomainModel())
+    override suspend fun save(artists: SeveralArtist): Error? = tryCall {
+        artistDao.insertAllArtist(artists.artists.fromDomainModel())
     }.fold(ifLeft = { it }, ifRight = { null })
 
     override suspend fun saveOnly(artist: PopularArtist): Error? = tryCall {
@@ -30,7 +30,10 @@ class ArtistRoomDataSource @Inject constructor(private val artistDao: ArtistDao)
     }.fold(ifLeft = { it }, ifRight = { null })
 }
 
-private fun List<ArtistEntity>.toDomainModel(): List<PopularArtist> = map { it.toDomainModel() }
+private fun List<ArtistEntity>.toDomainModel(): SeveralArtist =
+    SeveralArtist(
+        artists = map { it.toDomainModel() }
+    )
 
 private fun ArtistEntity.toDomainModel(): PopularArtist =
     PopularArtist(
@@ -54,17 +57,14 @@ private fun PopularArtist.fromDomainModel(): ArtistEntity =
         0,
         externalUrls.spotify,
         followers.total,
-        genres[0],
+        genres.maxOrNull() ?: "",
         href,
         artistId,
-        imageUrl = images.get(0).url,
+        images.maxOfOrNull { it.url } ?: "",
         name,
         popularity,
         type,
         uri
     )
 
-private fun Image.toDomainModel(): Image =
-    Image(
-        height, url, width
-    )
+

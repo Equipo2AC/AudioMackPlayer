@@ -5,7 +5,7 @@
 
     <data>
         <import type="java.util.List" />
-        <import type="com.ac.musicac.domain.Item" />
+        <import type="com.ac.musicac.domain.AlbumView" />
         <import type="com.ac.musicac.domain.PopularArtist" />
 
         <variable
@@ -14,7 +14,7 @@
 
         <variable
             name="albums"
-            type="List&lt;Item>" />
+            type="List&lt;AlbumView>" />
 
         <variable
             name="artists"
@@ -68,6 +68,7 @@
                     android:id="@+id/recycler_artist"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:padding="8dp"
                     android:background="@color/black"
                     app:artists_items="@{artists}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

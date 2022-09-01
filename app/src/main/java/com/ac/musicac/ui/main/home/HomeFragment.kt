@@ -34,19 +34,20 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         viewLifecycleOwner.launchAndCollect(viewModel.state) { state->
             state.loading?.let {
-                Toast.makeText(requireContext(), "Habemus error $it ", Toast.LENGTH_SHORT).show()
+
                 binding.loading = it
             }
             // binding.albums = state.albums
             // binding.artists = state.artists
 
             state.albums?.let {
-                // val album = it.get(0).image?.url
-                Toast.makeText(requireContext(), "Habemus Albumes  ", Toast.LENGTH_SHORT).show()
+                binding.albums = it.albums
+                Toast.makeText(requireContext(), "Albumes $it ", Toast.LENGTH_SHORT).show()
             }
             state.artists?.let {
                 // val artist = it.get(0).name
-                Toast.makeText(requireContext(), "Habemus Artistas ", Toast.LENGTH_SHORT).show()
+                binding.artists = it.artists
+                Toast.makeText(requireContext(), "Artistas $it  ", Toast.LENGTH_SHORT).show()
             }
             // binding.error = state.error?.let(releaseState::errorToString)
 

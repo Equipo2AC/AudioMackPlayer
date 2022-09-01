@@ -14,3 +14,7 @@ data class PopularArtist(
     val uri: String
 )
 
+data class SeveralArtist(
+    val artists: List<PopularArtist>
+)
+

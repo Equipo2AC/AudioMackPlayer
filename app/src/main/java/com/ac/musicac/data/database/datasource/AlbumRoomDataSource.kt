@@ -4,26 +4,24 @@ import com.ac.musicac.data.database.dao.AlbumDao
 import com.ac.musicac.data.database.entity.AlbumEntity
 import com.ac.musicac.data.datasource.AlbumLocalDataSource
 import com.ac.musicac.data.tryCall
-import com.ac.musicac.domain.Error
-import com.ac.musicac.domain.ExternalUrls
-import com.ac.musicac.domain.Image
-import com.ac.musicac.domain.Item
+import com.ac.musicac.domain.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class AlbumRoomDataSource @Inject constructor(private val albumDao: AlbumDao) : AlbumLocalDataSource {
-    override val albums: Flow<List<Item>> = albumDao.getAll().map { it.toDomainModel() }
+
+    override val albums: Flow<SeveralAlbums> = albumDao.getAll().map { it.toDomainModel() }
 
     override suspend fun isEmpty(): Boolean = albumDao.albumCount() == 0
 
-    override fun findById(id: Int): Flow<Item> = albumDao.findById(id).map { it.toDomainModel() }
+    override fun findById(id: Int): Flow<AlbumView> = albumDao.findById(id).map { it.toDomainModel() }
 
-    override suspend fun save(albums: List<Item>): Error? = tryCall {
-        albumDao.insertAllAlbums(albums.fromDomainModel())
+    override suspend fun save(albums: SeveralAlbums): Error? = tryCall {
+        albumDao.insertAllAlbums(albums.albums.fromDomainModel())
     }.fold(ifLeft = { it }, ifRight = { null })
 
-    override suspend fun saveOnly(album: Item): Error? = tryCall {
+    override suspend fun saveOnly(album: AlbumView): Error? = tryCall {
         albumDao.insertAlbum(album.fromDomainModel())
     }.fold(ifLeft = { it }, ifRight = { null })
 
@@ -32,45 +30,46 @@ class AlbumRoomDataSource @Inject constructor(private val albumDao: AlbumDao) : 
     }.fold(ifLeft = { it }, ifRight = { null })
 }
 
-private fun List<AlbumEntity>.toDomainModel(): List<Item> = map { it.toDomainModel() }
+private fun List<AlbumEntity>.toDomainModel(): SeveralAlbums =
+    SeveralAlbums(
+        albums = map { it.toDomainModel() }
+    )
 
-private fun AlbumEntity.toDomainModel(): Item =
-    Item(
+private fun AlbumEntity.toDomainModel(): AlbumView =
+    AlbumView(
         id,
         albumType,
-        artists,
+        listOf(),
         listOf(),
         ExternalUrls(externalUrls),
         href,
         albumId,
-        Image(0, imageUrl, 0),
+        imageUrl,
         name,
         releaseDate,
         releaseDatePrecision,
         totalTracks,
+        Tracks(listOf(), 0),
         type,
-        uri,
-        followers,
-        listOf(genres)
+        uri
     )
 
-private fun List<Item>.fromDomainModel(): List<AlbumEntity> = map { it.fromDomainModel() }
 
-private fun Item.fromDomainModel(): AlbumEntity =
+private fun List<AlbumView>.fromDomainModel(): List<AlbumEntity> = map { it.fromDomainModel() }
+
+private fun AlbumView.fromDomainModel(): AlbumEntity =
     AlbumEntity(
-        0,
-        albumType,
-        artists,
-        externalUrls.spotify,
+        id,
+        album_type,
+        artists.maxOfOrNull { it.name } ?: "",
+        external_urls.spotify,
         href,
-        itemId,
-        imageUrl = image?.url!!,
+        albumId,
+        imageUrl = image!!,
         name,
-        releaseDate,
-        releaseDatePrecision,
-        totalTracks,
+        release_date,
+        release_date_precision,
+        total_tracks,
         type,
         uri,
-        followers,
-        genres.get(0)
     )

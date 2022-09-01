@@ -75,11 +75,4 @@ class MusicRepository @Inject constructor(
             ifRight = { it.right() }
         )
     }
-
-    /*suspend fun getArtistTopTracks(id: String): Either<Error?, ArtistTopTrack> {
-        return remoteRemoteDataSource.getArtistTopTracks(id, regionRepository.findLastRegion()).fold(
-            ifLeft = { it.left() },
-            ifRight = { it.right() }
-        )
-    }*/
 }

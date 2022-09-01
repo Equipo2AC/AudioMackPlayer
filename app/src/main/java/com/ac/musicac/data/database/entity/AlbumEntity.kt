@@ -21,6 +21,6 @@ data class AlbumEntity(
     val totalTracks: Int,
     val type: String,
     val uri: String,
-    val followers: Int,
-    val genres: String
+    // val followers: Int,
+    // val genres: String
 )

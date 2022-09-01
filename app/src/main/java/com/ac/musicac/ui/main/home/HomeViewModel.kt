@@ -42,10 +42,11 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             _state.value = _state.value.copy(loading = true)
             val error = requestSeveralArtistUseCase(artistIds)
-            /*val error2 = requestSeveralAlbumUseCase(albumsIds)
-            if (error2 != null) {
+            // val error2 = requestSeveralAlbumUseCase(albumsIds)
+            /*if (error2 != null) {
                 _state.value = _state.value.copy(loading = false, error = error2)
-            }*/
+            }
+            _state.value = _state.value.copy(loading = false, error = error)*/
             _state.value = _state.value.copy(loading = false, error = error)
         }
     }
@@ -54,8 +55,8 @@ class HomeViewModel @Inject constructor(
 
     data class UiState(
         val loading: Boolean? = null,
-        val artists: List<PopularArtist>? = null,
-        val albums: List<Item>? = null,
+        val artists: SeveralArtist? = null,
+        val albums: SeveralAlbums? = null,
         val error: Error? = null
     )
 

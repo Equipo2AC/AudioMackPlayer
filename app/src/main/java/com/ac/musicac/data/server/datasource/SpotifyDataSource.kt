@@ -3,7 +3,7 @@ package com.ac.musicac.data.server.datasource
 import arrow.core.Either
 import com.ac.musicac.data.datasource.MusicRemoteDataSource
 import com.ac.musicac.data.server.APIService
-import com.ac.musicac.data.server.model.artist.*
+import com.ac.musicac.data.server.model.main.*
 import com.ac.musicac.data.server.model.releases.*
 import com.ac.musicac.data.server.service.SpotifyService
 import com.ac.musicac.data.tryCall
@@ -48,12 +48,12 @@ class SpotifyDataSource @Inject constructor(
         api.service.getArtist(id).toDomainModel()
     }
 
-    override suspend fun getSeveralArtist(ids: String): Either<Error?, List<PopularArtist>> = tryCall {
-        api.service.getSeveralArtist(ids).map { it.toDomainModel() }
+    override suspend fun getSeveralArtist(ids: String): Either<Error?, SeveralArtist> = tryCall {
+        api.service.getSeveralArtist(ids).toDomainModel()
     }
 
-    override suspend fun getSeveralAlbums(ids: String): Either<Error?, List<Item>> = tryCall {
-        api.service.getSeveralAlbums(ids).map { it.toDomainModel() }
+    override suspend fun getSeveralAlbums(ids: String): Either<Error?, SeveralAlbums> = tryCall {
+        api.service.getSeveralAlbums(ids).toDomainModel()
     }
 
 
@@ -114,6 +114,36 @@ private fun ArtistsResult.toDomainModel(): Artists =
         offset,
         previous,
         total
+    )
+
+private fun SeveralArtistsResult.toDomainModel(): SeveralArtist =
+    SeveralArtist(
+        artists.map { it.toDomainModel() }
+    )
+
+private fun SeveralAlbumsResult.toDomainModel(): SeveralAlbums =
+    SeveralAlbums (
+        albums.map { it.toDomainModel() }
+    )
+
+private fun AlbumViewResult.toDomainModel(): AlbumView =
+    AlbumView(
+        0,
+        albumType ?: "",
+        artists.map{ it.toDomainModel() } ,
+        availableMarkets ?: listOf(),
+        externalUrls.toDomainModel(),
+        href,
+        albumId = id,
+        // images.maxByOrNull { it.height }?.toDomainModel(),
+        image = images[0].url ?: "",
+        name,
+        releaseDate ?: "",
+        releaseDatePrecision ?: "",
+        totalTracks ?: 0,
+        tracks.toDomainModel(),
+        type,
+        uri
     )
 
 private fun ArtistViewResult.toDomainModel(): PopularArtist =

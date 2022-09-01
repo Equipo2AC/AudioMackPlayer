@@ -8,6 +8,7 @@ import com.ac.musicac.data.database.dao.AuthenticationDao
 import com.ac.musicac.data.database.entity.AlbumEntity
 import com.ac.musicac.data.database.entity.ArtistEntity
 import com.ac.musicac.data.database.entity.AuthenticationEntity
+import com.ac.musicac.domain.Image
 
 @Database(entities = [AuthenticationEntity::class, ArtistEntity::class, AlbumEntity::class], version = 1, exportSchema = false)
 abstract class MusicAcDatabase : RoomDatabase() {

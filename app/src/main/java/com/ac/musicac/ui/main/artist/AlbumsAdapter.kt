@@ -10,7 +10,8 @@ import com.ac.musicac.domain.Item
 import com.ac.musicac.ui.common.basicDiffUtil
 import com.ac.musicac.ui.common.inflate
 
-class AlbumsAdapter : ListAdapter<Item, AlbumsAdapter.ViewHolder>(basicDiffUtil { old, new -> old.id == new.id }) {
+class AlbumsAdapter (private val listener: (Item) -> Unit) :
+    ListAdapter<Item, AlbumsAdapter.ViewHolder>(basicDiffUtil { old, new -> old.id == new.id }) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = parent.inflate(R.layout.view_popular_album, false)
@@ -20,6 +21,7 @@ class AlbumsAdapter : ListAdapter<Item, AlbumsAdapter.ViewHolder>(basicDiffUtil 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val album = getItem(position)
         holder.bind(album)
+        holder.itemView.setOnClickListener { listener(album) }
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

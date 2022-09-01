@@ -10,11 +10,11 @@ data class AlbumEntity(
     @PrimaryKey(autoGenerate = true) val id: Int,
     val albumType: String,
     val artists: String,
-    val availableMarkets: List<String>,
-    val externalUrls: ExternalUrls,
+    // val availableMarkets: List<String>,
+    val externalUrls: String,
     val href: String,
     val albumId: String,
-    val image: Image?,
+    val imageUrl: String,
     val name: String,
     val releaseDate: String,
     val releaseDatePrecision: String,
@@ -22,5 +22,5 @@ data class AlbumEntity(
     val type: String,
     val uri: String,
     val followers: Int,
-    val genres: List<String>
+    val genres: String
 )

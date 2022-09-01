@@ -14,7 +14,7 @@ data class ArtistEntity(
     val genres: String,
     val href: String,
     val artistId: String,
-    val images: String,
+    val imageUrl: String,
     val name: String,
     val popularity: Int,
     val type: String,

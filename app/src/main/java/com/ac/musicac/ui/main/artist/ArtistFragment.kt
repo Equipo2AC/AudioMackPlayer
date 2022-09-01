@@ -9,6 +9,9 @@ import androidx.navigation.fragment.navArgs
 import com.ac.musicac.R
 import com.ac.musicac.databinding.FragmentArtistBinding
 import com.ac.musicac.ui.common.launchAndCollect
+import com.ac.musicac.ui.main.releases.list.ReleasesAdapter
+import com.ac.musicac.ui.main.releases.list.ReleasesState
+import com.ac.musicac.ui.main.releases.list.buildReleasesState
 import com.ac.musicac.ui.main.search.SearchState
 import com.ac.musicac.ui.main.search.buildSearchState
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,14 +20,14 @@ import dagger.hilt.android.AndroidEntryPoint
 class ArtistFragment: Fragment(R.layout.fragment_artist) {
 
     private val safeArgs: ArtistFragmentArgs by navArgs()
-    private lateinit var searchState: SearchState
+    private lateinit var artistState: ArtistState
     private val viewModel : ArtistViewModel by viewModels()
     private lateinit var binding: FragmentArtistBinding
-    private val adapter = AlbumsAdapter()
+    private val adapter = AlbumsAdapter { artistState.onAlbumClicked(it) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        searchState = buildSearchState()
+        artistState = buildArtistState()
         binding = FragmentArtistBinding.bind(view).apply {
             recycler.adapter = adapter
             artistToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }

@@ -4,6 +4,7 @@ import androidx.room.*
 import com.ac.musicac.data.database.entity.ArtistEntity
 import kotlinx.coroutines.flow.Flow
 
+@Dao
 interface ArtistDao {
 
     @Query("SELECT * FROM ArtistEntity")

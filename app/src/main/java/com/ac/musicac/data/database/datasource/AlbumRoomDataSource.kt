@@ -5,6 +5,8 @@ import com.ac.musicac.data.database.entity.AlbumEntity
 import com.ac.musicac.data.datasource.AlbumLocalDataSource
 import com.ac.musicac.data.tryCall
 import com.ac.musicac.domain.Error
+import com.ac.musicac.domain.ExternalUrls
+import com.ac.musicac.domain.Image
 import com.ac.musicac.domain.Item
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -37,11 +39,11 @@ private fun AlbumEntity.toDomainModel(): Item =
         id,
         albumType,
         artists,
-        availableMarkets,
-        externalUrls,
+        listOf(),
+        ExternalUrls(externalUrls),
         href,
         albumId,
-        image,
+        Image(0, imageUrl, 0),
         name,
         releaseDate,
         releaseDatePrecision,
@@ -49,7 +51,7 @@ private fun AlbumEntity.toDomainModel(): Item =
         type,
         uri,
         followers,
-        genres
+        listOf(genres)
     )
 
 private fun List<Item>.fromDomainModel(): List<AlbumEntity> = map { it.fromDomainModel() }
@@ -59,11 +61,10 @@ private fun Item.fromDomainModel(): AlbumEntity =
         0,
         albumType,
         artists,
-        availableMarkets,
-                externalUrls,
+        externalUrls.spotify,
         href,
         itemId,
-        image,
+        imageUrl = image?.url!!,
         name,
         releaseDate,
         releaseDatePrecision,
@@ -71,5 +72,5 @@ private fun Item.fromDomainModel(): AlbumEntity =
         type,
         uri,
         followers,
-        genres
+        genres.get(0)
     )

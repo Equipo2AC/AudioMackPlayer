@@ -5,17 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ac.musicac.R
-import com.ac.musicac.databinding.ViewAlbumBinding
 import com.ac.musicac.databinding.ViewPopularAlbumBinding
 import com.ac.musicac.domain.Item
 import com.ac.musicac.ui.common.basicDiffUtil
 import com.ac.musicac.ui.common.inflate
 
-class AlbumsAdapter (private val listener: (Item) -> Unit) :
-    ListAdapter<Item, AlbumsAdapter.ViewHolder>(basicDiffUtil { old, new -> old.id == new.id }) {
+class ArtistsAlbumsAdapter (private val listener: (Item) -> Unit) :
+    ListAdapter<Item, ArtistsAlbumsAdapter.ViewHolder>(basicDiffUtil { old, new -> old.id == new.id }) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = parent.inflate(R.layout.view_album, false)
+        val view = parent.inflate(R.layout.view_popular_album, false)
         return ViewHolder(view)
     }
 
@@ -26,9 +25,9 @@ class AlbumsAdapter (private val listener: (Item) -> Unit) :
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val binding = ViewAlbumBinding.bind(view)
+        private val binding = ViewPopularAlbumBinding.bind(view)
         fun bind(album: Item) {
-            binding.item = album
+            binding.album = album
         }
     }
 

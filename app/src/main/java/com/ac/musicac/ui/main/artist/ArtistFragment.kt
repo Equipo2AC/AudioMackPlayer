@@ -23,7 +23,7 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
     private lateinit var artistState: ArtistState
     private val viewModel : ArtistViewModel by viewModels()
     private lateinit var binding: FragmentArtistBinding
-    private val adapter = AlbumsAdapter { artistState.onAlbumClicked(it) }
+    private val adapter = ArtistsAlbumsAdapter { artistState.onAlbumClicked(it) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

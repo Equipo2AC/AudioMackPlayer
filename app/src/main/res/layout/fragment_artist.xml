@@ -77,9 +77,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:transitionGroup="true">
+                android:layout_height="wrap_content">
 
                 <com.ac.musicac.ui.main.artist.ArtistInfoView
                     android:id="@+id/artist_info_view"

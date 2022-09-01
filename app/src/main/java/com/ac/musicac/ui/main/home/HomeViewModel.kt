@@ -23,7 +23,8 @@ class HomeViewModel @Inject constructor(
     val state: StateFlow<UiState> = _state.asStateFlow()
 
     // A comma-separated list of the Spotify IDs for the albums. Maximum: 20 IDs.
-    private val ids = "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc"
+    private val artistIds = "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6"
+    private val albumsIds = "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc"
 
     init {
         viewModelScope.launch {
@@ -31,28 +32,28 @@ class HomeViewModel @Inject constructor(
                 .catch { cause -> _state.update { it.copy(error = cause.toError()) }}
                 .collect{ artists -> _state.update { UiState( artists = artists) } }
 
-            getSeveralAlbumUseCase()
+            /*getSeveralAlbumUseCase()
                 .catch { cause -> _state.update { it.copy(error = cause.toError()) }}
-                .collect{ albums -> _state.update { UiState( albums = albums) } }
+                .collect{ albums -> _state.update { UiState( albums = albums) } }*/
         }
     }
 
     fun onUiReady() {
         viewModelScope.launch {
-            _state.value = _state.value.copy(isLoading = true)
-            val error = requestSeveralArtistUseCase(ids)
-            val error2 = requestSeveralAlbumUseCase(ids)
+            _state.value = _state.value.copy(loading = true)
+            val error = requestSeveralArtistUseCase(artistIds)
+            /*val error2 = requestSeveralAlbumUseCase(albumsIds)
             if (error2 != null) {
-                _state.value = _state.value.copy(isLoading = false, error = error2)
-            }
-            _state.value = _state.value.copy(isLoading = false, error = error)
+                _state.value = _state.value.copy(loading = false, error = error2)
+            }*/
+            _state.value = _state.value.copy(loading = false, error = error)
         }
     }
 
 
 
     data class UiState(
-        val isLoading: Boolean? = null,
+        val loading: Boolean? = null,
         val artists: List<PopularArtist>? = null,
         val albums: List<Item>? = null,
         val error: Error? = null

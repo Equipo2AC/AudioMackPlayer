@@ -1,4 +1,4 @@
-package com.ac.musicac.ui.main.artist
+package com.ac.musicac.ui.main.home
 
 import android.view.View
 import android.view.ViewGroup
@@ -6,9 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ac.musicac.R
 import com.ac.musicac.databinding.ViewAlbumBinding
-import com.ac.musicac.databinding.ViewPopularAlbumBinding
 import com.ac.musicac.domain.AlbumView
-import com.ac.musicac.domain.Item
 import com.ac.musicac.ui.common.basicDiffUtil
 import com.ac.musicac.ui.common.inflate
 

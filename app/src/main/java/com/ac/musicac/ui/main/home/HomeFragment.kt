@@ -8,9 +8,6 @@ import androidx.fragment.app.viewModels
 import com.ac.musicac.R
 import com.ac.musicac.databinding.FragmentHomeBinding
 import com.ac.musicac.ui.common.launchAndCollect
-import com.ac.musicac.ui.main.artist.AlbumsAdapter
-import com.ac.musicac.ui.main.artist.ArtistsAdapter
-import com.ac.musicac.ui.main.releases.list.ReleasesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -46,8 +43,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
             state.artists?.let {
                 // val artist = it.get(0).name
-                binding.artists = it.artists
-                Toast.makeText(requireContext(), "Artistas $it  ", Toast.LENGTH_SHORT).show()
+                // binding.artists = it.artists
+                Toast.makeText(requireContext(), "Artistas ${it.artists.size} ", Toast.LENGTH_SHORT).show()
             }
             // binding.error = state.error?.let(releaseState::errorToString)
 

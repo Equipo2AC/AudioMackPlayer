@@ -23,11 +23,12 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             app:ratio="1"
-            app:url="@{artist.images.get(0).url}"
             tools:src="@drawable/ic_search"
+            app:url="@{artist.images[0].url}"
             />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/artist_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

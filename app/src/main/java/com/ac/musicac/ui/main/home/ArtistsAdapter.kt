@@ -1,4 +1,4 @@
-package com.ac.musicac.ui.main.artist
+package com.ac.musicac.ui.main.home
 
 import android.view.View
 import android.view.ViewGroup

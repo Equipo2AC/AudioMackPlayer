@@ -4,8 +4,6 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ac.musicac.domain.AlbumView
 import com.ac.musicac.domain.PopularArtist
-import com.ac.musicac.ui.main.artist.AlbumsAdapter
-import com.ac.musicac.ui.main.artist.ArtistsAdapter
 
 @BindingAdapter("albums_items")
 fun RecyclerView.setAlbums(albums: List<AlbumView>?) {

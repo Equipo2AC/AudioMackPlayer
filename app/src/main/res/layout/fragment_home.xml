@@ -56,37 +56,37 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
-                <HorizontalScrollView
-                    android:id="@+id/scrollView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_artist"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:padding="8dp"
+                        android:background="@color/black"
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_artist"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:padding="8dp"
-                    android:background="@color/black"
-                    app:artists_items="@{artists}"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:visible="@{ error == null }" />
+                        app:artists_items="@{artists}"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:visible="@{ error == null }"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:listitem="@layout/view_artist"/>
 
-                </HorizontalScrollView>
 
-                <androidx.recyclerview.widget.RecyclerView
+                <!--<androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_albums"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/black"
-                    app:layout_constraintTop_toBottomOf="@id/scrollView"
+                    app:layout_constraintTop_toBottomOf="@id/recycler_artist"
                     app:albums_items="@{albums}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:visible="@{ error == null }" />
+                    app:visible="@{ error == null }"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -98,19 +98,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:indeterminate="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:visible="@{loading}" />
 
-        <TextView
+        <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             android:textColor="?attr/colorError"
-            android:text="@{error}"/>
+            android:text="@{error}"/>-->
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

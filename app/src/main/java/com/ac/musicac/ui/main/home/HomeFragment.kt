@@ -23,7 +23,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
         homeState = buildHomeState()
         binding = FragmentHomeBinding.bind(view).apply {
-            recyclerAlbums.adapter = albumsAdapter
+            // recyclerAlbums.adapter = albumsAdapter
             recyclerArtist.adapter = artistAdapter
         }
 
@@ -43,7 +43,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
             state.artists?.let {
                 // val artist = it.get(0).name
-                // binding.artists = it.artists
+                binding.artists = it.artists
                 Toast.makeText(requireContext(), "Artistas ${it.artists.size} ", Toast.LENGTH_SHORT).show()
             }
             // binding.error = state.error?.let(releaseState::errorToString)

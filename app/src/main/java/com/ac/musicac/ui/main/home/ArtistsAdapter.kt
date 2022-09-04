@@ -1,5 +1,6 @@
 package com.ac.musicac.ui.main.home
 
+import android.provider.Settings.Secure.getString
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
@@ -9,6 +10,7 @@ import com.ac.musicac.databinding.ViewArtistBinding
 import com.ac.musicac.domain.PopularArtist
 import com.ac.musicac.ui.common.basicDiffUtil
 import com.ac.musicac.ui.common.inflate
+import java.text.DecimalFormat
 
 class ArtistsAdapter (private val listener: (PopularArtist) -> Unit) :
     ListAdapter<PopularArtist, ArtistsAdapter.ViewHolder>(basicDiffUtil { old, new -> old.id == new.id }) {
@@ -28,6 +30,8 @@ class ArtistsAdapter (private val listener: (PopularArtist) -> Unit) :
         private val binding = ViewArtistBinding.bind(view)
         fun bind(artist: PopularArtist) {
             binding.artist = artist
+            val followers = DecimalFormat().format(artist.followers.total ).toString()
+            binding.artistFollowers.text = "Seguidores: " + followers
         }
     }
 }

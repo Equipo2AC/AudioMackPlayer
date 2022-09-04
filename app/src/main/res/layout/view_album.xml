@@ -24,8 +24,7 @@
             android:layout_height="150dp"
             app:ratio="1"
             app:url="@{item.image.url}"
-            tools:src="@drawable/ic_search"
-            />
+            tools:src="@drawable/ic_search" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"

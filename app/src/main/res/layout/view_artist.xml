@@ -10,6 +10,11 @@
         <variable
             name="artist"
             type="PopularArtist" />
+
+        <variable
+            name="followers"
+            type="int" />
+
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -22,10 +27,8 @@
         <com.ac.musicac.ui.common.AspectRatioImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            app:ratio="1"
-            tools:src="@drawable/ic_search"
-            app:url="@{artist.images[0].url}"
-            />
+            app:circleCrop="true"
+            app:url="@{artist.images[0].url}" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/artist_name"
@@ -41,6 +44,7 @@
             tools:text="@tools:sample/lorem/random" />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/artist_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/darker_gray"
@@ -51,6 +55,7 @@
             tools:text="Arctic Monkeys" />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/artist_followers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/darker_gray"
@@ -58,7 +63,6 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:layout_marginBottom="16dp"
-            android:text="@{artist.followers.total}"
             tools:text="2010" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

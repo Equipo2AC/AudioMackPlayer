@@ -9,7 +9,11 @@
         <import type="com.ac.musicac.domain.PopularArtist" />
 
         <variable
-            name="loading"
+            name="loadingAlbums"
+            type="boolean" />
+
+        <variable
+            name="loadingArtists"
             type="boolean" />
 
         <variable
@@ -58,47 +62,89 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycler_artist"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:padding="8dp"
-                        android:background="@color/black"
+                <TextView
+                    android:id="@+id/recent_artists_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recent_artists_title"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+                    android:textColor="@color/light_gray"
+                    android:textSize="32sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                        app:artists_items="@{artists}"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        app:visible="@{ error == null }"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:listitem="@layout/view_artist"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_artist"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:background="@color/black"
+                    app:artists_items="@{artists}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:visible="@{ error == null }"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recent_artists_title"
+                    tools:listitem="@layout/view_artist"/>
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/progress_artists"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    app:layout_constraintBottom_toBottomOf="@+id/recycler_artist"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/recycler_artist"
+                    app:visible="@{loadingArtists}" />
+
+                <TextView
+                    android:id="@+id/recent_albums_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recent_albums_title"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+                    android:textColor="@color/light_gray"
+                    android:textSize="32sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recycler_artist" />
 
 
-                <!--<androidx.recyclerview.widget.RecyclerView
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_albums"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
                     android:background="@color/black"
-                    app:layout_constraintTop_toBottomOf="@id/recycler_artist"
                     app:albums_items="@{albums}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:visible="@{ error == null }"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />-->
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recent_albums_title"
+                    tools:listitem="@layout/view_album" />
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/progress_albums"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    app:layout_constraintBottom_toBottomOf="@+id/recycler_albums"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/recycler_albums"
+                    app:visible="@{loadingAlbums}" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
-
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:indeterminate="true"
-            app:visible="@{loading}" />
 
         <!--<TextView
             android:layout_width="wrap_content"

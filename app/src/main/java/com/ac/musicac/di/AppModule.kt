@@ -148,24 +148,16 @@ object AppModule {
         )
     }
 
-    @Provides
+    /*@Provides
     @ViewModelScoped
     @ArtistId
-    fun provideArtistId(savedStateHandle: SavedStateHandle) = ArtistFragmentArgs.fromSavedStateHandle(savedStateHandle)
-
-
+    fun provideArtistId(savedStateHandle: SavedStateHandle) = ArtistFragmentArgs.fromSavedStateHandle(savedStateHandle)*/
 
 }
 
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class AppDataModule {
-
-    @Binds
-    abstract fun bindArtistLocalDataSource(localDataSource: ArtistRoomDataSource): ArtistLocalDataSource
-
-    @Binds
-    abstract fun bindAlbumLocalDataSource(localDataSource: AlbumRoomDataSource): AlbumLocalDataSource
 
     @Binds
     abstract fun bindLocationDataSource(locationDataSource: PlayServicesLocationDataSource): LocationDataSource

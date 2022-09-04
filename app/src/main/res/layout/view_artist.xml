@@ -27,7 +27,7 @@
         <com.ac.musicac.ui.common.AspectRatioImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            app:circleCrop="true"
+            app:circleCrop="@{true}"
             app:url="@{artist.images[0].url}" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -41,7 +41,7 @@
             android:textStyle="bold"
             android:textSize="13sp"
             android:ellipsize="end"
-            tools:text="@tools:sample/lorem/random" />
+            tools:text="Nombre Artista" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/artist_type"
@@ -52,7 +52,7 @@
             android:text="@{artist.type}"
             android:maxLines="1"
             android:ellipsize="end"
-            tools:text="Arctic Monkeys" />
+            tools:text="Tipo de Artista" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/artist_followers"
@@ -60,10 +60,11 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/darker_gray"
             android:textSize="12sp"
+            android:textStyle="italic|bold"
             android:ellipsize="end"
             android:maxLines="1"
             android:layout_marginBottom="16dp"
-            tools:text="2010" />
+            tools:text="Followers" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

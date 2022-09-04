@@ -2,6 +2,7 @@ package com.ac.musicac.data.database.datasource
 
 import com.ac.musicac.data.database.dao.AlbumDao
 import com.ac.musicac.data.database.entity.AlbumEntity
+import com.ac.musicac.data.database.entity.ArtistEntity
 import com.ac.musicac.data.datasource.AlbumLocalDataSource
 import com.ac.musicac.data.tryCall
 import com.ac.musicac.domain.*
@@ -48,12 +49,12 @@ private fun AlbumEntity.toDomainModel(): AlbumView =
         name,
         releaseDate,
         releaseDatePrecision,
+        restrictions = "",
         totalTracks,
         Tracks(listOf(), 0),
         type,
         uri
     )
-
 
 private fun List<AlbumView>.fromDomainModel(): List<AlbumEntity> = map { it.fromDomainModel() }
 
@@ -61,7 +62,7 @@ private fun AlbumView.fromDomainModel(): AlbumEntity =
     AlbumEntity(
         id,
         album_type,
-        artists.maxOfOrNull { it.name } ?: "",
+        artists?.maxOfOrNull { it.name } ?: "",
         external_urls.spotify,
         href,
         albumId,

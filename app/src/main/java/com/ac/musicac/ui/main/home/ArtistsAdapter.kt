@@ -31,7 +31,7 @@ class ArtistsAdapter (private val listener: (PopularArtist) -> Unit) :
         fun bind(artist: PopularArtist) {
             binding.artist = artist
             val followers = DecimalFormat().format(artist.followers.total ).toString()
-            binding.artistFollowers.text = "Seguidores: " + followers
+            binding.artistFollowers.text = "$followers Seguidores."
         }
     }
 }

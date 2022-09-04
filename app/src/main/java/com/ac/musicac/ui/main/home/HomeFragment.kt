@@ -13,7 +13,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
-    private val viewModel: HomeViewModel by viewModels()
+    // private val artistViewModel: HomeArtistsViewModel by viewModels()
+    private val albumsViewModel: HomeAlbumsViewModel by viewModels()
     private lateinit var binding : FragmentHomeBinding
     private lateinit var homeState: HomeState
     private val albumsAdapter = AlbumsAdapter { homeState.onAlbumClicked(it) }
@@ -23,32 +24,40 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
         homeState = buildHomeState()
         binding = FragmentHomeBinding.bind(view).apply {
-            // recyclerAlbums.adapter = albumsAdapter
+            recyclerAlbums.adapter = albumsAdapter
             recyclerArtist.adapter = artistAdapter
         }
 
-        viewModel.onUiReady()
+        // artistViewModel.onUiReady()
+        albumsViewModel.onUiReady()
 
-        viewLifecycleOwner.launchAndCollect(viewModel.state) { state->
+
+        viewLifecycleOwner.launchAndCollect(albumsViewModel.state) { state->
+            // binding.albums = state.albums?.albums
+
             state.loading?.let {
-
-                binding.loading = it
+                binding.loadingAlbums = it
             }
-            // binding.albums = state.albums
-            // binding.artists = state.artists
 
             state.albums?.let {
                 binding.albums = it.albums
                 Toast.makeText(requireContext(), "Albumes $it ", Toast.LENGTH_SHORT).show()
             }
-            state.artists?.let {
-                // val artist = it.get(0).name
-                binding.artists = it.artists
-                Toast.makeText(requireContext(), "Artistas ${it.artists.size} ", Toast.LENGTH_SHORT).show()
+            state.error?.let {
+                Toast.makeText(requireContext(), "Habemus error en albumes $it ", Toast.LENGTH_SHORT).show()
             }
-            // binding.error = state.error?.let(releaseState::errorToString)
-
         }
+
+        /*viewLifecycleOwner.launchAndCollect(artistViewModel.state) { state->
+            binding.artists = state.artists?.artists
+
+            state.loading?.let {
+                binding.loadingArtists = it
+            }
+            state.error?.let {
+                // Toast.makeText(requireContext(), "Habemus error en artistas $it ", Toast.LENGTH_SHORT).show()
+            }
+        }*/
     }
 
 }

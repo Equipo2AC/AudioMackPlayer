@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ac.musicac.R
 import com.ac.musicac.databinding.ViewAlbumBinding
+
 import com.ac.musicac.domain.AlbumView
 import com.ac.musicac.ui.common.basicDiffUtil
 import com.ac.musicac.ui.common.inflate
@@ -27,8 +28,7 @@ class AlbumsAdapter (private val listener: (AlbumView) -> Unit) :
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ViewAlbumBinding.bind(view)
         fun bind(album: AlbumView) {
-            // binding.item = album
-
+            binding.album = album
         }
     }
 

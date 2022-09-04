@@ -13,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
-    // private val artistViewModel: HomeArtistsViewModel by viewModels()
+    private val artistViewModel: HomeArtistsViewModel by viewModels()
     private val albumsViewModel: HomeAlbumsViewModel by viewModels()
     private lateinit var binding : FragmentHomeBinding
     private lateinit var homeState: HomeState
@@ -28,9 +28,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             recyclerArtist.adapter = artistAdapter
         }
 
-        // artistViewModel.onUiReady()
+        artistViewModel.onUiReady()
         albumsViewModel.onUiReady()
-
 
         viewLifecycleOwner.launchAndCollect(albumsViewModel.state) { state->
             // binding.albums = state.albums?.albums
@@ -48,7 +47,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
         }
 
-        /*viewLifecycleOwner.launchAndCollect(artistViewModel.state) { state->
+        viewLifecycleOwner.launchAndCollect(artistViewModel.state) { state->
             binding.artists = state.artists?.artists
 
             state.loading?.let {
@@ -57,7 +56,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             state.error?.let {
                 // Toast.makeText(requireContext(), "Habemus error en artistas $it ", Toast.LENGTH_SHORT).show()
             }
-        }*/
+        }
     }
 
 }

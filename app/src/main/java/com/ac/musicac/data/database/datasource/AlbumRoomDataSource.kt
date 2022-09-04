@@ -4,6 +4,7 @@ import com.ac.musicac.data.database.dao.AlbumDao
 import com.ac.musicac.data.database.entity.AlbumEntity
 import com.ac.musicac.data.database.entity.ArtistEntity
 import com.ac.musicac.data.datasource.AlbumLocalDataSource
+import com.ac.musicac.data.server.datasource.getArtistsName
 import com.ac.musicac.data.tryCall
 import com.ac.musicac.domain.*
 import kotlinx.coroutines.flow.Flow
@@ -42,14 +43,17 @@ private fun AlbumEntity.toDomainModel(): AlbumView =
         albumType,
         listOf(),
         listOf(),
+        ExternalIds(external_ids),
         ExternalUrls(externalUrls),
+        listOf(genres),
         href,
         albumId,
         imageUrl,
+        label,
         name,
+        popularity,
         releaseDate,
         releaseDatePrecision,
-        restrictions = "",
         totalTracks,
         Tracks(listOf(), 0),
         type,
@@ -62,15 +66,27 @@ private fun AlbumView.fromDomainModel(): AlbumEntity =
     AlbumEntity(
         id,
         album_type,
-        artists?.maxOfOrNull { it.name } ?: "",
+        getArtists(artists),
+        external_ids.upc,
         external_urls.spotify,
+        genres.toString(),
         href,
         albumId,
         imageUrl = image ?: "",
+        label,
         name,
+        popularity,
         release_date,
         release_date_precision,
         total_tracks,
         type,
         uri,
     )
+
+private fun getArtists(artists: List<Artist>?): String {
+    val names: MutableList<String> = mutableListOf()
+    artists?.map {
+        names.add(it.name)
+    }
+    return names.joinToString(", ")
+}

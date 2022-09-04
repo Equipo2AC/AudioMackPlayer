@@ -79,7 +79,7 @@ data class ImageResult(
 )
 
 @Serializable
-data class RemoteRelease(
+data class AlbumsReleasesResult(
     @SerializedName("album_type") val album_type: String,
     @SerializedName("artists") val artists: List<ArtistResult>,
     @SerializedName("copyrights") val copyrights: List<CopyrightResult>,

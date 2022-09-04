@@ -22,7 +22,7 @@ interface SpotifyService {
     @GET("albums/{id}")
     suspend fun getReleaseDetail(
         @Path("id") id : String,
-        @Query("market") market: String): RemoteRelease
+        @Query("market") market: String): AlbumsReleasesResult
 
     @GET("albums")
     suspend fun getSeveralAlbums(

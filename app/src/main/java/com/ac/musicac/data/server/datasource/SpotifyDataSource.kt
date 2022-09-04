@@ -73,7 +73,7 @@ private fun ReleasesResult.toDomainModel(): Releases =
         albums.toDomainModel()
     )
 
-private fun RemoteRelease.toDomainModel(): Release =
+private fun AlbumsReleasesResult.toDomainModel(): Release =
     Release(
         album_type,
         getArtistsName(artists),
@@ -131,17 +131,20 @@ private fun AlbumViewResult.toDomainModel(): AlbumView =
         0,
         album_type,
         artists?.map{ it.toDomainModel() } ?: listOf() ,
-        available_markets,
+        copyrights.map { it.toDomainModel() },
+        external_ids.toDomainModel(),
         external_urls.toDomainModel(),
+        genres,
         href,
         albumId = id,
         image = images[0].url,
+        label,
         name,
+        popularity,
         release_date,
         release_date_precision ,
-        restrictions?.reason,
         total_tracks,
-        tracks?.toDomainModel() ?: Tracks(listOf(), 0) ,
+        tracks.toDomainModel() ,
         type,
         uri
     )

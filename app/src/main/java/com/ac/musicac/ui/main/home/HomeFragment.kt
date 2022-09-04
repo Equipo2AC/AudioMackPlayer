@@ -44,7 +44,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 Toast.makeText(requireContext(), "Albumes $it ", Toast.LENGTH_SHORT).show()
             }
             state.error?.let {
-                Toast.makeText(requireContext(), "Habemus error en albumes $it ", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Error $it ", Toast.LENGTH_SHORT).show()
             }
         }
 

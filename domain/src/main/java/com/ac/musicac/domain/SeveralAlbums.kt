@@ -7,7 +7,7 @@ data class SeveralAlbums(
 data class AlbumView(
     val id: Int,
     val album_type: String,
-    val artists: List<PopularArtist>?,
+    val artists: List<Artist>?,
     val available_markets: List<String>,
     val external_urls: ExternalUrls,
     val href: String,

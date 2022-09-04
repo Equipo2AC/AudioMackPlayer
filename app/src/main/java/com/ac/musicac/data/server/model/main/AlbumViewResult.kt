@@ -1,5 +1,6 @@
 package com.ac.musicac.data.server.model.main
 
+import com.ac.musicac.data.server.model.releases.ArtistResult
 import com.ac.musicac.data.server.model.releases.ExternalUrlsResult
 import com.ac.musicac.data.server.model.releases.ImageResult
 import com.ac.musicac.data.server.model.releases.TracksResult
@@ -10,7 +11,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class AlbumViewResult(
     @SerializedName("album_type") val album_type: String,
-    @SerializedName("artists") val artists: List<ArtistViewResult>?,
+    @SerializedName("artists") val artists: List<ArtistResult>?,
     @SerializedName("available_markets") val available_markets: List<String>,
     @SerializedName("external_urls") val external_urls: ExternalUrlsResult,
     @SerializedName("href") val href: String,

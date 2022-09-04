@@ -66,7 +66,7 @@ private fun AlbumView.fromDomainModel(): AlbumEntity =
         external_urls.spotify,
         href,
         albumId,
-        imageUrl = image!!,
+        imageUrl = image ?: "",
         name,
         release_date,
         release_date_precision,

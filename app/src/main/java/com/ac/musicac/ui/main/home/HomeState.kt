@@ -21,13 +21,13 @@ class HomeState (
     private val navController: NavController) {
 
     fun onAlbumClicked(album: AlbumView) {
-        // val action = ArtistFragmentDirections.actionHomeToAlbum(album.itemId)
-        // navController.navigate(action)
+        val action = HomeFragmentDirections.actionHomeToAlbum(album.albumId)
+        navController.navigate(action)
     }
 
     fun onArtistClicked(artist: PopularArtist) {
-        // val action = ArtistFragmentDirections.actionHomeToArtist(artist.artistId)
-        // navController.navigate(action)
+        val action = HomeFragmentDirections.actionHomeToArtist(artist.artistId)
+        navController.navigate(action)
     }
 
     fun errorToString(error: Error) = when (error) {

@@ -34,9 +34,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         viewLifecycleOwner.launchAndCollect(albumsViewModel.state) { state->
             binding.albums = state.albums?.albums
+            binding.releases = state.albums?.albums
 
             state.loading?.let {
                 binding.loadingAlbums = it
+
             }
 
             state.error?.let {

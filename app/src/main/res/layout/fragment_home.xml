@@ -17,12 +17,16 @@
             type="boolean" />
 
         <variable
+            name="artists"
+            type="List&lt;PopularArtist>" />
+
+        <variable
             name="albums"
             type="List&lt;AlbumView>" />
 
         <variable
-            name="artists"
-            type="List&lt;PopularArtist>" />
+            name="releases"
+            type="List&lt;AlbumView>" />
 
         <variable
             name="error"
@@ -161,7 +165,7 @@
                     android:orientation="horizontal"
                     android:padding="8dp"
                     android:background="@color/black"
-                    app:albums_items="@{albums}"
+                    app:releases_items="@{releases}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:visible="@{ error == null }"
                     app:layout_constraintEnd_toEndOf="parent"

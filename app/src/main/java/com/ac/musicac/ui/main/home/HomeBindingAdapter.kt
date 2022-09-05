@@ -12,6 +12,13 @@ fun RecyclerView.setAlbums(albums: List<AlbumView>?) {
     }
 }
 
+@BindingAdapter("releases_items")
+fun RecyclerView.setReleases(albums: List<AlbumView>?) {
+    if (albums != null) {
+        (adapter as? AlbumsAdapter)?.submitList(albums)
+    }
+}
+
 @BindingAdapter("artists_items")
 fun RecyclerView.setArtists(artists: List<PopularArtist>?) {
     if (artists != null) {

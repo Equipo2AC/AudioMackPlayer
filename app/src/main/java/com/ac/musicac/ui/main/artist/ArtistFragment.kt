@@ -47,8 +47,13 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
 
     private fun withArtistUpdateUI(state: ArtistViewModel.UiState) = with(binding) {
         loading = state.loading
-        item = state.artist
+        // item = state.artist
         albumlist = state.topAlbums?.items?.sortedBy { it.releaseDate }?.reversed()
+
+        state.artist?.let {
+            item = state.artist
+            Log.e("Artis ID", it.artistId)
+        }
 
         state.error?.let {
             val error = artistState.errorToString(it)

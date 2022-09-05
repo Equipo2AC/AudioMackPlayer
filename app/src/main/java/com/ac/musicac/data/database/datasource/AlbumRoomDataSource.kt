@@ -67,7 +67,7 @@ private fun AlbumView.fromDomainModel(): AlbumEntity =
         id,
         album_type,
         getArtists(artists),
-        external_ids.upc,
+        external_ids?.upc ?: "",
         external_urls.spotify,
         genres.toString(),
         href,

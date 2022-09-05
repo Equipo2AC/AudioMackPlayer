@@ -21,7 +21,9 @@ class HomeArtistsViewModel @Inject constructor(
     val state: StateFlow<UiState> = _state.asStateFlow()
 
     // A comma-separated list of the Spotify IDs for the albums. Maximum: 20 IDs.
-    private val artistIds = "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6,2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6"
+    private val artistIds = "2CIMQHirSU0MQqyYHq0eOx,52iwsT98xCoGgiGntTiR7K,716NhGYqD1jl2wI1Qkgq36," +
+            "4q3ewBCX7sLwd24euuV69X,1bAftSH8umNcGZ0uyV7LMg,790FomKkXshlbRYZFtlgla," +
+            "2R21vXR83lH98kGeO99Y66,1Cs0zKBU1kc0i8ypK3B9ai,1Xyo4u8uXC1ZmMpatF05PJ"
 
     init {
         viewModelScope.launch {

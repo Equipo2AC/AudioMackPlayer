@@ -1,6 +1,7 @@
 package com.ac.musicac.ui.main.artist
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
@@ -50,7 +51,8 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
         albumlist = state.topAlbums?.items?.sortedBy { it.releaseDate }?.reversed()
 
         state.error?.let {
-            Toast.makeText(requireContext(), "Habemus Error $it ", Toast.LENGTH_SHORT).show()
+            val error = artistState.errorToString(it)
+            Toast.makeText(requireContext(), "Error $error ", Toast.LENGTH_SHORT).show()
         }
     }
 }

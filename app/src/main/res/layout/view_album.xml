@@ -18,12 +18,23 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:foreground="?attr/selectableItemBackground"
+        android:padding="6dp"
         tools:background="@color/black">
 
-        <com.ac.musicac.ui.common.AspectRatioImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            app:url="@{album.image}" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:backgroundTint="@color/light_gray"
+            app:cardCornerRadius="15dp">
+
+            <com.ac.musicac.ui.common.AspectRatioImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:url="@{album.image}" />
+
+
+        </androidx.cardview.widget.CardView>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/artist_name"

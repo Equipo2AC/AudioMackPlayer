@@ -125,7 +125,6 @@
                     app:albums_items="@{albums}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:visible="@{ error == null }"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/recent_albums_title"
@@ -142,17 +141,47 @@
                     app:layout_constraintTop_toTopOf="@+id/recycler_albums"
                     app:visible="@{loadingAlbums}" />
 
+                <TextView
+                    android:id="@+id/release_albums_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/release_title"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+                    android:textColor="@color/light_gray"
+                    android:textSize="32sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recycler_albums" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_releases"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:background="@color/black"
+                    app:albums_items="@{albums}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:visible="@{ error == null }"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/release_albums_title"
+                    tools:listitem="@layout/view_album" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
 
-        <!--<TextView
+        <TextView
+            android:id="@+id/tv_error"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:text="@{error}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
             android:textColor="?attr/colorError"
-            android:text="@{error}"/>-->
+            app:visible="@{ error != null }" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

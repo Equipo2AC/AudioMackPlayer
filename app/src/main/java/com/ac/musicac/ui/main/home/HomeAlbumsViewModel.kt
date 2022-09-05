@@ -25,7 +25,9 @@ class HomeAlbumsViewModel @Inject constructor(
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state.asStateFlow()
 
-    private val albumsIds = "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc"
+    private val albumsIds = "6jbtHi5R0jMXoliU2OS0lo,4PNqWiJAfjj32hVvlchV5u,3RQQmkQEvNCY4prGKE6oc5," +
+            "7rE2qU0GsiIiNd4VPupV3B,4yNnIoQh8y1uDB6ScOS2vx,1wLB2bnCl2m5m9M9g8r93Y," +
+            "6GHUywBU0u92lg0Dhrt40R,6gQKAYf3TJM9sppw3AtbHH,6WaruQqgJzSlSzZz2YdUku"
 
     init {
         viewModelScope.launch {

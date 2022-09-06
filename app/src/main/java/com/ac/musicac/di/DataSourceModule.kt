@@ -1,10 +1,9 @@
 package com.ac.musicac.di
 
+import com.ac.musicac.data.database.datasource.AlbumRoomDataSource
+import com.ac.musicac.data.database.datasource.ArtistRoomDataSource
 import com.ac.musicac.data.database.datasource.AuthenticationRoomDataSource
-import com.ac.musicac.data.datasource.AuthenticationLocalDataSource
-import com.ac.musicac.data.datasource.AuthenticationRemoteDataSource
-import com.ac.musicac.data.datasource.MusicRemoteDataSource
-import com.ac.musicac.data.datasource.UserRemoteDataSource
+import com.ac.musicac.data.datasource.*
 import com.ac.musicac.data.server.datasource.SpotifyAuthenticationDataSource
 import com.ac.musicac.data.server.datasource.SpotifyDataSource
 import com.ac.musicac.data.server.datasource.SpotifyUserServerDataSource
@@ -36,5 +35,15 @@ abstract class DataSourceModule {
     abstract fun bindRemoteSpotifyDataSource(
         remoteDataSource: SpotifyDataSource
     ): MusicRemoteDataSource
+
+    @Binds
+    abstract fun bindArtistLocalDataSource(
+        localDataSource: ArtistRoomDataSource
+    ): ArtistLocalDataSource
+
+    @Binds
+    abstract fun bindAlbumLocalDataSource(
+        localDataSource: AlbumRoomDataSource
+    ): AlbumLocalDataSource
 
 }

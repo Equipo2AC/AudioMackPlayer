@@ -1,32 +1,24 @@
-package com.ac.musicac.ui.main.home
+package com.ac.musicac.ui.main.artist
 
 import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.ac.musicac.R
-import com.ac.musicac.domain.AlbumView
 import com.ac.musicac.domain.Error
 import com.ac.musicac.domain.Item
-import com.ac.musicac.domain.PopularArtist
 
-
-fun Fragment.buildHomeState(
+fun Fragment.buildArtistState(
     context: Context = requireContext(),
-    navController: NavController = findNavController(),
-) = HomeState(context, navController)
+    navController: NavController = findNavController()
+) = ArtistState(context, navController)
 
-class HomeState (
+class ArtistState (
     private val context: Context,
     private val navController: NavController) {
 
-    fun onAlbumClicked(album: AlbumView) {
-        val action = HomeFragmentDirections.actionHomeToAlbum(album.albumId)
-        navController.navigate(action)
-    }
-
-    fun onArtistClicked(artist: PopularArtist) {
-        val action = HomeFragmentDirections.actionHomeToArtist(artist.artistId)
+    fun onAlbumClicked(album: Item) {
+        val action = ArtistFragmentDirections.actionArtistToAlbum(album.itemId)
         navController.navigate(action)
     }
 

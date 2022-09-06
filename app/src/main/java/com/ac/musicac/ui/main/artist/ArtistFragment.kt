@@ -1,6 +1,7 @@
 package com.ac.musicac.ui.main.artist
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
@@ -9,6 +10,9 @@ import androidx.navigation.fragment.navArgs
 import com.ac.musicac.R
 import com.ac.musicac.databinding.FragmentArtistBinding
 import com.ac.musicac.ui.common.launchAndCollect
+import com.ac.musicac.ui.main.releases.list.ReleasesAdapter
+import com.ac.musicac.ui.main.releases.list.ReleasesState
+import com.ac.musicac.ui.main.releases.list.buildReleasesState
 import com.ac.musicac.ui.main.search.SearchState
 import com.ac.musicac.ui.main.search.buildSearchState
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,14 +21,14 @@ import dagger.hilt.android.AndroidEntryPoint
 class ArtistFragment: Fragment(R.layout.fragment_artist) {
 
     private val safeArgs: ArtistFragmentArgs by navArgs()
-    private lateinit var searchState: SearchState
+    private lateinit var artistState: ArtistState
     private val viewModel : ArtistViewModel by viewModels()
     private lateinit var binding: FragmentArtistBinding
-    private val adapter = AlbumsAdapter()
+    private val adapter = ArtistsAlbumsAdapter { artistState.onAlbumClicked(it) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        searchState = buildSearchState()
+        artistState = buildArtistState()
         binding = FragmentArtistBinding.bind(view).apply {
             recycler.adapter = adapter
             artistToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
@@ -43,11 +47,17 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
 
     private fun withArtistUpdateUI(state: ArtistViewModel.UiState) = with(binding) {
         loading = state.loading
-        item = state.artist
+        // item = state.artist
         albumlist = state.topAlbums?.items?.sortedBy { it.releaseDate }?.reversed()
 
+        state.artist?.let {
+            item = state.artist
+            Log.e("Artis ID", it.artistId)
+        }
+
         state.error?.let {
-            Toast.makeText(requireContext(), "Habemus Error $it ", Toast.LENGTH_SHORT).show()
+            val error = artistState.errorToString(it)
+            Toast.makeText(requireContext(), "Error $error ", Toast.LENGTH_SHORT).show()
         }
     }
 }

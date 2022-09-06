@@ -27,4 +27,6 @@
     <string name="test_field">Test Field Info</string>
     <string name="favorite_button">Favorite Button</string>
     <string name="top_albums">Top Albums</string>
+    <string name="recent_artists_title">Artistas Populares</string>
+    <string name="recent_albums_title">Albumes Populares</string>
 </resources>

@@ -15,7 +15,9 @@
         <entry key="..\:/Users/Mackenzie/AndroidStudioProjects/MusicAC/app/src/main/res/drawable/ic_new_releases.xml" value="0.2375" />
         <entry key="..\:/Users/Mackenzie/AndroidStudioProjects/MusicAC/app/src/main/res/drawable/ic_search.xml" value="0.2375" />
         <entry key="..\:/Users/Mackenzie/AndroidStudioProjects/MusicAC/app/src/main/res/drawable/ic_search_commit.xml" value="0.2375" />
-        <entry key="..\:/Users/Mackenzie/AndroidStudioProjects/MusicAC/app/src/main/res/layout/fragment_artist.xml" value="0.5" />
+        <entry key="..\:/Users/Mackenzie/AndroidStudioProjects/MusicAC/app/src/main/res/drawable/main_toolbar.xml" value="0.233" />
+        <entry key="..\:/Users/Mackenzie/AndroidStudioProjects/MusicAC/app/src/main/res/layout/activity_nav_host.xml" value="0.2682291666666667" />
+        <entry key="..\:/Users/Mackenzie/AndroidStudioProjects/MusicAC/app/src/main/res/layout/fragment_artist.xml" value="0.1" />
         <entry key="..\:/Users/Mackenzie/AndroidStudioProjects/MusicAC/app/src/main/res/layout/fragment_home.xml" value="0.2463768115942029" />
         <entry key="..\:/Users/Mackenzie/AndroidStudioProjects/MusicAC/app/src/main/res/layout/fragment_release_detail.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/Mackenzie/AndroidStudioProjects/MusicAC/app/src/main/res/layout/fragment_releases.xml" value="0.19519927536231885" />
@@ -23,7 +25,9 @@
         <entry key="..\:/Users/Mackenzie/AndroidStudioProjects/MusicAC/app/src/main/res/layout/fragment_splash.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/Mackenzie/AndroidStudioProjects/MusicAC/app/src/main/res/layout/search_view_suggestion_row.xml" value="0.19519927536231885" />
         <entry key="..\:/Users/Mackenzie/AndroidStudioProjects/MusicAC/app/src/main/res/layout/view_album.xml" value="0.5" />
-        <entry key="..\:/Users/Mackenzie/AndroidStudioProjects/MusicAC/app/src/main/res/layout/view_artist.xml" value="0.19519927536231885" />
+        <entry key="..\:/Users/Mackenzie/AndroidStudioProjects/MusicAC/app/src/main/res/layout/view_artist.xml" value="0.33" />
+        <entry key="..\:/Users/Mackenzie/AndroidStudioProjects/MusicAC/app/src/main/res/layout/view_item_album.xml" value="0.2682291666666667" />
+        <entry key="..\:/Users/Mackenzie/AndroidStudioProjects/MusicAC/app/src/main/res/layout/view_item_artist.xml" value="0.2682291666666667" />
         <entry key="..\:/Users/Mackenzie/AndroidStudioProjects/MusicAC/app/src/main/res/layout/view_popular_album.xml" value="0.24003623188405798" />
         <entry key="..\:/Users/Mackenzie/AndroidStudioProjects/MusicAC/app/src/main/res/layout/view_popular_track.xml" value="0.33" />
         <entry key="..\:/Users/Mackenzie/AndroidStudioProjects/MusicAC/app/src/main/res/layout/view_release.xml" value="0.19519927536231885" />

@@ -12,7 +12,7 @@ class TokenHeader @Inject constructor(private val dao: AuthenticationDao) : Inte
             val token = dao.getToken()
             val request = request()
                 .newBuilder()
-                .addHeader("Authorization", "Bearer ${ token.accessToken }}")
+                .addHeader("Authorization", "Bearer ${ token.accessToken }")
                 .addHeader("Content-Type", "application/json")
                 .build()
             proceed(request)

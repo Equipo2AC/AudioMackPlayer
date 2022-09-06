@@ -7,7 +7,13 @@ import com.ac.musicac.BuildConfig
 import com.ac.musicac.data.Constants
 import com.ac.musicac.data.PermissionChecker
 import com.ac.musicac.data.database.MusicAcDatabase
+import com.ac.musicac.data.database.dao.AlbumDao
+import com.ac.musicac.data.database.dao.ArtistDao
 import com.ac.musicac.data.database.dao.AuthenticationDao
+import com.ac.musicac.data.database.datasource.AlbumRoomDataSource
+import com.ac.musicac.data.database.datasource.ArtistRoomDataSource
+import com.ac.musicac.data.datasource.AlbumLocalDataSource
+import com.ac.musicac.data.datasource.ArtistLocalDataSource
 import com.ac.musicac.data.datasource.LocationDataSource
 import com.ac.musicac.data.server.APIService
 import com.ac.musicac.data.server.AndroidPermissionChecker
@@ -46,7 +52,15 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providesAuthenticationDao(db: MusicAcDatabase) = db.authenticationDao()
+    fun providesAuthenticationDao(db: MusicAcDatabase): AuthenticationDao = db.authenticationDao()
+
+    @Provides
+    @Singleton
+    fun providesArtistDao(db: MusicAcDatabase): ArtistDao = db.artistDao()
+
+    @Provides
+    @Singleton
+    fun providesAlbumDao(db: MusicAcDatabase): AlbumDao = db.albumDao()
 
     @Provides
     @Singleton
@@ -134,12 +148,10 @@ object AppModule {
         )
     }
 
-    @Provides
+    /*@Provides
     @ViewModelScoped
     @ArtistId
-    fun provideArtistId(savedStateHandle: SavedStateHandle) = ArtistFragmentArgs.fromSavedStateHandle(savedStateHandle)
-
-
+    fun provideArtistId(savedStateHandle: SavedStateHandle) = ArtistFragmentArgs.fromSavedStateHandle(savedStateHandle)*/
 
 }
 

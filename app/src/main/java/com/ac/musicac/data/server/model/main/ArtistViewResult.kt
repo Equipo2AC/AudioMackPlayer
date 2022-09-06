@@ -1,4 +1,4 @@
-package com.ac.musicac.data.server.model.artist
+package com.ac.musicac.data.server.model.main
 
 import com.ac.musicac.data.server.model.releases.*
 import com.google.gson.annotations.SerializedName

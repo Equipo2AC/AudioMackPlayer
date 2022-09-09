@@ -19,6 +19,8 @@ class AlbumRoomDataSource @Inject constructor(private val albumDao: AlbumDao) : 
 
     override fun findById(id: Int): Flow<AlbumView> = albumDao.findById(id).map { it.toDomainModel() }
 
+    override fun findByAlbumId(albumId: String): Flow<AlbumView> = albumDao.findByAlbumId(albumId).map { it.toDomainModel() }
+
     override suspend fun save(albums: SeveralAlbums): Error? = tryCall {
         albumDao.insertAllAlbums(albums.albums.fromDomainModel())
     }.fold(ifLeft = { it }, ifRight = { null })

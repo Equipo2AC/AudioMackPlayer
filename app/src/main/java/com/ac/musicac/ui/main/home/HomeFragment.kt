@@ -26,19 +26,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding = FragmentHomeBinding.bind(view).apply {
             recyclerAlbums.adapter = albumsAdapter
             recyclerArtist.adapter = artistAdapter
-            recyclerReleases.adapter = albumsAdapter
         }
-
-        artistViewModel.onUiReady()
-        albumsViewModel.onUiReady()
 
         viewLifecycleOwner.launchAndCollect(albumsViewModel.state) { state->
             binding.albums = state.albums?.albums
-            binding.releases = state.albums?.albums
 
             state.loading?.let {
                 binding.loadingAlbums = it
-
             }
 
             state.error?.let {
@@ -59,6 +53,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 binding.tvError.text = error
                 Toast.makeText(requireContext(), "Error $error ", Toast.LENGTH_LONG).show()
             }
+        }
+
+        homeState.requestLocationPermission {
+            artistViewModel.onUiReady()
+            albumsViewModel.onUiReady()
         }
     }
 

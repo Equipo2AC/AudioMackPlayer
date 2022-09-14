@@ -6,6 +6,6 @@ object AppConfig {
     const val compileSdk = 32
     const val minSdk = 23
     const val targetSdk = 32
-    const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    const val testInstrumentationRunner = "com.ac.musicac.di.HiltTestRunner"
     const val propertiesFileName = "secrets.properties"
 }

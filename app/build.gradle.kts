@@ -95,6 +95,8 @@ dependencies {
     androidTestImplementation (Libs.AndroidX.Test.Espresso.contrib)
     androidTestImplementation (Libs.AndroidX.Test.runner)
     androidTestImplementation (Libs.AndroidX.Test.rules)
+    androidTestImplementation (Libs.Hilt.test)
+    kaptAndroidTest (Libs.Hilt.compiler)
     //MODULES
     implementation(project(Modules.data))
     implementation(project(Modules.domain))

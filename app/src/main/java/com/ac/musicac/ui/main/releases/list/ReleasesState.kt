@@ -31,7 +31,7 @@ class ReleasesState(
 ) {
 
     fun onAlbumClicked(album: Item) {
-        val action = ReleasesFragmentDirections.actionReleasesToDetail(album.id)
+        val action = ReleasesFragmentDirections.actionReleasesToDetail(album.itemId)
         navController.navigate(action)
     }
 

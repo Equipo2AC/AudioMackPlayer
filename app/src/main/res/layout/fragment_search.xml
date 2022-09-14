@@ -124,7 +124,7 @@
             app:visible="@{ error == null &amp;&amp; loading == false }"
             tools:itemCount="4"
             tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            tools:listitem="@layout/view_album" />
+            tools:listitem="@layout/view_item_album" />
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:id="@+id/progress"

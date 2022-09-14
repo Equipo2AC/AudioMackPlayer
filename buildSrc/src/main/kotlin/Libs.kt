@@ -49,10 +49,10 @@ object Libs {
             const val rules = "androidx.test:rules:_"
 
             object Ext {
-                const val junit = "androidx.test.ext:junit:_"
+                const val junit = "androidx.test.ext:junit-ktx:_"
             }
             object Espresso{
-                const val core = "androidx.test.espresso:espresso-core:_"
+                const val contrib = "androidx.test.espresso:espresso-contrib:_"
             }
         }
 

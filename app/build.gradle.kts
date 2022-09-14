@@ -92,7 +92,9 @@ dependencies {
     testImplementation (Libs.Kotlin.Coroutines.test)
     testImplementation (Libs.turbine)
     androidTestImplementation (Libs.AndroidX.Test.Ext.junit)
-    androidTestImplementation (Libs.AndroidX.Test.Espresso.core)
+    androidTestImplementation (Libs.AndroidX.Test.Espresso.contrib)
+    androidTestImplementation (Libs.AndroidX.Test.runner)
+    androidTestImplementation (Libs.AndroidX.Test.rules)
     //MODULES
     implementation(project(Modules.data))
     implementation(project(Modules.domain))

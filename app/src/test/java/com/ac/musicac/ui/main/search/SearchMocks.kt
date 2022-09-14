@@ -14,7 +14,8 @@ object SearchMocks {
             href = "https://api.spotify.com/v1/search?query=estopa&type=album&offset=0&limit=20",
             items = listOf(
                 Item(
-                    id = "5ZqnEfVdEGmoPxtELhN7ai",
+                    id = 0,
+                    itemId = "5ZqnEfVdEGmoPxtELhN7ai",
                     name = "Estopa",
                     href = "https://api.spotify.com/v1/artists/5ZqnEfVdEGmoPxtELhN7ai",
                     albumType = "album",
@@ -51,7 +52,8 @@ object SearchMocks {
             href = "https://api.spotify.com/v1/search?query=estopa&type=album&offset=0&limit=20",
             items = listOf(
                 Item(
-                    id = "5ZqnEfVdEGmoPxtELhN7ai",
+                    id = 0,
+                    itemId = "5ZqnEfVdEGmoPxtELhN7ai",
                     name = "Estopa",
                     href = "https://api.spotify.com/v1/artists/5ZqnEfVdEGmoPxtELhN7ai",
                     albumType = "",

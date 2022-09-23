@@ -29,29 +29,28 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         viewLifecycleOwner.launchAndCollect(albumsViewModel.state) { state->
-            binding.albums = state.albums?.albums
-
-            state.loading?.let {
-                binding.loadingAlbums = it
-            }
-
-            state.error?.let {
-                val error = homeState.errorToString(it)
-                binding.tvError.text = error
-                Toast.makeText(requireContext(), "Error $error ", Toast.LENGTH_LONG).show()
+            with(binding) {
+                albums = state.albums?.albums
+                state.loading?.let {
+                    loadingAlbums = it
+                }
+                state.error?.let {
+                    tvError.text = error
+                    Toast.makeText(requireContext(), "Error ${homeState.errorToString(it)} ", Toast.LENGTH_LONG).show()
+                }
             }
         }
 
-        viewLifecycleOwner.launchAndCollect(artistViewModel.state) { state->
-            binding.artists = state.artists?.artists
-
-            state.loading?.let {
-                binding.loadingArtists = it
-            }
-            state.error?.let {
-                val error = homeState.errorToString(it)
-                binding.tvError.text = error
-                Toast.makeText(requireContext(), "Error $error ", Toast.LENGTH_LONG).show()
+        viewLifecycleOwner.launchAndCollect(artistViewModel.state) { state ->
+            with(binding) {
+                artists = state.artists?.artists
+                state.loading?.let {
+                    loadingArtists = it
+                }
+                state.error?.let {
+                    tvError.text = error
+                    Toast.makeText(requireContext(), "Error ${homeState.errorToString(it)} ", Toast.LENGTH_LONG).show()
+                }
             }
         }
 

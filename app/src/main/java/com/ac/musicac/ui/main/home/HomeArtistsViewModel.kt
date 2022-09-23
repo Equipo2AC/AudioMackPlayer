@@ -23,7 +23,7 @@ class HomeArtistsViewModel @Inject constructor(
     // A comma-separated list of the Spotify IDs for the albums. Maximum: 20 IDs.
     private val artistIds = "7ltDVBr6mKbRvohxheJ9h1,716NhGYqD1jl2wI1Qkgq36,52iwsT98xCoGgiGntTiR7K," +
             "4q3ewBCX7sLwd24euuV69X,1bAftSH8umNcGZ0uyV7LMg,790FomKkXshlbRYZFtlgla," +
-            "2R21vXR83lH98kGeO99Y66,1Cs0zKBU1kc0i8ypK3B9ai,1Xyo4u8uXC1ZmMpatF05PJ"
+            "2R21vXR83lH98kGeO99Y66,1Cs0zKBU1kc0i8ypK3B9ai"
 
     init {
         viewModelScope.launch {

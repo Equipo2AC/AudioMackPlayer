@@ -44,10 +44,10 @@ fun RecyclerView.setType(items: List<Item>?, type: Type?) {
 
 @BindingAdapter("onChooseTypeChanged")
 fun ChipGroup.onChooseTypeChanged(listener: OnChooseTypeChanged?) {
-    setOnCheckedChangeListener { group, checkedId ->
+    setOnCheckedStateChangeListener { group, checkedIds ->
         group.forEach {
             val chip = it as Chip
-            if (chip.id == checkedId) {
+            if (checkedIds.contains(chip.id)) {
                 val type = when (chip.text) {
                     context.getString(R.string.chip_album) -> Type.ALBUM
                     context.getString(R.string.chip_artist) -> Type.ARTIST

@@ -40,11 +40,12 @@ class RegionRepositoryTest {
     @Test
     fun `returns region from location data source when permission granted`() = runBlocking {
         //Given
+        val language = "ES"
         whenever(permissionChecker.check(Permission.COARSE_LOCATION)).thenReturn(true)
-        whenever(locationDataSource.findLastRegion()).thenReturn("ES")
+        whenever(locationDataSource.findLastRegion()).thenReturn(language)
         //When
         val region = regionRepository.findLastRegion()
         //Then
-        assertEquals("ES", region)
+        assertEquals(language, region)
     }
 }

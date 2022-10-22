@@ -42,8 +42,10 @@ class SearchViewModelTest {
         //When
         viewModel.onQueryTextChange("")
         //Them
-        Assert.assertEquals(viewModel.state.value.search, null)
-        Assert.assertEquals(viewModel.state.value.query, "")
+        viewModel.state.test {
+            Assert.assertEquals(viewModel.state.value.copy(query = "", search = null), awaitItem())
+            cancel()
+        }
     }
 
     @Test

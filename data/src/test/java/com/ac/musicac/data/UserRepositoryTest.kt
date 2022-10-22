@@ -5,6 +5,7 @@ import arrow.core.right
 import com.ac.musicac.data.datasource.UserRemoteDataSource
 import com.ac.musicac.data.repository.UserRepository
 import com.ac.musicac.domain.Error
+import com.ac.musicac.testshared.Mocks
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Before
@@ -31,7 +32,7 @@ class UserRepositoryTest {
     @Test
     fun `Call getUsers don't error`() = runBlocking {
         //Given
-        val user = UserMock.fakeUser()
+        val user = Mocks.mockUser()
         whenever(userRemoteDataSource.getUser(any())).thenReturn(user.right())
         //When
         val result = userRepository.getUser("userID")

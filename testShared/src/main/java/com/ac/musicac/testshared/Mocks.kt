@@ -6,6 +6,7 @@ import com.ac.musicac.domain.ExternalUrls
 import com.ac.musicac.domain.Image
 import com.ac.musicac.domain.Item
 import com.ac.musicac.domain.Search
+import com.ac.musicac.domain.User
 
 object Mocks {
 
@@ -88,5 +89,12 @@ object Mocks {
     fun mockSearchArtist() = Search(
         albums = null,
         artists = mockArtists(),
+    )
+
+    fun mockUser() : User =  User(
+        id = "1",
+        displayName = "Adrián",
+        followers = 0,
+        imageUrl = ""
     )
 }

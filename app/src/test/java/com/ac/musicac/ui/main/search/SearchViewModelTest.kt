@@ -37,13 +37,30 @@ class SearchViewModelTest {
     }
 
     @Test
-    fun `When query change empty`() {
+    fun `When query change empty`() = runTest {
         //Given
         //When
         viewModel.onQueryTextChange("")
         //Them
         Assert.assertEquals(viewModel.state.value.search, null)
         Assert.assertEquals(viewModel.state.value.query, "")
+    }
+
+    @Test
+    fun `When query change text search in Album`() = runTest {
+        //Given
+        whenever(searchUseCase(any(), any())).thenReturn(SearchMocks.mockSearchAlbum().right())
+        //When
+        viewModel.onQueryTextChange("text")
+        //Them
+        viewModel.state.test {
+            Assert.assertEquals(viewModel.state.value.copy(loading = true, search = null), awaitItem())
+            Assert.assertEquals(viewModel.state.value.copy(
+                loading = false,
+                query = "text",
+                search = SearchMocks.mockSearchAlbum().albums?.items
+            ), awaitItem())
+        }
     }
 
     @Test

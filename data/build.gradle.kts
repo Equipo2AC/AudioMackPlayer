@@ -11,6 +11,7 @@ java {
 dependencies {
     //MODULES
     implementation(project(Modules.domain))
+    testImplementation(project(Modules.testShared))
     //LIBS
     implementation(Libs.Arrow.core)
     implementation(Libs.Kotlin.Coroutines.core)

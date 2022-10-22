@@ -18,8 +18,14 @@ class SearchUseCaseTest {
 
     private lateinit var searchUseCase: SearchUseCase
 
+    private lateinit var query: String
+
+    private lateinit var type: Type
+
     @Before
     fun setUp() {
+        query = "text"
+        type =  Type.ALBUM
         searchUseCase = SearchUseCase(musicRepository)
     }
 
@@ -27,9 +33,9 @@ class SearchUseCaseTest {
     fun `Invoke call findSearch`(): Unit = runBlocking {
         //Given
         //When
-        searchUseCase(Type.ALBUM, "")
+        searchUseCase(type, query)
         //Them
-        verify(musicRepository).findSearch(Type.ALBUM, "")
+        verify(musicRepository).findSearch(type, query)
     }
 
 }

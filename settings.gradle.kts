@@ -16,4 +16,4 @@ plugins {
     id("de.fayard.refreshVersions") version("0.50.2")
 }
 rootProject.name = "MusicAC"
-include (":app",":data",":domain",":usecases")
+include (":app",":data",":domain",":usecases",":testShared")

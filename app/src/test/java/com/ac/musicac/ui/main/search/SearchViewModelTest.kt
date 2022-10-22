@@ -6,6 +6,7 @@ import arrow.core.left
 import arrow.core.right
 import com.ac.musicac.domain.Error
 import com.ac.musicac.domain.Type
+import com.ac.musicac.testshared.Mocks
 import com.ac.musicac.usecases.SearchUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
@@ -51,7 +52,7 @@ class SearchViewModelTest {
     @Test
     fun `When query change text search in Album`() = runTest {
         //Given
-        whenever(searchUseCase(any(), any())).thenReturn(SearchMocks.mockSearchAlbum().right())
+        whenever(searchUseCase(any(), any())).thenReturn(Mocks.mockSearchAlbum().right())
         //When
         viewModel.onQueryTextChange("text")
         //Them
@@ -60,7 +61,7 @@ class SearchViewModelTest {
             Assert.assertEquals(viewModel.state.value.copy(
                 loading = false,
                 query = "text",
-                search = SearchMocks.mockSearchAlbum().albums?.items
+                search = Mocks.mockSearchAlbum().albums?.items
             ), awaitItem())
 
             cancel()
@@ -70,7 +71,7 @@ class SearchViewModelTest {
     @Test
     fun `With mock artist response when Artist change type `() = runTest {
         //Given
-        whenever(searchUseCase(any(), any())).thenReturn(SearchMocks.mockSearchArtist().right())
+        whenever(searchUseCase(any(), any())).thenReturn(Mocks.mockSearchArtist().right())
         //When
         viewModel.onChangeType(Type.ARTIST)
         //Them
@@ -87,7 +88,7 @@ class SearchViewModelTest {
             Assert.assertEquals(
                 SearchViewModel.UiState(
                     loading = false,
-                    search = SearchMocks.mockSearchArtist().artists?.items,
+                    search = Mocks.mockSearchArtist().artists?.items,
                     query = "",
                     type = Type.ARTIST,
                     error = null
@@ -101,7 +102,7 @@ class SearchViewModelTest {
     @Test
     fun `With mock search response artist when Album change type`() = runTest {
         //Given
-        whenever(searchUseCase(any(), any())).thenReturn(SearchMocks.mockSearchArtist().right())
+        whenever(searchUseCase(any(), any())).thenReturn(Mocks.mockSearchArtist().right())
         //When
         viewModel.onChangeType(Type.ALBUM)
         //Them
@@ -132,7 +133,7 @@ class SearchViewModelTest {
     @Test
     fun `With mock search response album when Artist change type`() = runTest {
         //Given
-        whenever(searchUseCase(any(), any())).thenReturn(SearchMocks.mockSearchAlbum().right())
+        whenever(searchUseCase(any(), any())).thenReturn(Mocks.mockSearchAlbum().right())
         //When
         viewModel.onChangeType(Type.ARTIST)
         //Them
@@ -163,7 +164,7 @@ class SearchViewModelTest {
     @Test
     fun `With mock search album type is update when Album change type`() = runTest {
         //Given
-        whenever(searchUseCase(any(), any())).thenReturn(SearchMocks.mockSearchAlbum().right())
+        whenever(searchUseCase(any(), any())).thenReturn(Mocks.mockSearchAlbum().right())
         //When
         viewModel.onChangeType(Type.ALBUM)
         //Them
@@ -180,7 +181,7 @@ class SearchViewModelTest {
             Assert.assertEquals(
                 SearchViewModel.UiState(
                     loading = false,
-                    search = SearchMocks.mockSearchAlbum().albums?.items,
+                    search = Mocks.mockSearchAlbum().albums?.items,
                     query = "",
                     type = Type.ALBUM,
                     error = null

@@ -60,6 +60,8 @@ class SearchViewModelTest {
                 query = "text",
                 search = SearchMocks.mockSearchAlbum().albums?.items
             ), awaitItem())
+
+            cancel()
         }
     }
 

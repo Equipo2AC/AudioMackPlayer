@@ -1,7 +1,6 @@
 package com.ac.musicac.usecases
 
-import com.ac.musicac.data.repository.MusicRepository
-import com.ac.musicac.domain.Type
+import com.ac.musicac.data.repository.UserRepository
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -11,27 +10,26 @@ import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.verify
 
 @RunWith(MockitoJUnitRunner::class)
-class SearchUseCaseTest {
+class GetUserUseCaseTest {
 
     @Mock
-    lateinit var musicRepository: MusicRepository
+    lateinit var userRepository: UserRepository
 
-    private lateinit var searchUseCase: SearchUseCase
+    private lateinit var getUserUseCase: GetUserUseCase
 
     @Before
     fun setUp() {
-        searchUseCase = SearchUseCase(musicRepository)
+        getUserUseCase = GetUserUseCase(userRepository)
     }
 
     @Test
     fun `Invoke call findSearch`(): Unit = runBlocking {
         //Given
-        val query = "text"
-        val type = Type.ALBUM
+        val userId = "userId"
         //When
-        searchUseCase(type, query)
+        getUserUseCase(userId)
         //Them
-        verify(musicRepository).findSearch(type, query)
+        verify(userRepository).getUser(userId)
     }
 
 }

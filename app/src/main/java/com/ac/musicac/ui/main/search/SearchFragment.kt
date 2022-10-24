@@ -43,7 +43,7 @@ class SearchFragment : Fragment(R.layout.fragment_search),
 
     override fun onQueryTextChange(text: String) = viewModel.onQueryTextChange(text)
 
-    override fun onChooseTypeChanged(type: Type?) {
+    override fun onChooseTypeChanged(type: Type) {
         viewModel.onChangeType(type)
     }
 

@@ -13,6 +13,9 @@ interface ArtistDao {
     @Query("SELECT * FROM ArtistEntity WHERE id = :id")
     fun findById(id: Int): Flow<ArtistEntity>
 
+    @Query("SELECT * FROM ArtistEntity WHERE artistId = :artistId")
+    fun findByArtistId(artistId: String): Flow<ArtistEntity>
+
     @Query("SELECT COUNT(id) FROM ArtistEntity")
     suspend fun artistCount(): Int
 

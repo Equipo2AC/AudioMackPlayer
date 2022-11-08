@@ -14,6 +14,9 @@ interface AlbumDao {
     @Query("SELECT * FROM AlbumEntity WHERE id = :id")
     fun findById(id: Int): Flow<AlbumEntity>
 
+    @Query("SELECT * FROM AlbumEntity WHERE albumId = :albumId")
+    fun findByAlbumId(albumId: String): Flow<AlbumEntity>
+
     @Query("SELECT COUNT(id) FROM AlbumEntity")
     suspend fun albumCount(): Int
 

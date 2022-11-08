@@ -25,10 +25,6 @@ class HomeAlbumsViewModel @Inject constructor(
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state.asStateFlow()
 
-    private val albumsIds = "3RQQmkQEvNCY4prGKE6oc5,6jbtHi5R0jMXoliU2OS0lo,1wLB2bnCl2m5m9M9g8r93Y," +
-            "7rE2qU0GsiIiNd4VPupV3B,4yNnIoQh8y1uDB6ScOS2vx,4PNqWiJAfjj32hVvlchV5u," +
-            "6GHUywBU0u92lg0Dhrt40R,6gQKAYf3TJM9sppw3AtbHH,6WaruQqgJzSlSzZz2YdUku"
-
     init {
         viewModelScope.launch {
             getSeveralAlbumUseCase()
@@ -37,7 +33,7 @@ class HomeAlbumsViewModel @Inject constructor(
         }
     }
 
-    fun onUiReady() {
+    fun onUiReady(albumsIds: String) {
         viewModelScope.launch {
             _state.value = _state.value.copy(loading = true)
             val error = requestSeveralAlbumUseCase(albumsIds)

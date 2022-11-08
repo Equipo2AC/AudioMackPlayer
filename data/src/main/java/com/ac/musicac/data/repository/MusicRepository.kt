@@ -49,6 +49,13 @@ class MusicRepository @Inject constructor(
         )
     }
 
+    suspend fun getArtistAlbums(id: String): Either<Error?, Albums> {
+        return musicRemoteDataSource.getArtistAlbums(id).fold(
+            ifLeft = { it.left() },
+            ifRight = { it.right() }
+        )
+    }
+
     suspend fun getSeveralArtist(ids: String): Error? {
         if(artistLocalDataSource.isEmpty()) {
             val artists = musicRemoteDataSource.getSeveralArtist(ids)
@@ -67,12 +74,5 @@ class MusicRepository @Inject constructor(
             }
         }
         return null
-    }
-
-    suspend fun getArtistAlbums(id: String): Either<Error?, Albums> {
-        return musicRemoteDataSource.getArtistAlbums(id).fold(
-            ifLeft = { it.left() },
-            ifRight = { it.right() }
-        )
     }
 }

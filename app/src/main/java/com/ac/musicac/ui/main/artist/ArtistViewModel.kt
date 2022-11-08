@@ -27,10 +27,7 @@ class ArtistViewModel @Inject constructor(
 
     fun onUiReady(artistId: String) {
         viewModelScope.launch {
-            _state.value = _state.value.copy(loading = true)
-
             val response = getArtistUseCase(artistId)
-
             when (response) {
                 is Either.Left -> _state.update { it.copy(loading = false, error = response.value) }
                 is Either.Right -> _state.update { it.copy(loading = false, artist = response.value) }
@@ -41,9 +38,7 @@ class ArtistViewModel @Inject constructor(
     fun onAlbumsRequest(artistId: String) {
         viewModelScope.launch {
             _state.value = _state.value.copy(loading = true)
-
             val response = getArtistAlbumsUseCase(artistId)
-
             when (response) {
                 is Either.Left -> _state.update { it.copy(loading = false, error = response.value) }
                 is Either.Right -> _state.value = _state.value.copy(loading = false, topAlbums = response.value)

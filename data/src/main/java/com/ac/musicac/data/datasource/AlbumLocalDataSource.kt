@@ -10,6 +10,7 @@ interface AlbumLocalDataSource {
     val albums: Flow<SeveralAlbums>
     suspend fun isEmpty(): Boolean
     fun findById(id: Int): Flow<AlbumView>
+    fun findByAlbumId(albumId: String): Flow<AlbumView>
     suspend fun save(albums: SeveralAlbums): Error?
     suspend fun saveOnly(album: AlbumView): Error?
     suspend fun deleteAll(): Error?

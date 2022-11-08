@@ -17,6 +17,8 @@ class ArtistRoomDataSource @Inject constructor(private val artistDao: ArtistDao)
 
     override fun findById(id: Int): Flow<PopularArtist> = artistDao.findById(id).map { it.toDomainModel() }
 
+    override fun findByArtistId(artistId: String): Flow<PopularArtist> = artistDao.findByArtistId(artistId).map { it.toDomainModel() }
+
     override suspend fun save(artists: SeveralArtist): Error? = tryCall {
         artistDao.insertAllArtist(artists.artists.fromDomainModel())
     }.fold(ifLeft = { it }, ifRight = { null })

@@ -55,8 +55,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         homeState.requestLocationPermission {
-            artistViewModel.onUiReady()
-            albumsViewModel.onUiReady()
+            artistViewModel.onUiReady(getString(R.string.dummy_artist_data))
+            albumsViewModel.onUiReady(getString(R.string.dummy_album_data))
         }
     }
 

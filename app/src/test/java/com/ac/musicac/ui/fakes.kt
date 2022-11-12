@@ -1,20 +1,9 @@
 package com.ac.musicac.ui
 
-import arrow.core.Either
-import arrow.core.right
 import com.ac.musicac.data.datasource.AlbumLocalDataSource
 import com.ac.musicac.data.datasource.ArtistLocalDataSource
 import com.ac.musicac.data.datasource.LocationDataSource
-import com.ac.musicac.data.datasource.MusicRemoteDataSource
-import com.ac.musicac.domain.AlbumView
-import com.ac.musicac.domain.Albums
-import com.ac.musicac.domain.Error
-import com.ac.musicac.domain.PopularArtist
-import com.ac.musicac.domain.Release
-import com.ac.musicac.domain.Releases
-import com.ac.musicac.domain.Search
-import com.ac.musicac.domain.SeveralAlbums
-import com.ac.musicac.domain.SeveralArtist
+import com.ac.musicac.domain.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flowOf

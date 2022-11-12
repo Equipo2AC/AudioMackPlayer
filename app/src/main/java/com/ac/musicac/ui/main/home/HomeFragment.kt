@@ -15,7 +15,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private val artistViewModel: HomeArtistsViewModel by viewModels()
     private val albumsViewModel: HomeAlbumsViewModel by viewModels()
-    private lateinit var binding : FragmentHomeBinding
     private lateinit var homeState: HomeState
     private val albumsAdapter = AlbumsAdapter { homeState.onAlbumClicked(it) }
     private val artistAdapter = ArtistsAdapter { homeState.onArtistClicked(it) }
@@ -23,7 +22,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         homeState = buildHomeState()
-        binding = FragmentHomeBinding.bind(view).apply {
+        val binding = FragmentHomeBinding.bind(view).apply {
             recyclerAlbums.adapter = albumsAdapter
             recyclerArtist.adapter = artistAdapter
         }

@@ -1,5 +1,6 @@
 package com.ac.musicac.ui
 
+import com.ac.musicac.data.PermissionChecker
 import com.ac.musicac.data.datasource.AlbumLocalDataSource
 import com.ac.musicac.data.datasource.ArtistLocalDataSource
 import com.ac.musicac.data.datasource.LocationDataSource
@@ -76,12 +77,20 @@ class FakeAlbumLocalDataSource : AlbumLocalDataSource {
     }
 }
 
+
+
 class FakeLocationDataSource : LocationDataSource {
 
     val location = "US"
 
     override suspend fun findLastRegion() = location
 
+}
+
+class FakePermissionChecker : PermissionChecker {
+    var permissionGranted = true
+
+    override fun check(permission: PermissionChecker.Permission) = permissionGranted
 }
 
 

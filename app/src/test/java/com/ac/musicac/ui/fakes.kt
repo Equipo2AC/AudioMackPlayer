@@ -19,6 +19,10 @@ class FakeArtistLocalDataSource : ArtistLocalDataSource {
     override fun findById(id: Int): Flow<PopularArtist> =
         flowOf(inMemoryArtists.value.artists.first { it.id == id })
 
+    override fun findByArtistId(artistId: String): Flow<PopularArtist> {
+        TODO("Not yet implemented")
+    }
+
     override suspend fun save(artists: SeveralArtist): Error? {
         inMemoryArtists.value = artists
         return null
@@ -48,6 +52,10 @@ class FakeAlbumLocalDataSource : AlbumLocalDataSource {
 
     override fun findById(id: Int): Flow<AlbumView> =
         flowOf(inMemoryAlbums.value.albums.first { it.id == id })
+
+    override fun findByAlbumId(albumId: String): Flow<AlbumView> {
+        TODO("Not yet implemented")
+    }
 
     override suspend fun save(albums: SeveralAlbums): Error? {
         inMemoryAlbums.value = albums

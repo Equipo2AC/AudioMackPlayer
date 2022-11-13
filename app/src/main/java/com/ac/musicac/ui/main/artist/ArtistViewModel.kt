@@ -27,6 +27,7 @@ class ArtistViewModel @Inject constructor(
 
     fun onUiReady(artistId: String) {
         viewModelScope.launch {
+            _state.value = _state.value.copy(loading = true)
             val response = getArtistUseCase(artistId)
             when (response) {
                 is Either.Left -> _state.update { it.copy(loading = false, error = response.value) }

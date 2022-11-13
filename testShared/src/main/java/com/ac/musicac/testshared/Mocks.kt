@@ -1,12 +1,6 @@
 package com.ac.musicac.testshared
 
-import com.ac.musicac.domain.Albums
-import com.ac.musicac.domain.Artists
-import com.ac.musicac.domain.ExternalUrls
-import com.ac.musicac.domain.Image
-import com.ac.musicac.domain.Item
-import com.ac.musicac.domain.Search
-import com.ac.musicac.domain.User
+import com.ac.musicac.domain.*
 
 object Mocks {
 
@@ -97,4 +91,47 @@ object Mocks {
         followers = 0,
         imageUrl = ""
     )
+
+    fun mockPopularArtist() :PopularArtist = PopularArtist(
+        id = 0,
+        externalUrls = ExternalUrls("https://open.spotify.com/artist/5ZqnEfVdEGmoPxtELhN7ai"),
+        followers = Followers("", 1556285),
+        genres = listOf("pop","rock"),
+        href = "https://open.spotify.com",
+        artistId = "7ltDVBr6mKbRvohxheJ9h1",
+        images = listOf(Image(
+            height = 320,
+            width = 320,
+            url = "https://i.scdn.co/image/ab676161000051743e5de222aa09ea8c106f2bbb")),
+        name = "Artist Name",
+        popularity = 75,
+        type = "artist",
+        uri = "https://i.scdn.co/image/"
+    )
+
+    fun mockPopularAlbums() :AlbumView = AlbumView(
+        id = 0,
+        album_type = "album",
+        artists = listOf(),
+        copyrights = listOf(),
+        external_ids = ExternalIds(""),
+        external_urls = ExternalUrls("https://open.spotify.com/artist/5ZqnEfVdEGmoPxtELhN7ai"),
+        genres = listOf("pop","rock"),
+        href = "https://open.spotify.com",
+        albumId = "6jbtHi5R0jMXoliU2OS0lo",
+        image = "https://i.scdn.co/image/ab676161000051743e5de222aa09ea8c106f2bbb",
+        label = "Label here",
+        name = "Artist Name",
+        popularity = 75,
+        release_date = "1999-10-18",
+        release_date_precision = "1999-10-18",
+        total_tracks = 20,
+        tracks = Tracks(listOf(), 3),
+        type = "artist",
+        uri = "https://i.scdn.co/image/"
+    )
+
+    fun mockSeveralAlbums() :SeveralAlbums = SeveralAlbums(listOf(mockPopularAlbums()))
+
+    fun mockSeveralArtists() : SeveralArtist = SeveralArtist(listOf(mockPopularArtist()))
 }

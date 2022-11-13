@@ -36,8 +36,6 @@ class HomeArtistsViewModel @Inject constructor(
         }
     }
 
-
-
     data class UiState(
         val loading: Boolean? = null,
         val artists: SeveralArtist? = null,

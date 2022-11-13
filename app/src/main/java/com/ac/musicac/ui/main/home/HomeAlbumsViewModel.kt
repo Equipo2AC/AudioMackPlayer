@@ -37,7 +37,6 @@ class HomeAlbumsViewModel @Inject constructor(
         viewModelScope.launch {
             _state.value = _state.value.copy(loading = true)
             val error = requestSeveralAlbumUseCase(albumsIds)
-
             _state.value = _state.value.copy(loading = false, error = error)
         }
     }

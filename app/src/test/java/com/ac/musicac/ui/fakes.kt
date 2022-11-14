@@ -1,14 +1,17 @@
 package com.ac.musicac.ui
 
+import arrow.core.right
 import com.ac.musicac.data.PermissionChecker
 import com.ac.musicac.data.database.dao.AlbumDao
 import com.ac.musicac.data.database.dao.ArtistDao
 import com.ac.musicac.data.database.dao.AuthenticationDao
 import com.ac.musicac.data.database.entity.AlbumEntity
 import com.ac.musicac.data.database.entity.ArtistEntity
+import com.ac.musicac.data.database.entity.AuthenticationEntity
 import com.ac.musicac.data.datasource.AlbumLocalDataSource
 import com.ac.musicac.data.datasource.ArtistLocalDataSource
 import com.ac.musicac.data.datasource.LocationDataSource
+import com.ac.musicac.data.datasource.MusicRemoteDataSource
 import com.ac.musicac.data.server.UserResult
 import com.ac.musicac.data.server.model.main.AlbumViewResult
 import com.ac.musicac.data.server.model.main.ArtistViewResult
@@ -206,6 +209,22 @@ class FakeAlbumDao (albums: List<AlbumEntity> = emptyList()) : AlbumDao {
     override suspend fun deleteAll() {
         inMemoryAlbums.update { it }
     }
+
+}
+
+class FakeAuthenticationDao(token: AuthenticationEntity): AuthenticationDao {
+
+    private val inMemoryToken = MutableStateFlow(token)
+
+    override suspend fun insertToken(token: AuthenticationEntity) = inMemoryToken.update { it }
+
+    override suspend fun tokenCount(): Int {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getToken(): AuthenticationEntity = inMemoryToken.value
+
+    override suspend fun deleteTokens(currentDateTime: Long) = inMemoryToken.update { it }
 
 }
 

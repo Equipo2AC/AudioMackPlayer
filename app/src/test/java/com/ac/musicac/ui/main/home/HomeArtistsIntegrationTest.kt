@@ -7,6 +7,7 @@ import com.ac.musicac.data.database.entity.ArtistEntity
 import com.ac.musicac.data.server.model.main.AlbumViewResult
 import com.ac.musicac.data.server.model.main.ArtistViewResult
 import com.ac.musicac.domain.SeveralArtist
+import com.ac.musicac.ui.buildDatabaseArtist
 import com.ac.musicac.ui.buildRemoteArtist
 import com.ac.musicac.ui.buildRepositoryWith
 import com.ac.musicac.ui.main.home.HomeArtistsViewModel.*
@@ -31,7 +32,7 @@ class HomeArtistsIntegrationTest {
     fun `Artist Data is loaded from server when local source is empty`() = runTest {
         val remoteData = buildRemoteArtist(4, 5, 6)
 
-        val vm = buildModelWith()
+        val vm = buildModelWith(remoteArtistData = remoteData)
 
         vm.onUiReady(artistId)
 
@@ -45,6 +46,29 @@ class HomeArtistsIntegrationTest {
             assertEquals("Overview 5", artists[1].href)
             assertEquals("Overview 6", artists[2].href)
 
+            cancel()
+        }
+
+    }
+
+    @Test
+    fun `Artist Data is loaded from local database when available`() = runTest {
+        val localData = buildDatabaseArtist(1, 2, 3)
+        val remoteData = buildRemoteArtist(4, 5, 6)
+
+        val vm = buildModelWith(
+            localArtistData = localData,
+            remoteArtistData = remoteData)
+
+        vm.onUiReady(artistId)
+
+
+        vm.state.test {
+            assertEquals(UiState(), awaitItem())
+            val artists = awaitItem().artists!!.artists
+            assertEquals("Overview 1", artists[0].href)
+            assertEquals("Overview 2", artists[1].href)
+            assertEquals("Overview 3", artists[2].href)
             cancel()
         }
 

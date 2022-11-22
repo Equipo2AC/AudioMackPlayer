@@ -72,8 +72,7 @@ class HomeAlbumsIntegrationTest {
         vm.state.test {
             Assert.assertEquals(UiState(), awaitItem())
             Assert.assertEquals(UiState(albums = SeveralAlbums(listOf())), awaitItem())
-            // Assert.assertEquals(UiState(albums = SeveralAlbums(listOf(mockPopularAlbums()))), awaitItem())
-            awaitComplete()
+
             val albums = awaitItem().albums?.albums
 
             if(albums != null) {

@@ -120,13 +120,13 @@ object Mocks {
         href = "https://open.spotify.com",
         albumId = "6jbtHi5R0jMXoliU2OS0lo",
         image = "https://i.scdn.co/image/ab676161000051743e5de222aa09ea8c106f2bbb",
-        label = "Label here",
+        label = "Label here 0",
         name = "Artist Name",
         popularity = 75,
         release_date = "1999-10-18",
         release_date_precision = "1999-10-18",
         total_tracks = 20,
-        tracks = Tracks(listOf(), 3),
+        tracks = Tracks(listOf(), 0),
         type = "artist",
         uri = "https://i.scdn.co/image/"
     )

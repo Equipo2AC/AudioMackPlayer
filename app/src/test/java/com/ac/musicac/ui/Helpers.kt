@@ -2,6 +2,7 @@ package com.ac.musicac.ui
 
 
 import com.ac.musicac.data.RegionRepository
+import com.ac.musicac.data.database.dao.AuthenticationDao
 import com.ac.musicac.data.database.datasource.AlbumRoomDataSource
 import com.ac.musicac.data.database.datasource.ArtistRoomDataSource
 import com.ac.musicac.data.database.entity.AlbumEntity
@@ -30,18 +31,20 @@ fun buildRepositoryWith(
     val localAlbumsDataSource = AlbumRoomDataSource(FakeAlbumDao(localAlbumData))
     val service: SpotifyService = FakeSpotifyService(artists = remoteArtistData, albums = remoteAlbumData)
     val client : HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY
+        level = HttpLoggingInterceptor.Level.NONE
     }
     val fakeService = APIService(
         SpotifyService::class.java,
+        // FakeSpotifyService(artists = remoteArtistData, albums = remoteAlbumData).javaClass,
         "https://api.spotify.com/v1/",
         GsonConverterFactory.create(),
         arrayOf(TokenHeader(FakeAuthenticationDao(AuthenticationEntity(
-            id= 0,
-            accessToken = "token",
-            tokenType = "type",
-            expirationDate = 2000L
-        ))), client)
+            id = 7,
+            accessToken = "BQArEwQUOlsVX3P9GEhYmgnM9nq7gM3pVgsUU0XN3U9J0CkuK5lQY3bEkHvSdulNCgTn4MBUiIxJsUDVccxZ5E1HM9saXULWyS-w9JiypSPPRv7vGuk",
+            tokenType = "Bearer",
+            expirationDate = 1669117156347L
+        ))
+        ), client)
     )
     val remoteDataSource = SpotifyDataSource(fakeService)
     return MusicRepository(regionRepository, localArtistDataSource , localAlbumsDataSource, remoteDataSource)
@@ -85,16 +88,16 @@ fun buildRemoteArtist(vararg id: Int) = id.map {
 
 fun buildDatabaseAlbum(vararg id: Int) = id.map {
     AlbumEntity(
-        id = 0,
+        id = it,
         albumType = "album",
         artists = "Estopa",
         external_ids = "",
         externalUrls = "https://open.spotify.com/artist/5ZqnEfVdEGmoPxtELhN7ai",
         genres = "pop, rock",
-        href = "Overview $it",
+        href = "https://open.spotify.com",
         albumId = "6jbtHi5R0jMXoliU2OS0lo",
         imageUrl = "https://i.scdn.co/image/ab676161000051743e5de222aa09ea8c106f2bbb",
-        label = "Label here",
+        label = "Label here $it",
         name = "Artist Name",
         popularity = 75,
         releaseDate = "1999-10-18",
@@ -114,14 +117,14 @@ fun buildRemoteAlbum(vararg id: Int) = id.map {
         external_ids = ExternalIdsResult(""),
         external_urls = ExternalUrlsResult("https://open.spotify.com/artist/5ZqnEfVdEGmoPxtELhN7ai"),
         genres = listOf("pop","rock"),
-        href = "Overview $it",
+        href = "https://open.spotify.com",
         id = "6jbtHi5R0jMXoliU2OS0lo",
         images = listOf(
             ImageResult(
                 200,
                 "https://i.scdn.co/image/ab676161000051743e5de222aa09ea8c106f2bbb",
                 200)),
-        label = "Label here",
+        label = "Label here $it",
         name = "Artist Name",
         popularity = 75,
         release_date = "1999-10-18",

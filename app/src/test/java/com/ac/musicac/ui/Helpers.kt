@@ -41,8 +41,8 @@ fun buildRepositoryWith(
         "https://api.spotify.com/v1/",
         GsonConverterFactory.create(),
         arrayOf(TokenHeader(FakeAuthenticationDao(AuthenticationEntity(
-            id = 6,
-            accessToken = "BQBjdDrhaWdCZM8-CJgE4V4N68FQVb3gQT7YTaPWvGC5suW3x9fOnkyVKqL0Uz1kkCZudRmXcy7WJqvlk-HmAbfcyEWYXbkFD0EVzdtPaskt3mLIeMk",
+            id = 20,
+            accessToken = "BQD9vRpysctDTX9oYYPlVw2uys5IX8a-bYLyxBhbsKy5nv2snKBAzGF-JIcNMb1GuAclmOWzPo1d8GrtZZC7QeEQ5_0rLVN1kc8n1o5oBEFtvV-FijQ",
             tokenType = "Bearer",
             expirationDate = 1669117156347L
         ))

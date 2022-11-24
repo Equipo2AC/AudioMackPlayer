@@ -2,11 +2,9 @@ package com.ac.musicac.ui.main.artist
 
 import CoroutinesTestRule
 import app.cash.turbine.test
-import arrow.core.left
 import arrow.core.right
 import com.ac.musicac.testshared.Mocks
 import com.ac.musicac.ui.main.artist.ArtistViewModel.*
-import com.ac.musicac.ui.main.home.HomeArtistsViewModel
 import com.ac.musicac.usecases.GetArtistAlbumsUseCase
 import com.ac.musicac.usecases.GetArtistUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi

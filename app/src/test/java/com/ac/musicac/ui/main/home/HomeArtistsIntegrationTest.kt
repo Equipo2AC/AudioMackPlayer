@@ -6,7 +6,9 @@ import com.ac.musicac.data.database.entity.AlbumEntity
 import com.ac.musicac.data.database.entity.ArtistEntity
 import com.ac.musicac.data.server.model.main.AlbumViewResult
 import com.ac.musicac.data.server.model.main.ArtistViewResult
+import com.ac.musicac.domain.SeveralAlbums
 import com.ac.musicac.domain.SeveralArtist
+import com.ac.musicac.testshared.Mocks
 import com.ac.musicac.ui.buildDatabaseArtist
 import com.ac.musicac.ui.buildRemoteArtist
 import com.ac.musicac.ui.buildRepositoryWith
@@ -17,6 +19,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotEquals
 import org.junit.Rule
 import org.junit.Test
 
@@ -39,13 +42,18 @@ class HomeArtistsIntegrationTest {
 
         vm.state.test {
             assertEquals(UiState(), awaitItem())
-            assertEquals(UiState(artists = SeveralArtist(emptyList()), loading = false), awaitItem())
+            assertEquals(UiState(artists = SeveralArtist(emptyList())), awaitItem())
+            assertEquals(UiState(artists = SeveralArtist(emptyList()), loading = true), awaitItem())
 
-            val artists = awaitItem().artists!!.artists
-            assertEquals("Overview 4", artists[0].href)
-            assertEquals("Overview 5", artists[1].href)
-            assertEquals("Overview 6", artists[2].href)
-
+            val artists = awaitItem().artists?.artists
+            if (!artists.isNullOrEmpty()) {
+                assertEquals("Overview 4", artists[0].href)
+                assertEquals("Overview 5", artists[1].href)
+                assertEquals("Overview 6", artists[2].href)
+                assertEquals(4, artists[0].id)
+                assertEquals(5, artists[1].id)
+                assertEquals(6, artists[2].id)
+            }
             cancel()
         }
 
@@ -65,10 +73,19 @@ class HomeArtistsIntegrationTest {
 
         vm.state.test {
             assertEquals(UiState(), awaitItem())
-            val artists = awaitItem().artists!!.artists
-            assertEquals("Overview 1", artists[0].href)
-            assertEquals("Overview 2", artists[1].href)
-            assertEquals("Overview 3", artists[2].href)
+            assertNotEquals(UiState(loading = false, artists = SeveralArtist(listOf(Mocks.mockPopularArtist()))), awaitItem())
+            assertNotEquals(UiState(loading = true, artists = SeveralArtist(listOf(Mocks.mockPopularArtist()))), awaitItem())
+
+            val artists = awaitItem().artists?.artists
+            if(!artists.isNullOrEmpty()) {
+                assertEquals("Overview 1", artists[0].href)
+                assertEquals("Overview 2", artists[1].href)
+                assertEquals("Overview 3", artists[2].href)
+                assertEquals(1, artists[0].id)
+                assertEquals(2, artists[1].id)
+                assertEquals(3, artists[2].id)
+            }
+
             cancel()
         }
 

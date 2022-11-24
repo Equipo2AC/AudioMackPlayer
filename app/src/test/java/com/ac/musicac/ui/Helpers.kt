@@ -2,7 +2,6 @@ package com.ac.musicac.ui
 
 
 import com.ac.musicac.data.RegionRepository
-import com.ac.musicac.data.database.dao.AuthenticationDao
 import com.ac.musicac.data.database.datasource.AlbumRoomDataSource
 import com.ac.musicac.data.database.datasource.ArtistRoomDataSource
 import com.ac.musicac.data.database.entity.AlbumEntity
@@ -17,6 +16,10 @@ import com.ac.musicac.data.server.model.main.ArtistViewResult
 import com.ac.musicac.data.server.model.main.RestrictionsResult
 import com.ac.musicac.data.server.model.releases.*
 import com.ac.musicac.data.server.service.SpotifyService
+import com.ac.musicac.domain.AlbumView
+import com.ac.musicac.domain.ExternalIds
+import com.ac.musicac.domain.ExternalUrls
+import com.ac.musicac.domain.Tracks
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -35,12 +38,11 @@ fun buildRepositoryWith(
     }
     val fakeService = APIService(
         SpotifyService::class.java,
-        // FakeSpotifyService(artists = remoteArtistData, albums = remoteAlbumData).javaClass,
         "https://api.spotify.com/v1/",
         GsonConverterFactory.create(),
         arrayOf(TokenHeader(FakeAuthenticationDao(AuthenticationEntity(
-            id = 7,
-            accessToken = "BQArEwQUOlsVX3P9GEhYmgnM9nq7gM3pVgsUU0XN3U9J0CkuK5lQY3bEkHvSdulNCgTn4MBUiIxJsUDVccxZ5E1HM9saXULWyS-w9JiypSPPRv7vGuk",
+            id = 6,
+            accessToken = "BQBjdDrhaWdCZM8-CJgE4V4N68FQVb3gQT7YTaPWvGC5suW3x9fOnkyVKqL0Uz1kkCZudRmXcy7WJqvlk-HmAbfcyEWYXbkFD0EVzdtPaskt3mLIeMk",
             tokenType = "Bearer",
             expirationDate = 1669117156347L
         ))
@@ -103,6 +105,30 @@ fun buildDatabaseAlbum(vararg id: Int) = id.map {
         releaseDate = "1999-10-18",
         releaseDatePrecision = "1999-10-18",
         totalTracks = 20,
+        type = "artist",
+        uri = "https://i.scdn.co/image/"
+    )
+}
+
+fun buildDomainAlbum(vararg id: Int) = id.map {
+    AlbumView(
+        id = it,
+        album_type = "album",
+        artists = listOf(),
+        copyrights = listOf(),
+        external_ids = ExternalIds(""),
+        external_urls = ExternalUrls("https://open.spotify.com/artist/5ZqnEfVdEGmoPxtELhN7ai"),
+        genres = listOf("pop","rock"),
+        href = "https://open.spotify.com",
+        albumId = "6jbtHi5R0jMXoliU2OS0lo",
+        image = "https://i.scdn.co/image/ab676161000051743e5de222aa09ea8c106f2bbb",
+        label = "Label here $it",
+        name = "Artist Name",
+        popularity = 75,
+        release_date = "1999-10-18",
+        release_date_precision = "1999-10-18",
+        total_tracks = 20,
+        tracks = Tracks(listOf(), 0),
         type = "artist",
         uri = "https://i.scdn.co/image/"
     )

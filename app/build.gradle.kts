@@ -44,6 +44,16 @@ android {
         dataBinding = true
     }
 
+    sourceSets {
+        this.getByName("androidTest"){
+            //Adds the given source directory to this set.
+            this.java.srcDir("$projectDir/src/testShared/androidTest")
+        }
+        this.getByName("test"){
+            this.java.srcDir("$projectDir/src/testShared/test")
+        }
+    }
+
     signingConfigs {
         val properties = Properties().apply {
             load(File(secrets.propertiesFileName).reader())
@@ -94,11 +104,14 @@ dependencies {
     androidTestImplementation (Libs.AndroidX.Test.Espresso.contrib)
     androidTestImplementation (Libs.AndroidX.Test.runner)
     androidTestImplementation (Libs.AndroidX.Test.rules)
+    androidTestImplementation (Libs.Kotlin.Coroutines.test)
     androidTestImplementation (Libs.Hilt.test)
+    androidTestImplementation (Libs.OkHttp3.mockWebServer)
     kaptAndroidTest (Libs.Hilt.compiler)
     //MODULES
     implementation(project(Modules.data))
     implementation(project(Modules.domain))
     implementation(project(Modules.usescases))
     testImplementation(project(Modules.testShared))
+    androidTestImplementation(project(Modules.testShared))
 }

@@ -6,21 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.navArgs
 import com.ac.musicac.R
 import com.ac.musicac.databinding.FragmentArtistBinding
 import com.ac.musicac.ui.common.launchAndCollect
-import com.ac.musicac.ui.main.releases.list.ReleasesAdapter
-import com.ac.musicac.ui.main.releases.list.ReleasesState
-import com.ac.musicac.ui.main.releases.list.buildReleasesState
-import com.ac.musicac.ui.main.search.SearchState
-import com.ac.musicac.ui.main.search.buildSearchState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ArtistFragment: Fragment(R.layout.fragment_artist) {
 
-    private val safeArgs: ArtistFragmentArgs by navArgs()
     private lateinit var artistState: ArtistState
     private val viewModel : ArtistViewModel by viewModels()
     private lateinit var binding: FragmentArtistBinding
@@ -31,11 +24,13 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
         artistState = buildArtistState()
         binding = FragmentArtistBinding.bind(view).apply {
             recycler.adapter = adapter
-            artistToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
+            artistToolbar.setNavigationOnClickListener {
+                requireActivity().onBackPressedDispatcher.onBackPressed()
+            }
         }
         launchArtistCollect()
-        viewModel.onUiReady(safeArgs.artistId)
-        viewModel.onAlbumsRequest(safeArgs.artistId)
+        viewModel.onUiReady()
+        viewModel.onAlbumsRequest()
 
     }
 

@@ -20,12 +20,14 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.kotlin.any
 import org.mockito.kotlin.whenever
 
 @ExperimentalCoroutinesApi
@@ -59,34 +61,35 @@ class ArtistIntegrationTest {
     fun `Artist Data is loaded from server always`() = runTest {
         // val remoteArtist = buildRemoteArtist(4)
 
-        // whenever(getArtistUseCase(artistId)).thenReturn(artistSample.right())
+        // whenever(getArtistUseCase(any())).thenReturn(artistSample.right())
 
         // vmTest = buildModelWith(remoteArtistData = remoteArtist)
 
-        vmTest.onUiReady(artistId)
+        vmTest.onUiReady()
 
-        val results = mutableListOf<UiState>()
+        /*val results = mutableListOf<UiState>()
         val job = launch { vmTest.state.toList(results) }
         runCurrent()
         job.cancel()
-        assertEquals(UiState(loading = true), results[0])
+        assertEquals(UiState(loading = true), results[0])*/
 
 
-        /*vmTest.state.test {
+        vmTest.state.test {
             assertEquals(UiState(), awaitItem())
             assertEquals(UiState(loading = true), awaitItem())
-            // assertNotEquals(UiState(error = any(), loading = false), awaitItem())
+            assertEquals(UiState(loading = false, artist = artistSample), awaitItem())
+            // assertEquals(UiState(loading = false), awaitItem())
 
-            val artist = awaitItem().artist
+            // val artist = awaitItem().artist
 
-            assertEquals("Overview 4", artist?.href)
+            /*assertEquals("Overview 4", artist?.href)
             assertEquals("7ltDVBr6mKbRvohxheJ9h1", artist?.artistId)
             assertEquals(4, artist?.id)
-            assertEquals("Artist Name", artist?.name)
+            assertEquals("Artist Name", artist?.name)*/
 
 
             cancel()
-        }*/
+        }
 
     }
 
@@ -98,7 +101,7 @@ class ArtistIntegrationTest {
 
         // vmTest = buildModelWith(remoteAlbumData = remoteAlbum)
 
-        vmTest.onAlbumsRequest(artistId)
+        vmTest.onAlbumsRequest()
 
         val results = mutableListOf<UiState>()
         val job = launch { vmTest.state.toList(results) }
@@ -136,7 +139,7 @@ class ArtistIntegrationTest {
 
         getArtistUseCase = GetArtistUseCase(repo)
         getArtistAlbumsUseCase = GetArtistAlbumsUseCase(repo)
-        val vm = ArtistViewModel(getArtistUseCase, getArtistAlbumsUseCase)
+        val vm = ArtistViewModel(artistId, getArtistUseCase, getArtistAlbumsUseCase)
         return vm
     }
 }

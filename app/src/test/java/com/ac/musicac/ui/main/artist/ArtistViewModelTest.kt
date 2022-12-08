@@ -45,11 +45,7 @@ class ArtistViewModelTest {
 
     @Before
     fun setUp() {
-        vm = ArtistViewModel(getArtistUseCase, getArtistAlbumsUseCase)
-    }
-
-    @After
-    fun tearDown() {
+        vm = ArtistViewModel(artistId, getArtistUseCase, getArtistAlbumsUseCase)
     }
 
     @Test
@@ -57,7 +53,7 @@ class ArtistViewModelTest {
 
         whenever(getArtistUseCase(artistId)).thenReturn(artistSample.right())
 
-        vm.onUiReady(artistId)
+        vm.onUiReady()
 
         val results = mutableListOf<UiState>()
         val job = launch { vm.state.toList(results) }
@@ -72,7 +68,7 @@ class ArtistViewModelTest {
 
         whenever(getArtistAlbumsUseCase(artistId)).thenReturn(albumSample.right())
 
-        vm.onAlbumsRequest(artistId)
+        vm.onAlbumsRequest()
 
         val results = mutableListOf<UiState>()
         val job = launch { vm.state.toList(results) }
@@ -86,7 +82,7 @@ class ArtistViewModelTest {
 
         whenever(getArtistUseCase(artistId)).thenReturn(artistSample.right())
 
-        vm.onUiReady(artistId)
+        vm.onUiReady()
 
         vm.state.test {
             assertEquals(UiState(), awaitItem())
@@ -101,7 +97,7 @@ class ArtistViewModelTest {
 
         whenever(getArtistAlbumsUseCase(artistId)).thenReturn(albumSample.right())
 
-        vm.onAlbumsRequest(artistId)
+        vm.onAlbumsRequest()
 
         vm.state.test {
             assertEquals(UiState(), awaitItem())
@@ -113,20 +109,20 @@ class ArtistViewModelTest {
 
     @Test
     fun `Artists are requested when UI screen starts`() = runTest {
-        vm.onUiReady(artistId)
+        vm.onUiReady()
 
         runCurrent()
 
-        verify(getArtistUseCase).invoke(any())
+        verify(getArtistUseCase).invoke(artistId)
     }
 
     @Test
     fun `Albums are requested when UI screen starts`() = runTest {
-        vm.onAlbumsRequest(artistId)
+        vm.onAlbumsRequest()
 
         runCurrent()
 
-        verify(getArtistAlbumsUseCase).invoke(any())
+        verify(getArtistAlbumsUseCase).invoke(artistId)
     }
 
 }

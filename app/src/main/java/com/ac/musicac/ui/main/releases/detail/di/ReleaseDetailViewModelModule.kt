@@ -1,7 +1,7 @@
 package com.ac.musicac.ui.main.releases.detail.di
 
 import androidx.lifecycle.SavedStateHandle
-import com.ac.musicac.di.AlbumId
+import com.ac.musicac.di.qualifier.AlbumId
 import com.ac.musicac.ui.main.releases.detail.ReleaseDetailFragmentArgs
 import dagger.Module
 import dagger.Provides

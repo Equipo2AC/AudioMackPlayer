@@ -1,9 +1,8 @@
-package com.ac.musicac.main.home
+package com.ac.musicac.main.artist
 
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.rule.GrantPermissionRule
-import com.ac.musicac.buildDatabaseArtist
 import com.ac.musicac.data.database.dao.ArtistDao
 import com.ac.musicac.data.server.MockWebServerRule
 import com.ac.musicac.data.server.OkHttp3IdlingResource
@@ -16,9 +15,9 @@ import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.mockwebserver.MockResponse
-import org.junit.After
-import org.junit.Assert.assertEquals
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -26,7 +25,7 @@ import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 @HiltAndroidTest
-class HomeArtistsInstrumentationTest {
+class ArtistsInstrumentationTest {
 
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
@@ -48,56 +47,21 @@ class HomeArtistsInstrumentationTest {
     @Inject
     lateinit var dataSource: SpotifyDataSource
 
-    @Inject
-    @ArtistDummyIds
-    lateinit var artistsIds: String
-
-    @Inject
-    lateinit var okHttpClient: OkHttpClient
+    private val artistsId: String = "7ltDVBr6mKbRvohxheJ9h1"
 
     @Before
     fun setUp() {
-        mockWebServerRule.server.enqueue(MockResponse().fromJson("artists_response.json"))
+        mockWebServerRule.server.enqueue(MockResponse().fromJson("artist_rosalia_response.json"))
         hiltRule.inject()
-        val resource = OkHttp3IdlingResource.create("okHttp", okHttpClient)
-        IdlingRegistry.getInstance().register(resource)
-    }
-
-    @After
-    fun tearDown() {
-        // Thread.sleep(3000)
-    }
-
-
-
-    /*@Test
-    fun button_navigates_to_artist() = runTest {
-        // onView(withId(R.id.btn)).perform(ViewActions.click())
-
-        // Thread.sleep(3000)
-        /// onView(withId(R.id.btn)).check(matches())
-    }*/
-
-    @Test
-    fun check_4_IM_items_db() = runTest {
-        artistDao.insertAllArtist(buildDatabaseArtist(1, 2, 3, 4))
-        assertEquals(4, artistDao.artistCount())
-
-
-    }
-
-    @Test
-    fun check_6_IM_items_db()  = runTest {
-        artistDao.insertAllArtist(buildDatabaseArtist(5, 6, 7, 8, 9, 10))
-        assertEquals(6, artistDao.artistCount())
+        // val resource = OkHttp3IdlingResource.create("okHttp", okHttpClient)
+        // IdlingRegistry.getInstance().register(resource)
     }
 
     @Test
     fun check_mock_server_is_working() = runTest {
-        val artists = dataSource.getSeveralArtist(artistsIds)
-        artists.fold({ throw Exception(it.toString()) }) {
-            assertEquals("Bizarrap", it.artists[1].name)
+        val artist = dataSource.getArtist(artistsId)
+        artist.fold({ throw Exception(it.toString()) }) {
+            Assert.assertEquals("ROSALÍA", it.name)
         }
     }
-
 }

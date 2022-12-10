@@ -7,7 +7,9 @@ import com.ac.musicac.buildDatabaseAlbum
 import com.ac.musicac.data.database.dao.AlbumDao
 import com.ac.musicac.data.server.MockWebServerRule
 import com.ac.musicac.data.server.OkHttp3IdlingResource
+import com.ac.musicac.data.server.datasource.SpotifyDataSource
 import com.ac.musicac.data.server.fromJson
+import com.ac.musicac.di.qualifier.AlbumDummyIds
 import com.ac.musicac.ui.navHostActivity.NavHostActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -40,6 +42,13 @@ class HomeAlbumsInstrumentationTest {
     lateinit var albumDao: AlbumDao
 
     @Inject
+    lateinit var dataSource: SpotifyDataSource
+
+    @Inject
+    @AlbumDummyIds
+    lateinit var albumsIds: String
+
+    @Inject
     lateinit var okHttpClient: OkHttpClient
 
     @Before
@@ -53,6 +62,14 @@ class HomeAlbumsInstrumentationTest {
     @After
     fun tearDown() {
 
+    }
+
+    @Test
+    fun check_mock_server_is_working() = runTest {
+        val artists = dataSource.getSeveralAlbums(albumsIds)
+        artists.fold({ throw Exception(it.toString()) }) {
+            Assert.assertEquals("3RQQmkQEvNCY4prGKE6oc5", it.albums[0].id)
+        }
     }
 
     @Test

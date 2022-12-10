@@ -1,22 +1,32 @@
 package com.ac.musicac.di
 
 import android.app.Application
+import androidx.lifecycle.SavedStateHandle
 import androidx.room.Room
 import com.ac.musicac.BuildConfig
 import com.ac.musicac.data.Constants
+import com.ac.musicac.data.PermissionChecker
 import com.ac.musicac.data.database.MusicAcDatabase
 import com.ac.musicac.data.database.dao.AlbumDao
 import com.ac.musicac.data.database.dao.ArtistDao
 import com.ac.musicac.data.database.dao.AuthenticationDao
+import com.ac.musicac.data.datasource.LocationDataSource
 import com.ac.musicac.data.server.APIService
+import com.ac.musicac.data.server.AndroidPermissionChecker
+import com.ac.musicac.data.server.PlayServicesLocationDataSource
 import com.ac.musicac.data.server.interceptor.AuthorizationHeader
 import com.ac.musicac.data.server.interceptor.TokenHeader
 import com.ac.musicac.data.server.service.SpotifyAuthenticationService
 import com.ac.musicac.data.server.service.SpotifyService
 import com.ac.musicac.di.qualifier.*
+import com.ac.musicac.ui.main.artist.ArtistFragmentArgs
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -54,6 +64,16 @@ object TestAppModule {
     @Singleton
     @ApiUrl
     fun providesApiUrl(): String = "http://localhost:8080"
+
+    @Provides
+    @Singleton
+    @ArtistDummyIds
+    fun providesArtistsIds(): String = "7ltDVBr6mKbRvohxheJ9h1,716NhGYqD1jl2wI1Qkgq36,52iwsT98xCoGgiGntTiR7K,4q3ewBCX7sLwd24euuV69X,1bAftSH8umNcGZ0uyV7LMg,790FomKkXshlbRYZFtlgla,2R21vXR83lH98kGeO99Y66,1Cs0zKBU1kc0i8ypK3B9ai"
+
+    @Provides
+    @Singleton
+    @AlbumDummyIds
+    fun providesAlbumsIds(): String = "3RQQmkQEvNCY4prGKE6oc5,6jbtHi5R0jMXoliU2OS0lo,1wLB2bnCl2m5m9M9g8r93Y,7rE2qU0GsiIiNd4VPupV3B,4yNnIoQh8y1uDB6ScOS2vx,4PNqWiJAfjj32hVvlchV5u,6GHUywBU0u92lg0Dhrt40R,6gQKAYf3TJM9sppw3AtbHH"
 
     @Provides
     @Singleton
@@ -142,4 +162,15 @@ object TestAppModule {
             arrayOf(tokenHeader, httpLoggingInterceptor)
         )
     }
+}
+
+@Module
+@InstallIn(ViewModelComponent::class)
+object ArtistViewModelModule {
+
+    @Provides
+    @ViewModelScoped
+    @ArtistId
+    fun provideArtistId(savedStateHandle: SavedStateHandle) =
+        ArtistFragmentArgs.fromSavedStateHandle(savedStateHandle).artistId
 }

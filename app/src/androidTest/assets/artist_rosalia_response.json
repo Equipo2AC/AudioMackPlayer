@@ -1,0 +1,31 @@
+{
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 6374672
+    },
+    "genres" : [ "r&b en espanol" ],
+    "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+    "id" : "7ltDVBr6mKbRvohxheJ9h1",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/ab6761610000e5ebd7bb678bef6d2f26110cae49",
+      "width" : 640
+    }, {
+      "height" : 320,
+      "url" : "https://i.scdn.co/image/ab67616100005174d7bb678bef6d2f26110cae49",
+      "width" : 320
+    }, {
+      "height" : 160,
+      "url" : "https://i.scdn.co/image/ab6761610000f178d7bb678bef6d2f26110cae49",
+      "width" : 160
+    } ],
+    "name" : "ROSALÍA",
+    "popularity" : 85,
+    "type" : "artist",
+    "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+  } ]
+}

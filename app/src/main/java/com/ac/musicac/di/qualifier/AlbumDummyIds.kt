@@ -1,7 +1,7 @@
-package com.ac.musicac.di
+package com.ac.musicac.di.qualifier
 
 import javax.inject.Qualifier
 
 @Retention(AnnotationRetention.BINARY)
 @Qualifier
-annotation class AlbumId
+annotation class AlbumDummyIds

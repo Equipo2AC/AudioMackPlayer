@@ -31,10 +31,13 @@ import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
+import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
+import retrofit2.Retrofit
+import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -77,8 +80,15 @@ object TestAppModule {
 
     @Provides
     @Singleton
+    fun provideOkHttpClient(): OkHttpClient = HttpLoggingInterceptor().run {
+        level = HttpLoggingInterceptor.Level.BODY
+        OkHttpClient.Builder().addInterceptor(this).build()
+    }
+
+    @Provides
+    @Singleton
     @AuthenticationApiUrl
-    fun providesAuthenticationApiUrl(): String = "https://accounts.spotify.com/api/"
+    fun providesAuthenticationApiUrl(): String = "http://localhost:8080"
 
     @Provides
     @Singleton
@@ -111,13 +121,6 @@ object TestAppModule {
         } else {
             HttpLoggingInterceptor.Level.NONE
         }
-    }
-
-    @Provides
-    @Singleton
-    fun provideOkHttpClient(): OkHttpClient = HttpLoggingInterceptor().run {
-        level = HttpLoggingInterceptor.Level.BODY
-        OkHttpClient.Builder().addInterceptor(this).build()
     }
 
     @Provides

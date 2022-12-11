@@ -59,9 +59,16 @@ class HomeAlbumsInstrumentationTest {
         IdlingRegistry.getInstance().register(resource)
     }
 
-    @After
-    fun tearDown() {
+    @Test
+    fun check_4_IM_items_db() = runTest {
+        albumDao.insertAllAlbums(buildDatabaseAlbum(1, 2, 3, 4))
+        Assert.assertEquals(4, albumDao.albumCount())
+    }
 
+    @Test
+    fun check_6_IM_items_db()  = runTest {
+        albumDao.insertAllAlbums(buildDatabaseAlbum(5, 6, 7, 8, 9, 10))
+        Assert.assertEquals(6, albumDao.albumCount())
     }
 
     @Test
@@ -70,19 +77,5 @@ class HomeAlbumsInstrumentationTest {
         artists.fold({ throw Exception(it.toString()) }) {
             Assert.assertEquals("3RQQmkQEvNCY4prGKE6oc5", it.albums[0].id)
         }
-    }
-
-    @Test
-    fun check_4_IM_items_db() = runTest {
-        albumDao.insertAllAlbums(buildDatabaseAlbum(1, 2, 3, 4))
-        Assert.assertEquals(4, albumDao.albumCount())
-
-
-    }
-
-    @Test
-    fun check_6_IM_items_db()  = runTest {
-        albumDao.insertAllAlbums(buildDatabaseAlbum(5, 6, 7, 8, 9, 10))
-        Assert.assertEquals(6, albumDao.albumCount())
     }
 }

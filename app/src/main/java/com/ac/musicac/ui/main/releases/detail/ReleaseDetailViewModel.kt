@@ -3,7 +3,7 @@ package com.ac.musicac.ui.main.releases.detail
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import arrow.core.Either
-import com.ac.musicac.di.AlbumId
+import com.ac.musicac.di.qualifier.AlbumId
 import com.ac.musicac.domain.Error
 import com.ac.musicac.domain.Release
 import com.ac.musicac.usecases.GetReleaseDetailUseCase

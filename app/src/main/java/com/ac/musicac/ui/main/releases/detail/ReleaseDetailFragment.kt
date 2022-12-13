@@ -31,7 +31,7 @@ class ReleaseDetailFragment : Fragment(R.layout.fragment_release_detail) {
             recycler.adapter = adapter
         }
 
-        binding.releaseDetailToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
+        binding.releaseDetailToolbar.setNavigationOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
 
         viewLifecycleOwner.launchAndCollect(viewModel.state) { state ->
             binding.loading = state.loading

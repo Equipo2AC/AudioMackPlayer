@@ -13,7 +13,7 @@ open class APIService<T> constructor(
     serviceClass: Class<T>,
     private val baseURL: String,
     private val converterFactory: Converter.Factory,
-    private val interceptors: Array<Interceptor>
+    private val interceptors: Array<Interceptor>?
 ) {
     val service = initApiService().create(serviceClass)
 
@@ -23,7 +23,7 @@ open class APIService<T> constructor(
         client.writeTimeout(WRITE_TIME_OUT, TimeUnit.SECONDS)
         client.connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS)
 
-        interceptors.map { client.addInterceptor(it) }
+        interceptors?.map { client.addInterceptor(it) }
 
         return Retrofit.Builder()
             .baseUrl(baseURL)

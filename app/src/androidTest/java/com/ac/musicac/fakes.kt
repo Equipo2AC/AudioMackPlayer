@@ -1,4 +1,4 @@
-package com.ac.musicac.ui
+package com.ac.musicac
 
 import arrow.core.right
 import com.ac.musicac.data.PermissionChecker

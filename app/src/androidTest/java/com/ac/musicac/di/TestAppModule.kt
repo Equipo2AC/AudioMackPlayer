@@ -10,10 +10,6 @@ import com.ac.musicac.data.database.MusicAcDatabase
 import com.ac.musicac.data.database.dao.AlbumDao
 import com.ac.musicac.data.database.dao.ArtistDao
 import com.ac.musicac.data.database.dao.AuthenticationDao
-import com.ac.musicac.data.database.datasource.AlbumRoomDataSource
-import com.ac.musicac.data.database.datasource.ArtistRoomDataSource
-import com.ac.musicac.data.datasource.AlbumLocalDataSource
-import com.ac.musicac.data.datasource.ArtistLocalDataSource
 import com.ac.musicac.data.datasource.LocationDataSource
 import com.ac.musicac.data.server.APIService
 import com.ac.musicac.data.server.AndroidPermissionChecker
@@ -32,23 +28,27 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
+import dagger.hilt.testing.TestInstallIn
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
+import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
+import retrofit2.Retrofit
+import retrofit2.create
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
-object AppModule {
+@TestInstallIn(components = [SingletonComponent::class], replaces = [AppModule::class])
+object TestAppModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(app: Application) : MusicAcDatabase = Room.databaseBuilder(
+    fun provideDatabase(app: Application) : MusicAcDatabase = Room.inMemoryDatabaseBuilder(
         app,
-        MusicAcDatabase::class.java,
-        Constants.DATABASE_NAME
+        MusicAcDatabase::class.java
     ).build()
 
     @Provides
@@ -66,12 +66,29 @@ object AppModule {
     @Provides
     @Singleton
     @ApiUrl
-    fun providesApiUrl(): String = "https://api.spotify.com/v1/"
+    fun providesApiUrl(): String = "http://localhost:8080"
+
+    @Provides
+    @Singleton
+    @ArtistDummyIds
+    fun providesArtistsIds(): String = "7ltDVBr6mKbRvohxheJ9h1,716NhGYqD1jl2wI1Qkgq36,52iwsT98xCoGgiGntTiR7K,4q3ewBCX7sLwd24euuV69X,1bAftSH8umNcGZ0uyV7LMg,790FomKkXshlbRYZFtlgla,2R21vXR83lH98kGeO99Y66,1Cs0zKBU1kc0i8ypK3B9ai"
+
+    @Provides
+    @Singleton
+    @AlbumDummyIds
+    fun providesAlbumsIds(): String = "3RQQmkQEvNCY4prGKE6oc5,6jbtHi5R0jMXoliU2OS0lo,1wLB2bnCl2m5m9M9g8r93Y,7rE2qU0GsiIiNd4VPupV3B,4yNnIoQh8y1uDB6ScOS2vx,4PNqWiJAfjj32hVvlchV5u,6GHUywBU0u92lg0Dhrt40R,6gQKAYf3TJM9sppw3AtbHH"
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(): OkHttpClient = HttpLoggingInterceptor().run {
+        level = HttpLoggingInterceptor.Level.BODY
+        OkHttpClient.Builder().addInterceptor(this).build()
+    }
 
     @Provides
     @Singleton
     @AuthenticationApiUrl
-    fun providesAuthenticationApiUrl(): String = "https://accounts.spotify.com/api/"
+    fun providesAuthenticationApiUrl(): String = "http://localhost:8080"
 
     @Provides
     @Singleton
@@ -148,7 +165,6 @@ object AppModule {
             arrayOf(tokenHeader, httpLoggingInterceptor)
         )
     }
-
 }
 
 @Module
@@ -160,16 +176,4 @@ object ArtistViewModelModule {
     @ArtistId
     fun provideArtistId(savedStateHandle: SavedStateHandle) =
         ArtistFragmentArgs.fromSavedStateHandle(savedStateHandle).artistId
-}
-
-@Module
-@InstallIn(SingletonComponent::class)
-abstract class AppDataModule {
-
-    @Binds
-    abstract fun bindLocationDataSource(locationDataSource: PlayServicesLocationDataSource): LocationDataSource
-
-    @Binds
-    abstract fun bindPermissionChecker(permissionChecker: AndroidPermissionChecker): PermissionChecker
-
 }

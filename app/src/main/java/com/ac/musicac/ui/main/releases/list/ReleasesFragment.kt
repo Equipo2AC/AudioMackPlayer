@@ -34,6 +34,7 @@ class ReleasesFragment : Fragment(R.layout.fragment_releases) {
                 error = state.error?.let(releaseState::errorToString)
             }
         }
+
         viewModel.onUiReady()
     }
 }

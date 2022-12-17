@@ -22,11 +22,11 @@ class ReleasesViewModel @Inject constructor(
     val state: StateFlow<UiState> = _state.asStateFlow()
 
     fun onUiReady() {
+        _state.value = _state.value.copy(loading = true, albums = null)
         viewModelScope.launch {
-            _state.value = _state.value.copy(loading = true)
             when (val response = getReleasesUseCase()) {
-                is Either.Left -> _state.update { it.copy(loading = false, error = response.value) }
-                is Either.Right -> _state.update { it.copy(loading = false, albums = response.value.albums.items) }
+                is Either.Left -> _state.update { it.copy(loading = false, albums = null, error = response.value) }
+                is Either.Right -> _state.update { it.copy(loading = false, albums = response.value.albums.items, error = null) }
             }
         }
     }

@@ -17,28 +17,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ReleaseDetailViewModel @Inject constructor(
-    @AlbumId private val albumId: String,
     private val getReleaseDetailUseCase: GetReleaseDetailUseCase) : ViewModel() {
 
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state.asStateFlow()
 
-    init {
-        viewModelScope.launch {
-            getReleaseDetailUseCase(albumId).fold(
-                ifLeft = { cause -> _state.update { it.copy(error = cause) } },
-                ifRight = { album -> _state.update { UiState(album = album) } }
-            )
-        }
-    }
-
     fun onUiReady(albumId: String) {
         viewModelScope.launch {
-            _state.value = _state.value.copy(loading = true)
+            _state.value = _state.value.copy(loading = true, album = null)
 
-            val response = getReleaseDetailUseCase(albumId)
-
-            when (response) {
+            when (val response = getReleaseDetailUseCase(albumId)) {
                 is Either.Left -> _state.value = _state.value.copy(loading = false, error = response.value)
                 is Either.Right -> _state.value = _state.value.copy(loading = false, album = response.value)
             }
@@ -46,7 +34,7 @@ class ReleaseDetailViewModel @Inject constructor(
     }
 
     data class UiState(
-        val loading: Boolean = false,
+        val loading: Boolean? = null,
         val album: Release? = null,
         val error: Error? = null
     )

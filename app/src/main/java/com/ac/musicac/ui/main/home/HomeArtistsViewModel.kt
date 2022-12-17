@@ -3,9 +3,10 @@ package com.ac.musicac.ui.main.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ac.musicac.data.toError
-import com.ac.musicac.domain.*
-import com.ac.musicac.ui.common.Scope
-import com.ac.musicac.usecases.*
+import com.ac.musicac.domain.Error
+import com.ac.musicac.domain.SeveralArtist
+import com.ac.musicac.usecases.GetSeveralArtistUseCase
+import com.ac.musicac.usecases.RequestSeveralArtistUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -15,7 +16,7 @@ import javax.inject.Inject
 class HomeArtistsViewModel @Inject constructor(
     getSeveralArtistUseCase: GetSeveralArtistUseCase,
     private val requestSeveralArtistUseCase: RequestSeveralArtistUseCase
-) : ViewModel(), Scope by Scope.Impl() {
+) : ViewModel() {
 
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state.asStateFlow()

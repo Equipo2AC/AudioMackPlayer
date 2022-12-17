@@ -19,7 +19,7 @@
 
         <variable
             name="loading"
-            type="boolean" />
+            type="Boolean" />
 
         <variable
             name="error"

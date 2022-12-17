@@ -32,7 +32,7 @@ class ReleasesViewModel @Inject constructor(
     }
 
     data class UiState(
-        val loading: Boolean = false,
+        val loading: Boolean? = null,
         val albums: List<Item>? = null,
         val error: Error? = null
     )

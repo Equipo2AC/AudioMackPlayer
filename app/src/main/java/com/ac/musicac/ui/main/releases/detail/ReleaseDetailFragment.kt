@@ -42,8 +42,6 @@ class ReleaseDetailFragment : Fragment(R.layout.fragment_release_detail) {
             }
         }
 
-        releaseDetailState.requestLocationPermission {
-            viewModel.onUiReady(args.albumId)
-        }
+        viewModel.onUiReady(args.albumId)
     }
 }

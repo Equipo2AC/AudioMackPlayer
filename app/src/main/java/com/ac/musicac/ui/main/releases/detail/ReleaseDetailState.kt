@@ -1,36 +1,22 @@
 package com.ac.musicac.ui.main.releases.detail
 
-import android.Manifest
 import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.ac.musicac.R
 import com.ac.musicac.domain.Error
-import com.ac.musicac.ui.common.PermissionRequester
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
 fun Fragment.buildReleaseDetailState (
     context: Context = requireContext(),
-    scope: CoroutineScope = viewLifecycleOwner.lifecycleScope,
-    locationPermissionRequester: PermissionRequester = PermissionRequester(
-        this,
-        Manifest.permission.ACCESS_COARSE_LOCATION
-    )
-) = ReleaseDetailState(context, scope, locationPermissionRequester)
+    scope: CoroutineScope = viewLifecycleOwner.lifecycleScope
+) = ReleaseDetailState(context, scope)
 
 class ReleaseDetailState(
     private val context: Context,
-    private val scope: CoroutineScope,
-    private val locationPermissionRequester: PermissionRequester
+    private val scope: CoroutineScope
 ) {
 
-    fun requestLocationPermission(afterRequest: (Boolean) -> Unit) {
-        scope.launch {
-            val result = locationPermissionRequester.request()
-            afterRequest(result)
-        }
-    }
 
     fun errorToString(error: Error) = when (error) {
         Error.Connectivity -> context.getString(R.string.connectivity_error)

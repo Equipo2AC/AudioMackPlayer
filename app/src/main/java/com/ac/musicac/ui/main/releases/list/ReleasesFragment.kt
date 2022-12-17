@@ -10,7 +10,7 @@ import com.ac.musicac.ui.common.launchAndCollect
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ReleasesFragment: Fragment(R.layout.fragment_releases) {
+class ReleasesFragment : Fragment(R.layout.fragment_releases) {
 
     private val viewModel: ReleasesViewModel by viewModels()
 
@@ -27,14 +27,13 @@ class ReleasesFragment: Fragment(R.layout.fragment_releases) {
             recycler.adapter = adapter
         }
 
-        viewLifecycleOwner.launchAndCollect(viewModel.state) { state->
-            binding.loading = state.loading
-            binding.items = state.albums
-            binding.error = state.error?.let(releaseState::errorToString)
+        viewLifecycleOwner.launchAndCollect(viewModel.state) { state ->
+            with(binding){
+                loading = state.loading
+                items = state.albums
+                error = state.error?.let(releaseState::errorToString)
+            }
         }
-
-        releaseState.requestLocationPermission {
-            viewModel.onUiReady()
-        }
+        viewModel.onUiReady()
     }
 }

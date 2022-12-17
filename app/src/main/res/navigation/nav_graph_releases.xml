@@ -16,7 +16,7 @@
             app:exitAnim="@android:anim/fade_out"
             app:launchSingleTop="false"
             app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/slide_out_right"/>
+            app:popExitAnim="@android:anim/slide_out_right" />
 
     </fragment>
 

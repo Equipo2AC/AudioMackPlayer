@@ -85,38 +85,41 @@ object Mocks {
         artists = mockArtists(),
     )
 
-    fun mockUser() : User =  User(
+    fun mockUser(): User = User(
         id = "1",
         displayName = "Adrián",
         followers = 0,
         imageUrl = ""
     )
 
-    fun mockPopularArtist() :PopularArtist = PopularArtist(
+    fun mockPopularArtist(): PopularArtist = PopularArtist(
         id = 0,
         externalUrls = ExternalUrls("https://open.spotify.com/artist/5ZqnEfVdEGmoPxtELhN7ai"),
         followers = Followers("", 1556285),
-        genres = listOf("pop","rock"),
+        genres = listOf("pop", "rock"),
         href = "https://open.spotify.com",
         artistId = "7ltDVBr6mKbRvohxheJ9h1",
-        images = listOf(Image(
-            height = 320,
-            width = 320,
-            url = "https://i.scdn.co/image/ab676161000051743e5de222aa09ea8c106f2bbb")),
+        images = listOf(
+            Image(
+                height = 320,
+                width = 320,
+                url = "https://i.scdn.co/image/ab676161000051743e5de222aa09ea8c106f2bbb"
+            )
+        ),
         name = "Artist Name",
         popularity = 75,
         type = "artist",
         uri = "https://i.scdn.co/image/"
     )
 
-    fun mockPopularAlbums() :AlbumView = AlbumView(
+    fun mockPopularAlbums(): AlbumView = AlbumView(
         id = 0,
         album_type = "album",
         artists = listOf(),
         copyrights = listOf(),
         external_ids = ExternalIds(""),
         external_urls = ExternalUrls("https://open.spotify.com/artist/5ZqnEfVdEGmoPxtELhN7ai"),
-        genres = listOf("pop","rock"),
+        genres = listOf("pop", "rock"),
         href = "https://open.spotify.com",
         albumId = "6jbtHi5R0jMXoliU2OS0lo",
         image = "https://i.scdn.co/image/ab676161000051743e5de222aa09ea8c106f2bbb",
@@ -131,12 +134,27 @@ object Mocks {
         uri = "https://i.scdn.co/image/"
     )
 
-    fun mockReleases() : Releases = Releases(
-       albums = mockAlbums()
+    fun mockReleases(): Releases = Releases(
+        albums = mockAlbums()
     )
 
-    fun mockSeveralAlbums() :SeveralAlbums = SeveralAlbums(listOf(mockPopularAlbums()))
+    fun mockRelease(): Release = Release(
+        albumType = "single",
+        artists = "",
+        copyrights = listOf(Copyright("2022 Warner Music Spain, S.L.")),
+        id = "52iwsT98xCoGgiGntTiR7K",
+        image = Image(640,"https://i.scdn.co/image/ab67616d0000b273eb0753b621538652f53fa783", 640),
+        label = "WM Spain",
+        name = "Playa Del Inglés",
+        popularity = 82,
+        releaseDate = "2022-12-15",
+        totalTracks = "1",
+        tracks = Tracks(listOf(Track("Quevedo",3,50000,"7iK8PXO48WeuP03g8YR51W","Quevedo", "1")), 1)
+    )
 
-    fun mockSeveralArtists() : SeveralArtist = SeveralArtist(listOf(mockPopularArtist()))
+
+    fun mockSeveralAlbums(): SeveralAlbums = SeveralAlbums(listOf(mockPopularAlbums()))
+
+    fun mockSeveralArtists(): SeveralArtist = SeveralArtist(listOf(mockPopularArtist()))
 
 }

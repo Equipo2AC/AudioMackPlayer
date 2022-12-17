@@ -131,7 +131,12 @@ object Mocks {
         uri = "https://i.scdn.co/image/"
     )
 
+    fun mockReleases() : Releases = Releases(
+       albums = mockAlbums()
+    )
+
     fun mockSeveralAlbums() :SeveralAlbums = SeveralAlbums(listOf(mockPopularAlbums()))
 
     fun mockSeveralArtists() : SeveralArtist = SeveralArtist(listOf(mockPopularArtist()))
+
 }

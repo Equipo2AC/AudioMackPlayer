@@ -64,8 +64,7 @@ class ReleasesViewModelTest {
 
         vm.state.test {
             assertEquals(UiState(), awaitItem())
-            assertEquals(UiState(albums = releasesSample.albums.items, error = null), awaitItem())
-            assertEquals(UiState(loading = true, albums = releasesSample.albums.items, error = null), awaitItem())
+            assertEquals(UiState(loading = true, albums =  null, error = null), awaitItem())
             assertEquals(UiState(loading = false, albums = releasesSample.albums.items, error = null), awaitItem())
             cancel()
         }

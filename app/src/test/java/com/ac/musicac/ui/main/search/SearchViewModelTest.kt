@@ -241,13 +241,4 @@ class SearchViewModelTest {
         //Them
         Assert.assertEquals(viewModel.state.value.type, Type.ARTIST)
     }
-
-    @Test
-    fun `State type is don't update when change null type`() = runTest {
-        //Given
-        //When
-        viewModel.onChangeType(null)
-        //Them
-        Assert.assertEquals(viewModel.state.value.type, Type.ALBUM)
-    }
 }

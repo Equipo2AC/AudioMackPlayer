@@ -42,12 +42,14 @@ fun ChipGroup.onChooseTypeChanged(listener: OnChooseTypeChanged?) {
                     context.getString(R.string.chip_artist) -> Type.ARTIST
                     else -> null
                 }
-                listener?.onChooseTypeChanged(type)
+                type?.let {
+                    listener?.onChooseTypeChanged(it)
+                }
             }
         }
     }
 }
 
 interface OnChooseTypeChanged {
-    fun onChooseTypeChanged(type: Type?)
+    fun onChooseTypeChanged(type: Type)
 }

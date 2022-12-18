@@ -20,11 +20,9 @@ class SearchViewModel @Inject constructor(private val searchUseCase: SearchUseCa
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state.asStateFlow()
 
-    fun onChangeType(type: Type?) {
-        type?.let {
-            _state.update { state -> state.copy(type = it) }
-            search(type, state.value.query)
-        }
+    fun onChangeType(type: Type) {
+        _state.update { state -> state.copy(type = type) }
+        search(type, state.value.query)
     }
 
     fun onQueryTextChange(text: String): Boolean {

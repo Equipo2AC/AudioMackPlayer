@@ -12,17 +12,6 @@ import com.ac.musicac.ui.main.releases.list.ReleasesAdapter
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 
-@BindingAdapter("search_items")
-fun RecyclerView.setItems(items: List<Item>?) {
-    items?.let {
-        when (adapter) {
-            is ReleasesAdapter -> (adapter as ReleasesAdapter).submitList(it)
-            is SearchAdapter -> (adapter as SearchAdapter).submitList(it)
-            else -> {}
-        }
-    }
-}
-
 @BindingAdapter("search_items", "type", requireAll = true)
 fun RecyclerView.setType(items: List<Item>?, type: Type?) {
     type?.let {

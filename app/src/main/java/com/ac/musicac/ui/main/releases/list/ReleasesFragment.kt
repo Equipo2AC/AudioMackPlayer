@@ -30,7 +30,9 @@ class ReleasesFragment : Fragment(R.layout.fragment_releases) {
         viewLifecycleOwner.launchAndCollect(viewModel.state) { state ->
             with(binding){
                 recycler.adapter = adapter
-                loading = state.loading
+                state.loading?.let {
+                    loading = it
+                }
                 items = state.albums
                 error = state.error?.let(releaseState::errorToString)
             }

@@ -166,7 +166,7 @@ private fun ArtistViewResult.toDomainModel(): PopularArtist =
 
 private fun ItemResult.toDomainModel(): Item =
     Item(
-        0,
+        id,
         album_type ?: "",
         getArtistsName(artists) ?: "",
         available_markets ?: listOf(),

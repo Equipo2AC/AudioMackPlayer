@@ -1,7 +1,7 @@
 package com.ac.musicac.domain
 
 data class Item(
-    val id: Int,
+    val id: String,
     val albumType: String,
     val artists: String,
     val availableMarkets: List<String>,

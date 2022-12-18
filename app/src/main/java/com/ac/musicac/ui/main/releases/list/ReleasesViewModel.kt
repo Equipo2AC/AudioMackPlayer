@@ -21,17 +21,21 @@ class ReleasesViewModel @Inject constructor(
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state.asStateFlow()
 
+    init {
+        onUiReady()
+    }
+
     fun onUiReady() {
         viewModelScope.launch {
             _state.update { state -> state.copy(loading = true) }
-            if (_state.value.albums == null){
-                when (val response = getReleasesUseCase()) {
-                    is Either.Left -> _state.update { it.copy(loading = false, error = response.value) }
-                    is Either.Right -> _state.update { it.copy(loading = false, albums = response.value.albums.items) }
+            when (val response = getReleasesUseCase()) {
+                is Either.Left -> _state.update { it.copy(loading = false, error = response.value) }
+                is Either.Right -> _state.update {
+                    it.copy(
+                        loading = false,
+                        albums = response.value.albums.items
+                    )
                 }
-
-            } else {
-                _state.update { it.copy(loading = false, albums = _state.value.albums) }
             }
         }
     }

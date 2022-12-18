@@ -46,21 +46,17 @@ class ReleasesViewModelTest {
 
         whenever(getReleasesUseCase()).thenReturn(releasesSample.right())
 
-        vm.onUiReady()
-
         val results = mutableListOf<UiState>()
         val job = launch { vm.state.toList(results) }
         runCurrent()
         job.cancel()
-        assertEquals(UiState(albums = releasesSample.albums.items), results[0])
+        assertEquals(UiState(loading = false, albums = releasesSample.albums.items), results[0])
 
     }
 
     @Test
     fun `Progress is shown when screen start and hidden when it finishes`() = runTest {
         whenever(getReleasesUseCase()).thenReturn(releasesSample.right())
-
-        vm.onUiReady()
 
         vm.state.test {
             assertEquals(UiState(), awaitItem())
@@ -73,8 +69,6 @@ class ReleasesViewModelTest {
     @Test
     fun `Releases are requested when UI screen starts`() = runTest {
         whenever(getReleasesUseCase()).thenReturn(releasesSample.right())
-
-        vm.onUiReady()
 
         runCurrent()
 

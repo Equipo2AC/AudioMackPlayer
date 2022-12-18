@@ -36,6 +36,5 @@ class ReleasesFragment : Fragment(R.layout.fragment_releases) {
             }
         }
 
-        viewModel.onUiReady()
     }
 }

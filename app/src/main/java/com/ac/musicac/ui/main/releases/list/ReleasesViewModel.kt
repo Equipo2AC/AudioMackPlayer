@@ -23,16 +23,21 @@ class ReleasesViewModel @Inject constructor(
 
     fun onUiReady() {
         viewModelScope.launch {
-            _state.update { state -> state.copy(loading = true, albums = null, error = null) }
-            when (val response = getReleasesUseCase()) {
-                is Either.Left -> _state.update { it.copy(loading = false, albums = null, error = response.value) }
-                is Either.Right -> _state.update { it.copy(loading = false, albums = response.value.albums.items, error = null) }
+            _state.update { state -> state.copy(loading = true) }
+            if (_state.value.albums == null){
+                when (val response = getReleasesUseCase()) {
+                    is Either.Left -> _state.update { it.copy(loading = false, error = response.value) }
+                    is Either.Right -> _state.update { it.copy(loading = false, albums = response.value.albums.items) }
+                }
+
+            } else {
+                _state.update { it.copy(loading = false, albums = _state.value.albums) }
             }
         }
     }
 
     data class UiState(
-        val loading: Boolean = false,
+        val loading: Boolean? = null,
         val albums: List<Item>? = null,
         val error: Error? = null
     )

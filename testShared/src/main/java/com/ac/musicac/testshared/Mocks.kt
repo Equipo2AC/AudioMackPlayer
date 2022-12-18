@@ -8,7 +8,7 @@ object Mocks {
         href = "https://api.spotify.com/v1/search?query=estopa&type=album&offset=0&limit=20",
         items = listOf(
             Item(
-                id = 0,
+                id = "52iwsT98xCoGgiGntTiR7K",
                 itemId = "5ZqnEfVdEGmoPxtELhN7ai",
                 name = "Estopa",
                 href = "https://api.spotify.com/v1/artists/5ZqnEfVdEGmoPxtELhN7ai",
@@ -45,7 +45,7 @@ object Mocks {
         href = "https://api.spotify.com/v1/search?query=estopa&type=album&offset=0&limit=20",
         items = listOf(
             Item(
-                id = 0,
+                id = "52iwsT98xCoGgiGntTiR7K",
                 itemId = "5ZqnEfVdEGmoPxtELhN7ai",
                 name = "Estopa",
                 href = "https://api.spotify.com/v1/artists/5ZqnEfVdEGmoPxtELhN7ai",

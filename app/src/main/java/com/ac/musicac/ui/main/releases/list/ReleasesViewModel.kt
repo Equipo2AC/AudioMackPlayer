@@ -22,8 +22,8 @@ class ReleasesViewModel @Inject constructor(
     val state: StateFlow<UiState> = _state.asStateFlow()
 
     fun onUiReady() {
-        _state.update { state -> state.copy(loading = true, albums = null, error = null) }
         viewModelScope.launch {
+            _state.update { state -> state.copy(loading = true, albums = null, error = null) }
             when (val response = getReleasesUseCase()) {
                 is Either.Left -> _state.update { it.copy(loading = false, albums = null, error = response.value) }
                 is Either.Right -> _state.update { it.copy(loading = false, albums = response.value.albums.items, error = null) }
@@ -32,7 +32,7 @@ class ReleasesViewModel @Inject constructor(
     }
 
     data class UiState(
-        val loading: Boolean? = null,
+        val loading: Boolean = false,
         val albums: List<Item>? = null,
         val error: Error? = null
     )

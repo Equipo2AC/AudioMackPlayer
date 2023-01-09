@@ -25,6 +25,7 @@ object Libs {
 
         object Fragment {
             const val ktx = "androidx.fragment:fragment-ktx:_"
+            const val test = "androidx.fragment:fragment-testing:1.5.5"
         }
 
         object Lifecycle {

@@ -54,8 +54,6 @@ class HomeArtistsInstrumentationTest {
     @Before
     fun setUp() {
         mockWebServerRule.runDispatcher()
-        // mockWebServerRule.server.enqueue(MockResponse().fromJson("artists_response.json"))
-        // mockWebServerRule.server.enqueue(MockResponse().fromJson("albums_response.json"))
         hiltRule.inject()
         val resource = OkHttp3IdlingResource.create("okHttp", okHttpClient)
         IdlingRegistry.getInstance().register(resource)

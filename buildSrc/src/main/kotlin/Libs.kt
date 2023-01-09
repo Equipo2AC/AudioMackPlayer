@@ -53,6 +53,7 @@ object Libs {
             }
             object Espresso{
                 const val contrib = "androidx.test.espresso:espresso-contrib:_"
+                const val core = "androidx.test.espresso:espresso-core:_"
             }
         }
 

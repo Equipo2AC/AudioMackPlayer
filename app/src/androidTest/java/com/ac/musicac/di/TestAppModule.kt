@@ -63,10 +63,30 @@ object TestAppModule {
     @Singleton
     fun providesAlbumDao(db: MusicAcDatabase): AlbumDao = db.albumDao()
 
+    /*@Provides
+    @Singleton
+    @ApiUrl
+    fun providesApiUrl(): String = "https://api.spotify.com/v1/"*/
+
     @Provides
     @Singleton
     @ApiUrl
     fun providesApiUrl(): String = "http://localhost:8080"
+
+    /*@Provides
+    @Singleton
+    @AuthenticationApiUrl
+    fun providesAuthenticationApiUrl(): String = "https://accounts.spotify.com/api/"*/
+
+    @Provides
+    @Singleton
+    @AuthenticationApiUrl
+    fun providesAuthenticationApiUrl(): String = "http://localhost:8080"
+
+    @Provides
+    @Singleton
+    @OnlyArtistDummyId
+    fun providesOnlyArtistsId(): String = "7ltDVBr6mKbRvohxheJ9h1"
 
     @Provides
     @Singleton
@@ -84,11 +104,6 @@ object TestAppModule {
         level = HttpLoggingInterceptor.Level.BODY
         OkHttpClient.Builder().addInterceptor(this).build()
     }
-
-    @Provides
-    @Singleton
-    @AuthenticationApiUrl
-    fun providesAuthenticationApiUrl(): String = "http://localhost:8080"
 
     @Provides
     @Singleton

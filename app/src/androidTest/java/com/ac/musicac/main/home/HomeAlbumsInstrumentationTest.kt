@@ -1,7 +1,5 @@
 package com.ac.musicac.main.home
 
-import android.os.Handler
-import android.os.Looper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
@@ -14,15 +12,12 @@ import androidx.test.rule.GrantPermissionRule
 import com.ac.musicac.R
 import com.ac.musicac.data.server.MockWebServerRule
 import com.ac.musicac.data.server.OkHttp3IdlingResource
-import com.ac.musicac.data.server.fromJson
 import com.ac.musicac.di.qualifier.AlbumDummyIds
 import com.ac.musicac.ui.navHostActivity.NavHostActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
 import okhttp3.OkHttpClient
-import okhttp3.mockwebserver.MockResponse
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -55,7 +50,7 @@ class HomeAlbumsInstrumentationTest {
 
     @Before
     fun setUp() {
-        mockWebServerRule.runDispatcher()
+        mockWebServerRule.runHomeDispatcher()
         hiltRule.inject()
         val resource = OkHttp3IdlingResource.create("okHttp", okHttpClient)
         IdlingRegistry.getInstance().register(resource)

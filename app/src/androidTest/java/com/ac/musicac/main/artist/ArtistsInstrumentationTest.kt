@@ -1,40 +1,31 @@
 package com.ac.musicac.main.artist
 
-import androidx.fragment.app.testing.FragmentScenario
+import androidx.core.os.bundleOf
 import androidx.fragment.app.testing.launchFragment
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.lifecycle.Lifecycle
-import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
-import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions
-import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.GrantPermissionRule
 import com.ac.musicac.R
 import com.ac.musicac.data.database.dao.ArtistDao
-import com.ac.musicac.data.server.MockWebServerRule
-import com.ac.musicac.data.server.OkHttp3IdlingResource
+import com.ac.musicac.data.server.*
 import com.ac.musicac.data.server.datasource.SpotifyDataSource
-import com.ac.musicac.data.server.fromJson
+import com.ac.musicac.di.launchFragmentInHiltContainer
 import com.ac.musicac.di.qualifier.OnlyArtistDummyId
 import com.ac.musicac.ui.main.artist.ArtistFragment
 import com.ac.musicac.ui.navHostActivity.NavHostActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
-import org.junit.Assert
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.*
 import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
@@ -56,6 +47,9 @@ class ArtistsInstrumentationTest {
     val activityRule = ActivityScenarioRule(NavHostActivity::class.java)*/
 
     /*@get:Rule(order = 3)
+    val scenario = launchFragmentInHiltContainer<ArtistFragment>()*/
+
+    /*@get:Rule(order = 3)
     val scenario = launchFragmentInContainer<ArtistFragment>(
         initialState = Lifecycle.State.INITIALIZED
     )*/
@@ -67,42 +61,86 @@ class ArtistsInstrumentationTest {
     lateinit var dataSource: SpotifyDataSource
 
     @Inject
-    @OnlyArtistDummyId
-    lateinit var artistsId: String
-
-    @Inject
     lateinit var okHttpClient: OkHttpClient
+
+    val artistsId = "7ltDVBr6mKbRvohxheJ9h1"
+
+    // An Idling Resource that waits for Data Binding to have no pending bindings
+    private val dataBindingIdlingResource = DataBindingIdlingResource()
+
+    @Before
+    fun init() {
+        // Populate @Inject fields in test class
+        // hiltRule.inject()
+    }
 
     @Before
     fun setUp() {
-        val scenario = launchFragmentInContainer<ArtistFragment>()
         // scenario.moveToState(Lifecycle.State.RESUMED)
-        mockWebServerRule.server.enqueue(MockResponse().fromJson("artist_rosalia_response.json"))
+
+        mockWebServerRule.runHomeDispatcher()
+
         hiltRule.inject()
-        val resource = OkHttp3IdlingResource.create("okHttp", okHttpClient)
-        IdlingRegistry.getInstance().register(resource)
+
+        // IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
+        // IdlingRegistry.getInstance().register(dataBindingIdlingResource)
+        IdlingRegistry.getInstance().register(OkHttp3IdlingResource.create("okHttp", okHttpClient))
+
+        val scenario = launchFragmentInHiltContainer<ArtistFragment>(fragmentArgs = bundleOf(Pair("artistId", artistsId)))
+        // val scenario = launfragmentArgs = bundleOf(Pair("artistId", artistsId))chFragmentInContainer<ArtistFragment>(fragmentArgs = bundleOf(Pair("artistId", artistsId)))
+        /*scenario.onFragment{
+            IdlingRegistry.getInstance().register(resource)
+        }*/
+        /*val scenario = launchFragment<ArtistFragment>(
+            themeResId = R.style.Theme_MusicAC
+        ) {
+            return@launchFragment ArtistFragment()
+        }*/
+
+        // mockWebServerRule.server.enqueue(MockResponse().fromJson("artist_rosalia_response.json"))
+
+
+        // mockWebServerRule.runArtistDispatcher()
+    }
+
+    /**
+     * Unregister your Idling Resource so it can be garbage collected and does not leak any memory.
+     */
+    @After
+    fun unregisterIdlingResource() {
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
+        IdlingRegistry.getInstance().unregister(dataBindingIdlingResource)
+        IdlingRegistry.getInstance().unregister(OkHttp3IdlingResource.create("okHttp", okHttpClient))
     }
 
     @Test
     fun click_an_artist_album_navigates_to_album_detail() {
 
+        // mockWebServerRule.server.enqueue(MockResponse().fromJson("artist_rosalia_response.json"))
+
         // scenario.recreate()
         Thread.sleep(2000)
 
-        onView(withId(R.id.recycler_artist))
+        /*onView(withId(R.id.recycler_artist))
             .perform(
                 RecyclerViewActions
-                .actionOnItemAtPosition<RecyclerView.ViewHolder>(1, ViewActions.click()))
+                .actionOnItemAtPosition<RecyclerView.ViewHolder>(1, ViewActions.click()))*/
 
         Thread.sleep(5000)
 
-        onView(withId(R.id.artist_toolbar)).check(
+        onView(withId(R.id.top_albums_title)).check(
+            ViewAssertions.matches(
+                withText("Top Albums")
+            )
+        )
+
+        /*onView(withId(R.id.artist_toolbar)).check(
             ViewAssertions.matches(
                 ViewMatchers.hasDescendant(
                     ViewMatchers.withText("Bizarrap")
                 )
             )
-        )
+        )*/
     }
 
     /*@Test

@@ -18,7 +18,6 @@ import com.ac.musicac.ui.navHostActivity.NavHostActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
 import org.junit.Before
@@ -53,10 +52,11 @@ class HomeArtistsInstrumentationTest {
 
     @Before
     fun setUp() {
-        mockWebServerRule.runDispatcher()
+        mockWebServerRule.runHomeDispatcher()
         hiltRule.inject()
         val resource = OkHttp3IdlingResource.create("okHttp", okHttpClient)
         IdlingRegistry.getInstance().register(resource)
+
     }
 
     /*@Test

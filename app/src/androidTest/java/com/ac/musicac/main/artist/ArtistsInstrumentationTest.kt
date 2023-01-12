@@ -47,12 +47,6 @@ class ArtistsInstrumentationTest {
     val activityRule = ActivityScenarioRule(NavHostActivity::class.java)
 
     @Inject
-    lateinit var artistDao: ArtistDao
-
-    @Inject
-    lateinit var dataSource: SpotifyDataSource
-
-    @Inject
     lateinit var okHttpClient: OkHttpClient
 
     // An Idling Resource that waits for Data Binding to have no pending bindings

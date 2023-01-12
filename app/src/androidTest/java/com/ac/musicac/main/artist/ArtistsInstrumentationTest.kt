@@ -1,25 +1,15 @@
 package com.ac.musicac.main.artist
 
 import android.os.Bundle
-import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
-import androidx.test.espresso.action.ViewActions
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
-import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.rule.GrantPermissionRule
 import com.ac.musicac.R
-import com.ac.musicac.data.database.dao.ArtistDao
 import com.ac.musicac.data.server.*
-import com.ac.musicac.data.server.datasource.SpotifyDataSource
 import com.ac.musicac.ui.main.artist.ArtistFragment
-import com.ac.musicac.ui.main.releases.list.ReleasesFragment
 import com.ac.musicac.ui.navHostActivity.NavHostActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -55,7 +45,7 @@ class ArtistsInstrumentationTest {
     @Before
     fun setUp() {
 
-        mockWebServerRule.runHomeDispatcher()
+        mockWebServerRule.runDispatcher()
 
         hiltRule.inject()
 

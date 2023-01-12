@@ -4,9 +4,13 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.rule.GrantPermissionRule
 import com.ac.musicac.R
@@ -50,7 +54,7 @@ class HomeAlbumsInstrumentationTest {
 
     @Before
     fun setUp() {
-        mockWebServerRule.runHomeDispatcher()
+        mockWebServerRule.runDispatcher()
         hiltRule.inject()
         val resource = OkHttp3IdlingResource.create("okHttp", okHttpClient)
         IdlingRegistry.getInstance().register(resource)
@@ -59,35 +63,49 @@ class HomeAlbumsInstrumentationTest {
     @Test
     fun click_an_album_navigates_to_detail() {
 
-        Thread.sleep(2000)
+        Thread.sleep(5000)
 
         onView(ViewMatchers.withId(R.id.recycler_albums))
             .perform(RecyclerViewActions
-                .actionOnItemAtPosition<RecyclerView.ViewHolder>(1, ViewActions.click()))
+                .actionOnItemAtPosition<RecyclerView.ViewHolder>(1, click()))
 
-        Thread.sleep(5000)
+
 
         onView(ViewMatchers.withId(R.id.release_detail_toolbar))
-            .check(ViewAssertions.matches(ViewMatchers.hasDescendant(ViewMatchers.withText("MOTOMAMI"))))
-    }
-
-    /*@Test
-    fun check_4_albums_items_db() = runTest {
-        albumDao.insertAllAlbums(buildDatabaseAlbum(1, 2, 3, 4))
-        Assert.assertEquals(4, albumDao.albumCount())
+            .check(matches(hasDescendant(withText("MOTOMAMI"))))
     }
 
     @Test
-    fun check_6_albums_items_db()  = runTest {
-        albumDao.insertAllAlbums(buildDatabaseAlbum(5, 6, 7, 8, 9, 10))
-        Assert.assertEquals(6, albumDao.albumCount())
-    }*/
+    fun click_an_artist_navigates_to_detail() {
 
-    /*@Test
-    fun check_mock_server_is_working() = runTest {
-        val artists = dataSource.getSeveralAlbums(albumsIds)
-        artists.fold({ throw Exception(it.toString()) }) {
-            Assert.assertEquals("3RQQmkQEvNCY4prGKE6oc5", it.albums[0].id)
-        }
-    }*/
+        Thread.sleep(5000)
+
+        onView(ViewMatchers.withId(R.id.recycler_artist))
+            .perform(RecyclerViewActions
+                .actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+
+
+
+        onView(ViewMatchers.withId(R.id.artist_toolbar))
+            .check(matches(hasDescendant(withText("ROSALÍA"))))
+    }
+
+    @Test
+    fun app_shows_several_artists() {
+
+        Thread.sleep(5000)
+
+        onView(ViewMatchers.withId(R.id.recycler_artist))
+            .check(matches(hasDescendant(withText("Bizarrap"))))
+    }
+
+    @Test
+    fun app_shows_several_albums() {
+
+        Thread.sleep(5000)
+
+        onView(ViewMatchers.withId(R.id.recycler_albums))
+            .check(matches(hasDescendant(withText("MOTOMAMI"))))
+
+    }
 }

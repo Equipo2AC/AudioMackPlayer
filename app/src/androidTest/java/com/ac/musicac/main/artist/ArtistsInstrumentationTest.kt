@@ -1,9 +1,11 @@
 package com.ac.musicac.main.artist
 
+import android.os.Bundle
 import androidx.core.os.bundleOf
 import androidx.fragment.app.testing.launchFragment
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.lifecycle.Lifecycle
+import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.assertion.ViewAssertions
@@ -43,8 +45,12 @@ class ArtistsInstrumentationTest {
         "android.permission.ACCESS_COARSE_LOCATION"
     )
 
-    /*@get:Rule(order = 3)
-    val activityRule = ActivityScenarioRule(NavHostActivity::class.java)*/
+    // @get:Rule(order = 3)
+    // val scenario = ActivityScenario.launch(NavHostActivity::class.java)
+
+    @get:Rule(order = 3)
+    val activityRule = ActivityScenarioRule(NavHostActivity::class.java)
+
 
     /*@get:Rule(order = 3)
     val scenario = launchFragmentInHiltContainer<ArtistFragment>()*/
@@ -63,10 +69,10 @@ class ArtistsInstrumentationTest {
     @Inject
     lateinit var okHttpClient: OkHttpClient
 
-    val artistsId = "7ltDVBr6mKbRvohxheJ9h1"
+    val artistId = "7ltDVBr6mKbRvohxheJ9h1"
 
     // An Idling Resource that waits for Data Binding to have no pending bindings
-    private val dataBindingIdlingResource = DataBindingIdlingResource()
+    // private val dataBindingIdlingResource = DataBindingIdlingResource()
 
     @Before
     fun init() {
@@ -77,16 +83,32 @@ class ArtistsInstrumentationTest {
     @Before
     fun setUp() {
         // scenario.moveToState(Lifecycle.State.RESUMED)
+        // mockWebServerRule.server.enqueue(MockResponse().fromJson("token_response.json"))
+        // mockWebServerRule.server.enqueue(MockResponse().fromJson("artists_response.json"))
+        // mockWebServerRule.server.enqueue(MockResponse().fromJson("albums_response.json"))
+        // mockWebServerRule.server.enqueue(MockResponse().fromJson("artists_response.json"))
+        // mockWebServerRule.server.enqueue(MockResponse().fromJson("artist_rosalia_response.json"))
+        // mockWebServerRule.server.enqueue(MockResponse().fromJson("albums_response.json"))
 
         mockWebServerRule.runHomeDispatcher()
 
         hiltRule.inject()
 
-        // IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
         // IdlingRegistry.getInstance().register(dataBindingIdlingResource)
         IdlingRegistry.getInstance().register(OkHttp3IdlingResource.create("okHttp", okHttpClient))
 
-        val scenario = launchFragmentInHiltContainer<ArtistFragment>(fragmentArgs = bundleOf(Pair("artistId", artistsId)))
+        activityRule.scenario.onActivity { activity ->
+            val fragment = ArtistFragment()
+            val bun = Bundle()
+            bun.putString("artistId", artistId)
+            fragment.arguments = bun
+            activity.supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.nav_host_splash_fragment, fragment, "ArtistFragment")
+                .commitNowAllowingStateLoss()
+        }
+        // val scenario = launchFragmentInHiltContainer<ArtistFragment>(fragmentArgs = bundleOf(Pair("artistId", artistId)))
         // val scenario = launfragmentArgs = bundleOf(Pair("artistId", artistsId))chFragmentInContainer<ArtistFragment>(fragmentArgs = bundleOf(Pair("artistId", artistsId)))
         /*scenario.onFragment{
             IdlingRegistry.getInstance().register(resource)
@@ -96,8 +118,6 @@ class ArtistsInstrumentationTest {
         ) {
             return@launchFragment ArtistFragment()
         }*/
-
-        // mockWebServerRule.server.enqueue(MockResponse().fromJson("artist_rosalia_response.json"))
 
 
         // mockWebServerRule.runArtistDispatcher()
@@ -109,7 +129,7 @@ class ArtistsInstrumentationTest {
     @After
     fun unregisterIdlingResource() {
         IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
-        IdlingRegistry.getInstance().unregister(dataBindingIdlingResource)
+        // IdlingRegistry.getInstance().unregister(dataBindingIdlingResource)
         IdlingRegistry.getInstance().unregister(OkHttp3IdlingResource.create("okHttp", okHttpClient))
     }
 
@@ -118,15 +138,14 @@ class ArtistsInstrumentationTest {
 
         // mockWebServerRule.server.enqueue(MockResponse().fromJson("artist_rosalia_response.json"))
 
-        // scenario.recreate()
-        Thread.sleep(2000)
+        // activityRule.scenario.recreate()
 
         /*onView(withId(R.id.recycler_artist))
             .perform(
                 RecyclerViewActions
                 .actionOnItemAtPosition<RecyclerView.ViewHolder>(1, ViewActions.click()))*/
 
-        Thread.sleep(5000)
+        Thread.sleep(10000)
 
         onView(withId(R.id.top_albums_title)).check(
             ViewAssertions.matches(

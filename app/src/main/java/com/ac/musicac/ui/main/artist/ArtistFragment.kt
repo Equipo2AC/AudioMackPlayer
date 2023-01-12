@@ -23,7 +23,7 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
         super.onViewCreated(view, savedInstanceState)
         artistState = buildArtistState()
         binding = FragmentArtistBinding.bind(view).apply {
-            recycler.adapter = adapter
+            recyclerArtistAlbums.adapter = adapter
             artistToolbar.setNavigationOnClickListener {
                 requireActivity().onBackPressedDispatcher.onBackPressed()
             }
@@ -45,10 +45,11 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
         albumlist = state.topAlbums?.items?.sortedBy { it.releaseDate }?.reversed()
         state.artist?.let {
             item = state.artist
-            Log.e("Artist ID", it.artistId)
+            // Log.e("Artist ID", it.artistId)
         }
         state.error?.let {
             Toast.makeText(requireContext(), "Error ${artistState.errorToString(it)} ", Toast.LENGTH_SHORT).show()
+            Log.e("Artist Fragment ERROR", "Error ${artistState.errorToString(it)} ")
         }
     }
 }

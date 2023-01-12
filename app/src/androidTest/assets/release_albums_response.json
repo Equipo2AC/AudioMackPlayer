@@ -1,0 +1,707 @@
+{
+  "album_type" : "album",
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+    },
+    "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+    "id" : "7ltDVBr6mKbRvohxheJ9h1",
+    "name" : "ROSALÍA",
+    "type" : "artist",
+    "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+  } ],
+  "copyrights" : [ {
+    "text" : "(P) 2022 Columbia Records, a Division of Sony Music Entertainment",
+    "type" : "P"
+  } ],
+  "external_ids" : {
+    "upc" : "886449876266"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/album/3zbiiu3JTibw0esC7eoMXr"
+  },
+  "genres" : [ ],
+  "href" : "https://api.spotify.com/v1/albums/3zbiiu3JTibw0esC7eoMXr",
+  "id" : "3zbiiu3JTibw0esC7eoMXr",
+  "images" : [ {
+    "height" : 640,
+    "url" : "https://i.scdn.co/image/ab67616d0000b273efc0ef9dd996312ebaf0bf52",
+    "width" : 640
+  }, {
+    "height" : 300,
+    "url" : "https://i.scdn.co/image/ab67616d00001e02efc0ef9dd996312ebaf0bf52",
+    "width" : 300
+  }, {
+    "height" : 64,
+    "url" : "https://i.scdn.co/image/ab67616d00004851efc0ef9dd996312ebaf0bf52",
+    "width" : 64
+  } ],
+  "label" : "Columbia",
+  "name" : "MOTOMAMI +",
+  "popularity" : 79,
+  "release_date" : "2022-09-09",
+  "release_date_precision" : "day",
+  "total_tracks" : 24,
+  "tracks" : {
+    "href" : "https://api.spotify.com/v1/albums/3zbiiu3JTibw0esC7eoMXr/tracks?offset=0&limit=50&market=ES",
+    "items" : [ {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 137533,
+      "explicit" : true,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/4n1WwhKzKHUX598tvU1wMu"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/4n1WwhKzKHUX598tvU1wMu",
+      "id" : "4n1WwhKzKHUX598tvU1wMu",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "SAOKO",
+      "preview_url" : "https://p.scdn.co/mp3-preview/9faac5f78cb44b4e5ff9bba5ad33c27e5622e574?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 1,
+      "type" : "track",
+      "uri" : "spotify:track:4n1WwhKzKHUX598tvU1wMu"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 193488,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/4AIA8hN351mjpB5lXfUsJH"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/4AIA8hN351mjpB5lXfUsJH",
+      "id" : "4AIA8hN351mjpB5lXfUsJH",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "CANDY",
+      "preview_url" : "https://p.scdn.co/mp3-preview/c716246af0ba187c1f260d71c608e87f901f7b93?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 2,
+      "type" : "track",
+      "uri" : "spotify:track:4AIA8hN351mjpB5lXfUsJH"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ"
+        },
+        "href" : "https://api.spotify.com/v1/artists/1Xyo4u8uXC1ZmMpatF05PJ",
+        "id" : "1Xyo4u8uXC1ZmMpatF05PJ",
+        "name" : "The Weeknd",
+        "type" : "artist",
+        "uri" : "spotify:artist:1Xyo4u8uXC1ZmMpatF05PJ"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 188121,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/77VjuBo3CJbamC3gzaUzK9"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/77VjuBo3CJbamC3gzaUzK9",
+      "id" : "77VjuBo3CJbamC3gzaUzK9",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "LA FAMA",
+      "preview_url" : "https://p.scdn.co/mp3-preview/2d2ba255badc2fe0e438904127443859d36835ca?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 3,
+      "type" : "track",
+      "uri" : "spotify:track:77VjuBo3CJbamC3gzaUzK9"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 155861,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/4kWCCB9VqQpZVewUlgjxGy"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/4kWCCB9VqQpZVewUlgjxGy",
+      "id" : "4kWCCB9VqQpZVewUlgjxGy",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "BULERÍAS",
+      "preview_url" : "https://p.scdn.co/mp3-preview/85120a4b62e2b33037a5d7f9ad92f40152934deb?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 4,
+      "type" : "track",
+      "uri" : "spotify:track:4kWCCB9VqQpZVewUlgjxGy"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 122209,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/5OzQJGSICWovSJI3OFydQ9"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/5OzQJGSICWovSJI3OFydQ9",
+      "id" : "5OzQJGSICWovSJI3OFydQ9",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "CHICKEN TERIYAKI",
+      "preview_url" : "https://p.scdn.co/mp3-preview/320bc7e6b28b55599bdfa353b85c7d8886a2c38e?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 5,
+      "type" : "track",
+      "uri" : "spotify:track:5OzQJGSICWovSJI3OFydQ9"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 162929,
+      "explicit" : true,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/7y1r8U18JSN93zZARYKfhT"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/7y1r8U18JSN93zZARYKfhT",
+      "id" : "7y1r8U18JSN93zZARYKfhT",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "HENTAI",
+      "preview_url" : "https://p.scdn.co/mp3-preview/ac33976c7d5cb46c31beaa089f96c4a378082c67?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 6,
+      "type" : "track",
+      "uri" : "spotify:track:7y1r8U18JSN93zZARYKfhT"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 109109,
+      "explicit" : true,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/2RGIXMgdKl2t4zLqVYwPu4"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/2RGIXMgdKl2t4zLqVYwPu4",
+      "id" : "2RGIXMgdKl2t4zLqVYwPu4",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "BIZCOCHITO",
+      "preview_url" : "https://p.scdn.co/mp3-preview/7baf3d99b76a1c87be36fc31e4caa1ef2e8b8fdf?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 7,
+      "type" : "track",
+      "uri" : "spotify:track:2RGIXMgdKl2t4zLqVYwPu4"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 252121,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/7EJcb4e5T2vDsaPWR7yEb4"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/7EJcb4e5T2vDsaPWR7yEb4",
+      "id" : "7EJcb4e5T2vDsaPWR7yEb4",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "G3 N15",
+      "preview_url" : "https://p.scdn.co/mp3-preview/fc5767e171829ea9c82acddb1ac69dab20955919?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 8,
+      "type" : "track",
+      "uri" : "spotify:track:7EJcb4e5T2vDsaPWR7yEb4"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 61422,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/6EXl4PwflcMNobeFpL5bWn"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/6EXl4PwflcMNobeFpL5bWn",
+      "id" : "6EXl4PwflcMNobeFpL5bWn",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "MOTOMAMI",
+      "preview_url" : "https://p.scdn.co/mp3-preview/3f069699dede96f80f74cf42f1e86ebbc0634531?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 9,
+      "type" : "track",
+      "uri" : "spotify:track:6EXl4PwflcMNobeFpL5bWn"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 165552,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/19nu8H97D8j1G0bSwV5emP"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/19nu8H97D8j1G0bSwV5emP",
+      "id" : "19nu8H97D8j1G0bSwV5emP",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "DIABLO",
+      "preview_url" : "https://p.scdn.co/mp3-preview/5d08bc9d3d75ba97caab5c7301911b7aa6ae5d0e?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 10,
+      "type" : "track",
+      "uri" : "spotify:track:19nu8H97D8j1G0bSwV5emP"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 155436,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/6YbC5s56zWKObDIRZnAIbY"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/6YbC5s56zWKObDIRZnAIbY",
+      "id" : "6YbC5s56zWKObDIRZnAIbY",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "DELIRIO DE GRANDEZA",
+      "preview_url" : "https://p.scdn.co/mp3-preview/09b5a507b26bd6e8d74d8eb917774458070984a1?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 11,
+      "type" : "track",
+      "uri" : "spotify:track:6YbC5s56zWKObDIRZnAIbY"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 150701,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/3lf72csq4o0yPNo6XFkwZO"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/3lf72csq4o0yPNo6XFkwZO",
+      "id" : "3lf72csq4o0yPNo6XFkwZO",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "CUUUUuuuuuute",
+      "preview_url" : "https://p.scdn.co/mp3-preview/9e2e0e779675b0d56484fea810d1865aaeae81d3?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 12,
+      "type" : "track",
+      "uri" : "spotify:track:3lf72csq4o0yPNo6XFkwZO"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 65961,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/5EbsCDXjzmwtHm70q87VHt"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/5EbsCDXjzmwtHm70q87VHt",
+      "id" : "5EbsCDXjzmwtHm70q87VHt",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Abcdefg",
+      "preview_url" : "https://p.scdn.co/mp3-preview/111b9b1f73ab345e8dfee75d51e92051c448299d?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 13,
+      "type" : "track",
+      "uri" : "spotify:track:5EbsCDXjzmwtHm70q87VHt"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/2p4aN0Uxkk3iT3HK0cJ2cJ"
+        },
+        "href" : "https://api.spotify.com/v1/artists/2p4aN0Uxkk3iT3HK0cJ2cJ",
+        "id" : "2p4aN0Uxkk3iT3HK0cJ2cJ",
+        "name" : "Tokischa",
+        "type" : "artist",
+        "uri" : "spotify:artist:2p4aN0Uxkk3iT3HK0cJ2cJ"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 160296,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/5OcFWC7ynhXNdLgJXRmCd9"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/5OcFWC7ynhXNdLgJXRmCd9",
+      "id" : "5OcFWC7ynhXNdLgJXRmCd9",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "LA COMBI VERSACE",
+      "preview_url" : "https://p.scdn.co/mp3-preview/f27b91112217339470e0e280e49ee9dd9ff54091?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 14,
+      "type" : "track",
+      "uri" : "spotify:track:5OcFWC7ynhXNdLgJXRmCd9"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 262104,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/4KkVsKSeAVluB6aG6QNCGG"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/4KkVsKSeAVluB6aG6QNCGG",
+      "id" : "4KkVsKSeAVluB6aG6QNCGG",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "COMO UN G",
+      "preview_url" : "https://p.scdn.co/mp3-preview/f3847ad459663c57a1c35c872c1d267dd0c14a27?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 15,
+      "type" : "track",
+      "uri" : "spotify:track:4KkVsKSeAVluB6aG6QNCGG"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 34918,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/1nsHEIMiqiPzlwaZu5ykZG"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/1nsHEIMiqiPzlwaZu5ykZG",
+      "id" : "1nsHEIMiqiPzlwaZu5ykZG",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Thank Yu :)",
+      "preview_url" : "https://p.scdn.co/mp3-preview/9141dfc79863ce7d920d76a3264bd49b9f0f8ff5?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 16,
+      "type" : "track",
+      "uri" : "spotify:track:1nsHEIMiqiPzlwaZu5ykZG"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 156787,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/53tfEupEzQRtVFOeZvk7xq"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/53tfEupEzQRtVFOeZvk7xq",
+      "id" : "53tfEupEzQRtVFOeZvk7xq",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "DESPECHÁ",
+      "preview_url" : "https://p.scdn.co/mp3-preview/dda6170f0da3bbe09a4d2c019bb097c5157bf4b1?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 17,
+      "type" : "track",
+      "uri" : "spotify:track:53tfEupEzQRtVFOeZvk7xq"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/37230BxxYs9ksS7OkZw3IU"
+        },
+        "href" : "https://api.spotify.com/v1/artists/37230BxxYs9ksS7OkZw3IU",
+        "id" : "37230BxxYs9ksS7OkZw3IU",
+        "name" : "Chencho Corleone",
+        "type" : "artist",
+        "uri" : "spotify:artist:37230BxxYs9ksS7OkZw3IU"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 204654,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/3VjCEyc0bHfa4Ie34kbWyb"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/3VjCEyc0bHfa4Ie34kbWyb",
+      "id" : "3VjCEyc0bHfa4Ie34kbWyb",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "CANDY - Remix",
+      "preview_url" : "https://p.scdn.co/mp3-preview/eb60313dc1a6f5d47aab768bb7139339ae8ba60b?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 18,
+      "type" : "track",
+      "uri" : "spotify:track:3VjCEyc0bHfa4Ie34kbWyb"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 226089,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/039XEZvgyNmVm1IGT2Lfkj"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/039XEZvgyNmVm1IGT2Lfkj",
+      "id" : "039XEZvgyNmVm1IGT2Lfkj",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "LA FAMA - Live en el Palau Sant Jordi",
+      "preview_url" : "https://p.scdn.co/mp3-preview/d0209eea8a7c704b79a43a237dbb1b77d991e975?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 19,
+      "type" : "track",
+      "uri" : "spotify:track:039XEZvgyNmVm1IGT2Lfkj"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 206869,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/3SxJJJbmgDeLpWHa54LIWK"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/3SxJJJbmgDeLpWHa54LIWK",
+      "id" : "3SxJJJbmgDeLpWHa54LIWK",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "AISLAMIENTO",
+      "preview_url" : "https://p.scdn.co/mp3-preview/bc971974d0ea3e24c856195f3130881b65830842?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 20,
+      "type" : "track",
+      "uri" : "spotify:track:3SxJJJbmgDeLpWHa54LIWK"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 131087,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/1xtfUae857RhiCclSlAOIV"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/1xtfUae857RhiCclSlAOIV",
+      "id" : "1xtfUae857RhiCclSlAOIV",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "LA KILIÉ",
+      "preview_url" : "https://p.scdn.co/mp3-preview/366275ed91bfe3d6306609dc923944d04f832ea8?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 21,
+      "type" : "track",
+      "uri" : "spotify:track:1xtfUae857RhiCclSlAOIV"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 89749,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/2N3YZ075lq9z1ObaAiX6l1"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/2N3YZ075lq9z1ObaAiX6l1",
+      "id" : "2N3YZ075lq9z1ObaAiX6l1",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "LAX",
+      "preview_url" : "https://p.scdn.co/mp3-preview/bef6c738814dca4fa56d23df6068292d3a12ada5?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 22,
+      "type" : "track",
+      "uri" : "spotify:track:2N3YZ075lq9z1ObaAiX6l1"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 120991,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/3CBaIz3eftJCf9GHycFanL"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/3CBaIz3eftJCf9GHycFanL",
+      "id" : "3CBaIz3eftJCf9GHycFanL",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "CHIRI",
+      "preview_url" : "https://p.scdn.co/mp3-preview/2a6f214deda6c4382f4aaa7a8e7dd055152a622e?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 23,
+      "type" : "track",
+      "uri" : "spotify:track:3CBaIz3eftJCf9GHycFanL"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 201625,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/2EXEfxvAQz9cIZGIX60PJ8"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/2EXEfxvAQz9cIZGIX60PJ8",
+      "id" : "2EXEfxvAQz9cIZGIX60PJ8",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "SAKURA",
+      "preview_url" : "https://p.scdn.co/mp3-preview/1716633dc43860562e8151645c7f3d20fc67421d?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 24,
+      "type" : "track",
+      "uri" : "spotify:track:2EXEfxvAQz9cIZGIX60PJ8"
+    } ],
+    "limit" : 50,
+    "next" : null,
+    "offset" : 0,
+    "previous" : null,
+    "total" : 24
+  },
+  "type" : "album",
+  "uri" : "spotify:album:3zbiiu3JTibw0esC7eoMXr"
+}

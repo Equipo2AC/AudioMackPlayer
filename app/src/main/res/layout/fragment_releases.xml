@@ -47,7 +47,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler"
+            android:id="@+id/recycler_releases"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/black"

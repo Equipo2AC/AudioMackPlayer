@@ -28,7 +28,7 @@ class ReleaseDetailFragment : Fragment(R.layout.fragment_release_detail) {
         releaseDetailState = buildReleaseDetailState()
 
         val binding = FragmentReleaseDetailBinding.bind(view).apply {
-            recycler.adapter = adapter
+            recyclerReleaseTracks.adapter = adapter
         }
 
         binding.releaseDetailToolbar.setNavigationOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }

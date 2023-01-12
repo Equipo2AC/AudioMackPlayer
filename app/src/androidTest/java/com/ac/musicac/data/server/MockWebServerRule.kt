@@ -33,9 +33,23 @@ class MockWebServerRule: TestWatcher() {
                     path.contains("/albums?limit=10") -> response = "artist_rosalia_albums_response.json"
                     path.contains("1Cs0zKBU1kc0i8ypK3B9ai") -> response = "artists_response.json"
                     path.contains("/artists/7ltDVBr6mKbRvohxheJ9h1") -> response = "artist_rosalia_response.json"
+                    path.contains("?market=ES") -> response = "release_albums_response.json"
                     // else -> response = "artist_rosalia_response.json"
                 }
+                /*if (path != null) {
+                    when {
+                        // path.contains("/token") -> response = "token_response.json"
+                        path.contains("6gQKAYf3TJM9sppw3AtbHH") -> response = "albums_response.json"
+                        path.contains("/albums?limit=10") -> response = "artist_rosalia_albums_response.json"
+                        path.contains("1Cs0zKBU1kc0i8ypK3B9ai") -> response = "artists_response.json"
+                        path.contains("/artists/7ltDVBr6mKbRvohxheJ9h1") -> response = "artist_rosalia_response.json"
+                        // else -> response = "artist_rosalia_response.json"
+                    }
+                } else {
+                    response = "artist_rosalia_response.json"
+                }*/
                 return MockResponse().fromJson(response)
+
             }
         }
     }

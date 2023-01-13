@@ -31,7 +31,7 @@ class SearchFragment : Fragment(R.layout.fragment_search),
         searchView?.setOnQueryTextListener(this)
 
         viewLifecycleOwner.launchAndCollect(viewModel.state) { state ->
-            binding.recycler.adapter = adapter
+            binding.recyclerSearch.adapter = adapter
             binding.loading = state.loading
             binding.query = state.query
             binding.items = state.search

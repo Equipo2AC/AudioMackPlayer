@@ -1,30 +1,29 @@
 package com.ac.musicac.main.home
 
-import android.util.Log
+import androidx.recyclerview.widget.RecyclerView
+import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.rule.GrantPermissionRule
-import com.ac.musicac.buildDatabaseArtist
-import com.ac.musicac.data.database.dao.ArtistDao
+import com.ac.musicac.R
 import com.ac.musicac.data.server.MockWebServerRule
 import com.ac.musicac.data.server.OkHttp3IdlingResource
-import com.ac.musicac.data.server.datasource.SpotifyAuthenticationDataSource
-import com.ac.musicac.data.server.datasource.SpotifyDataSource
-import com.ac.musicac.data.server.fromJson
 import com.ac.musicac.di.qualifier.ArtistDummyIds
-import com.ac.musicac.domain.Token
 import com.ac.musicac.ui.navHostActivity.NavHostActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
 import okhttp3.OkHttpClient
-import okhttp3.mockwebserver.MockResponse
-import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import java.util.*
 import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
@@ -43,16 +42,7 @@ class HomeArtistsInstrumentationTest {
     )
 
     @get:Rule(order = 3)
-    val activityRule = ActivityScenarioRule(NavHostActivity::class.java)
-
-    // @Inject
-    // lateinit var artistDao: ArtistDao
-
-    @Inject
-    lateinit var authDataSource: SpotifyAuthenticationDataSource
-
-    @Inject
-    lateinit var dataSource: SpotifyDataSource
+    var activityRule = ActivityScenarioRule(NavHostActivity::class.java)
 
     @Inject
     @ArtistDummyIds
@@ -63,48 +53,64 @@ class HomeArtistsInstrumentationTest {
 
     @Before
     fun setUp() {
-        mockWebServerRule.server.enqueue(MockResponse().fromJson("token_response.json"))
-        mockWebServerRule.server.enqueue(MockResponse().fromJson("artists_response.json"))
-        // mockWebServerRule.server.enqueue(MockResponse().fromJson("albums_response.json"))
+        mockWebServerRule.runDispatcher()
         hiltRule.inject()
         val resource = OkHttp3IdlingResource.create("okHttp", okHttpClient)
         IdlingRegistry.getInstance().register(resource)
-    }
 
-    /*@Test
-    fun check_4_IM_items_db() = runTest {
-        artistDao.insertAllArtist(buildDatabaseArtist(1, 2, 3, 4))
-        assertEquals(4, artistDao.artistCount())
     }
 
     @Test
-    fun check_6_IM_items_db()  = runTest {
-        artistDao.insertAllArtist(buildDatabaseArtist(5, 6, 7, 8, 9, 10))
-        assertEquals(6, artistDao.artistCount())
-    }*/
+    fun app_shows_several_artists() {
+
+        Thread.sleep(5000)
+
+        onView(withId(R.id.recycler_artist))
+            .check(matches(hasDescendant(withText("Bizarrap"))))
+    }
 
     @Test
-    fun check_mock_auth_server_is_working() = runTest {
+    fun click_an_artist_navigates_to_detail() {
 
-        val token = authDataSource.getToken()
-        var newToken : Token? = null
-        token.fold({ throw Exception(it.toString()) }) {
-            newToken = Token(
-                it.value,
-                it.type,
-                it.expirationDate
-            )
-        }
-        assertEquals("Bearer", newToken?.type)
+        onView(withId(R.id.recycler_artist))
+            .perform(RecyclerViewActions
+                .actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+
+        onView(withId(R.id.artist_toolbar))
+            .check(matches(hasDescendant(withText("ROSALÍA"))))
     }
 
     /*@Test
-    fun check_mock_server_is_working() = runTest {
-        val artists = dataSource.getSeveralArtist(artistsIds)
-        artists.fold({ throw Exception(it.toString()) }) {
-            assertEquals("Rosalia", it.artists.get(0).name)
-        }
-        // assertEquals("Rosalia", "Rosalia")
+    fun click_another_artist_navigates_to_detail() {
+
+        Thread.sleep(5000)
+
+        onView(withId(R.id.recycler_artist))
+            .perform(RecyclerViewActions
+                .actionOnItemAtPosition<RecyclerView.ViewHolder>(1, click()))
+
+
+
+        onView(withId(R.id.artist_toolbar))
+            .check(matches(hasDescendant(withText("Bizarrap"))))
     }*/
+
+    /*@Test
+    fun click_third_artist_navigates_to_detail() {
+
+        Thread.sleep(5000)
+
+        onView(withId(R.id.recycler_artist))
+            .perform(RecyclerViewActions
+                .actionOnItemAtPosition<RecyclerView.ViewHolder>(2, ViewActions.click()))
+
+
+
+        onView(withId(R.id.artist_toolbar))
+            .check(matches(hasDescendant(withText("Quevedo"))))
+    }*/
+
+
+
 
 }

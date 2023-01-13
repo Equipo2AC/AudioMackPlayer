@@ -107,7 +107,7 @@
         </HorizontalScrollView>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler"
+            android:id="@+id/recycler_search"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"

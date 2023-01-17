@@ -1,0 +1,85 @@
+{
+  "album_type" : "single",
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/790FomKkXshlbRYZFtlgla"
+    },
+    "href" : "https://api.spotify.com/v1/artists/790FomKkXshlbRYZFtlgla",
+    "id" : "790FomKkXshlbRYZFtlgla",
+    "name" : "KAROL G",
+    "type" : "artist",
+    "uri" : "spotify:artist:790FomKkXshlbRYZFtlgla"
+  } ],
+  "copyrights" : [ {
+    "text" : "© 2022 UMG Recordings, Inc.",
+    "type" : "C"
+  }, {
+    "text" : "Universal Music Latino; ℗ 2022 UMG Recordings, Inc.",
+    "type" : "P"
+  } ],
+  "external_ids" : {
+    "upc" : "00602445850587"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/album/1wLB2bnCl2m5m9M9g8r93Y"
+  },
+  "genres" : [ ],
+  "href" : "https://api.spotify.com/v1/albums/1wLB2bnCl2m5m9M9g8r93Y",
+  "id" : "1wLB2bnCl2m5m9M9g8r93Y",
+  "images" : [ {
+    "height" : 640,
+    "url" : "https://i.scdn.co/image/ab67616d0000b273e70c454b8989f09d1e11ea92",
+    "width" : 640
+  }, {
+    "height" : 300,
+    "url" : "https://i.scdn.co/image/ab67616d00001e02e70c454b8989f09d1e11ea92",
+    "width" : 300
+  }, {
+    "height" : 64,
+    "url" : "https://i.scdn.co/image/ab67616d00004851e70c454b8989f09d1e11ea92",
+    "width" : 64
+  } ],
+  "label" : "UMLE - Latino",
+  "name" : "PROVENZA",
+  "popularity" : 79,
+  "release_date" : "2022-04-22",
+  "release_date_precision" : "day",
+  "total_tracks" : 1,
+  "tracks" : {
+    "href" : "https://api.spotify.com/v1/albums/1wLB2bnCl2m5m9M9g8r93Y/tracks?offset=0&limit=50&market=ES",
+    "items" : [ {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/790FomKkXshlbRYZFtlgla"
+        },
+        "href" : "https://api.spotify.com/v1/artists/790FomKkXshlbRYZFtlgla",
+        "id" : "790FomKkXshlbRYZFtlgla",
+        "name" : "KAROL G",
+        "type" : "artist",
+        "uri" : "spotify:artist:790FomKkXshlbRYZFtlgla"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 210200,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/7dSZ6zGTQx66c2GF91xCrb"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/7dSZ6zGTQx66c2GF91xCrb",
+      "id" : "7dSZ6zGTQx66c2GF91xCrb",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "PROVENZA",
+      "preview_url" : null,
+      "track_number" : 1,
+      "type" : "track",
+      "uri" : "spotify:track:7dSZ6zGTQx66c2GF91xCrb"
+    } ],
+    "limit" : 50,
+    "next" : null,
+    "offset" : 0,
+    "previous" : null,
+    "total" : 1
+  },
+  "type" : "album",
+  "uri" : "spotify:album:1wLB2bnCl2m5m9M9g8r93Y"
+}

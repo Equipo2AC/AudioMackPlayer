@@ -54,6 +54,7 @@ object Libs {
             }
             object Espresso{
                 const val contrib = "androidx.test.espresso:espresso-contrib:_"
+                const val intents = "androidx.test.espresso:espresso-intents:3.1.0"
                 const val core = "androidx.test.espresso:espresso-core:_"
             }
         }

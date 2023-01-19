@@ -43,14 +43,8 @@ class ArtistsInstrumentationTest {
     @get:Rule(order = 3)
     val activityRule = ActivityScenarioRule(NavHostActivity::class.java)
 
-    /*@get:Rule(order = 4)
-    val intentsTestRule = IntentsTestRule(NavHostActivity::class.java)*/
-
     @Inject
     lateinit var okHttpClient: OkHttpClient
-
-    // An Idling Resource that waits for Data Binding to have no pending bindings
-    // private val dataBindingIdlingResource = DataBindingIdlingResource()
 
     @Before
     fun setUp() {
@@ -71,10 +65,7 @@ class ArtistsInstrumentationTest {
                 .beginTransaction()
                 .replace(R.id.nav_host_splash_fragment, artistFragment, "ArtistFragment")
                 .commitNowAllowingStateLoss()
-
-
         }
-        // val scenario = launchFragmentInHiltContainer<ArtistFragment>(fragmentArgs = bundleOf(Pair("artistId", artistId)))
     }
 
     @After
@@ -114,8 +105,8 @@ class ArtistsInstrumentationTest {
 
         Thread.sleep(5000)
 
-        /*onView(withId(R.id.recycler_artist_albums))
-            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))*/
+        onView(withId(R.id.recycler_artist_albums))
+            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
 
        /* onView(withId(R.id.recycler_artist_albums))
             .perform(actionOnItem<RecyclerView.ViewHolder>(hasDescendant(withText("DESPECHÁ RMX")), click()))*/

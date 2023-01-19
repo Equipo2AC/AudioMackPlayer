@@ -120,23 +120,4 @@ class HomeAlbumsInstrumentationTest {
         onView(ViewMatchers.withId(R.id.release_detail_toolbar))
             .check(matches(hasDescendant(withText("PROVENZA"))))
     }
-
-    /*@Test
-    fun click_an_artist_navigates_to_detail() {
-
-        Thread.sleep(5000)
-
-        onView(ViewMatchers.withId(R.id.recycler_artist))
-            .perform(RecyclerViewActions
-                .actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
-
-
-
-        onView(ViewMatchers.withId(R.id.artist_toolbar))
-            .check(matches(hasDescendant(withText("ROSALÍA"))))
-    }*/
-
-
-
-
 }

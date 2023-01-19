@@ -114,25 +114,4 @@ class HomeArtistsInstrumentationTest {
         onView(withId(R.id.artist_toolbar))
             .check(matches(hasDescendant(withText("Bad Bunny"))))
     }
-
-    /*@Test
-    fun click_another_artist_navigates_to_detail() {
-
-        Thread.sleep(5000)
-
-        onView(withId(R.id.recycler_artist))
-            .perform(RecyclerViewActions
-                .actionOnItemAtPosition<RecyclerView.ViewHolder>(1, click()))
-
-
-
-        onView(withId(R.id.artist_toolbar))
-            .check(matches(hasDescendant(withText("Bizarrap"))))
-    }*/
-
-
-
-
-
-
 }

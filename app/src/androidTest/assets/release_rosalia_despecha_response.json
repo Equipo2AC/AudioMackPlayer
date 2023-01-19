@@ -1,0 +1,100 @@
+{
+  "album_type" : "single",
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+    },
+    "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+    "id" : "7ltDVBr6mKbRvohxheJ9h1",
+    "name" : "ROSALÍA",
+    "type" : "artist",
+    "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/4kYSro6naA4h99UJvo89HB"
+    },
+    "href" : "https://api.spotify.com/v1/artists/4kYSro6naA4h99UJvo89HB",
+    "id" : "4kYSro6naA4h99UJvo89HB",
+    "name" : "Cardi B",
+    "type" : "artist",
+    "uri" : "spotify:artist:4kYSro6naA4h99UJvo89HB"
+  } ],
+  "copyrights" : [ {
+    "text" : "(P) 2022 Columbia Records, a Division of Sony Music Entertainment",
+    "type" : "P"
+  } ],
+  "external_ids" : {
+    "upc" : "196589732613"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/album/4czxiqSwyeZK7y5r9GNWXP"
+  },
+  "genres" : [ ],
+  "href" : "https://api.spotify.com/v1/albums/4czxiqSwyeZK7y5r9GNWXP",
+  "id" : "4czxiqSwyeZK7y5r9GNWXP",
+  "images" : [ {
+    "height" : 640,
+    "url" : "https://i.scdn.co/image/ab67616d0000b273004be8772c8f598c58d71f72",
+    "width" : 640
+  }, {
+    "height" : 300,
+    "url" : "https://i.scdn.co/image/ab67616d00001e02004be8772c8f598c58d71f72",
+    "width" : 300
+  }, {
+    "height" : 64,
+    "url" : "https://i.scdn.co/image/ab67616d00004851004be8772c8f598c58d71f72",
+    "width" : 64
+  } ],
+  "label" : "Columbia",
+  "name" : "DESPECHÁ RMX",
+  "popularity" : 70,
+  "release_date" : "2022-12-16",
+  "release_date_precision" : "day",
+  "total_tracks" : 1,
+  "tracks" : {
+    "href" : "https://api.spotify.com/v1/albums/4czxiqSwyeZK7y5r9GNWXP/tracks?offset=0&limit=50&market=US",
+    "items" : [ {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+        "id" : "7ltDVBr6mKbRvohxheJ9h1",
+        "name" : "ROSALÍA",
+        "type" : "artist",
+        "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4kYSro6naA4h99UJvo89HB"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4kYSro6naA4h99UJvo89HB",
+        "id" : "4kYSro6naA4h99UJvo89HB",
+        "name" : "Cardi B",
+        "type" : "artist",
+        "uri" : "spotify:artist:4kYSro6naA4h99UJvo89HB"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 170827,
+      "explicit" : true,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/4CD623yLJVvKJxUyzaTqtC"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/4CD623yLJVvKJxUyzaTqtC",
+      "id" : "4CD623yLJVvKJxUyzaTqtC",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "DESPECHÁ RMX",
+      "preview_url" : "https://p.scdn.co/mp3-preview/a50ab7e5456b0a88df0db8e75b5fa4ecf527d1ef?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 1,
+      "type" : "track",
+      "uri" : "spotify:track:4CD623yLJVvKJxUyzaTqtC"
+    } ],
+    "limit" : 50,
+    "next" : null,
+    "offset" : 0,
+    "previous" : null,
+    "total" : 1
+  },
+  "type" : "album",
+  "uri" : "spotify:album:4czxiqSwyeZK7y5r9GNWXP"
+}

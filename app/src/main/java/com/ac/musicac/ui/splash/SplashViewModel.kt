@@ -28,7 +28,7 @@ class SplashViewModel @Inject constructor(
         viewModelScope.launch {
             _state.value = _state.value.copy(loading = true)
             val error = requestAuthenticationUseCase()
-            _state.value = _state.value.copy(loading = false, error = error)
+            // _state.value = _state.value.copy(loading = false, error = error)
             _state.value = _state.value.copy(loading = false, error = error, navigate = error?.let { true } ?: false)
         }
     }

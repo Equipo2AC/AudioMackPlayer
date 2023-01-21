@@ -126,6 +126,16 @@ class ArtistsInstrumentationTest {
         onView(withId(R.id.recycler_artist_albums)).check(
             matches(hasDescendant(withText("MOTOMAMI +")))
         )
+
+        /*onView(withId(R.id.release_detail_toolbar)).check(
+            matches(hasDescendant(withText("DESPECHÁ RMX")))
+        )*/
+
+        /*onView(withId(R.id.release_detail_toolbar)).check(
+            matches(withText("DESPECHÁ RMX"))
+        )*/
+
+
     }
 
 }

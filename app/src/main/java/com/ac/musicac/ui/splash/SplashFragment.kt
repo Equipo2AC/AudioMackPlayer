@@ -26,6 +26,8 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
 
         viewLifecycleOwner.launchAndCollect(viewModel.state) {
             binding.loading = it.loading
+
+            Thread.sleep(5000)
             if(it.error==null) splashState.navigate()
             binding.error = it.error?.let(splashState::errorToString)
         }

@@ -27,7 +27,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             recyclerArtist.adapter = artistAdapter
         }
 
-        viewLifecycleOwner.launchAndCollect(albumsViewModel.state) { state->
+        viewLifecycleOwner.launchAndCollect(albumsViewModel.state) { state ->
             with(binding) {
                 albums = state.albums?.albums
                 state.loading?.let {

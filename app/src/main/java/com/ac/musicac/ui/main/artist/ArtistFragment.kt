@@ -45,6 +45,9 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
         albumlist = state.topAlbums?.items?.sortedBy { it.releaseDate }?.reversed()
         state.artist?.let {
             item = state.artist
+            val popularity: Float = (state.artist.popularity.toFloat() / 100) * 5
+            ratingBar.rating = popularity
+
             // Log.e("Artist ID", it.artistId)
         }
         state.error?.let {

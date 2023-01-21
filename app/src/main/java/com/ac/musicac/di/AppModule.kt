@@ -24,6 +24,7 @@ import com.ac.musicac.data.server.service.SpotifyAuthenticationService
 import com.ac.musicac.data.server.service.SpotifyService
 import com.ac.musicac.di.qualifier.*
 import com.ac.musicac.ui.main.artist.ArtistFragmentArgs
+import com.ac.musicac.ui.main.releases.detail.ReleaseDetailFragmentArgs
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Binds
 import dagger.Module
@@ -153,13 +154,19 @@ object AppModule {
 
 @Module
 @InstallIn(ViewModelComponent::class)
-object ArtistViewModelModule {
+object ProvideIdViewModelModule {
 
     @Provides
     @ViewModelScoped
     @ArtistId
     fun provideArtistId(savedStateHandle: SavedStateHandle) =
         ArtistFragmentArgs.fromSavedStateHandle(savedStateHandle).artistId
+
+    @Provides
+    @ViewModelScoped
+    @AlbumId
+    fun provideAlbumId(savedStateHandle: SavedStateHandle) =
+        ReleaseDetailFragmentArgs.fromSavedStateHandle(savedStateHandle).albumId
 }
 
 @Module

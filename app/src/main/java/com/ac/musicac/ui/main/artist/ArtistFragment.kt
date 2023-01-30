@@ -1,5 +1,6 @@
 package com.ac.musicac.ui.main.artist
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import com.ac.musicac.R
 import com.ac.musicac.databinding.FragmentArtistBinding
 import com.ac.musicac.ui.common.launchAndCollect
 import dagger.hilt.android.AndroidEntryPoint
+import java.lang.String.valueOf
 
 @AndroidEntryPoint
 class ArtistFragment: Fragment(R.layout.fragment_artist) {
@@ -40,15 +42,14 @@ class ArtistFragment: Fragment(R.layout.fragment_artist) {
         }
     }
 
+
     private fun withArtistUpdateUI(state: ArtistViewModel.UiState) = with(binding) {
         loading = state.loading
         albumlist = state.topAlbums?.items?.sortedBy { it.releaseDate }?.reversed()
         state.artist?.let {
             item = state.artist
-            val popularity: Float = (state.artist.popularity.toFloat() / 100) * 5
-            ratingBar.rating = popularity
-
-            // Log.e("Artist ID", it.artistId)
+            popularityBar.progress = state.artist.popularity
+            "${state.artist.popularity}%".also { popularityPercent.text = it }
         }
         state.error?.let {
             Toast.makeText(requireContext(), "Error ${artistState.errorToString(it)} ", Toast.LENGTH_SHORT).show()

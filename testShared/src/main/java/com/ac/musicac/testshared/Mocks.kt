@@ -75,6 +75,30 @@ object Mocks {
         total = 102
     )
 
+    fun mockItems() = Item(
+        id = "52iwsT98xCoGgiGntTiR7K",
+        itemId = "5ZqnEfVdEGmoPxtELhN7ai",
+        name = "Estopa",
+        href = "https://api.spotify.com/v1/artists/5ZqnEfVdEGmoPxtELhN7ai",
+        albumType = "album",
+        artists = "Estopa",
+        availableMarkets = arrayListOf(),
+        externalUrls =
+        ExternalUrls("https://open.spotify.com/artist/5ZqnEfVdEGmoPxtELhN7ai"),
+        image = Image(
+            height = 300,
+            width = 300,
+            url = "https://i.scdn.co/image/ab67616d00001e021a311570340a4f6530da158b"
+        ),
+        releaseDate = "1999-10-18",
+        releaseDatePrecision = "day",
+        totalTracks = 12,
+        type = "artist",
+        uri = "spotify:artist:5ZqnEfVdEGmoPxtELhN7ai",
+        followers = 0,
+        genres = arrayListOf()
+    )
+
     fun mockSearchAlbum() = Search(
         albums = mockAlbums(),
         artists = null,

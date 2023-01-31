@@ -48,9 +48,9 @@ class HomeAlbumsInstrumentationTest {
     @get:Rule(order = 3)
     val activityRule = ActivityScenarioRule(NavHostActivity::class.java)
 
-    @Inject
+    /*@Inject
     @AlbumDummyIds
-    lateinit var albumsIds: String
+    lateinit var albumsIds: String*/
 
     @Inject
     lateinit var okHttpClient: OkHttpClient
@@ -72,8 +72,6 @@ class HomeAlbumsInstrumentationTest {
     @Test
     fun app_shows_several_albums() {
 
-        Thread.sleep(1000)
-
         onView(ViewMatchers.withId(R.id.recycler_albums))
             .check(matches(hasDescendant(withText("MOTOMAMI"))))
 
@@ -82,12 +80,8 @@ class HomeAlbumsInstrumentationTest {
     @Test
     fun click_first_album_navigates_to_detail() {
 
-        Thread.sleep(1000)
-
         onView(ViewMatchers.withId(R.id.recycler_albums))
             .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
-
-
 
         onView(ViewMatchers.withId(R.id.release_detail_toolbar))
             .check(matches(hasDescendant(withText("Un Verano Sin Ti"))))
@@ -96,12 +90,8 @@ class HomeAlbumsInstrumentationTest {
     @Test
     fun click_second_album_navigates_to_detail() {
 
-        Thread.sleep(1000)
-
         onView(ViewMatchers.withId(R.id.recycler_albums))
             .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(1, click()))
-
-
 
         onView(ViewMatchers.withId(R.id.release_detail_toolbar))
             .check(matches(hasDescendant(withText("MOTOMAMI"))))
@@ -110,12 +100,8 @@ class HomeAlbumsInstrumentationTest {
     @Test
     fun click_third_album_navigates_to_detail() {
 
-        Thread.sleep(1000)
-
         onView(ViewMatchers.withId(R.id.recycler_albums))
             .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(2, click()))
-
-
 
         onView(ViewMatchers.withId(R.id.release_detail_toolbar))
             .check(matches(hasDescendant(withText("PROVENZA"))))

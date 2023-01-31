@@ -6,23 +6,24 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.contrib.RecyclerViewActions.*
-import androidx.test.espresso.intent.rule.IntentsTestRule
+import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.rule.GrantPermissionRule
 import com.ac.musicac.R
-import com.ac.musicac.data.server.*
-import com.ac.musicac.domain.Item
+import com.ac.musicac.data.server.EspressoIdlingResource
+import com.ac.musicac.data.server.MockWebServerRule
+import com.ac.musicac.data.server.OkHttp3IdlingResource
 import com.ac.musicac.ui.main.artist.ArtistFragment
-import com.ac.musicac.ui.main.artist.ArtistsAlbumsAdapter
-import com.ac.musicac.ui.main.releases.detail.ReleaseDetailFragment
 import com.ac.musicac.ui.navHostActivity.NavHostActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import okhttp3.OkHttpClient
-import org.junit.*
+import org.junit.After
+import org.junit.Before
+import org.junit.Rule
+import org.junit.Test
 import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
@@ -77,8 +78,6 @@ class ArtistsInstrumentationTest {
     @Test
     fun artist_fragment_shows_an_artist() {
 
-        Thread.sleep(1000)
-
         onView(withId(R.id.artist_toolbar)).check(
             matches(hasDescendant(withText("ROSALÍA")))
         )
@@ -91,8 +90,6 @@ class ArtistsInstrumentationTest {
     @Test
     fun artist_fragment_shows_a_list_of_albums() {
 
-        Thread.sleep(1000)
-
         onView(withId(R.id.recycler_artist_albums)).check(
             matches(hasDescendant(withText("DESPECHÁ RMX")))
         )
@@ -100,10 +97,6 @@ class ArtistsInstrumentationTest {
 
     @Test
     fun artist_fragment_shows_an_album_when_clicked() {
-
-
-
-        Thread.sleep(5000)
 
         onView(withId(R.id.recycler_artist_albums))
             .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))

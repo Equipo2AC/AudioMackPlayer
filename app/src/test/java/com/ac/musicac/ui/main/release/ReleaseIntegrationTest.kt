@@ -23,7 +23,6 @@ import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
 
 @ExperimentalCoroutinesApi
-@RunWith(MockitoJUnitRunner::class)
 class ReleaseIntegrationTest {
 
     @get:Rule

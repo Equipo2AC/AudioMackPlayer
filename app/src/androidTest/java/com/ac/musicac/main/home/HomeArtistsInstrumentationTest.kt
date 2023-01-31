@@ -71,16 +71,12 @@ class HomeArtistsInstrumentationTest {
     @Test
     fun app_shows_several_artists() {
 
-        Thread.sleep(1000)
-
         onView(withId(R.id.recycler_artist))
             .check(matches(hasDescendant(withText("Bizarrap"))))
     }
 
     @Test
     fun click_in_rosalia_artist_navigates_to_detail() {
-
-        Thread.sleep(1000)
 
         onView(withId(R.id.recycler_artist))
             .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
@@ -92,8 +88,6 @@ class HomeArtistsInstrumentationTest {
     @Test
     fun click_in_bizarrap_artist_navigates_to_detail() {
 
-        Thread.sleep(1000)
-
         onView(withId(R.id.recycler_artist))
             .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(1, click()))
 
@@ -103,8 +97,6 @@ class HomeArtistsInstrumentationTest {
 
     @Test
     fun click_in_badbunny_artist_navigates_to_detail() {
-
-        Thread.sleep(5000)
 
         onView(withId(R.id.recycler_artist))
             .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(3, click()))

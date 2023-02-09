@@ -154,7 +154,7 @@ object AppModule {
 
 @Module
 @InstallIn(ViewModelComponent::class)
-object ProvideIdViewModelModule {
+object ArtistViewModelModule {
 
     @Provides
     @ViewModelScoped
@@ -162,11 +162,23 @@ object ProvideIdViewModelModule {
     fun provideArtistId(savedStateHandle: SavedStateHandle) =
         ArtistFragmentArgs.fromSavedStateHandle(savedStateHandle).artistId
 
+    /*@Provides
+    @ViewModelScoped
+    @AlbumId
+    fun provideAlbumId(savedStateHandle: SavedStateHandle) =
+        ReleaseDetailFragmentArgs.fromSavedStateHandle(savedStateHandle).albumId*/
+}
+
+@Module
+@InstallIn(ViewModelComponent::class)
+class ReleaseDetailViewModelModule {
+
     @Provides
     @ViewModelScoped
     @AlbumId
     fun provideAlbumId(savedStateHandle: SavedStateHandle) =
         ReleaseDetailFragmentArgs.fromSavedStateHandle(savedStateHandle).albumId
+
 }
 
 @Module

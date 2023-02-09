@@ -33,7 +33,7 @@ fun buildRepositoryWith(
     val regionRepository = RegionRepository(FakeLocationDataSource(), FakePermissionChecker())
     val localArtistDataSource = ArtistRoomDataSource(FakeArtistDao(localArtistData))
     val localAlbumsDataSource = AlbumRoomDataSource(FakeAlbumDao(localAlbumData))
-    // val service: SpotifyService = FakeSpotifyService(artists = remoteArtistData, albums = remoteAlbumData)
+    val service: SpotifyService = FakeSpotifyService(artists = remoteArtistData, albums = remoteAlbumData)
     val client : HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.NONE
     }

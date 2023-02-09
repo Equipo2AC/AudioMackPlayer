@@ -18,7 +18,7 @@ dependencies {
     implementation(Libs.JavaX.inject)
     implementation(Libs.Arrow.core)
     //TEST
-    testImplementation(Libs.JUnit.junit)
+    testImplementation(Libs.JUnit.core)
     testImplementation(Libs.Mockito.kotlin)
     testImplementation(Libs.Mockito.inline)
 

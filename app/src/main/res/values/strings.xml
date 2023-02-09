@@ -31,4 +31,5 @@
     <string name="top_albums">Top Albums</string>
     <string name="recent_artists_title">Artistas Populares</string>
     <string name="recent_albums_title">Albumes Populares</string>
+    <string name="_10">10%</string>
 </resources>

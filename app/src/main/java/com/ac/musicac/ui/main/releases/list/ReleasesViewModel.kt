@@ -25,7 +25,7 @@ class ReleasesViewModel @Inject constructor(
         onUiReady()
     }
 
-    private fun onUiReady() {
+    fun onUiReady() {
         viewModelScope.launch {
             _state.update { state -> state.copy(loading = true) }
             when (val response = getReleasesUseCase()) {

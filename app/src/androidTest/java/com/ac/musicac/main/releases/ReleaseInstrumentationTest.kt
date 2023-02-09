@@ -1,23 +1,16 @@
-package com.ac.musicac.main.home
+package com.ac.musicac.main.releases
 
-import androidx.recyclerview.widget.RecyclerView
-import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.Espresso
 import androidx.test.espresso.IdlingRegistry
-import androidx.test.espresso.action.ViewActions
-import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.rule.GrantPermissionRule
 import com.ac.musicac.R
 import com.ac.musicac.data.server.EspressoIdlingResource
 import com.ac.musicac.data.server.MockWebServerRule
 import com.ac.musicac.data.server.OkHttp3IdlingResource
-import com.ac.musicac.di.qualifier.ArtistDummyIds
+import com.ac.musicac.ui.main.releases.list.ReleasesFragment
 import com.ac.musicac.ui.navHostActivity.NavHostActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -31,7 +24,7 @@ import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 @HiltAndroidTest
-class HomeArtistsInstrumentationTest {
+class ReleaseInstrumentationTest {
 
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
@@ -45,11 +38,7 @@ class HomeArtistsInstrumentationTest {
     )
 
     @get:Rule(order = 3)
-    var activityRule = ActivityScenarioRule(NavHostActivity::class.java)
-
-    @Inject
-    @ArtistDummyIds
-    lateinit var artistsIds: String
+    val activityRule = ActivityScenarioRule(NavHostActivity::class.java)
 
     @Inject
     lateinit var okHttpClient: OkHttpClient
@@ -60,6 +49,26 @@ class HomeArtistsInstrumentationTest {
         hiltRule.inject()
         IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
         IdlingRegistry.getInstance().register(OkHttp3IdlingResource.create("okHttp", okHttpClient))
+
+        activityRule.scenario.onActivity { activity ->
+            // val releasesFragment = ReleasesFragment()
+            activity.supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.nav_host_splash_fragment, ReleasesFragment(), "TEST ReleasesFragment")
+                .commitNowAllowingStateLoss()
+        }
+
+        /*activityRule.scenario.onActivity { activity ->
+            val releasesFragment = ReleasesFragment()
+            val bun = Bundle()
+            bun.putString("artistId", "7ltDVBr6mKbRvohxheJ9h1")
+            releasesFragment.arguments = bun
+            activity.supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.nav_host_splash_fragment, releasesFragment, "TEST ReleasesFragment")
+                .commitNowAllowingStateLoss()
+        }*/
+
     }
 
     @After
@@ -69,41 +78,13 @@ class HomeArtistsInstrumentationTest {
     }
 
     @Test
-    fun app_shows_several_artists() {
+    fun app_shows_several_albums() {
 
-        onView(withId(R.id.recycler_artist))
-            .check(matches(hasDescendant(withText("Bizarrap"))))
+        Thread.sleep(1000)
+
+        Espresso.onView(ViewMatchers.withId(R.id.recycler_albums))
+            .check(ViewAssertions.matches(ViewMatchers.hasDescendant(ViewMatchers.withText("MOTOMAMI"))))
+
     }
 
-    @Test
-    fun click_in_rosalia_artist_navigates_to_detail() {
-
-        onView(withId(R.id.recycler_artist))
-            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
-
-        onView(withId(R.id.artist_toolbar))
-            .check(matches(hasDescendant(withText("ROSALÍA"))))
-    }
-
-    @Test
-    fun click_in_bizarrap_artist_navigates_to_detail() {
-
-        onView(withId(R.id.recycler_artist))
-            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(1, click()))
-
-        onView(withId(R.id.artist_toolbar))
-            .check(matches(hasDescendant(withText("Bizarrap"))))
-    }
-
-    @Test
-    fun click_in_badbunny_artist_navigates_to_detail() {
-
-        onView(withId(R.id.recycler_artist))
-            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(3, click()))
-
-
-
-        onView(withId(R.id.artist_toolbar))
-            .check(matches(hasDescendant(withText("Bad Bunny"))))
-    }
 }

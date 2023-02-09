@@ -54,6 +54,7 @@ object Libs {
             }
             object Espresso{
                 const val contrib = "androidx.test.espresso:espresso-contrib:_"
+                const val intents = "androidx.test.espresso:espresso-intents:3.1.0"
                 const val core = "androidx.test.espresso:espresso-core:_"
             }
         }
@@ -64,7 +65,7 @@ object Libs {
     }
 
     object Glide {
-        const val glide = "com.github.bumptech.glide:glide:_"
+        const val core = "com.github.bumptech.glide:glide:_"
         const val compiler = "com.github.bumptech.glide:compiler:_"
     }
 
@@ -74,7 +75,7 @@ object Libs {
     }
 
     object Retrofit {
-        const val retrofit = "com.squareup.retrofit2:retrofit:_"
+        const val retrofitCore = "com.squareup.retrofit2:retrofit:_"
         const val converterGson = "com.squareup.retrofit2:converter-gson:_"
         const val kotlinSerializationConverter =
             "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:_"
@@ -92,7 +93,7 @@ object Libs {
     }
 
     object JUnit {
-        const val junit = "junit:junit:_"
+        const val core = "junit:junit:_"
     }
 
     object Mockito {

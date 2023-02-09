@@ -22,15 +22,12 @@ class ArtistInfoView  @JvmOverloads constructor(
             bold { append(context.getString(R.string.artist_name)) }
             italic { appendLine(name) }
 
-            bold { append(context.getString(R.string.total_followers)) }
-            italic { appendLine(DecimalFormat().format(followers.total)) }
-
             if(genres.isNotEmpty()) {
-                bold { append(context.getString(R.string.release_detail_popularity)) }
-                italic { appendLine(popularity.toString()) }
+                bold { append(context.getString(R.string.total_followers)) }
+                italic { appendLine(DecimalFormat().format(followers.total)) }
             } else {
-                bold { append(context.getString(R.string.release_detail_popularity)) }
-                italic { append(popularity.toString()) }
+                bold { append(context.getString(R.string.total_followers)) }
+                italic { append(DecimalFormat().format(followers.total)) }
             }
 
             if (genres.isNotEmpty()) {

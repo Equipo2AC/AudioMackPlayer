@@ -6,11 +6,10 @@ import com.ac.musicac.data.database.entity.AlbumEntity
 import com.ac.musicac.data.database.entity.ArtistEntity
 import com.ac.musicac.data.server.model.main.AlbumViewResult
 import com.ac.musicac.data.server.model.main.ArtistViewResult
-import com.ac.musicac.domain.AlbumView
+import com.ac.musicac.data.server.model.releases.AlbumsReleasesResult
 import com.ac.musicac.domain.SeveralAlbums
 import com.ac.musicac.testshared.Mocks.mockPopularAlbums
 import com.ac.musicac.ui.buildDatabaseAlbum
-import com.ac.musicac.ui.buildDomainAlbum
 import com.ac.musicac.ui.buildRemoteAlbum
 import com.ac.musicac.ui.buildRepositoryWith
 import com.ac.musicac.ui.main.home.HomeAlbumsViewModel.UiState
@@ -18,7 +17,6 @@ import com.ac.musicac.usecases.GetSeveralAlbumUseCase
 import com.ac.musicac.usecases.RequestSeveralAlbumUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotEquals
 import org.junit.Rule
@@ -100,9 +98,11 @@ class HomeAlbumsIntegrationTest {
         localArtistData:List<ArtistEntity> = emptyList(),
         localAlbumData:List<AlbumEntity> = emptyList(),
         remoteArtistData: List<ArtistViewResult> = emptyList(),
-        remoteAlbumData: List<AlbumViewResult> = emptyList()): HomeAlbumsViewModel {
+        remoteAlbumData: List<AlbumViewResult> = emptyList(),
+        remoteReleaseData: List<AlbumsReleasesResult> = emptyList()
+    ): HomeAlbumsViewModel {
 
-        val repo = buildRepositoryWith(localArtistData, localAlbumData, remoteArtistData, remoteAlbumData)
+        val repo = buildRepositoryWith(localArtistData, localAlbumData, remoteArtistData, remoteAlbumData, remoteReleaseData)
 
         val getSeveralAlbumUseCase = GetSeveralAlbumUseCase(repo)
         val requestSeveralAlbumUseCase = RequestSeveralAlbumUseCase(repo)

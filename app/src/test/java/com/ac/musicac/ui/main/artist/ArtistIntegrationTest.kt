@@ -7,6 +7,7 @@ import com.ac.musicac.data.database.entity.AlbumEntity
 import com.ac.musicac.data.database.entity.ArtistEntity
 import com.ac.musicac.data.server.model.main.AlbumViewResult
 import com.ac.musicac.data.server.model.main.ArtistViewResult
+import com.ac.musicac.data.server.model.releases.AlbumsReleasesResult
 import com.ac.musicac.testshared.Mocks
 import com.ac.musicac.ui.buildRemoteAlbum
 import com.ac.musicac.ui.buildRemoteArtist
@@ -133,9 +134,11 @@ class ArtistIntegrationTest {
         localArtistData:List<ArtistEntity> = emptyList(),
         localAlbumData:List<AlbumEntity> = emptyList(),
         remoteArtistData: List<ArtistViewResult> = emptyList(),
-        remoteAlbumData: List<AlbumViewResult> = emptyList()): ArtistViewModel {
+        remoteAlbumData: List<AlbumViewResult> = emptyList(),
+        remoteReleaseData: List<AlbumsReleasesResult> = emptyList()
+    ): ArtistViewModel {
 
-        val repo = buildRepositoryWith(localArtistData, localAlbumData, remoteArtistData, remoteAlbumData)
+        val repo = buildRepositoryWith(localArtistData, localAlbumData, remoteArtistData, remoteAlbumData, remoteReleaseData)
 
         getArtistUseCase = GetArtistUseCase(repo)
         getArtistAlbumsUseCase = GetArtistAlbumsUseCase(repo)

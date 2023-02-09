@@ -27,7 +27,8 @@ fun buildRepositoryWith(
     localArtistData: List<ArtistEntity>,
     localAlbumData: List<AlbumEntity>,
     remoteArtistData: List<ArtistViewResult>,
-    remoteAlbumData: List<AlbumViewResult>
+    remoteAlbumData: List<AlbumViewResult>,
+    remoteReleaseData: List<AlbumsReleasesResult>
 ): MusicRepository {
     val regionRepository = RegionRepository(FakeLocationDataSource(), FakePermissionChecker())
     val localArtistDataSource = ArtistRoomDataSource(FakeArtistDao(localArtistData))
@@ -41,10 +42,10 @@ fun buildRepositoryWith(
         "https://api.spotify.com/v1/",
         GsonConverterFactory.create(),
         arrayOf(TokenHeader(FakeAuthenticationDao(AuthenticationEntity(
-            id = 20,
-            accessToken = "BQD9vRpysctDTX9oYYPlVw2uys5IX8a-bYLyxBhbsKy5nv2snKBAzGF-JIcNMb1GuAclmOWzPo1d8GrtZZC7QeEQ5_0rLVN1kc8n1o5oBEFtvV-FijQ",
+            id = 50,
+            accessToken = "BQCNDiOPRYx7PmIeDM2m3sEYPzDELQy-VOR649jHCFTXdFmj4gPQZ5kEkm7M6euO-QUS4hVQM-ipxM7XovVjg3ooYRZaBPbUQ-vkT_9uVokjTF7f0oI",
             tokenType = "Bearer",
-            expirationDate = 1669117156347L
+            expirationDate = 1674217496460L
         ))
         ), client)
     )
@@ -110,30 +111,6 @@ fun buildDatabaseAlbum(vararg id: Int) = id.map {
     )
 }
 
-fun buildDomainAlbum(vararg id: Int) = id.map {
-    AlbumView(
-        id = it,
-        album_type = "album",
-        artists = listOf(),
-        copyrights = listOf(),
-        external_ids = ExternalIds(""),
-        external_urls = ExternalUrls("https://open.spotify.com/artist/5ZqnEfVdEGmoPxtELhN7ai"),
-        genres = listOf("pop","rock"),
-        href = "https://open.spotify.com",
-        albumId = "6jbtHi5R0jMXoliU2OS0lo",
-        image = "https://i.scdn.co/image/ab676161000051743e5de222aa09ea8c106f2bbb",
-        label = "Label here $it",
-        name = "Artist Name",
-        popularity = 75,
-        release_date = "1999-10-18",
-        release_date_precision = "1999-10-18",
-        total_tracks = 20,
-        tracks = Tracks(listOf(), 0),
-        type = "artist",
-        uri = "https://i.scdn.co/image/"
-    )
-}
-
 fun buildRemoteAlbum(vararg id: Int) = id.map {
     AlbumViewResult (
         album_type = "album",
@@ -163,3 +140,56 @@ fun buildRemoteAlbum(vararg id: Int) = id.map {
     )
 
 }
+
+fun buildRemoteRelease(vararg id: Int) = id.map {
+    AlbumsReleasesResult (
+        album_type = "album",
+        artists = listOf(),
+        copyrights = listOf(),
+        external_ids = ExternalIdsResult(""),
+        external_urls = ExternalUrlsResult("https://open.spotify.com/artist/5ZqnEfVdEGmoPxtELhN7ai"),
+        genres = listOf("pop","rock"),
+        href = "https://open.spotify.com",
+        id = "6jbtHi5R0jMXoliU2OS0lo",
+        images = listOf(
+            ImageResult(
+                200,
+                "https://i.scdn.co/image/ab676161000051743e5de222aa09ea8c106f2bbb",
+                200)),
+        label = "Label here $it",
+        name = "Artist Name",
+        popularity = 75,
+        release_date = "1999-10-18",
+        release_date_precision = "1999-10-18",
+        total_tracks = 20,
+        tracks = TracksResult("", listOf(), null, null, null, null,20),
+        type = "artist",
+        uri = "https://i.scdn.co/image/"
+    )
+
+}
+
+/*
+fun buildDomainAlbum(vararg id: Int) = id.map {
+    AlbumView(
+        id = it,
+        album_type = "album",
+        artists = listOf(),
+        copyrights = listOf(),
+        external_ids = ExternalIds(""),
+        external_urls = ExternalUrls("https://open.spotify.com/artist/5ZqnEfVdEGmoPxtELhN7ai"),
+        genres = listOf("pop","rock"),
+        href = "https://open.spotify.com",
+        albumId = "6jbtHi5R0jMXoliU2OS0lo",
+        image = "https://i.scdn.co/image/ab676161000051743e5de222aa09ea8c106f2bbb",
+        label = "Label here $it",
+        name = "Artist Name",
+        popularity = 75,
+        release_date = "1999-10-18",
+        release_date_precision = "1999-10-18",
+        total_tracks = 20,
+        tracks = Tracks(listOf(), 0),
+        type = "artist",
+        uri = "https://i.scdn.co/image/"
+    )
+}*/

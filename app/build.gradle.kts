@@ -108,7 +108,7 @@ dependencies {
     androidTestImplementation (Libs.Hilt.test)
     androidTestImplementation (Libs.OkHttp3.mockWebServer)
     androidTestImplementation (Libs.AndroidX.Test.Espresso.intents)
-    // debugImplementation("androidx.fragment:fragment-testing:1.5.5")
+    // debugImplementation(AndroidX.fragment.testing)
     // debugImplementation(Libs.AndroidX.Fragment.test)
     kaptAndroidTest (Libs.Hilt.compiler)
     //MODULES

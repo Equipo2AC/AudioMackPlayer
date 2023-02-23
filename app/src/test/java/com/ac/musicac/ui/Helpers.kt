@@ -43,7 +43,7 @@ fun buildRepositoryWith(
         GsonConverterFactory.create(),
         arrayOf(TokenHeader(FakeAuthenticationDao(AuthenticationEntity(
             id = 50,
-            accessToken = "BQCNDiOPRYx7PmIeDM2m3sEYPzDELQy-VOR649jHCFTXdFmj4gPQZ5kEkm7M6euO-QUS4hVQM-ipxM7XovVjg3ooYRZaBPbUQ-vkT_9uVokjTF7f0oI",
+            accessToken = "BQAeJvf_z145KpE44_kuOQjDGxtJi8QCO9eX7aoosD8ebv-IDlj9Xyzw4s_OR6pKRrswk7wGLUG9MjfLIxn1AwRbv-YXvklSEN2nqZh3wxUdFGklKTD7",
             tokenType = "Bearer",
             expirationDate = 1674217496460L
         ))

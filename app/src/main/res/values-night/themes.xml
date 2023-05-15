@@ -14,4 +14,12 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Theme.SpotifyAC.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="AppTheme.DarkOverlay" parent="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+
 </resources>

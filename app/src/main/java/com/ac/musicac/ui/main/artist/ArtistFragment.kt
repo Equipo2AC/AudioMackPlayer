@@ -1,6 +1,5 @@
 package com.ac.musicac.ui.main.artist
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,7 +10,6 @@ import com.ac.musicac.R
 import com.ac.musicac.databinding.FragmentArtistBinding
 import com.ac.musicac.ui.common.launchAndCollect
 import dagger.hilt.android.AndroidEntryPoint
-import java.lang.String.valueOf
 
 @AndroidEntryPoint
 class ArtistFragment: Fragment(R.layout.fragment_artist) {

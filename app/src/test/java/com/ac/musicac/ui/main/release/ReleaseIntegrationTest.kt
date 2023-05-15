@@ -39,7 +39,7 @@ class ReleaseIntegrationTest {
         vm.state.test {
             Assert.assertEquals(ReleasesViewModel.UiState(), awaitItem())
             Assert.assertEquals(ReleasesViewModel.UiState(loading = true), awaitItem())
-            // Assert.assertEquals(ReleasesViewModel.UiState(albums = listOf(Mocks.mockItems()), loading = false), awaitItem())
+            Assert.assertEquals(ReleasesViewModel.UiState(albums = listOf(Mocks.mockItems()), loading = false), awaitItem())
 
             val releases = awaitItem().albums
             if (!releases.isNullOrEmpty()) {

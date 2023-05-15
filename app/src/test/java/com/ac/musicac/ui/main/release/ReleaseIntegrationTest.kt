@@ -39,16 +39,16 @@ class ReleaseIntegrationTest {
         vm.state.test {
             Assert.assertEquals(ReleasesViewModel.UiState(), awaitItem())
             Assert.assertEquals(ReleasesViewModel.UiState(loading = true), awaitItem())
-            // Assert.assertEquals(ReleasesViewModel.UiState(albums = listOf(Mocks.mockItems()), loading = false), awaitItem())
+            Assert.assertEquals(ReleasesViewModel.UiState(albums = listOf(Mocks.mockItems()), loading = false), awaitItem())
 
             val releases = awaitItem().albums
             if (!releases.isNullOrEmpty()) {
-                Assert.assertEquals("Overview 4", releases[0].href)
-                Assert.assertEquals("Overview 5", releases[1].href)
-                Assert.assertEquals("Overview 6", releases[2].href)
-                Assert.assertEquals(4, releases[0].id)
-                Assert.assertEquals(5, releases[1].id)
-                Assert.assertEquals(6, releases[2].id)
+                Assert.assertEquals("single", releases[0].albumType)
+                Assert.assertEquals("album", releases[1].albumType)
+                Assert.assertEquals("single", releases[2].albumType)
+                Assert.assertEquals("album", releases[0].type)
+                Assert.assertEquals("album", releases[1].type)
+                Assert.assertEquals("album", releases[2].type)
             }
             cancel()
         }

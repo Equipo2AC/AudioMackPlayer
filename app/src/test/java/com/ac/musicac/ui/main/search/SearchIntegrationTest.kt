@@ -2,6 +2,7 @@ package com.ac.musicac.ui.main.search
 
 import CoroutinesTestRule
 import app.cash.turbine.test
+import arrow.core.right
 import com.ac.musicac.data.database.entity.AlbumEntity
 import com.ac.musicac.data.database.entity.ArtistEntity
 import com.ac.musicac.data.server.model.main.AlbumViewResult
@@ -19,6 +20,8 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mock
+import org.mockito.kotlin.any
+import org.mockito.kotlin.whenever
 
 @ExperimentalCoroutinesApi
 class SearchIntegrationTest {
@@ -44,9 +47,10 @@ class SearchIntegrationTest {
     }
 
     @Test
-    fun `Search Fragment load Artist from server always`() = runTest {
+    fun `Search Fragment shows Artist`() = runTest {
 
-        // whenever(searchUseCase(any(), any())).thenReturn(searchArtistSample.right())
+        // GIVEN
+        whenever(searchUseCase(any(), any())).thenReturn(Mocks.mockSearchArtist().right())
 
         // WHEN
         vmTest.onQueryTextChange("test")
@@ -60,9 +64,10 @@ class SearchIntegrationTest {
     }
 
     @Test
-    fun `Search Fragment load Albums from server always`() = runTest {
+    fun `Search Fragment shows Albums`() = runTest {
 
-        // whenever(searchUseCase(any(), any())).thenReturn(searchAlbumSample.right())
+        // GIVEN
+        whenever(searchUseCase(any(), any())).thenReturn(Mocks.mockSearchAlbum().right())
 
         // WHEN
         vmTest.onQueryTextChange("test")
@@ -97,7 +102,6 @@ class SearchIntegrationTest {
 
         // WHEN
         vmTest.onChangeType(Type.ARTIST)
-        // val state = vmTest.state.value
 
         // THEN
         vmTest.state.test {

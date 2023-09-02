@@ -16,10 +16,6 @@ import com.ac.musicac.data.server.model.main.ArtistViewResult
 import com.ac.musicac.data.server.model.main.RestrictionsResult
 import com.ac.musicac.data.server.model.releases.*
 import com.ac.musicac.data.server.service.SpotifyService
-import com.ac.musicac.domain.AlbumView
-import com.ac.musicac.domain.ExternalIds
-import com.ac.musicac.domain.ExternalUrls
-import com.ac.musicac.domain.Tracks
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -43,9 +39,9 @@ fun buildRepositoryWith(
         GsonConverterFactory.create(),
         arrayOf(TokenHeader(FakeAuthenticationDao(AuthenticationEntity(
             id = 50,
-            accessToken = "BQAeJvf_z145KpE44_kuOQjDGxtJi8QCO9eX7aoosD8ebv-IDlj9Xyzw4s_OR6pKRrswk7wGLUG9MjfLIxn1AwRbv-YXvklSEN2nqZh3wxUdFGklKTD7",
+            accessToken = "BQCcmYraDqJvsUyNaiku7F3DJWBmh8Mb8CiwZ_ywtQEeNOmHXxsVPkFYvS1N_HZQ3Nc59AtRqfUTkvT88RcWuc4618HlJ5EvixS8E_x6CU6UB6QykKM",
             tokenType = "Bearer",
-            expirationDate = 1674217496460L
+            expirationDate = 1693679443302L
         ))
         ), client)
     )

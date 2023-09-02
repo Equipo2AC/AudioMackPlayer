@@ -48,9 +48,10 @@ class SearchIntegrationTest {
 
         // whenever(searchUseCase(any(), any())).thenReturn(searchArtistSample.right())
 
-        vmTest.onChangeType(Type.ARTIST)
+        // WHEN
         vmTest.onQueryTextChange("test")
 
+        // THEN
         vmTest.state.test {
             val state = awaitItem()
             assert(state.search != null)
@@ -63,9 +64,10 @@ class SearchIntegrationTest {
 
         // whenever(searchUseCase(any(), any())).thenReturn(searchAlbumSample.right())
 
-        vmTest.onChangeType(Type.ALBUM)
+        // WHEN
         vmTest.onQueryTextChange("test")
 
+        // THEN
         vmTest.state.test {
             val state = awaitItem()
             assert(state.search != null)
@@ -77,8 +79,10 @@ class SearchIntegrationTest {
     @Test
     fun `Search Fragment change the type for Albums correctly`() = runTest {
 
+        // WHEN
         vmTest.onChangeType(Type.ALBUM)
 
+        // THEN
         vmTest.state.test {
             val state = awaitItem()
             assert(state.type ==  Type.ALBUM)
@@ -91,8 +95,11 @@ class SearchIntegrationTest {
     @Test
     fun `Search Fragment change the type for Artists correctly`() = runTest {
 
+        // WHEN
         vmTest.onChangeType(Type.ARTIST)
         // val state = vmTest.state.value
+
+        // THEN
         vmTest.state.test {
             val state = awaitItem()
             assert(state.type ==  Type.ARTIST)

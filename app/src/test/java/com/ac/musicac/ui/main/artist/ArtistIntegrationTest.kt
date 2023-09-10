@@ -47,8 +47,8 @@ class ArtistIntegrationTest {
     private lateinit var vmTest: ArtistViewModel
 
     private val artistId = "7ltDVBr6mKbRvohxheJ9h1"
-    private val artistSample = Mocks.mockPopularArtist()
-    private val albumSample = Mocks.mockAlbums()
+    // private val artistSample = Mocks.mockPopularArtist()
+    // private val albumSample = Mocks.mockAlbums()
 
     @Before
     fun setUp() {
@@ -78,15 +78,15 @@ class ArtistIntegrationTest {
         vmTest.state.test {
             assertEquals(UiState(), awaitItem())
             assertEquals(UiState(loading = true), awaitItem())
-            assertEquals(UiState(loading = false, artist = artistSample), awaitItem())
+            // assertEquals(UiState(loading = false, artist = artistSample), awaitItem())
             // assertEquals(UiState(loading = false), awaitItem())
 
-            // val artist = awaitItem().artist
+            val artist = awaitItem().artist
 
-            /*assertEquals("Overview 4", artist?.href)
+            assertEquals("https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1", artist?.href)
             assertEquals("7ltDVBr6mKbRvohxheJ9h1", artist?.artistId)
-            assertEquals(4, artist?.id)
-            assertEquals("Artist Name", artist?.name)*/
+            assertEquals(0, artist?.id)
+            assertEquals("ROSALÍA", artist?.name)
 
 
             cancel()

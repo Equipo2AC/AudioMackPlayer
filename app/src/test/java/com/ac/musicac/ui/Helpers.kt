@@ -2,6 +2,7 @@ package com.ac.musicac.ui
 
 
 import com.ac.musicac.data.RegionRepository
+import com.ac.musicac.data.database.dao.AuthenticationDao
 import com.ac.musicac.data.database.datasource.AlbumRoomDataSource
 import com.ac.musicac.data.database.datasource.ArtistRoomDataSource
 import com.ac.musicac.data.database.entity.AlbumEntity
@@ -16,8 +17,11 @@ import com.ac.musicac.data.server.model.main.ArtistViewResult
 import com.ac.musicac.data.server.model.main.RestrictionsResult
 import com.ac.musicac.data.server.model.releases.*
 import com.ac.musicac.data.server.service.SpotifyService
+import kotlinx.coroutines.runBlocking
+import okhttp3.Interceptor
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
 fun buildRepositoryWith(
     localArtistData: List<ArtistEntity>,
@@ -39,9 +43,9 @@ fun buildRepositoryWith(
         GsonConverterFactory.create(),
         arrayOf(TokenHeader(FakeAuthenticationDao(AuthenticationEntity(
             id = 50,
-            accessToken = "BQAu_m3mvOfSVvV1VjO4tlJHEUvqnzE3mblK0gbp1ydVumlFk2I3DT_z13tXSRCDm213b_FYwQKl3efbaSXo_SRBo1sMftTR1LILWN95crE-DUd6ZsM",
+            accessToken = "BQBe0OWwWhEpDbfdDppDm3q369Tg4RfjuPHLPX1j-YA5IPZpU0TUdHFhHxuFjeXzbFT-hr4ekFkZLw_pTJBqwf59zRctZR7DFK_MnCNCg8_nH7E7hyk",
             tokenType = "Bearer",
-            expirationDate = 1694348936644L
+            expirationDate = 1694365111131L
         ))
         ), client)
     )

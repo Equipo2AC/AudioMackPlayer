@@ -29,7 +29,7 @@ fun buildRepositoryWith(
     val regionRepository = RegionRepository(FakeLocationDataSource(), FakePermissionChecker())
     val localArtistDataSource = ArtistRoomDataSource(FakeArtistDao(localArtistData))
     val localAlbumsDataSource = AlbumRoomDataSource(FakeAlbumDao(localAlbumData))
-    val service: SpotifyService = FakeSpotifyService(artists = remoteArtistData, albums = remoteAlbumData)
+    // val service: SpotifyService = FakeSpotifyService(artists = remoteArtistData, albums = remoteAlbumData)
     val client : HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.NONE
     }
@@ -39,9 +39,9 @@ fun buildRepositoryWith(
         GsonConverterFactory.create(),
         arrayOf(TokenHeader(FakeAuthenticationDao(AuthenticationEntity(
             id = 50,
-            accessToken = "BQCcmYraDqJvsUyNaiku7F3DJWBmh8Mb8CiwZ_ywtQEeNOmHXxsVPkFYvS1N_HZQ3Nc59AtRqfUTkvT88RcWuc4618HlJ5EvixS8E_x6CU6UB6QykKM",
+            accessToken = "BQAu_m3mvOfSVvV1VjO4tlJHEUvqnzE3mblK0gbp1ydVumlFk2I3DT_z13tXSRCDm213b_FYwQKl3efbaSXo_SRBo1sMftTR1LILWN95crE-DUd6ZsM",
             tokenType = "Bearer",
-            expirationDate = 1693679443302L
+            expirationDate = 1694348936644L
         ))
         ), client)
     )

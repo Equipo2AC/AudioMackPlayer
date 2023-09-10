@@ -2,7 +2,6 @@ package com.ac.musicac.ui.main.search
 
 import CoroutinesTestRule
 import app.cash.turbine.test
-import arrow.core.right
 import com.ac.musicac.data.database.entity.AlbumEntity
 import com.ac.musicac.data.database.entity.ArtistEntity
 import com.ac.musicac.data.server.model.main.AlbumViewResult
@@ -20,8 +19,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mock
-import org.mockito.kotlin.any
-import org.mockito.kotlin.whenever
 
 @ExperimentalCoroutinesApi
 class SearchIntegrationTest {
@@ -36,13 +33,13 @@ class SearchIntegrationTest {
 
     private val artistSample = Mocks.mockPopularArtist()
     private val albumSample = Mocks.mockAlbums()
-    private val searchArtistSample = Mocks.mockSearchArtist()
-    private val searchAlbumSample = Mocks.mockSearchAlbum()
+    // private val searchArtistSample = Mocks.mockSearchArtist()
+    // private val searchAlbumSample = Mocks.mockSearchAlbum()
 
     @Before
     fun setUp() {
-        val remoteArtist = buildRemoteArtist(4, 5, 6)
-        val remoteAlbum = buildRemoteAlbum(5 ,6, 8)
+        val remoteArtist = buildRemoteArtist(4)
+        val remoteAlbum = buildRemoteAlbum(5)
         vmTest = buildModelWith(remoteArtistData = remoteArtist, remoteAlbumData = remoteAlbum)
     }
 
@@ -50,7 +47,7 @@ class SearchIntegrationTest {
     fun `Search Fragment shows Artist`() = runTest {
 
         // GIVEN
-        whenever(searchUseCase(any(), any())).thenReturn(Mocks.mockSearchArtist().right())
+        // whenever(searchUseCase(any(), any())).thenReturn(Mocks.mockSearchArtist().right())
 
         // WHEN
         vmTest.onQueryTextChange("test")
@@ -67,15 +64,17 @@ class SearchIntegrationTest {
     fun `Search Fragment shows Albums`() = runTest {
 
         // GIVEN
-        whenever(searchUseCase(any(), any())).thenReturn(Mocks.mockSearchAlbum().right())
+        // whenever(searchUseCase(any(), any())).thenReturn(Mocks.mockSearchAlbum().right())
 
         // WHEN
         vmTest.onQueryTextChange("test")
 
         // THEN
         vmTest.state.test {
-            val state = awaitItem()
-            assert(state.search != null)
+            // val state = awaitItem()
+            val albums = awaitItem().search?.firstOrNull()
+            assert(albums != null)
+            // assert(state.search != null)
             cancel()
         }
 

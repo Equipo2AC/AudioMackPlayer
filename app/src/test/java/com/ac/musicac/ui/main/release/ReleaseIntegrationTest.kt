@@ -7,11 +7,9 @@ import com.ac.musicac.data.database.entity.ArtistEntity
 import com.ac.musicac.data.server.model.main.AlbumViewResult
 import com.ac.musicac.data.server.model.main.ArtistViewResult
 import com.ac.musicac.data.server.model.releases.AlbumsReleasesResult
-import com.ac.musicac.domain.SeveralArtist
 import com.ac.musicac.testshared.Mocks
 import com.ac.musicac.ui.buildRemoteRelease
 import com.ac.musicac.ui.buildRepositoryWith
-import com.ac.musicac.ui.main.home.HomeArtistsViewModel
 import com.ac.musicac.ui.main.releases.list.ReleasesViewModel
 import com.ac.musicac.usecases.GetReleasesUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -19,14 +17,14 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.mockito.junit.MockitoJUnitRunner
 
 @ExperimentalCoroutinesApi
 class ReleaseIntegrationTest {
 
     @get:Rule
     val coroutinesTestRule = CoroutinesTestRule()
+
+    private val releasesSample = Mocks.mockReleases()
 
     @Test
     fun `Releases Data is loaded from server when local source is empty`() = runTest {
@@ -39,6 +37,7 @@ class ReleaseIntegrationTest {
         vm.state.test {
             Assert.assertEquals(ReleasesViewModel.UiState(), awaitItem())
             Assert.assertEquals(ReleasesViewModel.UiState(loading = true), awaitItem())
+            // Assert.assertEquals(ReleasesViewModel.UiState(loading = false, albums = releasesSample.albums.items), awaitItem())
             Assert.assertEquals(ReleasesViewModel.UiState(albums = listOf(Mocks.mockItems()), loading = false), awaitItem())
 
             val releases = awaitItem().albums

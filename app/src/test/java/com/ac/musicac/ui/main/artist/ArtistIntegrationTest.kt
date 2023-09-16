@@ -47,7 +47,7 @@ class ArtistIntegrationTest {
     private lateinit var vmTest: ArtistViewModel
 
     private val artistId = "7ltDVBr6mKbRvohxheJ9h1"
-    // private val artistSample = Mocks.mockPopularArtist()
+    private val artistSample = Mocks.mockPopularArtist()
     // private val albumSample = Mocks.mockAlbums()
 
     @Before

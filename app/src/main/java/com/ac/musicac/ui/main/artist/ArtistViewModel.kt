@@ -42,7 +42,7 @@ class ArtistViewModel @Inject constructor(
             _state.value = _state.value.copy(loading = true)
             when (val response = getArtistAlbumsUseCase(artistId)) {
                 is Either.Left -> _state.update { it.copy(loading = false, error = response.value) }
-                is Either.Right -> _state.value = _state.value.copy(loading = false, topAlbums = response.value)
+                is Either.Right -> _state.update { it.copy(loading = false, topAlbums = response.value) }
             }
         }
     }

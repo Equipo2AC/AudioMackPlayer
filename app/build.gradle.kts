@@ -33,9 +33,14 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "11"
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+        kotlinOptions {
+            jvmTarget = "11"
+        }
     }
+    /*kotlinOptions {
+        jvmTarget = "11"
+    }*/
     secrets {
         propertiesFileName = AppConfig.propertiesFileName
     }
@@ -100,6 +105,8 @@ dependencies {
     testImplementation (Libs.Mockito.inline)
     testImplementation (Libs.Kotlin.Coroutines.test)
     testImplementation (Libs.turbine)
+    // Dependencia duplicada
+    // testImplementation (Libs.AndroidX.Fragment.test)
     androidTestImplementation (Libs.AndroidX.Test.Ext.junit)
     androidTestImplementation (Libs.AndroidX.Test.Espresso.contrib)
     androidTestImplementation (Libs.AndroidX.Test.runner)
@@ -108,8 +115,9 @@ dependencies {
     androidTestImplementation (Libs.Hilt.test)
     androidTestImplementation (Libs.OkHttp3.mockWebServer)
     androidTestImplementation (Libs.AndroidX.Test.Espresso.intents)
-    // debugImplementation(AndroidX.fragment.testing)
-    // debugImplementation(Libs.AndroidX.Fragment.test)
+    // Dependencia para DEBUG
+    debugImplementation (Libs.AndroidX.Fragment.test)
+
     kaptAndroidTest (Libs.Hilt.compiler)
     //MODULES
     implementation(project(Modules.data))

@@ -2,6 +2,7 @@ package com.ac.musicac.ui
 
 
 import com.ac.musicac.data.RegionRepository
+import com.ac.musicac.data.database.dao.AuthenticationDao
 import com.ac.musicac.data.database.datasource.AlbumRoomDataSource
 import com.ac.musicac.data.database.datasource.ArtistRoomDataSource
 import com.ac.musicac.data.database.entity.AlbumEntity
@@ -16,12 +17,11 @@ import com.ac.musicac.data.server.model.main.ArtistViewResult
 import com.ac.musicac.data.server.model.main.RestrictionsResult
 import com.ac.musicac.data.server.model.releases.*
 import com.ac.musicac.data.server.service.SpotifyService
-import com.ac.musicac.domain.AlbumView
-import com.ac.musicac.domain.ExternalIds
-import com.ac.musicac.domain.ExternalUrls
-import com.ac.musicac.domain.Tracks
+import kotlinx.coroutines.runBlocking
+import okhttp3.Interceptor
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
 fun buildRepositoryWith(
     localArtistData: List<ArtistEntity>,
@@ -33,7 +33,7 @@ fun buildRepositoryWith(
     val regionRepository = RegionRepository(FakeLocationDataSource(), FakePermissionChecker())
     val localArtistDataSource = ArtistRoomDataSource(FakeArtistDao(localArtistData))
     val localAlbumsDataSource = AlbumRoomDataSource(FakeAlbumDao(localAlbumData))
-    val service: SpotifyService = FakeSpotifyService(artists = remoteArtistData, albums = remoteAlbumData)
+    // val service: SpotifyService = FakeSpotifyService(artists = remoteArtistData, albums = remoteAlbumData)
     val client : HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.NONE
     }
@@ -43,9 +43,9 @@ fun buildRepositoryWith(
         GsonConverterFactory.create(),
         arrayOf(TokenHeader(FakeAuthenticationDao(AuthenticationEntity(
             id = 50,
-            accessToken = "BQAeJvf_z145KpE44_kuOQjDGxtJi8QCO9eX7aoosD8ebv-IDlj9Xyzw4s_OR6pKRrswk7wGLUG9MjfLIxn1AwRbv-YXvklSEN2nqZh3wxUdFGklKTD7",
+            accessToken = "BQBe0OWwWhEpDbfdDppDm3q369Tg4RfjuPHLPX1j-YA5IPZpU0TUdHFhHxuFjeXzbFT-hr4ekFkZLw_pTJBqwf59zRctZR7DFK_MnCNCg8_nH7E7hyk",
             tokenType = "Bearer",
-            expirationDate = 1674217496460L
+            expirationDate = 1694365111131L
         ))
         ), client)
     )

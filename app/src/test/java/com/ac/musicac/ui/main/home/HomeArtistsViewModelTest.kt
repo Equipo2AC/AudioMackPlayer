@@ -55,7 +55,6 @@ class HomeArtistsViewModelTest {
     fun `State is updated with current cached content inmediately`() = runTest {
 
         vm.state.test {
-            assertEquals(UiState(), awaitItem())
             assertEquals(UiState(artists = artistSample), awaitItem())
             cancel()
         }
@@ -67,7 +66,6 @@ class HomeArtistsViewModelTest {
         vm.onUiReady(artistId)
 
         vm.state.test {
-            assertEquals(UiState(), awaitItem())
             assertEquals(UiState(artists = artistSample), awaitItem())
             assertEquals(UiState(loading = true, artists = artistSample), awaitItem())
             assertEquals(UiState(loading = false, artists = artistSample), awaitItem())

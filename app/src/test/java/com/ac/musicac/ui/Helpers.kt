@@ -8,6 +8,7 @@ import com.ac.musicac.data.database.datasource.ArtistRoomDataSource
 import com.ac.musicac.data.database.entity.AlbumEntity
 import com.ac.musicac.data.database.entity.ArtistEntity
 import com.ac.musicac.data.database.entity.AuthenticationEntity
+import com.ac.musicac.data.datasource.MusicRemoteDataSource
 import com.ac.musicac.data.repository.MusicRepository
 import com.ac.musicac.data.server.APIService
 import com.ac.musicac.data.server.datasource.SpotifyDataSource
@@ -33,10 +34,26 @@ fun buildRepositoryWith(
     val regionRepository = RegionRepository(FakeLocationDataSource(), FakePermissionChecker())
     val localArtistDataSource = ArtistRoomDataSource(FakeArtistDao(localArtistData))
     val localAlbumsDataSource = AlbumRoomDataSource(FakeAlbumDao(localAlbumData))
-    // val service: SpotifyService = FakeSpotifyService(artists = remoteArtistData, albums = remoteAlbumData)
+    val service : SpotifyService = FakeSpotifyService(artists = remoteArtistData, albums = remoteAlbumData)
     val client : HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.NONE
     }
+
+    /*val fakeService2 = APIService(
+        serviceClass = service.javaClass,
+        // FakeSpotifyService::class.java as Class<SpotifyService>,
+        // FakeSpotifyService(artists = remoteArtistData, albums = remoteAlbumData)::class.java,
+        "https://api.spotify.com/v1/",
+        GsonConverterFactory.create(),
+        arrayOf(TokenHeader(FakeAuthenticationDao(AuthenticationEntity(
+            id = 50,
+            accessToken = "BQDqw-aeGSSj8JOvfxbiNxfKkblrlhxpjdZoMdEmJOGGR55E7kqds0AsOtrTMXY1_zpW6hrscnDLM4H-gJGyg_NThSeo0sCyJ06dQrq99a3dJP7uom4",
+            tokenType = "Bearer",
+            expirationDate = 1694871765212L
+        ))
+        ), client)
+    )*/
+
     val fakeService = APIService(
         SpotifyService::class.java,
         "https://api.spotify.com/v1/",

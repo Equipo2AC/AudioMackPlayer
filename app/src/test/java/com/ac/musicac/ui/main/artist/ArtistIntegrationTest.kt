@@ -68,14 +68,14 @@ class ArtistIntegrationTest {
 
         vmTest.onUiReady()
 
-        /*val results = mutableListOf<UiState>()
+        val results = mutableListOf<UiState>()
         val job = launch { vmTest.state.toList(results) }
         runCurrent()
         job.cancel()
-        assertEquals(UiState(loading = true), results[0])*/
+        assertEquals(UiState(loading = true), results[0])
 
 
-        vmTest.state.test {
+        /*vmTest.state.test {
             assertEquals(UiState(), awaitItem())
             assertEquals(UiState(loading = true), awaitItem())
             // assertEquals(UiState(loading = false, artist = artistSample), awaitItem())
@@ -90,7 +90,7 @@ class ArtistIntegrationTest {
 
 
             cancel()
-        }
+        }*/
 
     }
 

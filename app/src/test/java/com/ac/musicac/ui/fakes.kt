@@ -23,6 +23,7 @@ import com.ac.musicac.data.server.model.releases.ReleasesResult
 import com.ac.musicac.data.server.model.releases.SearchResult
 import com.ac.musicac.data.server.service.SpotifyService
 import com.ac.musicac.domain.*
+import com.ac.musicac.testshared.Mocks
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flowOf
@@ -272,26 +273,26 @@ class FakeSpotifyService(
 }
 
 
-/*class FakeMusicRemoteDataSource : MusicRemoteDataSource {
+class FakeMusicRemoteDataSource : MusicRemoteDataSource {
 
     val releases = mutableListOf<Releases>()
 
     override suspend fun getReleases(region: String, limit: String, offset: String) =
-        Releases().right()
+        Mocks.mockReleases().right()
 
 
-    override suspend fun getReleaseDetail(albumId: String, market: String) = Release().right()
+    override suspend fun getReleaseDetail(albumId: String, market: String) = Mocks.mockRelease().right()
 
     override suspend fun findSearch(type: String, query: String, limit: Int, offset: Int) =
-        Search().right()
+        Mocks.mockSearchArtist().right()
 
-    override suspend fun getArtist(id: String) = PopularArtist().right()
+    override suspend fun getArtist(id: String) = Mocks.mockPopularArtist().right()
 
-    override suspend fun getSeveralArtist(ids: String) = SeveralArtist().right()
+    override suspend fun getSeveralArtist(ids: String) = Mocks.mockSeveralArtists().right()
 
-    override suspend fun getSeveralAlbums(ids: String) = SeveralAlbums().right()
+    override suspend fun getSeveralAlbums(ids: String) = Mocks.mockSeveralAlbums().right()
 
     override suspend fun getArtistAlbums(id: String, limit: Int, offset: Int) =
-        Albums().right()
+        Mocks.mockAlbums().right()
 
-}*/
+}

@@ -59,6 +59,7 @@ object Libs {
             }
         }
 
+        // Libreria para test de livedata
         object Arch {
             const val coreTesting = "androidx.arch.core:core-testing:_"
         }

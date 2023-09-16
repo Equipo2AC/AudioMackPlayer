@@ -14,7 +14,7 @@ dependencyResolutionManagement {
     }
 }
 plugins {
-    id("de.fayard.refreshVersions") version("0.60.1")
+    id("de.fayard.refreshVersions") version("0.60.2")
 }
 rootProject.name = "MusicAC"
 include (":app",":data",":domain",":usecases",":testShared")

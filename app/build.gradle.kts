@@ -38,7 +38,10 @@ android {
             jvmTarget = "11"
         }
     }
-    /*kotlinOptions {
+    /*kotlin {
+        jvmToolchain(11)
+    }
+    kotlinOptions {
         jvmTarget = "11"
     }*/
     secrets {

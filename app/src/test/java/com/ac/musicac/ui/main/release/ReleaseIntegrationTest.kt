@@ -2,14 +2,13 @@ package com.ac.musicac.ui.main.release
 
 import CoroutinesTestRule
 import app.cash.turbine.test
-import arrow.core.right
 import com.ac.musicac.data.database.entity.AlbumEntity
 import com.ac.musicac.data.database.entity.ArtistEntity
 import com.ac.musicac.data.server.model.main.AlbumViewResult
 import com.ac.musicac.data.server.model.main.ArtistViewResult
 import com.ac.musicac.data.server.model.releases.AlbumsReleasesResult
-import com.ac.musicac.domain.Item
 import com.ac.musicac.testshared.Mocks
+import com.ac.musicac.ui.buildLocalRelease
 import com.ac.musicac.ui.buildRemoteRelease
 import com.ac.musicac.ui.buildRepositoryWith
 import com.ac.musicac.ui.main.releases.list.ReleasesViewModel
@@ -17,12 +16,8 @@ import com.ac.musicac.usecases.GetReleasesUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mock
-import org.mockito.kotlin.any
-import org.mockito.kotlin.whenever
 
 @ExperimentalCoroutinesApi
 class ReleaseIntegrationTest {
@@ -46,25 +41,25 @@ class ReleaseIntegrationTest {
             Assert.assertEquals(ReleasesViewModel.UiState(), awaitItem())
             Assert.assertEquals(ReleasesViewModel.UiState(loading = true), awaitItem())
             Assert.assertEquals(ReleasesViewModel.UiState(loading = false, albums = listOf(itemsSample)), awaitItem())
-            // Assert.assertEquals(ReleasesViewModel.UiState(albums = releasesSample.albums.items , loading = false), awaitItem())
+            Assert.assertEquals(ReleasesViewModel.UiState(loading = true, albums = listOf(itemsSample)), awaitItem())
 
             val releases = awaitItem().albums
             if (!releases.isNullOrEmpty()) {
-                Assert.assertEquals("single", releases[0].albumType)
-                Assert.assertEquals("album", releases[1].albumType)
-                Assert.assertEquals("single", releases[2].albumType)
-                Assert.assertEquals("album", releases[0].type)
-                Assert.assertEquals("album", releases[1].type)
-                Assert.assertEquals("album", releases[2].type)
+                Assert.assertEquals("album", releases[0].albumType)
+                Assert.assertEquals("artist", releases[0].type)
+                Assert.assertEquals("Estopa", releases[0].name)
+                Assert.assertEquals("52iwsT98xCoGgiGntTiR7K", releases[0].id)
+                Assert.assertEquals("5ZqnEfVdEGmoPxtELhN7ai", releases[0].itemId)
+                Assert.assertEquals("1999-10-18", releases[0].releaseDate)
             }
             cancel()
         }
 
     }
 
-    /*@Test
+    @Test
     fun `Releases Data is loaded from local database when available`() = runTest {
-        // val localData = buildDatabaseArtist(1, 2, 3)
+        val localData = buildLocalRelease(1, 2, 3)
         val remoteData = buildRemoteRelease(4, 5, 6)
 
         val vm = buildModelWith(remoteReleaseData = remoteData)
@@ -73,31 +68,25 @@ class ReleaseIntegrationTest {
 
 
         vm.state.test {
-            Assert.assertEquals(HomeArtistsViewModel.UiState(), awaitItem())
-            Assert.assertNotEquals(
-                ReleasesViewModel.UiState(
-                    albums = listOf(Mocks.mockItems()), loading = true
-                ), awaitItem()
-            )
-            Assert.assertNotEquals(
-                ReleasesViewModel.UiState(
-                    albums = listOf(Mocks.mockItems()), loading = false
-                ), awaitItem()
-            )
+            Assert.assertEquals(ReleasesViewModel.UiState(), awaitItem())
+            Assert.assertEquals(ReleasesViewModel.UiState(loading = true), awaitItem())
+            Assert.assertEquals(ReleasesViewModel.UiState(loading = false, albums = listOf(itemsSample)), awaitItem())
+            Assert.assertEquals(ReleasesViewModel.UiState(loading = true, albums = listOf(itemsSample)), awaitItem())
+            //Assert.assertEquals(ReleasesViewModel.UiState(albums = listOf(Mocks.mockItems()), loading = false), awaitItem())
 
             val releases = awaitItem().albums
             if(!releases.isNullOrEmpty()) {
-                Assert.assertEquals("Overview 1", releases[0].href)
-                Assert.assertEquals("Overview 2", releases[1].href)
-                Assert.assertEquals("Overview 3", releases[2].href)
-                Assert.assertEquals(1, releases[0].id)
-                Assert.assertEquals(2, releases[1].id)
-                Assert.assertEquals(3, releases[2].id)
+                Assert.assertEquals("album", releases[0].albumType)
+                Assert.assertEquals("artist", releases[0].type)
+                Assert.assertEquals("Estopa", releases[0].name)
+                Assert.assertEquals("52iwsT98xCoGgiGntTiR7K", releases[0].id)
+                Assert.assertEquals("5ZqnEfVdEGmoPxtELhN7ai", releases[0].itemId)
+                Assert.assertEquals("1999-10-18", releases[0].releaseDate)
             }
 
             cancel()
         }
-    }*/
+    }
 
     private fun buildModelWith(
         localArtistData:List<ArtistEntity> = emptyList(),

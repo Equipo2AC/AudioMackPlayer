@@ -13,23 +13,30 @@ import com.ac.musicac.data.datasource.ArtistLocalDataSource
 import com.ac.musicac.data.datasource.LocationDataSource
 import com.ac.musicac.data.datasource.MusicRemoteDataSource
 import com.ac.musicac.data.server.UserResult
+import com.ac.musicac.data.server.datasource.getArtistsName
 import com.ac.musicac.data.server.model.main.AlbumViewResult
 import com.ac.musicac.data.server.model.main.ArtistViewResult
 import com.ac.musicac.data.server.model.main.SeveralAlbumsResult
 import com.ac.musicac.data.server.model.main.SeveralArtistsResult
 import com.ac.musicac.data.server.model.releases.AlbumsReleasesResult
 import com.ac.musicac.data.server.model.releases.AlbumsResult
+import com.ac.musicac.data.server.model.releases.ArtistResult
+import com.ac.musicac.data.server.model.releases.CopyrightResult
+import com.ac.musicac.data.server.model.releases.ExternalIdsResult
+import com.ac.musicac.data.server.model.releases.ExternalUrlsResult
+import com.ac.musicac.data.server.model.releases.FollowersResult
+import com.ac.musicac.data.server.model.releases.ImageResult
 import com.ac.musicac.data.server.model.releases.ReleasesResult
 import com.ac.musicac.data.server.model.releases.SearchResult
+import com.ac.musicac.data.server.model.releases.TrackResult
+import com.ac.musicac.data.server.model.releases.TracksResult
 import com.ac.musicac.data.server.service.SpotifyService
 import com.ac.musicac.domain.*
+import com.ac.musicac.testshared.Mocks
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.runBlocking
-import okhttp3.Interceptor
-import javax.inject.Inject
 
 class FakeArtistLocalDataSource : ArtistLocalDataSource {
 
@@ -272,26 +279,130 @@ class FakeSpotifyService(
 }
 
 
-/*class FakeMusicRemoteDataSource : MusicRemoteDataSource {
+class FakeMusicRemoteDataSource(
+    private val artists: SeveralArtistsResult = SeveralArtistsResult(emptyList()),
+    private val albums: SeveralAlbumsResult = SeveralAlbumsResult(emptyList()),
+    private val releases: Releases = Mocks.mockReleases(),
+    private val release: Release = Mocks.mockRelease(),
+) : MusicRemoteDataSource {
 
-    val releases = mutableListOf<Releases>()
+    // val releases = mutableListOf<Releases>()
 
-    override suspend fun getReleases(region: String, limit: String, offset: String) =
-        Releases().right()
+    override suspend fun getReleases(region: String, limit: String, offset: String) = releases.right()
 
-
-    override suspend fun getReleaseDetail(albumId: String, market: String) = Release().right()
+    override suspend fun getReleaseDetail(albumId: String, market: String) = release.right()
 
     override suspend fun findSearch(type: String, query: String, limit: Int, offset: Int) =
-        Search().right()
+        when(type) {
+            "artist" -> Mocks.mockSearchArtist().right()
+            "album" -> Mocks.mockSearchAlbum().right()
+            else -> Mocks.mockSearchArtist().right()
+        }
 
-    override suspend fun getArtist(id: String) = PopularArtist().right()
+    override suspend fun getArtist(id: String) = artists.artists.first().toDomainModel().right()
 
-    override suspend fun getSeveralArtist(ids: String) = SeveralArtist().right()
+    override suspend fun getSeveralArtist(ids: String) = artists.toDomainModel().right()
 
-    override suspend fun getSeveralAlbums(ids: String) = SeveralAlbums().right()
+    override suspend fun getSeveralAlbums(ids: String) = albums.toDomainModel().right()
 
-    override suspend fun getArtistAlbums(id: String, limit: Int, offset: Int) =
-        Albums().right()
+    override suspend fun getArtistAlbums(id: String, limit: Int, offset: Int) = releases.albums.right()
 
-}*/
+}
+
+private fun ArtistViewResult.toDomainModel(): PopularArtist =
+    PopularArtist(
+        0,
+        external_urls.toDomainModel(),
+        followers.toDomainModel(),
+        genres ?: listOf(),
+        href,
+        artistId = id,
+        images.map { it.toDomainModel() },
+        name,
+        popularity ?: 0,
+        type ?: "",
+        uri
+    )
+
+private fun AlbumViewResult.toDomainModel(): AlbumView =
+    AlbumView(
+        0,
+        album_type,
+        artists?.map{ it.toDomainModel() } ?: listOf() ,
+        copyrights?.map { it.toDomainModel() },
+        external_ids?.toDomainModel(),
+        external_urls.toDomainModel(),
+        genres,
+        href,
+        albumId = id,
+        image = images[0].url,
+        label,
+        name,
+        popularity,
+        release_date,
+        release_date_precision ,
+        total_tracks ?: 0,
+        tracks.toDomainModel() ,
+        type,
+        uri
+    )
+
+private fun ArtistResult.toDomainModel(): Artist =
+    Artist(
+        external_urls.toDomainModel(),
+        href,
+        id,
+        name, type, uri
+    )
+
+private fun SeveralAlbumsResult.toDomainModel(): SeveralAlbums =
+    SeveralAlbums (
+        albums.map { it.toDomainModel() }
+    )
+
+private fun SeveralArtistsResult.toDomainModel(): SeveralArtist =
+    SeveralArtist(
+        artists.map { it.toDomainModel() }
+    )
+
+private fun ImageResult.toDomainModel(): Image =
+    Image(
+        height, url, width
+    )
+
+private fun TracksResult.toDomainModel(): Tracks =
+    Tracks(
+        items.map { it.toDomainModel() },
+        total
+    )
+
+private fun TrackResult.toDomainModel(): Track =
+    Track(
+        getArtistsName(artists),
+        disc_number,
+        duration_ms,
+        id,
+        name,
+        track_number.toString()
+    )
+
+private fun ExternalIdsResult.toDomainModel(): ExternalIds =
+    ExternalIds(
+        upc
+    )
+
+private fun CopyrightResult.toDomainModel(): Copyright =
+    Copyright(
+        text
+    )
+
+private fun FollowersResult.toDomainModel(): Followers =
+    Followers(
+        href ?: "",
+        total
+    )
+
+private fun ExternalUrlsResult.toDomainModel(): ExternalUrls =
+    ExternalUrls(
+        spotify
+    )

@@ -2,7 +2,6 @@ package com.ac.musicac.ui.main.artist
 
 import CoroutinesTestRule
 import app.cash.turbine.test
-import arrow.core.right
 import com.ac.musicac.data.database.entity.AlbumEntity
 import com.ac.musicac.data.database.entity.ArtistEntity
 import com.ac.musicac.data.server.model.main.AlbumViewResult
@@ -16,20 +15,14 @@ import com.ac.musicac.ui.main.artist.ArtistViewModel.UiState
 import com.ac.musicac.usecases.GetArtistAlbumsUseCase
 import com.ac.musicac.usecases.GetArtistUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.toList
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
-import org.mockito.kotlin.any
-import org.mockito.kotlin.whenever
 
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
@@ -52,7 +45,7 @@ class ArtistIntegrationTest {
 
     @Before
     fun setUp() {
-        val remoteArtist = buildRemoteArtist(4)
+        val remoteArtist = buildRemoteArtist(75)
         val remoteAlbum = buildRemoteAlbum(5)
         vmTest = buildModelWith(remoteArtistData = remoteArtist, remoteAlbumData = remoteAlbum)
     }
@@ -60,22 +53,11 @@ class ArtistIntegrationTest {
 
     @Test
     fun `Artist Data is loaded from server always`() = runTest {
-        // val remoteArtist = buildRemoteArtist(4)
-
-        // whenever(getArtistUseCase(any())).thenReturn(artistSample.right())
-
-        // vmTest = buildModelWith(remoteArtistData = remoteArtist)
 
         vmTest.onUiReady()
 
-        val results = mutableListOf<UiState>()
-        val job = launch { vmTest.state.toList(results) }
-        runCurrent()
-        job.cancel()
-        assertEquals(UiState(loading = true), results[0])
 
-
-        /*vmTest.state.test {
+        vmTest.state.test {
             assertEquals(UiState(), awaitItem())
             assertEquals(UiState(loading = true), awaitItem())
             // assertEquals(UiState(loading = false, artist = artistSample), awaitItem())
@@ -83,50 +65,41 @@ class ArtistIntegrationTest {
 
             val artist = awaitItem().artist
 
-            assertEquals("https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1", artist?.href)
+            assertEquals("Overview 75", artist?.href)
             assertEquals("7ltDVBr6mKbRvohxheJ9h1", artist?.artistId)
+            assertEquals("artist", artist?.type)
             assertEquals(0, artist?.id)
-            assertEquals("ROSALÍA", artist?.name)
+            assertEquals(75, artist?.popularity)
+            assertEquals("Rosalia", artist?.name)
 
 
             cancel()
-        }*/
+        }
 
     }
 
     @Test
     fun `Top Albums of artist Data is loaded from server always`() = runTest {
-        // val remoteAlbum = buildRemoteAlbum(4)
-
-        // whenever(getArtistAlbumsUseCase(artistId)).thenReturn(albumSample.right())
-
-        // vmTest = buildModelWith(remoteAlbumData = remoteAlbum)
 
         vmTest.onAlbumsRequest()
 
-        val results = mutableListOf<UiState>()
-        val job = launch { vmTest.state.toList(results) }
-        runCurrent()
-        job.cancel()
-        // assertEquals(UiState(artist = artistSample), results[0])
-        assertEquals(UiState(loading = true), results[0])
 
-
-        /*vmTest.state.test {
+        vmTest.state.test {
             assertEquals(UiState(), awaitItem())
             assertEquals(UiState(loading = true), awaitItem())
             // assertNotEquals(UiState(error = any(), loading = false), awaitItem())
 
-            val artist = awaitItem().artist
+            val albums = awaitItem().topAlbums
 
-            assertEquals("Overview 4", artist?.href)
-            assertEquals("7ltDVBr6mKbRvohxheJ9h1", artist?.artistId)
-            assertEquals(4, artist?.id)
-            assertEquals("Artist Name", artist?.name)
-
+            assertEquals(12, albums?.items?.first()?.totalTracks)
+            assertEquals("artist", albums?.items?.first()?.type)
+            assertEquals("album", albums?.items?.first()?.albumType)
+            assertEquals("5ZqnEfVdEGmoPxtELhN7ai", albums?.items?.first()?.itemId)
+            assertEquals("Estopa", albums?.items?.first()?.name)
+            assertEquals(102, albums?.total)
 
             cancel()
-        }*/
+        }
 
     }
 

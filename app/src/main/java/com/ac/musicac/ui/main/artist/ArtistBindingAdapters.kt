@@ -14,7 +14,7 @@ fun ArtistInfoView.updateReleaseDetails(item: PopularArtist?) {
 @BindingAdapter("related_albums")
 fun RecyclerView.setAlbums(albums: List<Item>?) {
     if (albums != null) {
-        (adapter as? AlbumsAdapter)?.submitList(albums)
+        (adapter as? ArtistsAlbumsAdapter)?.submitList(albums)
     }
 }
 

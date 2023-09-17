@@ -25,6 +25,7 @@ object Libs {
 
         object Fragment {
             const val ktx = "androidx.fragment:fragment-ktx:_"
+            const val test = "androidx.fragment:fragment-testing:_"
         }
 
         object Lifecycle {
@@ -49,29 +50,33 @@ object Libs {
             const val rules = "androidx.test:rules:_"
 
             object Ext {
-                const val junit = "androidx.test.ext:junit:_"
+                const val junit = "androidx.test.ext:junit-ktx:_"
             }
             object Espresso{
+                const val contrib = "androidx.test.espresso:espresso-contrib:_"
+                const val intents = "androidx.test.espresso:espresso-intents:_"
                 const val core = "androidx.test.espresso:espresso-core:_"
             }
         }
 
+        // Libreria para test de livedata
         object Arch {
             const val coreTesting = "androidx.arch.core:core-testing:_"
         }
     }
 
     object Glide {
-        const val glide = "com.github.bumptech.glide:glide:_"
+        const val core = "com.github.bumptech.glide:glide:_"
         const val compiler = "com.github.bumptech.glide:compiler:_"
     }
 
     object OkHttp3 {
         const val loginInterceptor = "com.squareup.okhttp3:logging-interceptor:_"
+        const val mockWebServer = "com.squareup.okhttp3:mockwebserver:_"
     }
 
     object Retrofit {
-        const val retrofit = "com.squareup.retrofit2:retrofit:_"
+        const val retrofitCore = "com.squareup.retrofit2:retrofit:_"
         const val converterGson = "com.squareup.retrofit2:converter-gson:_"
         const val kotlinSerializationConverter =
             "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:_"
@@ -89,7 +94,7 @@ object Libs {
     }
 
     object JUnit {
-        const val junit = "junit:junit:_"
+        const val core = "junit:junit:_"
     }
 
     object Mockito {

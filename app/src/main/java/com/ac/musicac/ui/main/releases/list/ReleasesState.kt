@@ -1,6 +1,5 @@
 package com.ac.musicac.ui.main.releases.list
 
-import android.Manifest
 import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -9,37 +8,21 @@ import androidx.navigation.fragment.findNavController
 import com.ac.musicac.R
 import com.ac.musicac.domain.Error
 import com.ac.musicac.domain.Item
-import com.ac.musicac.ui.common.PermissionRequester
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
 fun Fragment.buildReleasesState(
     context: Context = requireContext(),
-    scope: CoroutineScope = viewLifecycleOwner.lifecycleScope,
-    navController: NavController = findNavController(),
-    locationPermissionRequester: PermissionRequester = PermissionRequester(
-        this,
-        Manifest.permission.ACCESS_COARSE_LOCATION
-    )
-) = ReleasesState(context, scope, navController, locationPermissionRequester)
+    navController: NavController = findNavController()
+) = ReleasesState(context, navController)
 
 class ReleasesState(
     private val context: Context,
-    private val scope: CoroutineScope,
-    private val navController: NavController,
-    private val locationPermissionRequester: PermissionRequester
+    private val navController: NavController
 ) {
 
     fun onAlbumClicked(album: Item) {
-        val action = ReleasesFragmentDirections.actionReleasesToDetail(album.id)
+        val action = ReleasesFragmentDirections.actionReleasesToDetail(album.itemId)
         navController.navigate(action)
-    }
-
-    fun requestLocationPermission(afterRequest: (Boolean) -> Unit) {
-        scope.launch {
-            val result = locationPermissionRequester.request()
-            afterRequest(result)
-        }
     }
 
     fun errorToString(error: Error) = when (error) {

@@ -1,56 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="com.ac.musicac.domain.Item" />
+
+        <import type="com.ac.musicac.domain.PopularArtist" />
 
         <variable
-            name="item"
-            type="com.ac.musicac.domain.Item" />
+            name="artist"
+            type="PopularArtist" />
+
+        <variable
+            name="followers"
+            type="int" />
 
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:foreground="?attr/selectableItemBackground"
         tools:background="@color/black">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <com.ac.musicac.ui.common.AspectRatioImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:circleCrop="@{true}"
+            app:url="@{artist.images[0].url}" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/artist_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_marginTop="10dp"
+            android:textColor="@color/orange"
+            android:maxLines="2"
+            android:text="@{artist.name}"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:ellipsize="end"
+            tools:text="Nombre Artista" />
 
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                app:url="@{item.image.url}"
-                app:circleCrop="@{true}"
-                tools:src="@drawable/ic_search"
-                />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:text="@{item.name}"
-                android:maxLines="2"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:textStyle="bold"
-                android:textSize="13sp"
-                android:ellipsize="end"
-                tools:text="Whitney Houston" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <View
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/artist_type"
             android:layout_width="match_parent"
-            android:layout_height="10dp"/>
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12sp"
+            android:text="@{artist.type}"
+            android:maxLines="1"
+            android:ellipsize="end"
+            tools:text="Tipo de Artista" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/artist_followers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12sp"
+            android:textStyle="italic|bold"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_marginBottom="16dp"
+            tools:text="Followers" />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </layout>

@@ -6,6 +6,7 @@ pluginManagement {
     }
 }
 dependencyResolutionManagement {
+
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
@@ -13,7 +14,7 @@ dependencyResolutionManagement {
     }
 }
 plugins {
-    id("de.fayard.refreshVersions") version("0.40.2")
+    id("de.fayard.refreshVersions") version("0.60.2")
 }
 rootProject.name = "MusicAC"
-include (":app",":data",":domain",":usecases")
+include (":app",":data",":domain",":usecases",":testShared")

@@ -1,12 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_home"
     app:startDestination="@id/home_dest">
 
     <fragment
+        android:id="@+id/splash_dest"
+        android:name="com.ac.musicac.ui.splash.SplashFragment"
+        android:label="album_fragment"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splash_dest_to_home_dest"
+            app:destination="@id/home_dest" />
+    </fragment>
+
+    <fragment
         android:id="@+id/home_dest"
         android:name="com.ac.musicac.ui.main.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_home_to_album"
+            app:destination="@id/album_dest"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_home_to_artist"
+            app:destination="@id/artist_dest"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_artist_to_album"
+            app:destination="@id/album_dest"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/album_dest"
+        android:name="com.ac.musicac.ui.main.releases.detail.ReleaseDetailFragment"
+        android:label="album_fragment"
+        tools:layout="@layout/fragment_release_detail" >
+        <argument
+            android:name="albumId"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/artist_dest"
+        android:name="com.ac.musicac.ui.main.artist.ArtistFragment"
+        android:label="artist_fragment"
+        tools:layout="@layout/fragment_artist" >
+        <action
+            android:id="@+id/action_artist_to_album"
+            app:destination="@id/album_dest"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <argument
+            android:name="artistId"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

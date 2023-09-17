@@ -5,11 +5,12 @@
 
     <data>
 
-        <import type="com.ac.musicac.domain.Item" />
+        <import type="com.ac.musicac.domain.AlbumView" />
 
         <variable
-            name="item"
-            type="com.ac.musicac.domain.Item" />
+            name="album"
+            type="AlbumView" />
+
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -17,48 +18,59 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:foreground="?attr/selectableItemBackground"
+        android:padding="6dp"
         tools:background="@color/black">
 
-        <com.ac.musicac.ui.common.AspectRatioImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            app:ratio="1"
-            app:url="@{item.image.url}"
-            tools:src="@drawable/ic_search"
-            />
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:backgroundTint="@color/light_gray"
+            app:cardCornerRadius="15dp">
+
+            <com.ac.musicac.ui.common.AspectRatioImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:url="@{album.image}" />
+
+
+        </androidx.cardview.widget.CardView>
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/artist_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:textColor="@color/orange"
             android:maxLines="2"
-            android:text="@{item.name}"
+            android:text="@{album.name}"
             android:textStyle="bold"
             android:textSize="13sp"
             android:ellipsize="end"
-            tools:text="@tools:sample/lorem/random" />
+            tools:text="Nombre Album" />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/artist_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/darker_gray"
             android:textSize="12sp"
-            android:text="@{item.artists}"
+            android:text="@{album.type}"
             android:maxLines="1"
             android:ellipsize="end"
-            tools:text="Arctic Monkeys" />
+            tools:text="Tipo de Album" />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/artist_followers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/darker_gray"
             android:textSize="12sp"
+            android:text="@{album.release_date}"
             android:ellipsize="end"
             android:maxLines="1"
             android:layout_marginBottom="16dp"
-            android:text="@{item.albumType}"
-            tools:text="2010" />
+            tools:text="Fecha de lanzamiento" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

@@ -1,0 +1,434 @@
+{
+  "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1/albums?offset=0&limit=10&include_groups=album,single,compilation,appears_on",
+  "items" : [ {
+    "album_group" : "album",
+    "album_type" : "album",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+      },
+      "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+      "id" : "7ltDVBr6mKbRvohxheJ9h1",
+      "name" : "ROSALÍA",
+      "type" : "artist",
+      "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+    } ],
+    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "ET", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/3zbiiu3JTibw0esC7eoMXr"
+    },
+    "href" : "https://api.spotify.com/v1/albums/3zbiiu3JTibw0esC7eoMXr",
+    "id" : "3zbiiu3JTibw0esC7eoMXr",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/ab67616d0000b273efc0ef9dd996312ebaf0bf52",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/ab67616d00001e02efc0ef9dd996312ebaf0bf52",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/ab67616d00004851efc0ef9dd996312ebaf0bf52",
+      "width" : 64
+    } ],
+    "name" : "MOTOMAMI +",
+    "release_date" : "2022-09-09",
+    "release_date_precision" : "day",
+    "total_tracks" : 24,
+    "type" : "album",
+    "uri" : "spotify:album:3zbiiu3JTibw0esC7eoMXr"
+  }, {
+    "album_group" : "album",
+    "album_type" : "album",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+      },
+      "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+      "id" : "7ltDVBr6mKbRvohxheJ9h1",
+      "name" : "ROSALÍA",
+      "type" : "artist",
+      "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+    } ],
+    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "ET", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/6jbtHi5R0jMXoliU2OS0lo"
+    },
+    "href" : "https://api.spotify.com/v1/albums/6jbtHi5R0jMXoliU2OS0lo",
+    "id" : "6jbtHi5R0jMXoliU2OS0lo",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/ab67616d0000b2730c179967a265de0fc76382fe",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/ab67616d00001e020c179967a265de0fc76382fe",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/ab67616d000048510c179967a265de0fc76382fe",
+      "width" : 64
+    } ],
+    "name" : "MOTOMAMI",
+    "release_date" : "2022-03-18",
+    "release_date_precision" : "day",
+    "total_tracks" : 16,
+    "type" : "album",
+    "uri" : "spotify:album:6jbtHi5R0jMXoliU2OS0lo"
+  }, {
+    "album_group" : "album",
+    "album_type" : "album",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+      },
+      "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+      "id" : "7ltDVBr6mKbRvohxheJ9h1",
+      "name" : "ROSALÍA",
+      "type" : "artist",
+      "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+    } ],
+    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "ET", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/355bjCHzRJztCzaG5Za4gq"
+    },
+    "href" : "https://api.spotify.com/v1/albums/355bjCHzRJztCzaG5Za4gq",
+    "id" : "355bjCHzRJztCzaG5Za4gq",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/ab67616d0000b273f4d64a6a6b7e24b6bd9f009f",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/ab67616d00001e02f4d64a6a6b7e24b6bd9f009f",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/ab67616d00004851f4d64a6a6b7e24b6bd9f009f",
+      "width" : 64
+    } ],
+    "name" : "El Mal Querer",
+    "release_date" : "2018-11-02",
+    "release_date_precision" : "day",
+    "total_tracks" : 11,
+    "type" : "album",
+    "uri" : "spotify:album:355bjCHzRJztCzaG5Za4gq"
+  }, {
+    "album_group" : "album",
+    "album_type" : "album",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+      },
+      "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+      "id" : "7ltDVBr6mKbRvohxheJ9h1",
+      "name" : "ROSALÍA",
+      "type" : "artist",
+      "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+    } ],
+    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "ET", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/7mGsUwMuhsKiOKx9X9k7tj"
+    },
+    "href" : "https://api.spotify.com/v1/albums/7mGsUwMuhsKiOKx9X9k7tj",
+    "id" : "7mGsUwMuhsKiOKx9X9k7tj",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/ab67616d0000b273c76ccdb32228d3ea38a9f5d6",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/ab67616d00001e02c76ccdb32228d3ea38a9f5d6",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/ab67616d00004851c76ccdb32228d3ea38a9f5d6",
+      "width" : 64
+    } ],
+    "name" : "Los Ángeles",
+    "release_date" : "2017-02-10",
+    "release_date_precision" : "day",
+    "total_tracks" : 12,
+    "type" : "album",
+    "uri" : "spotify:album:7mGsUwMuhsKiOKx9X9k7tj"
+  }, {
+    "album_group" : "single",
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+      },
+      "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+      "id" : "7ltDVBr6mKbRvohxheJ9h1",
+      "name" : "ROSALÍA",
+      "type" : "artist",
+      "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+    }, {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/4kYSro6naA4h99UJvo89HB"
+      },
+      "href" : "https://api.spotify.com/v1/artists/4kYSro6naA4h99UJvo89HB",
+      "id" : "4kYSro6naA4h99UJvo89HB",
+      "name" : "Cardi B",
+      "type" : "artist",
+      "uri" : "spotify:artist:4kYSro6naA4h99UJvo89HB"
+    } ],
+    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "ET", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/4czxiqSwyeZK7y5r9GNWXP"
+    },
+    "href" : "https://api.spotify.com/v1/albums/4czxiqSwyeZK7y5r9GNWXP",
+    "id" : "4czxiqSwyeZK7y5r9GNWXP",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/ab67616d0000b273004be8772c8f598c58d71f72",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/ab67616d00001e02004be8772c8f598c58d71f72",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/ab67616d00004851004be8772c8f598c58d71f72",
+      "width" : 64
+    } ],
+    "name" : "DESPECHÁ RMX",
+    "release_date" : "2022-12-16",
+    "release_date_precision" : "day",
+    "total_tracks" : 1,
+    "type" : "album",
+    "uri" : "spotify:album:4czxiqSwyeZK7y5r9GNWXP"
+  }, {
+    "album_group" : "single",
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/5lwmRuXgjX8xIwlnauTZIP"
+      },
+      "href" : "https://api.spotify.com/v1/artists/5lwmRuXgjX8xIwlnauTZIP",
+      "id" : "5lwmRuXgjX8xIwlnauTZIP",
+      "name" : "Romeo Santos",
+      "type" : "artist",
+      "uri" : "spotify:artist:5lwmRuXgjX8xIwlnauTZIP"
+    }, {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+      },
+      "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+      "id" : "7ltDVBr6mKbRvohxheJ9h1",
+      "name" : "ROSALÍA",
+      "type" : "artist",
+      "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+    } ],
+    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "ET", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/6UHVdZCYgXo8xeSCw4RXp5"
+    },
+    "href" : "https://api.spotify.com/v1/albums/6UHVdZCYgXo8xeSCw4RXp5",
+    "id" : "6UHVdZCYgXo8xeSCw4RXp5",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/ab67616d0000b273ae36e377ce4f51f737768949",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/ab67616d00001e02ae36e377ce4f51f737768949",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/ab67616d00004851ae36e377ce4f51f737768949",
+      "width" : 64
+    } ],
+    "name" : "El Pañuelo",
+    "release_date" : "2022-08-30",
+    "release_date_precision" : "day",
+    "total_tracks" : 1,
+    "type" : "album",
+    "uri" : "spotify:album:6UHVdZCYgXo8xeSCw4RXp5"
+  }, {
+    "album_group" : "single",
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+      },
+      "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+      "id" : "7ltDVBr6mKbRvohxheJ9h1",
+      "name" : "ROSALÍA",
+      "type" : "artist",
+      "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+    } ],
+    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "ET", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/5omNd3Mkij9C3ZeW19rRmv"
+    },
+    "href" : "https://api.spotify.com/v1/albums/5omNd3Mkij9C3ZeW19rRmv",
+    "id" : "5omNd3Mkij9C3ZeW19rRmv",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/ab67616d0000b2738f072024e0358fc5c62eba41",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/ab67616d00001e028f072024e0358fc5c62eba41",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/ab67616d000048518f072024e0358fc5c62eba41",
+      "width" : 64
+    } ],
+    "name" : "DESPECHÁ",
+    "release_date" : "2022-07-28",
+    "release_date_precision" : "day",
+    "total_tracks" : 1,
+    "type" : "album",
+    "uri" : "spotify:album:5omNd3Mkij9C3ZeW19rRmv"
+  }, {
+    "album_group" : "single",
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/2p4aN0Uxkk3iT3HK0cJ2cJ"
+      },
+      "href" : "https://api.spotify.com/v1/artists/2p4aN0Uxkk3iT3HK0cJ2cJ",
+      "id" : "2p4aN0Uxkk3iT3HK0cJ2cJ",
+      "name" : "Tokischa",
+      "type" : "artist",
+      "uri" : "spotify:artist:2p4aN0Uxkk3iT3HK0cJ2cJ"
+    }, {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+      },
+      "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+      "id" : "7ltDVBr6mKbRvohxheJ9h1",
+      "name" : "ROSALÍA",
+      "type" : "artist",
+      "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+    } ],
+    "available_markets" : [ "AD", "AE", "AG", "AL", "AM", "AO", "AR", "AT", "AU", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BO", "BR", "BS", "BT", "BW", "BY", "BZ", "CA", "CD", "CG", "CH", "CI", "CL", "CM", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "ES", "ET", "FI", "FJ", "FM", "FR", "GA", "GB", "GD", "GE", "GH", "GM", "GN", "GQ", "GR", "GT", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NZ", "OM", "PA", "PE", "PG", "PH", "PK", "PL", "PS", "PT", "PW", "PY", "QA", "RO", "RS", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "SR", "ST", "SV", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VC", "VE", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/6rFyXU9FiGytyYqfbwYO09"
+    },
+    "href" : "https://api.spotify.com/v1/albums/6rFyXU9FiGytyYqfbwYO09",
+    "id" : "6rFyXU9FiGytyYqfbwYO09",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/ab67616d0000b2736cf8b364f024ce974413986d",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/ab67616d00001e026cf8b364f024ce974413986d",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/ab67616d000048516cf8b364f024ce974413986d",
+      "width" : 64
+    } ],
+    "name" : "Linda",
+    "release_date" : "2021-09-01",
+    "release_date_precision" : "day",
+    "total_tracks" : 1,
+    "type" : "album",
+    "uri" : "spotify:album:6rFyXU9FiGytyYqfbwYO09"
+  }, {
+    "album_group" : "single",
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/6qqNVTkY8uBg9cP3Jd7DAH"
+      },
+      "href" : "https://api.spotify.com/v1/artists/6qqNVTkY8uBg9cP3Jd7DAH",
+      "id" : "6qqNVTkY8uBg9cP3Jd7DAH",
+      "name" : "Billie Eilish",
+      "type" : "artist",
+      "uri" : "spotify:artist:6qqNVTkY8uBg9cP3Jd7DAH"
+    }, {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+      },
+      "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+      "id" : "7ltDVBr6mKbRvohxheJ9h1",
+      "name" : "ROSALÍA",
+      "type" : "artist",
+      "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+    } ],
+    "available_markets" : [ "AD", "AE", "AL", "AM", "AO", "AT", "AU", "AZ", "BA", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BN", "BT", "BW", "BY", "CA", "CD", "CG", "CH", "CI", "CM", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DZ", "EE", "EG", "ET", "FI", "FJ", "FM", "FR", "GA", "GB", "GE", "GH", "GM", "GN", "GQ", "GR", "GW", "HK", "HR", "HU", "ID", "IE", "IL", "IN", "IQ", "IS", "IT", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KR", "KW", "KZ", "LA", "LB", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MG", "MH", "MK", "ML", "MN", "MO", "MR", "MT", "MU", "MV", "MW", "MY", "MZ", "NA", "NE", "NG", "NL", "NO", "NP", "NR", "NZ", "OM", "PG", "PH", "PK", "PL", "PS", "PW", "QA", "RO", "RS", "RW", "SA", "SB", "SC", "SE", "SG", "SI", "SK", "SL", "SM", "SN", "ST", "SZ", "TD", "TG", "TH", "TJ", "TL", "TN", "TO", "TR", "TV", "TW", "TZ", "UA", "UG", "US", "UZ", "VN", "VU", "WS", "XK", "ZA", "ZM", "ZW" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/4E8puNI8tw7cXz6YJkwMew"
+    },
+    "href" : "https://api.spotify.com/v1/albums/4E8puNI8tw7cXz6YJkwMew",
+    "id" : "4E8puNI8tw7cXz6YJkwMew",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/ab67616d0000b273c64ed7bab63186d7fca3012f",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/ab67616d00001e02c64ed7bab63186d7fca3012f",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/ab67616d00004851c64ed7bab63186d7fca3012f",
+      "width" : 64
+    } ],
+    "name" : "Lo Vas A Olvidar (with ROSALÍA)",
+    "release_date" : "2021-01-21",
+    "release_date_precision" : "day",
+    "total_tracks" : 1,
+    "type" : "album",
+    "uri" : "spotify:album:4E8puNI8tw7cXz6YJkwMew"
+  }, {
+    "album_group" : "single",
+    "album_type" : "single",
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/6qqNVTkY8uBg9cP3Jd7DAH"
+      },
+      "href" : "https://api.spotify.com/v1/artists/6qqNVTkY8uBg9cP3Jd7DAH",
+      "id" : "6qqNVTkY8uBg9cP3Jd7DAH",
+      "name" : "Billie Eilish",
+      "type" : "artist",
+      "uri" : "spotify:artist:6qqNVTkY8uBg9cP3Jd7DAH"
+    }, {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/7ltDVBr6mKbRvohxheJ9h1"
+      },
+      "href" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1",
+      "id" : "7ltDVBr6mKbRvohxheJ9h1",
+      "name" : "ROSALÍA",
+      "type" : "artist",
+      "uri" : "spotify:artist:7ltDVBr6mKbRvohxheJ9h1"
+    } ],
+    "available_markets" : [ "AG", "AR", "BB", "BO", "BR", "BS", "BZ", "CL", "CO", "CR", "CW", "DM", "DO", "EC", "ES", "GD", "GT", "GY", "HN", "HT", "JM", "KN", "LC", "MX", "NI", "PA", "PE", "PT", "PY", "SR", "SV", "TT", "UY", "VC", "VE" ],
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/album/3ZuV4xSFJnWDncgMICfFmX"
+    },
+    "href" : "https://api.spotify.com/v1/albums/3ZuV4xSFJnWDncgMICfFmX",
+    "id" : "3ZuV4xSFJnWDncgMICfFmX",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/ab67616d0000b273a5fe409478aefa2527076489",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/ab67616d00001e02a5fe409478aefa2527076489",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/ab67616d00004851a5fe409478aefa2527076489",
+      "width" : 64
+    } ],
+    "name" : "Lo Vas A Olvidar (with ROSALÍA)",
+    "release_date" : "2021-01-21",
+    "release_date_precision" : "day",
+    "total_tracks" : 1,
+    "type" : "album",
+    "uri" : "spotify:album:3ZuV4xSFJnWDncgMICfFmX"
+  } ],
+  "limit" : 10,
+  "next" : "https://api.spotify.com/v1/artists/7ltDVBr6mKbRvohxheJ9h1/albums?offset=10&limit=10&include_groups=album,single,compilation,appears_on",
+  "offset" : 0,
+  "previous" : null,
+  "total" : 154
+}

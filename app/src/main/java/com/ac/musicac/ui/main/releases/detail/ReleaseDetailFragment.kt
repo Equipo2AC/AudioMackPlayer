@@ -27,10 +27,10 @@ class ReleaseDetailFragment : Fragment(R.layout.fragment_release_detail) {
         releaseDetailState = buildReleaseDetailState()
 
         val binding = FragmentReleaseDetailBinding.bind(view).apply {
-            recycler.adapter = adapter
+            recyclerReleaseTracks.adapter = adapter
         }
 
-        binding.releaseDetailToolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
+        binding.releaseDetailToolbar.setNavigationOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
 
         viewLifecycleOwner.launchAndCollect(viewModel.state) { state ->
             binding.loading = state.loading
@@ -41,8 +41,6 @@ class ReleaseDetailFragment : Fragment(R.layout.fragment_release_detail) {
             }
         }
 
-        releaseDetailState.requestLocationPermission {
-            viewModel.onUiReady(args.albumId)
-        }
+        viewModel.onUiReady(args.albumId)
     }
 }

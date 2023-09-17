@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ac.musicac.R
-import com.ac.musicac.databinding.ViewAlbumBinding
-import com.ac.musicac.databinding.ViewArtistBinding
+import com.ac.musicac.databinding.ViewItemAlbumBinding
+import com.ac.musicac.databinding.ViewItemArtistBinding
 import com.ac.musicac.domain.Item
 import com.ac.musicac.domain.Type
 import com.ac.musicac.ui.common.basicDiffUtil
@@ -26,11 +26,11 @@ class SearchAdapter(private val onAction: (SearchAction) -> Unit) :
         when (type) {
             Type.ALBUM -> {
                 AlbumViewHolder(
-                    ViewAlbumBinding.bind(parent.inflate(R.layout.view_album, false))
+                    ViewItemAlbumBinding.bind(parent.inflate(R.layout.view_item_album, false))
                 )
             }
             Type.ARTIST -> ArtistViewHolder(
-                ViewArtistBinding.bind(parent.inflate(R.layout.view_artist, false))
+                ViewItemArtistBinding.bind(parent.inflate(R.layout.view_item_artist, false))
             )
         }
 
@@ -50,13 +50,13 @@ class SearchAdapter(private val onAction: (SearchAction) -> Unit) :
 
     open class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
-    class ArtistViewHolder(private val binding: ViewArtistBinding) : ViewHolder(binding.root) {
+    class ArtistViewHolder(private val binding: ViewItemArtistBinding) : ViewHolder(binding.root) {
         fun bind(item: Item) {
             binding.item = item
         }
     }
 
-    class AlbumViewHolder(private val binding: ViewAlbumBinding) : ViewHolder(binding.root) {
+    class AlbumViewHolder(private val binding: ViewItemAlbumBinding) : ViewHolder(binding.root) {
         fun bind(item: Item) {
             binding.item = item
         }

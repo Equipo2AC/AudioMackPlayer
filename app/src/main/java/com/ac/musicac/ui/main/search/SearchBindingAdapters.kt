@@ -12,17 +12,6 @@ import com.ac.musicac.ui.main.releases.list.ReleasesAdapter
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 
-@BindingAdapter("search_items")
-fun RecyclerView.setItems(items: List<Item>?) {
-    items?.let {
-        when (adapter) {
-            is ReleasesAdapter -> (adapter as ReleasesAdapter).submitList(it)
-            is SearchAdapter -> (adapter as SearchAdapter).submitList(it)
-            else -> {}
-        }
-    }
-}
-
 @BindingAdapter("search_items", "type", requireAll = true)
 fun RecyclerView.setType(items: List<Item>?, type: Type?) {
     type?.let {
@@ -44,21 +33,23 @@ fun RecyclerView.setType(items: List<Item>?, type: Type?) {
 
 @BindingAdapter("onChooseTypeChanged")
 fun ChipGroup.onChooseTypeChanged(listener: OnChooseTypeChanged?) {
-    setOnCheckedChangeListener { group, checkedId ->
+    setOnCheckedStateChangeListener { group, checkedIds ->
         group.forEach {
             val chip = it as Chip
-            if (chip.id == checkedId) {
+            if (checkedIds.contains(chip.id)) {
                 val type = when (chip.text) {
                     context.getString(R.string.chip_album) -> Type.ALBUM
                     context.getString(R.string.chip_artist) -> Type.ARTIST
                     else -> null
                 }
-                listener?.onChooseTypeChanged(type)
+                type?.let {
+                    listener?.onChooseTypeChanged(it)
+                }
             }
         }
     }
 }
 
 interface OnChooseTypeChanged {
-    fun onChooseTypeChanged(type: Type?)
+    fun onChooseTypeChanged(type: Type)
 }

@@ -3,6 +3,7 @@ package com.ac.musicac.ui.main.artist
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import arrow.core.Either
+import com.ac.musicac.di.qualifier.ArtistId
 import com.ac.musicac.domain.Albums
 import com.ac.musicac.domain.Error
 import com.ac.musicac.domain.PopularArtist
@@ -18,6 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ArtistViewModel @Inject constructor(
+    @ArtistId private val artistId: String,
     private val getArtistUseCase: GetArtistUseCase,
     private val getArtistAlbumsUseCase: GetArtistAlbumsUseCase
 ) : ViewModel() {
@@ -25,28 +27,22 @@ class ArtistViewModel @Inject constructor(
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state.asStateFlow()
 
-    fun onUiReady(artistId: String) {
+    fun onUiReady() {
         viewModelScope.launch {
             _state.value = _state.value.copy(loading = true)
-
-            val response = getArtistUseCase(artistId)
-
-            when (response) {
+            when (val response = getArtistUseCase(artistId)) {
                 is Either.Left -> _state.update { it.copy(loading = false, error = response.value) }
                 is Either.Right -> _state.update { it.copy(loading = false, artist = response.value) }
             }
         }
     }
 
-    fun onAlbumsRequest(artistId: String) {
+    fun onAlbumsRequest() {
         viewModelScope.launch {
             _state.value = _state.value.copy(loading = true)
-
-            val response = getArtistAlbumsUseCase(artistId)
-
-            when (response) {
+            when (val response = getArtistAlbumsUseCase(artistId)) {
                 is Either.Left -> _state.update { it.copy(loading = false, error = response.value) }
-                is Either.Right -> _state.value = _state.value.copy(loading = false, topAlbums = response.value)
+                is Either.Right -> _state.update { it.copy(loading = false, topAlbums = response.value) }
             }
         }
     }

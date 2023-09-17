@@ -31,7 +31,7 @@ class SearchFragment : Fragment(R.layout.fragment_search),
         searchView?.setOnQueryTextListener(this)
 
         viewLifecycleOwner.launchAndCollect(viewModel.state) { state ->
-            binding.recycler.adapter = adapter
+            binding.recyclerSearch.adapter = adapter
             binding.loading = state.loading
             binding.query = state.query
             binding.items = state.search
@@ -43,7 +43,7 @@ class SearchFragment : Fragment(R.layout.fragment_search),
 
     override fun onQueryTextChange(text: String) = viewModel.onQueryTextChange(text)
 
-    override fun onChooseTypeChanged(type: Type?) {
+    override fun onChooseTypeChanged(type: Type) {
         viewModel.onChangeType(type)
     }
 

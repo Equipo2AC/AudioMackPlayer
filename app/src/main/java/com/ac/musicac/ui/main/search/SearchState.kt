@@ -16,11 +16,11 @@ class SearchState(
     fun onAction(action: SearchAction) {
         when (action) {
             is SearchAction.OnClickAlbum -> {
-                val navDirection = SearchFragmentDirections.actionSearchToAlbum(action.item.id)
+                val navDirection = SearchFragmentDirections.actionSearchToAlbum(action.item.itemId)
                 navController.navigate(navDirection)
             }
             is SearchAction.OnClickArtist -> {
-                val navDirection = SearchFragmentDirections.actionSearchToArtist(action.item.id)
+                val navDirection = SearchFragmentDirections.actionSearchToArtist(action.item.itemId)
                 navController.navigate(navDirection)
             }
 

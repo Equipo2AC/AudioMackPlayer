@@ -1,7 +1,9 @@
 package com.ac.musicac.data.server.service
 
 import com.ac.musicac.data.server.UserResult
-import com.ac.musicac.data.server.model.artist.ArtistViewResult
+import com.ac.musicac.data.server.model.main.ArtistViewResult
+import com.ac.musicac.data.server.model.main.SeveralAlbumsResult
+import com.ac.musicac.data.server.model.main.SeveralArtistsResult
 import com.ac.musicac.data.server.model.releases.*
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -20,7 +22,12 @@ interface SpotifyService {
     @GET("albums/{id}")
     suspend fun getReleaseDetail(
         @Path("id") id : String,
-        @Query("market") market: String): RemoteRelease
+        @Query("market") market: String): AlbumsReleasesResult
+
+    @GET("albums")
+    suspend fun getSeveralAlbums(
+        @Query("ids") id: String
+    ): SeveralAlbumsResult
 
     @GET("search")
     suspend fun findSearch(
@@ -31,6 +38,9 @@ interface SpotifyService {
 
     @GET("artists/{id}")
     suspend fun getArtist(@Path("id") id: String): ArtistViewResult
+
+    @GET("artists")
+    suspend fun getSeveralArtist(@Query("ids") id: String): SeveralArtistsResult
 
     @GET("artists/{id}/albums")
     suspend fun getArtistAlbums(

@@ -3,7 +3,7 @@ package com.ac.musicac.data.server.datasource
 import arrow.core.Either
 import com.ac.musicac.data.datasource.MusicRemoteDataSource
 import com.ac.musicac.data.server.APIService
-import com.ac.musicac.data.server.model.artist.*
+import com.ac.musicac.data.server.model.main.*
 import com.ac.musicac.data.server.model.releases.*
 import com.ac.musicac.data.server.service.SpotifyService
 import com.ac.musicac.data.tryCall
@@ -48,6 +48,15 @@ class SpotifyDataSource @Inject constructor(
         api.service.getArtist(id).toDomainModel()
     }
 
+    override suspend fun getSeveralArtist(ids: String): Either<Error?, SeveralArtist> = tryCall {
+        api.service.getSeveralArtist(ids).toDomainModel()
+    }
+
+    override suspend fun getSeveralAlbums(ids: String): Either<Error?, SeveralAlbums> = tryCall {
+        api.service.getSeveralAlbums(ids).toDomainModel()
+    }
+
+
     override suspend fun getArtistAlbums(
         id: String,
         limit: Int,
@@ -64,7 +73,7 @@ private fun ReleasesResult.toDomainModel(): Releases =
         albums.toDomainModel()
     )
 
-private fun RemoteRelease.toDomainModel(): Release =
+private fun AlbumsReleasesResult.toDomainModel(): Release =
     Release(
         album_type,
         getArtistsName(artists),
@@ -107,13 +116,47 @@ private fun ArtistsResult.toDomainModel(): Artists =
         total
     )
 
+private fun SeveralArtistsResult.toDomainModel(): SeveralArtist =
+    SeveralArtist(
+        artists.map { it.toDomainModel() }
+    )
+
+private fun SeveralAlbumsResult.toDomainModel(): SeveralAlbums =
+    SeveralAlbums (
+        albums.map { it.toDomainModel() }
+    )
+
+private fun AlbumViewResult.toDomainModel(): AlbumView =
+    AlbumView(
+        0,
+        album_type,
+        artists?.map{ it.toDomainModel() } ?: listOf() ,
+        copyrights?.map { it.toDomainModel() },
+        external_ids?.toDomainModel(),
+        external_urls.toDomainModel(),
+        genres,
+        href,
+        albumId = id,
+        image = images[0].url,
+        label,
+        name,
+        popularity,
+        release_date,
+        release_date_precision ,
+        total_tracks ?: 0,
+        tracks.toDomainModel() ,
+        type,
+        uri
+    )
+
 private fun ArtistViewResult.toDomainModel(): PopularArtist =
     PopularArtist(
+        0,
         external_urls.toDomainModel(),
         followers.toDomainModel(),
         genres ?: listOf(),
         href,
-        id,
+        artistId = id,
         images.map { it.toDomainModel() },
         name,
         popularity ?: 0,
@@ -123,12 +166,13 @@ private fun ArtistViewResult.toDomainModel(): PopularArtist =
 
 private fun ItemResult.toDomainModel(): Item =
     Item(
+        id,
         album_type ?: "",
         getArtistsName(artists) ?: "",
         available_markets ?: listOf(),
         external_urls.toDomainModel(),
         href,
-        id,
+        itemId = id,
         images.maxByOrNull { it.height }?.toDomainModel(),
         name,
         release_date ?: "",

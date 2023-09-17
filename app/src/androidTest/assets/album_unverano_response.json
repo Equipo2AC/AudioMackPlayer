@@ -1,0 +1,729 @@
+{
+  "album_type" : "album",
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+    },
+    "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+    "id" : "4q3ewBCX7sLwd24euuV69X",
+    "name" : "Bad Bunny",
+    "type" : "artist",
+    "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+  } ],
+  "copyrights" : [ {
+    "text" : "(C) 2022 Rimas Entertainment",
+    "type" : "C"
+  }, {
+    "text" : "(P) 2022 Rimas Entertainment",
+    "type" : "P"
+  } ],
+  "external_ids" : {
+    "upc" : "196626945068"
+  },
+  "external_urls" : {
+    "spotify" : "https://open.spotify.com/album/3RQQmkQEvNCY4prGKE6oc5"
+  },
+  "genres" : [ ],
+  "href" : "https://api.spotify.com/v1/albums/3RQQmkQEvNCY4prGKE6oc5",
+  "id" : "3RQQmkQEvNCY4prGKE6oc5",
+  "images" : [ {
+    "height" : 640,
+    "url" : "https://i.scdn.co/image/ab67616d0000b27349d694203245f241a1bcaa72",
+    "width" : 640
+  }, {
+    "height" : 300,
+    "url" : "https://i.scdn.co/image/ab67616d00001e0249d694203245f241a1bcaa72",
+    "width" : 300
+  }, {
+    "height" : 64,
+    "url" : "https://i.scdn.co/image/ab67616d0000485149d694203245f241a1bcaa72",
+    "width" : 64
+  } ],
+  "label" : "Rimas Entertainment LLC",
+  "name" : "Un Verano Sin Ti",
+  "popularity" : 100,
+  "release_date" : "2022-05-06",
+  "release_date_precision" : "day",
+  "total_tracks" : 23,
+  "tracks" : {
+    "href" : "https://api.spotify.com/v1/albums/3RQQmkQEvNCY4prGKE6oc5/tracks?offset=0&limit=50&market=ES",
+    "items" : [ {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 245939,
+      "explicit" : true,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/6Xom58OOXk2SoU711L2IXO"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/6Xom58OOXk2SoU711L2IXO",
+      "id" : "6Xom58OOXk2SoU711L2IXO",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Moscow Mule",
+      "preview_url" : "https://p.scdn.co/mp3-preview/1b0b60e66c2034b95877d2a735a6e5df27548d07?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 1,
+      "type" : "track",
+      "uri" : "spotify:track:6Xom58OOXk2SoU711L2IXO"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 230400,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/1dm6z1fWB0cErMszU25dy2"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/1dm6z1fWB0cErMszU25dy2",
+      "id" : "1dm6z1fWB0cErMszU25dy2",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Después de la Playa",
+      "preview_url" : "https://p.scdn.co/mp3-preview/5f993fda14dd6f324bb8cf24cf93c7df350209f3?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 2,
+      "type" : "track",
+      "uri" : "spotify:track:1dm6z1fWB0cErMszU25dy2"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/37230BxxYs9ksS7OkZw3IU"
+        },
+        "href" : "https://api.spotify.com/v1/artists/37230BxxYs9ksS7OkZw3IU",
+        "id" : "37230BxxYs9ksS7OkZw3IU",
+        "name" : "Chencho Corleone",
+        "type" : "artist",
+        "uri" : "spotify:artist:37230BxxYs9ksS7OkZw3IU"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 178567,
+      "explicit" : true,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/6Sq7ltF9Qa7SNFBsV5Cogx"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/6Sq7ltF9Qa7SNFBsV5Cogx",
+      "id" : "6Sq7ltF9Qa7SNFBsV5Cogx",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Me Porto Bonito",
+      "preview_url" : "https://p.scdn.co/mp3-preview/4664314ac1423cd8d6730a9d01640f636ec06bfc?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 3,
+      "type" : "track",
+      "uri" : "spotify:track:6Sq7ltF9Qa7SNFBsV5Cogx"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 243716,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/1IHWl5LamUGEuP4ozKQSXZ"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/1IHWl5LamUGEuP4ozKQSXZ",
+      "id" : "1IHWl5LamUGEuP4ozKQSXZ",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Tití Me Preguntó",
+      "preview_url" : "https://p.scdn.co/mp3-preview/d69e8b984f636cd292093dc57adf0dabc4ef791c?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 4,
+      "type" : "track",
+      "uri" : "spotify:track:1IHWl5LamUGEuP4ozKQSXZ"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 176936,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/5CzixCxDkRXX9mScCmah8O"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/5CzixCxDkRXX9mScCmah8O",
+      "id" : "5CzixCxDkRXX9mScCmah8O",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Un Ratito",
+      "preview_url" : "https://p.scdn.co/mp3-preview/fa20c7e9ef3c1d09d662f0bbf1ed9fd7f4c78d43?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 5,
+      "type" : "track",
+      "uri" : "spotify:track:5CzixCxDkRXX9mScCmah8O"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 230704,
+      "explicit" : true,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/5kVZxyMY1gfdCLiChsfjn1"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/5kVZxyMY1gfdCLiChsfjn1",
+      "id" : "5kVZxyMY1gfdCLiChsfjn1",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Yo No Soy Celoso",
+      "preview_url" : "https://p.scdn.co/mp3-preview/5326c8c54a1c34e0b1d6e15dc1eacafdc6b2442a?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 6,
+      "type" : "track",
+      "uri" : "spotify:track:5kVZxyMY1gfdCLiChsfjn1"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/6nVcHLIgY5pE2YCl8ubca1"
+        },
+        "href" : "https://api.spotify.com/v1/artists/6nVcHLIgY5pE2YCl8ubca1",
+        "id" : "6nVcHLIgY5pE2YCl8ubca1",
+        "name" : "Jhayco",
+        "type" : "artist",
+        "uri" : "spotify:artist:6nVcHLIgY5pE2YCl8ubca1"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 237894,
+      "explicit" : true,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/41oY4WCTj5kccfesTVFnvN"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/41oY4WCTj5kccfesTVFnvN",
+      "id" : "41oY4WCTj5kccfesTVFnvN",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Tarot",
+      "preview_url" : "https://p.scdn.co/mp3-preview/0c0817e45e543b2b9b7ac2e6af3a5dddc11b6cd8?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 7,
+      "type" : "track",
+      "uri" : "spotify:track:41oY4WCTj5kccfesTVFnvN"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 173119,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/31i56LZnwE6uSu3exoHjtB"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/31i56LZnwE6uSu3exoHjtB",
+      "id" : "31i56LZnwE6uSu3exoHjtB",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Neverita",
+      "preview_url" : "https://p.scdn.co/mp3-preview/59a710ccbd160b24edbb330a8da60465dbc890de?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 8,
+      "type" : "track",
+      "uri" : "spotify:track:31i56LZnwE6uSu3exoHjtB"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/3LKXWvXFWrkwUzJWxzwVpW"
+        },
+        "href" : "https://api.spotify.com/v1/artists/3LKXWvXFWrkwUzJWxzwVpW",
+        "id" : "3LKXWvXFWrkwUzJWxzwVpW",
+        "name" : "Tony Dize",
+        "type" : "artist",
+        "uri" : "spotify:artist:3LKXWvXFWrkwUzJWxzwVpW"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 198367,
+      "explicit" : true,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/1797zYiX4cKosMH836X9Gt"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/1797zYiX4cKosMH836X9Gt",
+      "id" : "1797zYiX4cKosMH836X9Gt",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "La Corriente",
+      "preview_url" : "https://p.scdn.co/mp3-preview/6660f4e05c9e19e1715de679107d2dbe02332595?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 9,
+      "type" : "track",
+      "uri" : "spotify:track:1797zYiX4cKosMH836X9Gt"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 213061,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/5Eax0qFko2dh7Rl2lYs3bx"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/5Eax0qFko2dh7Rl2lYs3bx",
+      "id" : "5Eax0qFko2dh7Rl2lYs3bx",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Efecto",
+      "preview_url" : "https://p.scdn.co/mp3-preview/4658112a470b70c3cf7f32472ff81c1144fe5529?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 10,
+      "type" : "track",
+      "uri" : "spotify:track:5Eax0qFko2dh7Rl2lYs3bx"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/1mcTU81TzQhprhouKaTkpq"
+        },
+        "href" : "https://api.spotify.com/v1/artists/1mcTU81TzQhprhouKaTkpq",
+        "id" : "1mcTU81TzQhprhouKaTkpq",
+        "name" : "Rauw Alejandro",
+        "type" : "artist",
+        "uri" : "spotify:artist:1mcTU81TzQhprhouKaTkpq"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 227628,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/4tYFy8ALRjIZvnvSLw5lxN"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/4tYFy8ALRjIZvnvSLw5lxN",
+      "id" : "4tYFy8ALRjIZvnvSLw5lxN",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Party",
+      "preview_url" : "https://p.scdn.co/mp3-preview/cdba247b040b191e2006ec9bd33c9b074f0e6818?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 11,
+      "type" : "track",
+      "uri" : "spotify:track:4tYFy8ALRjIZvnvSLw5lxN"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 210989,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/2uflssWlCaJ6CbTMOsUpNI"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/2uflssWlCaJ6CbTMOsUpNI",
+      "id" : "2uflssWlCaJ6CbTMOsUpNI",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Aguacero",
+      "preview_url" : "https://p.scdn.co/mp3-preview/0fac42ce68f0567c1c00ac053b279450db89f6bc?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 12,
+      "type" : "track",
+      "uri" : "spotify:track:2uflssWlCaJ6CbTMOsUpNI"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 176000,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/2NMjggapJcXXM7WccGEBUO"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/2NMjggapJcXXM7WccGEBUO",
+      "id" : "2NMjggapJcXXM7WccGEBUO",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Enséñame a Bailar",
+      "preview_url" : "https://p.scdn.co/mp3-preview/7d1f78d5b5aa00a0eb3eeb2ca5cac410d003ab7d?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 13,
+      "type" : "track",
+      "uri" : "spotify:track:2NMjggapJcXXM7WccGEBUO"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/5n9bMYfz9qss2VOW89EVs2"
+        },
+        "href" : "https://api.spotify.com/v1/artists/5n9bMYfz9qss2VOW89EVs2",
+        "id" : "5n9bMYfz9qss2VOW89EVs2",
+        "name" : "Bomba Estéreo",
+        "type" : "artist",
+        "uri" : "spotify:artist:5n9bMYfz9qss2VOW89EVs2"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 258298,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/3k3NWokhRRkEPhCzPmV8TW"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/3k3NWokhRRkEPhCzPmV8TW",
+      "id" : "3k3NWokhRRkEPhCzPmV8TW",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Ojitos Lindos",
+      "preview_url" : "https://p.scdn.co/mp3-preview/db4bfe899bfe93f98077d6f73f15c06b8bd5e6fa?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 14,
+      "type" : "track",
+      "uri" : "spotify:track:3k3NWokhRRkEPhCzPmV8TW"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 208615,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/4d4ZXH4dr5bYfgErHiZCX2"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/4d4ZXH4dr5bYfgErHiZCX2",
+      "id" : "4d4ZXH4dr5bYfgErHiZCX2",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Dos Mil 16",
+      "preview_url" : "https://p.scdn.co/mp3-preview/56ae97d5d3f7ae04254fa9897c620d0f27a3cc13?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 15,
+      "type" : "track",
+      "uri" : "spotify:track:4d4ZXH4dr5bYfgErHiZCX2"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 201816,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/0UvZcEfpzVyx47QsRbjyBz"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/0UvZcEfpzVyx47QsRbjyBz",
+      "id" : "0UvZcEfpzVyx47QsRbjyBz",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "El Apagón",
+      "preview_url" : "https://p.scdn.co/mp3-preview/5ac9c80b65049548307dae9cf9404447b62f5c4e?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 16,
+      "type" : "track",
+      "uri" : "spotify:track:0UvZcEfpzVyx47QsRbjyBz"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/2sSGPbdZJkaSE2AbcGOACx"
+        },
+        "href" : "https://api.spotify.com/v1/artists/2sSGPbdZJkaSE2AbcGOACx",
+        "id" : "2sSGPbdZJkaSE2AbcGOACx",
+        "name" : "The Marías",
+        "type" : "artist",
+        "uri" : "spotify:artist:2sSGPbdZJkaSE2AbcGOACx"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 244444,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/0E0DRHf5PfMeor0ZCwB3oT"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/0E0DRHf5PfMeor0ZCwB3oT",
+      "id" : "0E0DRHf5PfMeor0ZCwB3oT",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Otro Atardecer",
+      "preview_url" : "https://p.scdn.co/mp3-preview/14a76318939ece431eea7e10bca6243019a5f30e?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 17,
+      "type" : "track",
+      "uri" : "spotify:track:0E0DRHf5PfMeor0ZCwB3oT"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 196412,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/6VrQTLzzuyGIYjUDe4kAZk"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/6VrQTLzzuyGIYjUDe4kAZk",
+      "id" : "6VrQTLzzuyGIYjUDe4kAZk",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Un Coco",
+      "preview_url" : "https://p.scdn.co/mp3-preview/0a5238a2b401d3f430dd2e9c732c01163bbac874?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 18,
+      "type" : "track",
+      "uri" : "spotify:track:6VrQTLzzuyGIYjUDe4kAZk"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0MoaBi6dSquXp6rrlqlF8R"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0MoaBi6dSquXp6rrlqlF8R",
+        "id" : "0MoaBi6dSquXp6rrlqlF8R",
+        "name" : "Buscabulla",
+        "type" : "artist",
+        "uri" : "spotify:artist:0MoaBi6dSquXp6rrlqlF8R"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 339611,
+      "explicit" : true,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/44XjoNvtwevktFKjvVe1vH"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/44XjoNvtwevktFKjvVe1vH",
+      "id" : "44XjoNvtwevktFKjvVe1vH",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Andrea",
+      "preview_url" : "https://p.scdn.co/mp3-preview/4406a4e4a6db18442f5404e5da696670f7e35299?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 19,
+      "type" : "track",
+      "uri" : "spotify:track:44XjoNvtwevktFKjvVe1vH"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 180929,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/28GCbKgjlVD9eDmasGbe0T"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/28GCbKgjlVD9eDmasGbe0T",
+      "id" : "28GCbKgjlVD9eDmasGbe0T",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Me Fui de Vacaciones",
+      "preview_url" : "https://p.scdn.co/mp3-preview/b84db45aec8b2aeeb09db3882cb4196f3e46454b?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 20,
+      "type" : "track",
+      "uri" : "spotify:track:28GCbKgjlVD9eDmasGbe0T"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 148143,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/18HOjcvTVV7W8YzBuOsAPS"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/18HOjcvTVV7W8YzBuOsAPS",
+      "id" : "18HOjcvTVV7W8YzBuOsAPS",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Un Verano Sin Ti",
+      "preview_url" : "https://p.scdn.co/mp3-preview/3b1df9d49524fe377232587c294a312d8886018a?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 21,
+      "type" : "track",
+      "uri" : "spotify:track:18HOjcvTVV7W8YzBuOsAPS"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 139041,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/0wihfILRNOwE2156Shezc8"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/0wihfILRNOwE2156Shezc8",
+      "id" : "0wihfILRNOwE2156Shezc8",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Agosto",
+      "preview_url" : "https://p.scdn.co/mp3-preview/52b893942a6b5ea7a15ba5261a4bc689e1316157?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 22,
+      "type" : "track",
+      "uri" : "spotify:track:0wihfILRNOwE2156Shezc8"
+    }, {
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
+        "id" : "4q3ewBCX7sLwd24euuV69X",
+        "name" : "Bad Bunny",
+        "type" : "artist",
+        "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0GM7qgcRCORpGnfcN2tCiB"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0GM7qgcRCORpGnfcN2tCiB",
+        "id" : "0GM7qgcRCORpGnfcN2tCiB",
+        "name" : "Tainy",
+        "type" : "artist",
+        "uri" : "spotify:artist:0GM7qgcRCORpGnfcN2tCiB"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 250533,
+      "explicit" : false,
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/71wFwRo8xGc4lrcyKwsvba"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/71wFwRo8xGc4lrcyKwsvba",
+      "id" : "71wFwRo8xGc4lrcyKwsvba",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Callaita",
+      "preview_url" : "https://p.scdn.co/mp3-preview/8b992c5f1935924a772526b615aa7b76ce3e112f?cid=88a836718f2640aeb371d3039c982f74",
+      "track_number" : 23,
+      "type" : "track",
+      "uri" : "spotify:track:71wFwRo8xGc4lrcyKwsvba"
+    } ],
+    "limit" : 50,
+    "next" : null,
+    "offset" : 0,
+    "previous" : null,
+    "total" : 23
+  },
+  "type" : "album",
+  "uri" : "spotify:album:3RQQmkQEvNCY4prGKE6oc5"
+}

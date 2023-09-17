@@ -107,7 +107,7 @@
         </HorizontalScrollView>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler"
+            android:id="@+id/recycler_search"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
@@ -124,7 +124,7 @@
             app:visible="@{ error == null &amp;&amp; loading == false }"
             tools:itemCount="4"
             tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            tools:listitem="@layout/view_album" />
+            tools:listitem="@layout/view_item_album" />
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:id="@+id/progress"

@@ -8,7 +8,6 @@ plugins {
     id(Plugins.hiltAndroid)
     id(Plugins.secret)
     id(Plugins.safeArgs)
-    // id("org.jetbrains.kotlin.android")
 }
 
 android {
@@ -31,18 +30,33 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+        kotlinOptions {
+            jvmTarget = "11"
+        }
     }
+    /*kotlinOptions {
+        jvmTarget = "11"
+    }*/
     secrets {
         propertiesFileName = AppConfig.propertiesFileName
     }
 
     buildFeatures {
         dataBinding = true
+    }
+
+    sourceSets {
+        this.getByName("androidTest"){
+            //Adds the given source directory to this set.
+            this.java.srcDir("$projectDir/src/testShared/androidTest")
+        }
+        this.getByName("test"){
+            this.java.srcDir("$projectDir/src/testShared/test")
+        }
     }
 
     signingConfigs {
@@ -64,7 +78,7 @@ dependencies {
     implementation(Libs.AndroidX.appCompat)
     implementation(Libs.AndroidX.material)
     implementation(Libs.AndroidX.constraintLayout)
-    implementation(Libs.Retrofit.retrofit)
+    implementation(Libs.Retrofit.retrofitCore)
     implementation(Libs.OkHttp3.loginInterceptor)
     implementation(Libs.Retrofit.kotlinSerializationConverter)
     implementation(Libs.Kotlin.serializationJson)
@@ -82,15 +96,33 @@ dependencies {
     implementation(Libs.AndroidX.Activity.ktx)
     kapt(Libs.Hilt.compiler)
     implementation(Libs.Retrofit.converterGson)
-    implementation(Libs.Glide.glide)
+    implementation(Libs.Glide.core)
     kapt (Libs.Glide.compiler)
     implementation(Libs.playServicesLocation)
     //TESTING
-    testImplementation (Libs.JUnit.junit)
+    testImplementation (Libs.JUnit.core)
+    testImplementation (Libs.Mockito.kotlin)
+    testImplementation (Libs.Mockito.inline)
+    testImplementation (Libs.Kotlin.Coroutines.test)
+    testImplementation (Libs.turbine)
+    // Dependencia duplicada
+    // testImplementation (Libs.AndroidX.Fragment.test)
     androidTestImplementation (Libs.AndroidX.Test.Ext.junit)
-    androidTestImplementation (Libs.AndroidX.Test.Espresso.core)
+    androidTestImplementation (Libs.AndroidX.Test.Espresso.contrib)
+    androidTestImplementation (Libs.AndroidX.Test.runner)
+    androidTestImplementation (Libs.AndroidX.Test.rules)
+    androidTestImplementation (Libs.Kotlin.Coroutines.test)
+    androidTestImplementation (Libs.Hilt.test)
+    androidTestImplementation (Libs.OkHttp3.mockWebServer)
+    androidTestImplementation (Libs.AndroidX.Test.Espresso.intents)
+    // Dependencia para DEBUG
+    debugImplementation (Libs.AndroidX.Fragment.test)
+
+    kaptAndroidTest (Libs.Hilt.compiler)
     //MODULES
     implementation(project(Modules.data))
     implementation(project(Modules.domain))
     implementation(project(Modules.usescases))
+    testImplementation(project(Modules.testShared))
+    androidTestImplementation(project(Modules.testShared))
 }

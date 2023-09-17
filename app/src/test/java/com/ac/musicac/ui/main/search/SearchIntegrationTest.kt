@@ -15,6 +15,7 @@ import com.ac.musicac.ui.buildRepositoryWith
 import com.ac.musicac.usecases.SearchUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -33,8 +34,8 @@ class SearchIntegrationTest {
 
     private val artistSample = Mocks.mockPopularArtist()
     private val albumSample = Mocks.mockAlbums()
-    // private val searchArtistSample = Mocks.mockSearchArtist()
-    // private val searchAlbumSample = Mocks.mockSearchAlbum()
+    private val searchArtistSample = Mocks.mockSearchArtist().artists
+    private val searchAlbumSample = Mocks.mockSearchAlbum().albums
 
     @Before
     fun setUp() {
@@ -50,12 +51,24 @@ class SearchIntegrationTest {
         // whenever(searchUseCase(any(), any())).thenReturn(Mocks.mockSearchArtist().right())
 
         // WHEN
-        vmTest.onQueryTextChange("test")
+        vmTest.onQueryTextChange("Artist")
 
         // THEN
         vmTest.state.test {
-            val state = awaitItem()
-            assert(state.search != null)
+            Assert.assertEquals(SearchViewModel.UiState(loading = true), awaitItem())
+            // Assert.assertEquals(SearchViewModel.UiState(loading = false, search = listOf(Mocks.mockItems()), query = "Artist"), awaitItem())
+
+            val search = awaitItem().search
+            if (!search.isNullOrEmpty()) {
+                Assert.assertEquals("album", search[0].albumType)
+                Assert.assertEquals("artist", search[0].type)
+                Assert.assertEquals("52iwsT98xCoGgiGntTiR7K", search[0].id)
+                Assert.assertEquals("5ZqnEfVdEGmoPxtELhN7ai", search[0].itemId)
+                Assert.assertEquals("Estopa", search[0].name)
+                Assert.assertEquals("1999-10-18", search[0].releaseDate)
+                Assert.assertEquals("https://api.spotify.com/v1/artists/5ZqnEfVdEGmoPxtELhN7ai", search[0].href)
+            }
+
             cancel()
         }
     }
@@ -67,14 +80,24 @@ class SearchIntegrationTest {
         // whenever(searchUseCase(any(), any())).thenReturn(Mocks.mockSearchAlbum().right())
 
         // WHEN
-        vmTest.onQueryTextChange("test")
+        vmTest.onQueryTextChange("Albums")
 
         // THEN
         vmTest.state.test {
-            // val state = awaitItem()
-            val albums = awaitItem().search?.firstOrNull()
-            assert(albums != null)
-            // assert(state.search != null)
+            Assert.assertEquals(SearchViewModel.UiState(loading = true), awaitItem())
+            // Assert.assertEquals(SearchViewModel.UiState(loading = false, search = listOf(Mocks.mockItems()), query = "Albums"), awaitItem())
+
+            val search = awaitItem().search
+
+            if (!search.isNullOrEmpty()) {
+                Assert.assertEquals("album", search[0].albumType)
+                Assert.assertEquals("artist", search[0].type)
+                Assert.assertEquals("52iwsT98xCoGgiGntTiR7K", search[0].id)
+                Assert.assertEquals("5ZqnEfVdEGmoPxtELhN7ai", search[0].itemId)
+                Assert.assertEquals("Estopa", search[0].name)
+                Assert.assertEquals("1999-10-18", search[0].releaseDate)
+                Assert.assertEquals("https://api.spotify.com/v1/artists/5ZqnEfVdEGmoPxtELhN7ai", search[0].href)
+            }
             cancel()
         }
 

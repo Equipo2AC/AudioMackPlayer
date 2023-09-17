@@ -2,27 +2,22 @@ package com.ac.musicac.ui
 
 
 import com.ac.musicac.data.RegionRepository
-import com.ac.musicac.data.database.dao.AuthenticationDao
 import com.ac.musicac.data.database.datasource.AlbumRoomDataSource
 import com.ac.musicac.data.database.datasource.ArtistRoomDataSource
 import com.ac.musicac.data.database.entity.AlbumEntity
 import com.ac.musicac.data.database.entity.ArtistEntity
-import com.ac.musicac.data.database.entity.AuthenticationEntity
-import com.ac.musicac.data.datasource.MusicRemoteDataSource
 import com.ac.musicac.data.repository.MusicRepository
-import com.ac.musicac.data.server.APIService
-import com.ac.musicac.data.server.datasource.SpotifyDataSource
-import com.ac.musicac.data.server.interceptor.TokenHeader
 import com.ac.musicac.data.server.model.main.AlbumViewResult
 import com.ac.musicac.data.server.model.main.ArtistViewResult
 import com.ac.musicac.data.server.model.main.RestrictionsResult
-import com.ac.musicac.data.server.model.releases.*
-import com.ac.musicac.data.server.service.SpotifyService
-import kotlinx.coroutines.runBlocking
-import okhttp3.Interceptor
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Inject
+import com.ac.musicac.data.server.model.main.SeveralAlbumsResult
+import com.ac.musicac.data.server.model.main.SeveralArtistsResult
+import com.ac.musicac.data.server.model.releases.AlbumsReleasesResult
+import com.ac.musicac.data.server.model.releases.ExternalIdsResult
+import com.ac.musicac.data.server.model.releases.ExternalUrlsResult
+import com.ac.musicac.data.server.model.releases.FollowersResult
+import com.ac.musicac.data.server.model.releases.ImageResult
+import com.ac.musicac.data.server.model.releases.TracksResult
 
 fun buildRepositoryWith(
     localArtistData: List<ArtistEntity>,
@@ -34,27 +29,32 @@ fun buildRepositoryWith(
     val regionRepository = RegionRepository(FakeLocationDataSource(), FakePermissionChecker())
     val localArtistDataSource = ArtistRoomDataSource(FakeArtistDao(localArtistData))
     val localAlbumsDataSource = AlbumRoomDataSource(FakeAlbumDao(localAlbumData))
-    val service : SpotifyService = FakeSpotifyService(artists = remoteArtistData, albums = remoteAlbumData)
+    val remoteDataSource = FakeMusicRemoteDataSource(
+        SeveralArtistsResult(remoteArtistData),
+        SeveralAlbumsResult(remoteAlbumData)
+    )
+
+    return MusicRepository(regionRepository, localArtistDataSource , localAlbumsDataSource, remoteDataSource)
+}
+
+/*fun buildOriginalRepositoryWith(
+    localArtistData: List<ArtistEntity>,
+    localAlbumData: List<AlbumEntity>,
+    remoteArtistData: List<ArtistViewResult>,
+    remoteAlbumData: List<AlbumViewResult>,
+    remoteReleaseData: List<AlbumsReleasesResult>
+): MusicRepository {
+    val regionRepository = RegionRepository(FakeLocationDataSource(), FakePermissionChecker())
+    val localArtistDataSource = ArtistRoomDataSource(FakeArtistDao(localArtistData))
+    val localAlbumsDataSource = AlbumRoomDataSource(FakeAlbumDao(localAlbumData))
+    // val service : SpotifyService = FakeSpotifyService(artists = remoteArtistData, albums = remoteAlbumData)
+    // val service2 : APIService<SpotifyService> = FakeSpotifyService(artists = remoteArtistData, albums = remoteAlbumData)
     val client : HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.NONE
     }
 
-    /*val fakeService2 = APIService(
-        serviceClass = service.javaClass,
-        // FakeSpotifyService::class.java as Class<SpotifyService>,
-        // FakeSpotifyService(artists = remoteArtistData, albums = remoteAlbumData)::class.java,
-        "https://api.spotify.com/v1/",
-        GsonConverterFactory.create(),
-        arrayOf(TokenHeader(FakeAuthenticationDao(AuthenticationEntity(
-            id = 50,
-            accessToken = "BQDqw-aeGSSj8JOvfxbiNxfKkblrlhxpjdZoMdEmJOGGR55E7kqds0AsOtrTMXY1_zpW6hrscnDLM4H-gJGyg_NThSeo0sCyJ06dQrq99a3dJP7uom4",
-            tokenType = "Bearer",
-            expirationDate = 1694871765212L
-        ))
-        ), client)
-    )*/
 
-    val fakeService = APIService(
+    val originalService = APIService(
         SpotifyService::class.java,
         "https://api.spotify.com/v1/",
         GsonConverterFactory.create(),
@@ -66,9 +66,10 @@ fun buildRepositoryWith(
         ))
         ), client)
     )
-    val remoteDataSource = SpotifyDataSource(fakeService)
+    val remoteDataSource = SpotifyDataSource(originalService)
+
     return MusicRepository(regionRepository, localArtistDataSource , localAlbumsDataSource, remoteDataSource)
-}
+}*/
 
 fun buildDatabaseArtist(vararg id: Int) = id.map {
     ArtistEntity(
@@ -88,20 +89,20 @@ fun buildDatabaseArtist(vararg id: Int) = id.map {
 
 fun buildRemoteArtist(vararg id: Int) = id.map {
     ArtistViewResult (
-        external_urls = ExternalUrlsResult(""),
-        followers = FollowersResult("", 200),
+        external_urls = ExternalUrlsResult("https://open.spotify.com/artist/5ZqnEfVdEGmoPxtELhN7ai"),
+        followers = FollowersResult("", 1556285),
         genres = listOf("pop","rock"),
         href = "Overview $it",
         id = "7ltDVBr6mKbRvohxheJ9h1",
         images = listOf(
             ImageResult(
-                200,
+                320,
                 "https://i.scdn.co/image/ab676161000051743e5de222aa09ea8c106f2bbb",
-                200)),
+                320)),
         name = "Rosalia",
         popularity = 75,
         type = "artist",
-        uri = ""
+        uri = "https://i.scdn.co/image/"
     )
 
 }

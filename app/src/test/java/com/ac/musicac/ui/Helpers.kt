@@ -6,7 +6,11 @@ import com.ac.musicac.data.database.datasource.AlbumRoomDataSource
 import com.ac.musicac.data.database.datasource.ArtistRoomDataSource
 import com.ac.musicac.data.database.entity.AlbumEntity
 import com.ac.musicac.data.database.entity.ArtistEntity
+import com.ac.musicac.data.database.entity.AuthenticationEntity
 import com.ac.musicac.data.repository.MusicRepository
+import com.ac.musicac.data.server.APIService
+import com.ac.musicac.data.server.datasource.SpotifyDataSource
+import com.ac.musicac.data.server.interceptor.TokenHeader
 import com.ac.musicac.data.server.model.main.AlbumViewResult
 import com.ac.musicac.data.server.model.main.ArtistViewResult
 import com.ac.musicac.data.server.model.main.RestrictionsResult
@@ -18,6 +22,13 @@ import com.ac.musicac.data.server.model.releases.ExternalUrlsResult
 import com.ac.musicac.data.server.model.releases.FollowersResult
 import com.ac.musicac.data.server.model.releases.ImageResult
 import com.ac.musicac.data.server.model.releases.TracksResult
+import com.ac.musicac.data.server.service.SpotifyService
+import com.ac.musicac.domain.AlbumView
+import com.ac.musicac.domain.ExternalIds
+import com.ac.musicac.domain.ExternalUrls
+import com.ac.musicac.domain.Tracks
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.converter.gson.GsonConverterFactory
 
 fun buildRepositoryWith(
     localArtistData: List<ArtistEntity>,
@@ -37,7 +48,7 @@ fun buildRepositoryWith(
     return MusicRepository(regionRepository, localArtistDataSource , localAlbumsDataSource, remoteDataSource)
 }
 
-/*fun buildOriginalRepositoryWith(
+fun buildOriginalRepositoryWith(
     localArtistData: List<ArtistEntity>,
     localAlbumData: List<AlbumEntity>,
     remoteArtistData: List<ArtistViewResult>,
@@ -63,13 +74,14 @@ fun buildRepositoryWith(
             accessToken = "BQDqw-aeGSSj8JOvfxbiNxfKkblrlhxpjdZoMdEmJOGGR55E7kqds0AsOtrTMXY1_zpW6hrscnDLM4H-gJGyg_NThSeo0sCyJ06dQrq99a3dJP7uom4",
             tokenType = "Bearer",
             expirationDate = 1694871765212L
-        ))
+        )
+            )
         ), client)
     )
     val remoteDataSource = SpotifyDataSource(originalService)
 
     return MusicRepository(regionRepository, localArtistDataSource , localAlbumsDataSource, remoteDataSource)
-}*/
+}
 
 fun buildDatabaseArtist(vararg id: Int) = id.map {
     ArtistEntity(
@@ -187,8 +199,8 @@ fun buildRemoteRelease(vararg id: Int) = id.map {
 
 }
 
-/*
-fun buildDomainAlbum(vararg id: Int) = id.map {
+
+fun buildLocalRelease(vararg id: Int) = id.map {
     AlbumView(
         id = it,
         album_type = "album",
@@ -210,4 +222,4 @@ fun buildDomainAlbum(vararg id: Int) = id.map {
         type = "artist",
         uri = "https://i.scdn.co/image/"
     )
-}*/
+}

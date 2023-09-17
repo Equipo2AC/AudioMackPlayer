@@ -72,7 +72,6 @@ class ArtistIntegrationTest {
             assertEquals(75, artist?.popularity)
             assertEquals("Rosalia", artist?.name)
 
-
             cancel()
         }
 

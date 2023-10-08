@@ -1,5 +1,6 @@
 package com.ac.musicac.data.server
 
+import android.util.Log
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -10,16 +11,27 @@ import org.junit.runner.Description
 class MockWebServerRule: TestWatcher() {
 
     lateinit var server: MockWebServer
+    private var count = 0
 
     override fun starting(description: Description) {
         server = MockWebServer()
         server.start(8080)
-        server.enqueue(MockResponse().fromJson("token_response.json"))
-
+        if (count == 0) {
+            server.enqueue(MockResponse().fromJson("token_response.json"))
+            count++
+        }
+        // server.enqueue(MockResponse().fromJson("token_response.json"))
     }
 
     override fun finished(description: Description) {
-        server.shutdown()
+        // server.close()
+        Log.e("Artist Test", "${server.requestCount}")
+
+        if (server.requestCount > 0) {
+            server.dispatcher.shutdown()
+        }
+        // server.shutdown()
+
     }
 
     fun runDispatcher() {
@@ -31,7 +43,6 @@ class MockWebServerRule: TestWatcher() {
                     path.contains("6gQKAYf3TJM9sppw3AtbHH") -> response = "albums_response.json"
                     path.contains("/albums?limit=10") -> response = "artist_rosalia_albums_response.json"
                     path.contains("1Cs0zKBU1kc0i8ypK3B9ai") -> response = "artists_response.json"
-                    // Esta linea causa un conflico con los tyest de integracion
                     path.contains("/artists/7ltDVBr6mKbRvohxheJ9h1") -> response = "artist_rosalia_response.json"
                     path.contains("/artists/716NhGYqD1jl2wI1Qkgq36") -> response = "artist_bizarrap_response.json"
                     path.contains("/artists/4q3ewBCX7sLwd24euuV69X") -> response = "artist_badbunny_response.json"
@@ -41,10 +52,11 @@ class MockWebServerRule: TestWatcher() {
                     path.contains("/albums/492U88qanlQnFgsfvwVHe8") -> response = "release_rosalia_bizcochito_response.json"
                     path.contains("/albums/4czxiqSwyeZK7y5r9GNWXP") -> response = "release_rosalia_despecha_response.json"
                     path.contains("/albums/3zbiiu3JTibw0esC7eoMXr") -> response = "release_rosalia_motomami_response.json"
+                    // path.contains("/token") -> response = "token_response.json"
                     // else -> response = "token_response.json"
                 }
-                return MockResponse().fromJson(response)
 
+                return MockResponse().fromJson(response)
             }
         }
     }

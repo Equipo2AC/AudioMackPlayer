@@ -4,16 +4,11 @@ import android.app.Application
 import androidx.lifecycle.SavedStateHandle
 import androidx.room.Room
 import com.ac.musicac.BuildConfig
-import com.ac.musicac.data.Constants
-import com.ac.musicac.data.PermissionChecker
 import com.ac.musicac.data.database.MusicAcDatabase
 import com.ac.musicac.data.database.dao.AlbumDao
 import com.ac.musicac.data.database.dao.ArtistDao
 import com.ac.musicac.data.database.dao.AuthenticationDao
-import com.ac.musicac.data.datasource.LocationDataSource
 import com.ac.musicac.data.server.APIService
-import com.ac.musicac.data.server.AndroidPermissionChecker
-import com.ac.musicac.data.server.PlayServicesLocationDataSource
 import com.ac.musicac.data.server.interceptor.AuthorizationHeader
 import com.ac.musicac.data.server.interceptor.TokenHeader
 import com.ac.musicac.data.server.service.SpotifyAuthenticationService
@@ -22,7 +17,6 @@ import com.ac.musicac.di.qualifier.*
 import com.ac.musicac.ui.main.artist.ArtistFragmentArgs
 import com.ac.musicac.ui.main.releases.detail.ReleaseDetailFragmentArgs
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,13 +26,10 @@ import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
-import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
-import retrofit2.Retrofit
-import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -64,20 +55,10 @@ object TestAppModule {
     @Singleton
     fun providesAlbumDao(db: MusicAcDatabase): AlbumDao = db.albumDao()
 
-    /*@Provides
-    @Singleton
-    @ApiUrl
-    fun providesApiUrl(): String = "https://api.spotify.com/v1/"*/
-
     @Provides
     @Singleton
     @ApiUrl
     fun providesApiUrl(): String = "http://localhost:8080"
-
-    /*@Provides
-    @Singleton
-    @AuthenticationApiUrl
-    fun providesAuthenticationApiUrl(): String = "https://accounts.spotify.com/api/"*/
 
     @Provides
     @Singleton

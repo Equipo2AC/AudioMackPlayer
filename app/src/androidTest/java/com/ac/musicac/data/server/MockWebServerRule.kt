@@ -11,27 +11,23 @@ import org.junit.runner.Description
 class MockWebServerRule: TestWatcher() {
 
     lateinit var server: MockWebServer
-    private var count = 0
+    private var count = false
 
     override fun starting(description: Description) {
         server = MockWebServer()
         server.start(8080)
-        server.enqueue(MockResponse().fromJson("token_response.json"))
-        /*if (count == 0) {
-            server.enqueue(MockResponse().fromJson("token_response.json"))
-            count++
-        }*/
+        // server.enqueue(MockResponse().fromJson("token_response.json"))
+        if (!count) {
+            // server.enqueue(MockResponse().fromJson("token_response.json"))
+            count = true
+        }
 
     }
 
     override fun finished(description: Description) {
         // server.close()
         Log.e("Artist Test", "${server.requestCount}")
-
-        if (server.requestCount > 0) {
-            server.dispatcher.shutdown()
-        }
-        // server.shutdown()
+        server.shutdown()
 
     }
 
@@ -54,7 +50,7 @@ class MockWebServerRule: TestWatcher() {
                     path.contains("/albums/4czxiqSwyeZK7y5r9GNWXP") -> response = "release_rosalia_despecha_response.json"
                     path.contains("/albums/3zbiiu3JTibw0esC7eoMXr") -> response = "release_rosalia_motomami_response.json"
                     // path.contains("/token") -> response = "token_response.json"
-                    // else -> response = "token_response.json"
+                    else -> response = "token_response.json"
                 }
 
                 return MockResponse().fromJson(response)

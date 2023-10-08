@@ -16,11 +16,12 @@ class MockWebServerRule: TestWatcher() {
     override fun starting(description: Description) {
         server = MockWebServer()
         server.start(8080)
-        if (count == 0) {
+        server.enqueue(MockResponse().fromJson("token_response.json"))
+        /*if (count == 0) {
             server.enqueue(MockResponse().fromJson("token_response.json"))
             count++
-        }
-        // server.enqueue(MockResponse().fromJson("token_response.json"))
+        }*/
+
     }
 
     override fun finished(description: Description) {

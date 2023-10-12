@@ -12,6 +12,8 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.rule.GrantPermissionRule
 import com.ac.musicac.R
+import com.ac.musicac.data.database.dao.AuthenticationDao
+import com.ac.musicac.data.database.entity.AuthenticationEntity
 import com.ac.musicac.data.server.EspressoIdlingResource
 import com.ac.musicac.data.server.MockWebServerRule
 import com.ac.musicac.data.server.OkHttp3IdlingResource
@@ -19,6 +21,7 @@ import com.ac.musicac.di.qualifier.ArtistDummyIds
 import com.ac.musicac.ui.navHostActivity.NavHostActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
 import org.junit.After
 import org.junit.Before
@@ -43,12 +46,26 @@ class HomeArtistsInstrumentationTest {
     @get:Rule(order = 3)
     var activityRule = ActivityScenarioRule(NavHostActivity::class.java)
 
-    @Inject
-    @ArtistDummyIds
-    lateinit var artistsIds: String
+    // @Inject
+    // @ArtistDummyIds
+    //lateinit var artistsIds: String
 
     @Inject
     lateinit var okHttpClient: OkHttpClient
+
+    @Inject
+    lateinit var dao: AuthenticationDao
+
+    @Before
+    fun insertToken() = runBlocking {
+        dao.insertToken(
+            AuthenticationEntity(
+                0,
+                "BQAdraSNmJNG3Uw2gklBLo2EllhrOMhJang41xCdsuD6iKdvryI3NyI15TuSarpdt_pVveYtcivr-CzLVxWlQq5PXJTnNZaNr9szEd3jr2n3-22rS58",
+                "Bearer",
+                3600L)
+        )
+    }
 
     @Before
     fun setUp() {
@@ -56,8 +73,11 @@ class HomeArtistsInstrumentationTest {
         hiltRule.inject()
         IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
         IdlingRegistry.getInstance().register(OkHttp3IdlingResource.create("okHttp", okHttpClient))
+        EspressoIdlingResource.countingIdlingResource.increment()
         // activityRule.scenario.recreate()
     }
+
+
 
     @After
     fun unregisterIdlingResource() {

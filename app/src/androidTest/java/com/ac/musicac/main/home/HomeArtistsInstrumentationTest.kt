@@ -63,6 +63,7 @@ class HomeArtistsInstrumentationTest {
     fun unregisterIdlingResource() {
         IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
         IdlingRegistry.getInstance().unregister(OkHttp3IdlingResource.create("okHttp", okHttpClient))
+        // mockWebServerRule.server.shutdown()
     }
 
     @Test

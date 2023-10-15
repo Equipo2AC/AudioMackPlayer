@@ -41,11 +41,55 @@ object TestAppModule {
     fun provideDatabase(app: Application) : MusicAcDatabase = Room.inMemoryDatabaseBuilder(
         app,
         MusicAcDatabase::class.java
-    ).build()
+    ).allowMainThreadQueries().build()
+
+    /*@Provides
+    @Singleton
+    fun provideDatabase2(app: Application) : MusicAcDatabase = Room.inMemoryDatabaseBuilder(
+        app,
+        MusicAcDatabase::class.java
+    ).allowMainThreadQueries()
+        .addCallback(object: RoomDatabase.Callback() {
+            override fun onCreate(db: SupportSQLiteDatabase) {
+                super.onCreate(db)
+                Log.e("Database", "onCreate")
+                val dao = Room.databaseBuilder(
+                    app,
+                    MusicAcDatabase::class.java,
+                    Constants.DATABASE_NAME
+                ).build().authenticationDao()
+                runBlocking {
+                    dao.insertToken(AuthenticationEntity(
+                        0,
+                        "BQBnvD70neePc875x0tPREaPlzvQR5tNGqT59P6YomCPTYhEISXUv5arDk7Tej0f7_LeaqVTj5Ol6FeIugdlTlVNFtdLV1EbtOSMZg36hD6fasRlwYc",
+                        "Bearer",
+                        1697364719525L))
+
+                }
+            }
+        }).build()*/
+
 
     @Provides
     @Singleton
     fun providesAuthenticationDao(db: MusicAcDatabase): AuthenticationDao = db.authenticationDao()
+
+
+    /*@Provides
+    @Singleton
+    fun providesAuthenticationToken(dao: AuthenticationDao): AuthenticationEntity {
+        val token : AuthenticationEntity
+        runBlocking {
+            dao.insertToken(AuthenticationEntity(
+                999,
+                "BQAdraSNmJNG3Uw2gklBLo2EllhrOMhJang41xCdsuD6iKdvryI3NyI15TuSarpdt_pVveYtcivr-CzLVxWlQq5PXJTnNZaNr9szEd3jr2n3-22rS58",
+                "Bearer",
+                3600L))
+            token = dao.getToken()
+            Log.e("token", token.accessToken)
+        }
+        return token
+    }*/
 
     @Provides
     @Singleton

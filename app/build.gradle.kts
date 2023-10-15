@@ -120,6 +120,8 @@ dependencies {
     kaptAndroidTest (Libs.Hilt.compiler)
     androidTestImplementation (Libs.OkHttp3.mockWebServer)
     androidTestImplementation (Libs.AndroidX.Test.Espresso.intents)
+    androidTestImplementation (Libs.AndroidX.Room.test)
+    // androidTestImplementation ("androidx.room:room-testing:2.6.0-rc01")
 
     // Dependencia para DEBUG
     debugImplementation (Libs.AndroidX.Fragment.test)

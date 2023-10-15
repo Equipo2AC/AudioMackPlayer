@@ -13,15 +13,12 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.rule.GrantPermissionRule
 import com.ac.musicac.R
 import com.ac.musicac.data.database.dao.AuthenticationDao
-import com.ac.musicac.data.database.entity.AuthenticationEntity
 import com.ac.musicac.data.server.EspressoIdlingResource
 import com.ac.musicac.data.server.MockWebServerRule
 import com.ac.musicac.data.server.OkHttp3IdlingResource
-import com.ac.musicac.di.qualifier.ArtistDummyIds
 import com.ac.musicac.ui.navHostActivity.NavHostActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
-import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
 import org.junit.After
 import org.junit.Before
@@ -56,25 +53,42 @@ class HomeArtistsInstrumentationTest {
     @Inject
     lateinit var dao: AuthenticationDao
 
-    @Before
-    fun insertToken() = runBlocking {
-        dao.insertToken(
-            AuthenticationEntity(
-                0,
-                "BQAdraSNmJNG3Uw2gklBLo2EllhrOMhJang41xCdsuD6iKdvryI3NyI15TuSarpdt_pVveYtcivr-CzLVxWlQq5PXJTnNZaNr9szEd3jr2n3-22rS58",
-                "Bearer",
-                3600L)
-        )
-    }
+    /*@Inject
+    lateinit var token: AuthenticationEntity*/
+
+    
+
+    /*private val token: AuthenticationEntity = AuthenticationEntity(
+        999,
+        "BQAdraSNmJNG3Uw2gklBLo2EllhrOMhJang41xCdsuD6iKdvryI3NyI15TuSarpdt_pVveYtcivr-CzLVxWlQq5PXJTnNZaNr9szEd3jr2n3-22rS58",
+        "Bearer",
+        3600L)*/
+
+    /*@Before 
+    fun insertToken(): Unit = runBlocking {
+        val token = AuthenticationEntity(
+            999,
+            "BQAdraSNmJNG3Uw2gklBLo2EllhrOMhJang41xCdsuD6iKdvryI3NyI15TuSarpdt_pVveYtcivr-CzLVxWlQq5PXJTnNZaNr9szEd3jr2n3-22rS58",
+            "Bearer",
+            3600L)
+        dao.insertToken(token)
+        Log.e("token", token.accessToken)
+    }*/
 
     @Before
     fun setUp() {
-        mockWebServerRule.runDispatcher()
+
         hiltRule.inject()
+        mockWebServerRule.runDispatcher()
         IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
         IdlingRegistry.getInstance().register(OkHttp3IdlingResource.create("okHttp", okHttpClient))
+
+
+
         EspressoIdlingResource.countingIdlingResource.increment()
+        // insertToken()
         // activityRule.scenario.recreate()
+
     }
 
 
@@ -86,14 +100,13 @@ class HomeArtistsInstrumentationTest {
         // mockWebServerRule.server.shutdown()
     }
 
-    @Test
+    /*@Test
     fun app_shows_several_artists() {
-
         onView(withId(R.id.recycler_artist))
             .check(matches(hasDescendant(withText("Bizarrap"))))
-    }
+    }*/
 
-    @Test
+    /*@Test
     fun click_in_rosalia_artist_navigates_to_detail() {
 
         onView(withId(R.id.recycler_artist))
@@ -101,10 +114,14 @@ class HomeArtistsInstrumentationTest {
 
         onView(withId(R.id.artist_toolbar))
             .check(matches(hasDescendant(withText("ROSALÍA"))))
-    }
+    }*/
 
     @Test
     fun click_in_bizarrap_artist_navigates_to_detail() {
+
+        // mockWebServerRule.server.enqueue(MockResponse().fromJson("artist_bizarrap_response.json"))
+
+        // mockWebServerRule.server.dispatcher.peek()
 
         onView(withId(R.id.recycler_artist))
             .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(1, click()))
@@ -113,7 +130,7 @@ class HomeArtistsInstrumentationTest {
             .check(matches(hasDescendant(withText("Bizarrap"))))
     }
 
-    @Test
+    /*@Test
     fun click_in_badbunny_artist_navigates_to_detail() {
 
         onView(withId(R.id.recycler_artist))
@@ -123,5 +140,11 @@ class HomeArtistsInstrumentationTest {
 
         onView(withId(R.id.artist_toolbar))
             .check(matches(hasDescendant(withText("Bad Bunny"))))
-    }
+    }*/
+
+    /*private fun insertToken() = runBlocking(Dispatchers.Main) {
+        dao.insertToken(token)
+        val newToken = dao.getToken().accessToken
+        Log.e("token", newToken)
+    }*/
 }

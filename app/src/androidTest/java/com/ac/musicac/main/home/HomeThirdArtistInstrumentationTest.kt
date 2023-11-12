@@ -1,8 +1,11 @@
 package com.ac.musicac.main.home
 
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
@@ -25,7 +28,7 @@ import org.junit.Test
 import javax.inject.Inject
 
 @HiltAndroidTest
-class HomeArtistsInstrumentationTest {
+class HomeThirdArtistInstrumentationTest {
 
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
@@ -46,15 +49,12 @@ class HomeArtistsInstrumentationTest {
 
     @Before
     fun setUp() {
-
         hiltRule.inject()
         mockWebServerRule.server.enqueue(MockResponse().fromJson("home_artists_response.json"))
-        // mockWebServerRule.runDispatcher()
+        mockWebServerRule.server.enqueue(MockResponse().fromJson("home_albums_response.json"))
         IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
         IdlingRegistry.getInstance().register(OkHttp3IdlingResource.create("okHttp", okHttpClient))
     }
-
-
 
     @After
     fun unregisterIdlingResource() {
@@ -63,8 +63,27 @@ class HomeArtistsInstrumentationTest {
     }
 
     @Test
-    fun app_shows_several_artists() {
+    fun click_in_third_artist_navigates_to_detail() {
+
+        mockWebServerRule.server.enqueue(MockResponse().fromJson("artist_quevedo_response.json"))
+
         onView(withId(R.id.recycler_artist))
-            .check(matches(hasDescendant(withText("Bizarrap"))))
+            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(2, click()))
+
+        onView(withId(R.id.artist_toolbar))
+            .check(matches(hasDescendant(withText("Quevedo"))))
+    }
+
+    @Test
+    fun click_in_fourth_artist_navigates_to_detail() {
+
+
+        mockWebServerRule.server.enqueue(MockResponse().fromJson("artist_badbunny_response.json"))
+
+        onView(withId(R.id.recycler_artist))
+            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(3, click()))
+
+        onView(withId(R.id.artist_toolbar))
+            .check(matches(hasDescendant(withText("Bad Bunny"))))
     }
 }

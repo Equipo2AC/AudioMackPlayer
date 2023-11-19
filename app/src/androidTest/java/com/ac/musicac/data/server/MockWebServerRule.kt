@@ -54,6 +54,11 @@ class MockWebServerRule: TestWatcher() {
                     path.contains("/albums/5r36AJ6VOJtp00oxSkBZ5h") -> response = "response_releases_harry.json"
                     path.contains("/browse/new-releases?country=") -> response = "response_releases_list.json"
 
+                    path.contains("/search?type=album&q=") -> response = "response_search_albums.json"
+                    path.contains("/search?type=artist&q=") -> response = "response_search_artists.json"
+
+
+
 
 
 

@@ -43,6 +43,7 @@ object Libs {
             const val runtime = "androidx.room:room-runtime:_"
             const val ktx = "androidx.room:room-ktx:_"
             const val compiler = "androidx.room:room-compiler:_"
+            const val test = "androidx.room:room-testing:_"
         }
 
         object Test {

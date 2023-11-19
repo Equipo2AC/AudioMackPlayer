@@ -8,6 +8,7 @@ import com.ac.musicac.data.server.model.main.AlbumViewResult
 import com.ac.musicac.data.server.model.main.ArtistViewResult
 import com.ac.musicac.data.server.model.releases.AlbumsReleasesResult
 import com.ac.musicac.domain.SeveralAlbums
+import com.ac.musicac.testshared.Mocks
 import com.ac.musicac.testshared.Mocks.mockPopularAlbums
 import com.ac.musicac.ui.buildDatabaseAlbum
 import com.ac.musicac.ui.buildRemoteAlbum
@@ -18,7 +19,6 @@ import com.ac.musicac.usecases.RequestSeveralAlbumUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotEquals
 import org.junit.Rule
 import org.junit.Test
 
@@ -33,6 +33,10 @@ class HomeAlbumsIntegrationTest {
             ",7rE2qU0GsiIiNd4VPupV3B,4yNnIoQh8y1uDB6ScOS2vx,4PNqWiJAfjj32hVvlchV5u" +
             ",6GHUywBU0u92lg0Dhrt40R,6gQKAYf3TJM9sppw3AtbHH"
 
+    private val albumId2 = "3RQQmkQEvNCY4prGKE6oc5"
+
+    private val albumSample = Mocks.mockAlbums()
+
     @Test
     fun `Albums Data is loaded from server when local source is empty`() = runTest {
         val remoteData = buildRemoteAlbum(4, 5, 6)
@@ -45,16 +49,17 @@ class HomeAlbumsIntegrationTest {
         vm.state.test {
             assertEquals(UiState(), awaitItem())
             assertEquals(UiState(albums = SeveralAlbums(emptyList())), awaitItem())
-            // assertEquals(UiState(albums = SeveralAlbums(emptyList()), loading = true), awaitItem())
+            assertEquals(UiState(albums = SeveralAlbums(emptyList()), loading = true), awaitItem())
+            assertEquals(UiState(albums = SeveralAlbums(emptyList()), loading = false), awaitItem())
 
             val albums = awaitItem().albums?.albums
             if(!albums.isNullOrEmpty()) {
                 assertEquals("Label here 4", albums[0].label)
                 assertEquals("Label here 5", albums[1].label)
                 assertEquals("Label here 6", albums[2].label)
-                assertEquals(4, albums[0].id)
-                assertEquals(5, albums[1].id)
-                assertEquals(6, albums[2].id)
+                assertEquals("album", albums[0].album_type)
+                assertEquals("artist", albums[0].type)
+                assertEquals(75, albums[0].popularity)
             }
 
             cancel()
@@ -71,15 +76,16 @@ class HomeAlbumsIntegrationTest {
             localAlbumData = localData,
             remoteAlbumData = remoteData)
 
-        vm.onUiReady(albumId)
+        vm.onUiReady(albumId2)
 
         vm.state.test {
             assertEquals(UiState(), awaitItem())
-            assertNotEquals(UiState(loading = false, albums = SeveralAlbums(listOf(mockPopularAlbums()))), awaitItem())
-            assertNotEquals(UiState(loading = true, albums = SeveralAlbums(listOf(mockPopularAlbums()))), awaitItem())
+            // assertEquals(UiState(albums = SeveralAlbums(emptyList())), awaitItem())
+            assertEquals(UiState(loading = true, albums = SeveralAlbums(listOf(mockPopularAlbums()))), awaitItem())
+            // assertEquals(UiState(loading = false, albums = SeveralAlbums(listOf(mockPopularAlbums()))), awaitItem())
+            // assertEquals(UiState(loading = true, albums = SeveralAlbums(listOf(mockPopularAlbums()))), awaitItem())
 
             val albums = awaitItem().albums?.albums
-
             if(!albums.isNullOrEmpty()) {
                 assertEquals("Label here 1", albums[0].label)
                 assertEquals("Label here 2", albums[1].label)

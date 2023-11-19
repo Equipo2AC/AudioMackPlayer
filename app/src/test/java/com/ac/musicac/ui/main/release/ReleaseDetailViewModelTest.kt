@@ -11,6 +11,7 @@ import com.ac.musicac.usecases.GetReleaseDetailUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert
@@ -40,14 +41,13 @@ class ReleaseDetailViewModelTest {
 
 
     @Before
-    fun setUp() {
+    fun setUp() = runBlocking {
+        whenever(getReleaseDetailUseCase(albumId)).thenReturn(albumSample.right())
         vm = ReleaseDetailViewModel(getReleaseDetailUseCase)
     }
 
     @Test
     fun `State is updated with release content inmediately`() = runTest {
-
-        whenever(getReleaseDetailUseCase(albumId)).thenReturn(albumSample.right())
 
         vm.onUiReady(albumId)
 
@@ -61,7 +61,6 @@ class ReleaseDetailViewModelTest {
 
     @Test
     fun `Progress is shown when release start loading`() = runTest {
-        whenever(getReleaseDetailUseCase(albumId)).thenReturn(albumSample.right())
 
         vm.onUiReady(albumId)
 
@@ -86,7 +85,6 @@ class ReleaseDetailViewModelTest {
 
     @Test
     fun `Album are requested when UI screen starts`() = runTest {
-        whenever(getReleaseDetailUseCase(albumId)).thenReturn(albumSample.right())
 
         vm.onUiReady(albumId)
 

@@ -1,8 +1,11 @@
 package com.ac.musicac.main.home
 
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
@@ -25,7 +28,7 @@ import org.junit.Test
 import javax.inject.Inject
 
 @HiltAndroidTest
-class HomeAlbumsInstrumentationTest {
+class HomeThirdAlbumInstrumentationTest {
 
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
@@ -46,7 +49,6 @@ class HomeAlbumsInstrumentationTest {
 
     @Before
     fun setUp() {
-
         hiltRule.inject()
         mockWebServerRule.server.enqueue(MockResponse().fromJson("home_artists_response.json"))
         mockWebServerRule.server.enqueue(MockResponse().fromJson("home_albums_response.json"))
@@ -61,9 +63,15 @@ class HomeAlbumsInstrumentationTest {
     }
 
     @Test
-    fun app_shows_several_albums() {
-        onView(withId(R.id.recycler_albums))
-            .check(matches(hasDescendant(withText("Un Verano Sin Ti"))))
+    fun click_third_album_navigates_to_detail() {
 
+        mockWebServerRule.server.enqueue(MockResponse().fromJson("album_provenza_response.json"))
+
+        onView(withId(R.id.recycler_albums))
+            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(2, click()))
+
+        onView(withId(R.id.release_detail_toolbar))
+            .check(matches(hasDescendant(withText("PROVENZA"))))
     }
+
 }

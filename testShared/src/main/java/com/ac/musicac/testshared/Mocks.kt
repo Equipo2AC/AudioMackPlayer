@@ -121,7 +121,7 @@ object Mocks {
         externalUrls = ExternalUrls("https://open.spotify.com/artist/5ZqnEfVdEGmoPxtELhN7ai"),
         followers = Followers("", 1556285),
         genres = listOf("pop", "rock"),
-        href = "https://open.spotify.com",
+        href = "Overview 75",
         artistId = "7ltDVBr6mKbRvohxheJ9h1",
         images = listOf(
             Image(
@@ -130,7 +130,7 @@ object Mocks {
                 url = "https://i.scdn.co/image/ab676161000051743e5de222aa09ea8c106f2bbb"
             )
         ),
-        name = "Artist Name",
+        name = "Rosalia",
         popularity = 75,
         type = "artist",
         uri = "https://i.scdn.co/image/"

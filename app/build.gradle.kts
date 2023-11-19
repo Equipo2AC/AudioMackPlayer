@@ -38,7 +38,10 @@ android {
             jvmTarget = "11"
         }
     }
-    /*kotlinOptions {
+    /*kotlin {
+        jvmToolchain(11)
+    }
+    kotlinOptions {
         jvmTarget = "11"
     }*/
     secrets {
@@ -99,26 +102,31 @@ dependencies {
     implementation(Libs.Glide.core)
     kapt (Libs.Glide.compiler)
     implementation(Libs.playServicesLocation)
+
     //TESTING
     testImplementation (Libs.JUnit.core)
     testImplementation (Libs.Mockito.kotlin)
     testImplementation (Libs.Mockito.inline)
     testImplementation (Libs.Kotlin.Coroutines.test)
     testImplementation (Libs.turbine)
-    // Dependencia duplicada
-    // testImplementation (Libs.AndroidX.Fragment.test)
+
+    // TESTING UI ANDROID
     androidTestImplementation (Libs.AndroidX.Test.Ext.junit)
     androidTestImplementation (Libs.AndroidX.Test.Espresso.contrib)
     androidTestImplementation (Libs.AndroidX.Test.runner)
     androidTestImplementation (Libs.AndroidX.Test.rules)
     androidTestImplementation (Libs.Kotlin.Coroutines.test)
     androidTestImplementation (Libs.Hilt.test)
+    kaptAndroidTest (Libs.Hilt.compiler)
     androidTestImplementation (Libs.OkHttp3.mockWebServer)
     androidTestImplementation (Libs.AndroidX.Test.Espresso.intents)
+    androidTestImplementation (Libs.AndroidX.Room.test)
+    // androidTestImplementation ("androidx.room:room-testing:2.6.0-rc01")
+
     // Dependencia para DEBUG
     debugImplementation (Libs.AndroidX.Fragment.test)
 
-    kaptAndroidTest (Libs.Hilt.compiler)
+
     //MODULES
     implementation(project(Modules.data))
     implementation(project(Modules.domain))

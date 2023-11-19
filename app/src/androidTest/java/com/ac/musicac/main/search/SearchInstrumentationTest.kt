@@ -70,7 +70,7 @@ class SearchInstrumentationTest {
     @Test
     fun app_shows_search_view() {
 
-        Thread.sleep(5000)
+        Thread.sleep(1000)
 
         onView(withId(R.id.toolbar))
             .check(matches(hasDescendant(withText("Buscar"))))

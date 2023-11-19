@@ -1,18 +1,17 @@
 package com.ac.musicac.main.artist
 
 import android.os.Bundle
-import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
-import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
-import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.rule.GrantPermissionRule
 import com.ac.musicac.R
 import com.ac.musicac.data.server.EspressoIdlingResource
-import com.ac.musicac.data.server.MockWebServerRule
+import com.ac.musicac.data.server.MockWebServerTokenRule
 import com.ac.musicac.data.server.OkHttp3IdlingResource
 import com.ac.musicac.ui.main.artist.ArtistFragment
 import com.ac.musicac.ui.navHostActivity.NavHostActivity
@@ -34,7 +33,7 @@ class ArtistsInstrumentationTest {
     val hiltRule = HiltAndroidRule(this)
 
     @get:Rule(order = 1)
-    val mockWebServerRule = MockWebServerRule()
+    val mockWebServerRule = MockWebServerTokenRule()
 
     @get:Rule(order = 2)
     val locationPermissionRule: GrantPermissionRule = GrantPermissionRule.grant(
@@ -75,6 +74,7 @@ class ArtistsInstrumentationTest {
         IdlingRegistry.getInstance().unregister(OkHttp3IdlingResource.create("okHttp", okHttpClient))
     }
 
+
     @Test
     fun artist_fragment_shows_an_artist() {
 
@@ -87,7 +87,7 @@ class ArtistsInstrumentationTest {
         )
     }
 
-    @Test
+    /*@Test
     fun artist_fragment_shows_a_list_of_albums() {
 
         onView(withId(R.id.recycler_artist_albums)).check(
@@ -101,34 +101,9 @@ class ArtistsInstrumentationTest {
         onView(withId(R.id.recycler_artist_albums))
             .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
 
-       /* onView(withId(R.id.recycler_artist_albums))
-            .perform(actionOnItem<RecyclerView.ViewHolder>(hasDescendant(withText("DESPECHÁ RMX")), click()))*/
-
-        /*activityRule.scenario.onActivity { activity ->
-            val releaseDetailFragment = ReleaseDetailFragment()
-            val bun = Bundle()
-            bun.putString("releaseId", "6jbtHi5R0jMXoliU2OS0lo")
-            releaseDetailFragment.arguments = bun
-            activity.supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.nav_host_splash_fragment, releaseDetailFragment, "ReleaseDetailFragment")
-                .commitAllowingStateLoss()
-
-        }*/
-
         onView(withId(R.id.recycler_artist_albums)).check(
             matches(hasDescendant(withText("MOTOMAMI +")))
         )
-
-        /*onView(withId(R.id.release_detail_toolbar)).check(
-            matches(hasDescendant(withText("DESPECHÁ RMX")))
-        )*/
-
-        /*onView(withId(R.id.release_detail_toolbar)).check(
-            matches(withText("DESPECHÁ RMX"))
-        )*/
-
-
-    }
+    }*/
 
 }

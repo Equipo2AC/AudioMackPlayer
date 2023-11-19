@@ -1,5 +1,6 @@
-package com.ac.musicac.main.home
+package com.ac.musicac.main.releases
 
+import android.os.Bundle
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -12,20 +13,21 @@ import com.ac.musicac.R
 import com.ac.musicac.data.server.EspressoIdlingResource
 import com.ac.musicac.data.server.MockWebServerRule
 import com.ac.musicac.data.server.OkHttp3IdlingResource
-import com.ac.musicac.data.server.fromJson
+import com.ac.musicac.ui.main.releases.detail.ReleaseDetailFragment
 import com.ac.musicac.ui.navHostActivity.NavHostActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import okhttp3.OkHttpClient
-import okhttp3.mockwebserver.MockResponse
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import javax.inject.Inject
 
+@ExperimentalCoroutinesApi
 @HiltAndroidTest
-class HomeAlbumsInstrumentationTest {
+class ReleaseDetailTracksInstrumentationTest {
 
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
@@ -46,12 +48,21 @@ class HomeAlbumsInstrumentationTest {
 
     @Before
     fun setUp() {
-
+        mockWebServerRule.runDispatcher()
         hiltRule.inject()
-        mockWebServerRule.server.enqueue(MockResponse().fromJson("home_artists_response.json"))
-        mockWebServerRule.server.enqueue(MockResponse().fromJson("home_albums_response.json"))
         IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
         IdlingRegistry.getInstance().register(OkHttp3IdlingResource.create("okHttp", okHttpClient))
+
+        activityRule.scenario.onActivity { activity ->
+            val releaseDetailFragment = ReleaseDetailFragment()
+            val bun = Bundle()
+            bun.putString("albumId", "5r36AJ6VOJtp00oxSkBZ5h")
+            releaseDetailFragment.arguments = bun
+            activity.supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.nav_host_splash_fragment, releaseDetailFragment, "TEST ReleasesFragmentDetail")
+                .commitNowAllowingStateLoss()
+        }
     }
 
     @After
@@ -61,9 +72,13 @@ class HomeAlbumsInstrumentationTest {
     }
 
     @Test
-    fun app_shows_several_albums() {
-        onView(withId(R.id.recycler_albums))
-            .check(matches(hasDescendant(withText("Un Verano Sin Ti"))))
+    fun releases_detail_fragment_shows_a_list_of_tracks() {
 
+        Thread.sleep(1000)
+
+        onView(withId(R.id.recycler_release_tracks)).check(
+            matches(hasDescendant(withText("Music For a Sushi Restaurant")))
+        )
     }
+
 }

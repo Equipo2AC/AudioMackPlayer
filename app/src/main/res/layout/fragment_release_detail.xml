@@ -80,6 +80,7 @@
                 android:transitionGroup="true">
 
                 <com.ac.musicac.ui.main.releases.detail.ReleaseDetailInfoView
+                    android:id="@+id/release_info_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?attr/colorSurface"

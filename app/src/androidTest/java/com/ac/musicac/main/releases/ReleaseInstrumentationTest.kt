@@ -1,9 +1,11 @@
 package com.ac.musicac.main.releases
 
-import androidx.test.espresso.Espresso
+import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
-import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.rule.GrantPermissionRule
 import com.ac.musicac.R
@@ -51,24 +53,11 @@ class ReleaseInstrumentationTest {
         IdlingRegistry.getInstance().register(OkHttp3IdlingResource.create("okHttp", okHttpClient))
 
         activityRule.scenario.onActivity { activity ->
-            // val releasesFragment = ReleasesFragment()
             activity.supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.nav_host_splash_fragment, ReleasesFragment(), "TEST ReleasesFragment")
                 .commitNowAllowingStateLoss()
         }
-
-        /*activityRule.scenario.onActivity { activity ->
-            val releasesFragment = ReleasesFragment()
-            val bun = Bundle()
-            bun.putString("artistId", "7ltDVBr6mKbRvohxheJ9h1")
-            releasesFragment.arguments = bun
-            activity.supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.nav_host_splash_fragment, releasesFragment, "TEST ReleasesFragment")
-                .commitNowAllowingStateLoss()
-        }*/
-
     }
 
     @After
@@ -82,8 +71,8 @@ class ReleaseInstrumentationTest {
 
         Thread.sleep(1000)
 
-        Espresso.onView(ViewMatchers.withId(R.id.recycler_albums))
-            .check(ViewAssertions.matches(ViewMatchers.hasDescendant(ViewMatchers.withText("MOTOMAMI"))))
+        onView(ViewMatchers.withId(R.id.recycler_releases))
+            .check(matches(hasDescendant(withText("Harry Styles"))))
 
     }
 

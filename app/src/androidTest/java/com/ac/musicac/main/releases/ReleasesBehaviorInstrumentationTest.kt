@@ -1,10 +1,13 @@
 package com.ac.musicac.main.releases
 
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.rule.GrantPermissionRule
@@ -26,7 +29,7 @@ import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 @HiltAndroidTest
-class ReleaseInstrumentationTest {
+class ReleasesBehaviorInstrumentationTest {
 
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
@@ -67,13 +70,16 @@ class ReleaseInstrumentationTest {
     }
 
     @Test
-    fun app_shows_several_albums() {
+    fun releases_fragment_shows_an_album_when_clicked() {
 
         Thread.sleep(1000)
 
-        onView(ViewMatchers.withId(R.id.recycler_releases))
-            .check(matches(hasDescendant(withText("Harry Styles"))))
+        onView(withId(R.id.recycler_releases))
+            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
 
+        onView(withId(R.id.recycler_releases)).check(
+            matches(hasDescendant(withText("Harry's House")))
+        )
     }
 
 }

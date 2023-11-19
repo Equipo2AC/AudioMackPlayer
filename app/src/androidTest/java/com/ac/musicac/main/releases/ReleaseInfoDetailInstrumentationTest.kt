@@ -4,14 +4,14 @@ import android.os.Bundle
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
+import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.rule.GrantPermissionRule
 import com.ac.musicac.R
 import com.ac.musicac.data.server.EspressoIdlingResource
-import com.ac.musicac.data.server.MockWebServerRule
+import com.ac.musicac.data.server.MockWebServerTokenRule
 import com.ac.musicac.data.server.OkHttp3IdlingResource
 import com.ac.musicac.ui.main.releases.detail.ReleaseDetailFragment
 import com.ac.musicac.ui.navHostActivity.NavHostActivity
@@ -27,13 +27,13 @@ import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 @HiltAndroidTest
-class ReleaseDetailInstrumentationTest {
+class ReleaseInfoDetailInstrumentationTest {
 
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
 
     @get:Rule(order = 1)
-    val mockWebServerRule = MockWebServerRule()
+    val mockWebServerRule = MockWebServerTokenRule()
 
     @get:Rule(order = 2)
     val locationPermissionRule: GrantPermissionRule = GrantPermissionRule.grant(
@@ -72,12 +72,13 @@ class ReleaseDetailInstrumentationTest {
     }
 
     @Test
-    fun releases_detail_fragment_shows_a_release() {
+    fun releases_detail_fragment_shows_a_info_of_release() {
 
         Thread.sleep(1000)
 
-        onView(withId(R.id.release_detail_toolbar)).check(
-            matches(hasDescendant(withText("Harry's House")))
+        onView(withId(R.id.release_info_view)).check(
+            matches( withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE))
         )
     }
+
 }

@@ -41,6 +41,8 @@ class MockWebServerTokenRule: TestWatcher() {
                     path.contains("/albums/492U88qanlQnFgsfvwVHe8") -> response = "release_rosalia_bizcochito_response.json"
                     path.contains("/albums/4czxiqSwyeZK7y5r9GNWXP") -> response = "release_rosalia_despecha_response.json"
                     path.contains("/albums/3zbiiu3JTibw0esC7eoMXr") -> response = "release_rosalia_motomami_response.json"
+                    path.contains("/albums/5r36AJ6VOJtp00oxSkBZ5h") -> response = "response_releases_harry.json"
+                    path.contains("/browse/new-releases?country=") -> response = "response_releases_list.json"
                     // path.contains("/token") -> response = "token_response.json"
                     // else -> response = "token_response.json"
                 }

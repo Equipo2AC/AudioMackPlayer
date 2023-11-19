@@ -27,7 +27,7 @@ import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 @HiltAndroidTest
-class ReleaseDetailInstrumentationTest {
+class ReleaseDetailTracksInstrumentationTest {
 
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
@@ -72,12 +72,13 @@ class ReleaseDetailInstrumentationTest {
     }
 
     @Test
-    fun releases_detail_fragment_shows_a_release() {
+    fun releases_detail_fragment_shows_a_list_of_tracks() {
 
         Thread.sleep(1000)
 
-        onView(withId(R.id.release_detail_toolbar)).check(
-            matches(hasDescendant(withText("Harry's House")))
+        onView(withId(R.id.recycler_release_tracks)).check(
+            matches(hasDescendant(withText("Music For a Sushi Restaurant")))
         )
     }
+
 }

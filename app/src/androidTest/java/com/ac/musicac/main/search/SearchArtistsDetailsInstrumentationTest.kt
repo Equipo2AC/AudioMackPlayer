@@ -1,9 +1,14 @@
 package com.ac.musicac.main.search
 
+import android.view.inputmethod.EditorInfo
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
@@ -24,7 +29,7 @@ import org.junit.Test
 import javax.inject.Inject
 
 @HiltAndroidTest
-class SearchInstrumentationTest {
+class SearchArtistsDetailsInstrumentationTest {
 
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
@@ -58,24 +63,9 @@ class SearchInstrumentationTest {
     }
 
     @Test
-    fun app_shows_search_view() {
-
-        Thread.sleep(2000)
-
-        onView(withId(R.id.menu_item_3))
-            .perform(click())
+    fun search_fragment_shows_an_artist_when_clicked() {
 
         Thread.sleep(1000)
-
-        onView(withId(R.id.toolbar_search))
-            .check(matches(hasDescendant(withText("Buscar"))))
-
-    }
-
-    /*@Test
-    fun search_fragment_shows_an_album_when_searched() {
-
-        Thread.sleep(2000)
 
         onView(withId(R.id.menu_item_3))
             .perform(click())
@@ -87,33 +77,8 @@ class SearchInstrumentationTest {
 
         Thread.sleep(1000)
 
-        onView(hasImeAction(EditorInfo.IME_ACTION_SEARCH))
-            .perform(typeText("Rosa"))
-
-        Thread.sleep(1000)
-
-        onView(withId(R.id.recycler_search)).check(
-            matches(hasDescendant(withText("Rosa Pastel")))
-        )
-    }
-
-    @Test
-    fun search_fragment_shows_an_artist_when_searched() {
-
-        Thread.sleep(2000)
-
-        onView(withId(R.id.menu_item_3))
-            .perform(click())
-
-        Thread.sleep(1000)
-
-        onView(withId(R.id.search_option))
-            .perform(click())
-
-        Thread.sleep(1000)
-
-        onView(hasImeAction(EditorInfo.IME_ACTION_SEARCH))
-            .perform(typeText("Rosa"))
+        onView(ViewMatchers.hasImeAction(EditorInfo.IME_ACTION_SEARCH))
+            .perform(ViewActions.typeText("Rosa"))
 
         Thread.sleep(1000)
 
@@ -122,9 +87,12 @@ class SearchInstrumentationTest {
 
         Thread.sleep(1000)
 
-        onView(withId(R.id.recycler_search)).check(
-            matches(hasDescendant(withText("Rosario")))
-        )
-    }*/
+        onView(withId(R.id.recycler_search))
+            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
 
+        Thread.sleep(1000)
+
+        onView(withId(R.id.artist_toolbar))
+            .check(matches(hasDescendant(withText("ROSALÍA"))))
+    }
 }

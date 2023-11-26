@@ -1,6 +1,5 @@
 package com.ac.musicac.data.server
 
-import android.util.Log
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -21,12 +20,7 @@ class MockWebServerRule: TestWatcher() {
     }
 
     override fun finished(description: Description) {
-
-        Log.e("Artist Test", "${server.requestCount}")
-        // server.close()
-        // server.dispatcher.shutdown()
         server.shutdown()
-
     }
 
     fun runDispatcher() {
@@ -54,8 +48,10 @@ class MockWebServerRule: TestWatcher() {
                     path.contains("/albums/5r36AJ6VOJtp00oxSkBZ5h") -> response = "response_releases_harry.json"
                     path.contains("/browse/new-releases?country=") -> response = "response_releases_list.json"
 
-                    path.contains("/search?type=album&q=") -> response = "response_search_albums.json"
-                    path.contains("/search?type=artist&q=") -> response = "response_search_artists.json"
+                    path.contains("/search?type=album&q=&limit=20&offset=0") -> response = "response_search_void.json"
+                    // path.contains("/search?type=artist&q=&limit=20&offset=0") -> response = "response_search_void.json"
+                    path.contains("/search?type=album&q=Rosa&limit=20&offset=0") -> response = "response_search_albums.json"
+                    path.contains("/search?type=artist&q=Rosa&limit=20&offset=0") -> response = "response_search_artists.json"
 
 
 

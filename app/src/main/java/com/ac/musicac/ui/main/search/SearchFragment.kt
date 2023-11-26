@@ -27,7 +27,7 @@ class SearchFragment : Fragment(R.layout.fragment_search),
             onChooseTypeChanged = this@SearchFragment
         }
         searchState = buildSearchState()
-        val searchView = binding.toolbar.menu.getItem(0).actionView as? SearchView
+        val searchView = binding.toolbarSearch.menu.getItem(0).actionView as? SearchView
         searchView?.setOnQueryTextListener(this)
 
         viewLifecycleOwner.launchAndCollect(viewModel.state) { state ->

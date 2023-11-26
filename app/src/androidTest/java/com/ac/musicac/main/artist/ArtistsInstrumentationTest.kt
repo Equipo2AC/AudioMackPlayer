@@ -87,23 +87,4 @@ class ArtistsInstrumentationTest {
         )
     }
 
-    /*@Test
-    fun artist_fragment_shows_a_list_of_albums() {
-
-        onView(withId(R.id.recycler_artist_albums)).check(
-            matches(hasDescendant(withText("DESPECHÁ RMX")))
-        )
-    }
-
-    @Test
-    fun artist_fragment_shows_an_album_when_clicked() {
-
-        onView(withId(R.id.recycler_artist_albums))
-            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
-
-        onView(withId(R.id.recycler_artist_albums)).check(
-            matches(hasDescendant(withText("MOTOMAMI +")))
-        )
-    }*/
-
 }

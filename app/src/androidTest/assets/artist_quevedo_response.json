@@ -1,29 +1,29 @@
 {
   "external_urls" : {
-    "spotify" : "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X"
+    "spotify" : "https://open.spotify.com/artist/52iwsT98xCoGgiGntTiR7K"
   },
   "followers" : {
     "href" : null,
-    "total" : 62921570
+    "total" : 3352990
   },
-  "genres" : [ "reggaeton", "trap latino", "urbano latino" ],
-  "href" : "https://api.spotify.com/v1/artists/4q3ewBCX7sLwd24euuV69X",
-  "id" : "4q3ewBCX7sLwd24euuV69X",
+  "genres" : [ "rap canario", "trap latino", "urbano latino" ],
+  "href" : "https://api.spotify.com/v1/artists/52iwsT98xCoGgiGntTiR7K",
+  "id" : "52iwsT98xCoGgiGntTiR7K",
   "images" : [ {
     "height" : 640,
-    "url" : "https://i.scdn.co/image/ab6761610000e5eb8ee9a6f54dcbd4bc95126b14",
+    "url" : "https://i.scdn.co/image/ab6761610000e5eb2394e996716534bc2c937a1a",
     "width" : 640
   }, {
     "height" : 320,
-    "url" : "https://i.scdn.co/image/ab676161000051748ee9a6f54dcbd4bc95126b14",
+    "url" : "https://i.scdn.co/image/ab676161000051742394e996716534bc2c937a1a",
     "width" : 320
   }, {
     "height" : 160,
-    "url" : "https://i.scdn.co/image/ab6761610000f1788ee9a6f54dcbd4bc95126b14",
+    "url" : "https://i.scdn.co/image/ab6761610000f1782394e996716534bc2c937a1a",
     "width" : 160
   } ],
   "name" : "Quevedo",
-  "popularity" : 100,
+  "popularity" : 83,
   "type" : "artist",
-  "uri" : "spotify:artist:4q3ewBCX7sLwd24euuV69X"
+  "uri" : "spotify:artist:52iwsT98xCoGgiGntTiR7K"
 }

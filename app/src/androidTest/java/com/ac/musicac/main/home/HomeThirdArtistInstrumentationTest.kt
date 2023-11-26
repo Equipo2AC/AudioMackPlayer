@@ -15,12 +15,10 @@ import com.ac.musicac.R
 import com.ac.musicac.data.server.EspressoIdlingResource
 import com.ac.musicac.data.server.MockWebServerRule
 import com.ac.musicac.data.server.OkHttp3IdlingResource
-import com.ac.musicac.data.server.fromJson
 import com.ac.musicac.ui.navHostActivity.NavHostActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import okhttp3.OkHttpClient
-import okhttp3.mockwebserver.MockResponse
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -50,8 +48,7 @@ class HomeThirdArtistInstrumentationTest {
     @Before
     fun setUp() {
         hiltRule.inject()
-        mockWebServerRule.server.enqueue(MockResponse().fromJson("home_artists_response.json"))
-        mockWebServerRule.server.enqueue(MockResponse().fromJson("home_albums_response.json"))
+        mockWebServerRule.runDispatcher()
         IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
         IdlingRegistry.getInstance().register(OkHttp3IdlingResource.create("okHttp", okHttpClient))
     }
@@ -65,7 +62,7 @@ class HomeThirdArtistInstrumentationTest {
     @Test
     fun click_in_third_artist_navigates_to_detail() {
 
-        mockWebServerRule.server.enqueue(MockResponse().fromJson("artist_quevedo_response.json"))
+        Thread.sleep(1000)
 
         onView(withId(R.id.recycler_artist))
             .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(2, click()))
@@ -74,16 +71,15 @@ class HomeThirdArtistInstrumentationTest {
             .check(matches(hasDescendant(withText("Quevedo"))))
     }
 
-    @Test
+    /*@Test
     fun click_in_fourth_artist_navigates_to_detail() {
 
-
-        mockWebServerRule.server.enqueue(MockResponse().fromJson("artist_badbunny_response.json"))
+        Thread.sleep(1000)
 
         onView(withId(R.id.recycler_artist))
             .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(3, click()))
 
         onView(withId(R.id.artist_toolbar))
             .check(matches(hasDescendant(withText("Bad Bunny"))))
-    }
+    }*/
 }

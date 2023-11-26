@@ -10,14 +10,12 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.rule.GrantPermissionRule
 import com.ac.musicac.R
 import com.ac.musicac.data.server.EspressoIdlingResource
-import com.ac.musicac.data.server.MockWebServerRule
+import com.ac.musicac.data.server.MockWebServerTokenRule
 import com.ac.musicac.data.server.OkHttp3IdlingResource
-import com.ac.musicac.data.server.fromJson
 import com.ac.musicac.ui.navHostActivity.NavHostActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import okhttp3.OkHttpClient
-import okhttp3.mockwebserver.MockResponse
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -31,7 +29,7 @@ class HomeArtistsInstrumentationTest {
     val hiltRule = HiltAndroidRule(this)
 
     @get:Rule(order = 1)
-    val mockWebServerRule = MockWebServerRule()
+    val mockWebServerRule = MockWebServerTokenRule()
 
     @get:Rule(order = 2)
     val locationPermissionRule: GrantPermissionRule = GrantPermissionRule.grant(
@@ -48,8 +46,7 @@ class HomeArtistsInstrumentationTest {
     fun setUp() {
 
         hiltRule.inject()
-        mockWebServerRule.server.enqueue(MockResponse().fromJson("home_artists_response.json"))
-        // mockWebServerRule.runDispatcher()
+        mockWebServerRule.runDispatcher()
         IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
         IdlingRegistry.getInstance().register(OkHttp3IdlingResource.create("okHttp", okHttpClient))
     }
@@ -64,6 +61,9 @@ class HomeArtistsInstrumentationTest {
 
     @Test
     fun app_shows_several_artists() {
+
+        Thread.sleep(2000)
+
         onView(withId(R.id.recycler_artist))
             .check(matches(hasDescendant(withText("Bizarrap"))))
     }

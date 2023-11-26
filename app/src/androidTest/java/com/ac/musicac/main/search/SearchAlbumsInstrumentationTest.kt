@@ -16,7 +16,6 @@ import com.ac.musicac.R
 import com.ac.musicac.data.server.EspressoIdlingResource
 import com.ac.musicac.data.server.MockWebServerRule
 import com.ac.musicac.data.server.OkHttp3IdlingResource
-import com.ac.musicac.ui.main.search.SearchFragment
 import com.ac.musicac.ui.navHostActivity.NavHostActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -53,13 +52,6 @@ class SearchAlbumsInstrumentationTest {
         hiltRule.inject()
         IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
         IdlingRegistry.getInstance().register(OkHttp3IdlingResource.create("okHttp", okHttpClient))
-
-        activityRule.scenario.onActivity { activity ->
-            activity.supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.nav_host_splash_fragment, SearchFragment(), "TEST SearchFragment")
-                .commitNowAllowingStateLoss()
-        }
     }
 
     @After
@@ -71,42 +63,26 @@ class SearchAlbumsInstrumentationTest {
     @Test
     fun search_fragment_shows_an_album_when_searched() {
 
+        Thread.sleep(2000)
+
+        onView(withId(R.id.menu_item_3))
+            .perform(click())
+
+        Thread.sleep(1000)
+
         onView(withId(R.id.search_option))
             .perform(click())
 
-        Thread.sleep(3000)
+        Thread.sleep(1000)
 
         onView(ViewMatchers.hasImeAction(EditorInfo.IME_ACTION_SEARCH))
             .perform(ViewActions.typeText("Rosa"))
 
-        Thread.sleep(3000)
+        Thread.sleep(1000)
 
         onView(withId(R.id.recycler_search)).check(
             matches(hasDescendant(withText("Rosa Pastel")))
         )
     }
-
-    /*@Test
-    fun search_fragment_shows_an_album_when_Clicked() {
-
-        onView(withId(R.id.search_option))
-            .perform(click())
-
-        Thread.sleep(3000)
-
-        onView(ViewMatchers.hasImeAction(EditorInfo.IME_ACTION_SEARCH))
-            .perform(ViewActions.typeText("Rosa"))
-
-        Thread.sleep(3000)
-
-        onView(withId(R.id.recycler_search))
-            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
-
-        Thread.sleep(3000)
-
-        onView(withId(R.id.release_detail_toolbar)).check(
-            matches(hasDescendant(withText("Rosa Pastel")))
-        )
-    }*/
 
 }

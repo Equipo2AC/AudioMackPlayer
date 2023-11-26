@@ -1,12 +1,10 @@
 package com.ac.musicac.main.search
 
-import android.view.inputmethod.EditorInfo
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.hasImeAction
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.hasChildCount
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.rule.GrantPermissionRule
@@ -74,8 +72,8 @@ class SearchEmptyInstrumentationTest {
 
         Thread.sleep(1000)
 
-        onView(hasImeAction(EditorInfo.IME_ACTION_SEARCH))
-            .check(matches(isDisplayed()))
+        onView(withId(R.id.recycler_search)).check(
+            matches(hasChildCount(0)))
 
     }
 

@@ -1,6 +1,5 @@
 package com.ac.musicac.data.server
 
-import android.util.Log
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -21,12 +20,7 @@ class MockWebServerRule: TestWatcher() {
     }
 
     override fun finished(description: Description) {
-
-        Log.e("Artist Test", "${server.requestCount}")
-        // server.close()
-        // server.dispatcher.shutdown()
         server.shutdown()
-
     }
 
     fun runDispatcher() {

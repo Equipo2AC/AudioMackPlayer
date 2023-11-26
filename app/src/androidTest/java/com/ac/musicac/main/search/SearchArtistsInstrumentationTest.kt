@@ -91,26 +91,4 @@ class SearchArtistsInstrumentationTest {
         )
     }
 
-    /*@Test
-    fun search_fragment_shows_an_artist_when_Clicked() {
-
-        onView(withId(R.id.search_option))
-            .perform(click())
-
-        Thread.sleep(3000)
-
-        onView(ViewMatchers.hasImeAction(EditorInfo.IME_ACTION_SEARCH))
-            .perform(ViewActions.typeText("Rosa"))
-
-        Thread.sleep(3000)
-
-        onView(withId(R.id.recycler_search))
-            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(3, click()))
-
-        Thread.sleep(3000)
-
-        onView(withId(R.id.recycler_search)).check(
-            matches(hasDescendant(withText("Rosario"))))
-    }*/
-
 }

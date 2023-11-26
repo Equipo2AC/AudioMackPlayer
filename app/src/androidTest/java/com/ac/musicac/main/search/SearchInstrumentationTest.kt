@@ -1,22 +1,18 @@
 package com.ac.musicac.main.search
 
-import android.view.inputmethod.EditorInfo
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
-import androidx.test.espresso.matcher.ViewMatchers.hasImeAction
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.rule.GrantPermissionRule
 import com.ac.musicac.R
 import com.ac.musicac.data.server.EspressoIdlingResource
-import com.ac.musicac.data.server.MockWebServerTokenRule
+import com.ac.musicac.data.server.MockWebServerRule
 import com.ac.musicac.data.server.OkHttp3IdlingResource
-import com.ac.musicac.ui.main.search.SearchFragment
 import com.ac.musicac.ui.navHostActivity.NavHostActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -34,7 +30,7 @@ class SearchInstrumentationTest {
     val hiltRule = HiltAndroidRule(this)
 
     @get:Rule(order = 1)
-    val mockWebServerRule = MockWebServerTokenRule()
+    val mockWebServerRule = MockWebServerRule()
 
     @get:Rule(order = 2)
     val locationPermissionRule: GrantPermissionRule = GrantPermissionRule.grant(
@@ -53,13 +49,6 @@ class SearchInstrumentationTest {
         hiltRule.inject()
         IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
         IdlingRegistry.getInstance().register(OkHttp3IdlingResource.create("okHttp", okHttpClient))
-
-        activityRule.scenario.onActivity { activity ->
-            activity.supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.nav_host_splash_fragment, SearchFragment(), "TEST SearchFragment")
-                .commitNowAllowingStateLoss()
-        }
     }
 
     @After
@@ -71,6 +60,28 @@ class SearchInstrumentationTest {
     @Test
     fun app_shows_search_view() {
 
+        Thread.sleep(2000)
+
+        onView(withId(R.id.menu_item_3))
+            .perform(click())
+
+        Thread.sleep(1000)
+
+        onView(withId(R.id.toolbar_search))
+            .check(matches(hasDescendant(withText("Buscar"))))
+
+    }
+
+    /*@Test
+    fun search_fragment_shows_an_album_when_searched() {
+
+        Thread.sleep(2000)
+
+        onView(withId(R.id.menu_item_3))
+            .perform(click())
+
+        Thread.sleep(1000)
+
         onView(withId(R.id.search_option))
             .perform(click())
 
@@ -81,9 +92,39 @@ class SearchInstrumentationTest {
 
         Thread.sleep(1000)
 
-        onView(withId(R.id.recycler_search))
-            .check(matches(hasDescendant(withText("Rosa Pastel"))))
-
+        onView(withId(R.id.recycler_search)).check(
+            matches(hasDescendant(withText("Rosa Pastel")))
+        )
     }
+
+    @Test
+    fun search_fragment_shows_an_artist_when_searched() {
+
+        Thread.sleep(2000)
+
+        onView(withId(R.id.menu_item_3))
+            .perform(click())
+
+        Thread.sleep(1000)
+
+        onView(withId(R.id.search_option))
+            .perform(click())
+
+        Thread.sleep(1000)
+
+        onView(hasImeAction(EditorInfo.IME_ACTION_SEARCH))
+            .perform(typeText("Rosa"))
+
+        Thread.sleep(1000)
+
+        onView(withText("Artistas"))
+            .perform(click())
+
+        Thread.sleep(1000)
+
+        onView(withId(R.id.recycler_search)).check(
+            matches(hasDescendant(withText("Rosario")))
+        )
+    }*/
 
 }

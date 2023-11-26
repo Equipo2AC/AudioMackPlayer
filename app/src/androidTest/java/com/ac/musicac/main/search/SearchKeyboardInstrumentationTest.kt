@@ -69,7 +69,7 @@ class SearchKeyboardInstrumentationTest {
     }
 
     @Test
-    fun app_hide_keyboard_in_search_view() {
+    fun app_show_and_hide_keyboard_in_search_view() {
 
         onView(withId(R.id.search_option))
             .perform(click())
@@ -85,18 +85,5 @@ class SearchKeyboardInstrumentationTest {
             .check(matches(isDisplayed()))
 
     }
-
-    /*@Test
-    fun app_shows_keyboard_in_search_view() {
-
-        onView(withId(R.id.search_option))
-            .perform(click())
-
-        Thread.sleep(1000)
-
-        onView(hasImeAction(EditorInfo.IME_ACTION_SEARCH))
-            .check(matches(isDisplayed()))
-
-    }*/
 
 }

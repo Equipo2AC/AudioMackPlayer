@@ -1,13 +1,11 @@
 package com.ac.musicac.main.search
 
 import android.view.inputmethod.EditorInfo
-import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -27,9 +25,8 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import javax.inject.Inject
-
 @HiltAndroidTest
-class SearchAlbumsDetailsInstrumentationTest {
+class SearchChipInstrumentationTest {
 
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
@@ -63,7 +60,7 @@ class SearchAlbumsDetailsInstrumentationTest {
     }
 
     @Test
-    fun search_fragment_shows_an_album_when_clicked() {
+    fun search_fragment_changes_type_when_clicked() {
 
         Thread.sleep(1000)
 
@@ -82,12 +79,53 @@ class SearchAlbumsDetailsInstrumentationTest {
 
         Thread.sleep(1000)
 
-        onView(withId(R.id.recycler_search))
-            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(1, click()))
+        onView(withText("Artistas"))
+            .perform(click())
 
         Thread.sleep(1000)
 
-        onView(withId(R.id.release_detail_toolbar)).check(
+        onView(withId(R.id.recycler_search)).check(
+            matches(hasDescendant(withText("Rosario")))
+        )
+    }
+
+    @Test
+    fun search_fragment_changes_type_again_when_clicked() {
+
+        Thread.sleep(1000)
+
+        onView(withId(R.id.menu_item_3))
+            .perform(click())
+
+        Thread.sleep(1000)
+
+        onView(withId(R.id.search_option))
+            .perform(click())
+
+        Thread.sleep(1000)
+
+        onView(ViewMatchers.hasImeAction(EditorInfo.IME_ACTION_SEARCH))
+            .perform(ViewActions.typeText("Rosa"))
+
+        Thread.sleep(1000)
+
+        onView(withText("Artistas"))
+            .perform(click())
+
+        Thread.sleep(1000)
+
+        onView(withId(R.id.recycler_search)).check(
+            matches(hasDescendant(withText("Rosario")))
+        )
+
+        Thread.sleep(1000)
+
+        onView(withText("Álbums"))
+            .perform(click())
+
+        Thread.sleep(1000)
+
+        onView(withId(R.id.recycler_search)).check(
             matches(hasDescendant(withText("MOTOMAMI")))
         )
     }

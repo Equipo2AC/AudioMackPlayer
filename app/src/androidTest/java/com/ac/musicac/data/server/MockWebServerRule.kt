@@ -39,6 +39,7 @@ class MockWebServerRule: TestWatcher() {
                     path.contains("/artists/7ltDVBr6mKbRvohxheJ9h1") -> response = "artist_rosalia_response.json"
                     path.contains("/artists/716NhGYqD1jl2wI1Qkgq36") -> response = "artist_bizarrap_response.json"
                     path.contains("/artists/4q3ewBCX7sLwd24euuV69X") -> response = "artist_badbunny_response.json"
+                    path.contains("/artists/52iwsT98xCoGgiGntTiR7K") -> response = "artist_quevedo_response.json"
                     path.contains("/albums/3RQQmkQEvNCY4prGKE6oc5") -> response = "album_unverano_response.json"
                     path.contains("/albums/6jbtHi5R0jMXoliU2OS0lo") -> response = "album_rosalia_response.json"
                     path.contains("/albums/1wLB2bnCl2m5m9M9g8r93Y") -> response = "album_provenza_response.json"

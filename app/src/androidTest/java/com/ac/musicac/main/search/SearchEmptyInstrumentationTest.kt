@@ -4,12 +4,10 @@ import android.view.inputmethod.EditorInfo
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
 import androidx.test.espresso.matcher.ViewMatchers.hasImeAction
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.rule.GrantPermissionRule
 import com.ac.musicac.R
@@ -28,7 +26,7 @@ import org.junit.Test
 import javax.inject.Inject
 
 @HiltAndroidTest
-class SearchInstrumentationTest {
+class SearchEmptyInstrumentationTest {
 
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
@@ -69,7 +67,7 @@ class SearchInstrumentationTest {
     }
 
     @Test
-    fun app_shows_search_view() {
+    fun app_shows_empty_search_view() {
 
         onView(withId(R.id.search_option))
             .perform(click())
@@ -77,12 +75,7 @@ class SearchInstrumentationTest {
         Thread.sleep(1000)
 
         onView(hasImeAction(EditorInfo.IME_ACTION_SEARCH))
-            .perform(typeText("Rosa"))
-
-        Thread.sleep(1000)
-
-        onView(withId(R.id.recycler_search))
-            .check(matches(hasDescendant(withText("Rosa Pastel"))))
+            .check(matches(isDisplayed()))
 
     }
 

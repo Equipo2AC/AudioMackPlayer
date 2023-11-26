@@ -3,18 +3,18 @@ package com.ac.musicac.main.search
 import android.view.inputmethod.EditorInfo
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
-import androidx.test.espresso.matcher.ViewMatchers.hasImeAction
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.rule.GrantPermissionRule
 import com.ac.musicac.R
 import com.ac.musicac.data.server.EspressoIdlingResource
-import com.ac.musicac.data.server.MockWebServerTokenRule
+import com.ac.musicac.data.server.MockWebServerRule
 import com.ac.musicac.data.server.OkHttp3IdlingResource
 import com.ac.musicac.ui.main.search.SearchFragment
 import com.ac.musicac.ui.navHostActivity.NavHostActivity
@@ -28,13 +28,13 @@ import org.junit.Test
 import javax.inject.Inject
 
 @HiltAndroidTest
-class SearchInstrumentationTest {
+class SearchAlbumsInstrumentationTest {
 
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
 
     @get:Rule(order = 1)
-    val mockWebServerRule = MockWebServerTokenRule()
+    val mockWebServerRule = MockWebServerRule()
 
     @get:Rule(order = 2)
     val locationPermissionRule: GrantPermissionRule = GrantPermissionRule.grant(
@@ -69,21 +69,44 @@ class SearchInstrumentationTest {
     }
 
     @Test
-    fun app_shows_search_view() {
+    fun search_fragment_shows_an_album_when_searched() {
 
         onView(withId(R.id.search_option))
             .perform(click())
 
-        Thread.sleep(1000)
+        Thread.sleep(3000)
 
-        onView(hasImeAction(EditorInfo.IME_ACTION_SEARCH))
-            .perform(typeText("Rosa"))
+        onView(ViewMatchers.hasImeAction(EditorInfo.IME_ACTION_SEARCH))
+            .perform(ViewActions.typeText("Rosa"))
 
-        Thread.sleep(1000)
+        Thread.sleep(3000)
+
+        onView(withId(R.id.recycler_search)).check(
+            matches(hasDescendant(withText("Rosa Pastel")))
+        )
+    }
+
+    /*@Test
+    fun search_fragment_shows_an_album_when_Clicked() {
+
+        onView(withId(R.id.search_option))
+            .perform(click())
+
+        Thread.sleep(3000)
+
+        onView(ViewMatchers.hasImeAction(EditorInfo.IME_ACTION_SEARCH))
+            .perform(ViewActions.typeText("Rosa"))
+
+        Thread.sleep(3000)
 
         onView(withId(R.id.recycler_search))
-            .check(matches(hasDescendant(withText("Rosa Pastel"))))
+            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
 
-    }
+        Thread.sleep(3000)
+
+        onView(withId(R.id.release_detail_toolbar)).check(
+            matches(hasDescendant(withText("Rosa Pastel")))
+        )
+    }*/
 
 }

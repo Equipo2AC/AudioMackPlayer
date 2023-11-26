@@ -11,7 +11,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.rule.GrantPermissionRule
 import com.ac.musicac.R
 import com.ac.musicac.data.server.EspressoIdlingResource
-import com.ac.musicac.data.server.MockWebServerRule
+import com.ac.musicac.data.server.MockWebServerTokenRule
 import com.ac.musicac.data.server.OkHttp3IdlingResource
 import com.ac.musicac.ui.main.releases.detail.ReleaseDetailFragment
 import com.ac.musicac.ui.navHostActivity.NavHostActivity
@@ -33,7 +33,7 @@ class ReleaseDetailInstrumentationTest {
     val hiltRule = HiltAndroidRule(this)
 
     @get:Rule(order = 1)
-    val mockWebServerRule = MockWebServerRule()
+    val mockWebServerRule = MockWebServerTokenRule()
 
     @get:Rule(order = 2)
     val locationPermissionRule: GrantPermissionRule = GrantPermissionRule.grant(

@@ -2,6 +2,7 @@ package com.ac.musicac.main.releases
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
@@ -12,7 +13,6 @@ import com.ac.musicac.R
 import com.ac.musicac.data.server.EspressoIdlingResource
 import com.ac.musicac.data.server.MockWebServerRule
 import com.ac.musicac.data.server.OkHttp3IdlingResource
-import com.ac.musicac.ui.main.releases.list.ReleasesFragment
 import com.ac.musicac.ui.navHostActivity.NavHostActivity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -51,13 +51,6 @@ class ReleaseInstrumentationTest {
         hiltRule.inject()
         IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
         IdlingRegistry.getInstance().register(OkHttp3IdlingResource.create("okHttp", okHttpClient))
-
-        activityRule.scenario.onActivity { activity ->
-            activity.supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.nav_host_splash_fragment, ReleasesFragment(), "TEST ReleasesFragment")
-                .commitNowAllowingStateLoss()
-        }
     }
 
     @After
@@ -68,6 +61,11 @@ class ReleaseInstrumentationTest {
 
     @Test
     fun app_shows_several_albums() {
+
+        Thread.sleep(2000)
+
+        onView(ViewMatchers.withId(R.id.menu_item_2))
+            .perform(ViewActions.click())
 
         Thread.sleep(1000)
 
